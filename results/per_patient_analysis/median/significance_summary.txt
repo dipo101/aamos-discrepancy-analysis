@@ -1,0 +1,16 @@
+Significance Summary: Median
+==================================================
+
+Total patients: 15
+Bonferroni significant: 8
+Nominally significant: 9
+
+Bonferroni Significant Patients:
+  Patient 113: Z = 0.394, p = 0.0001
+  Patient 294: Z = 0.555, p = 0.0001
+  Patient 398: Z = 0.281, p = 0.0008
+  Patient 454: Z = -0.862, p = 0.0001
+  Patient 473: Z = 0.626, p = 0.0001
+  Patient 702: Z = 0.825, p = 0.0001
+  Patient 917: Z = 1.073, p = 0.0025
+  Patient 939: Z = 0.286, p = 0.0001

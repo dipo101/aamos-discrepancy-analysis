@@ -1,0 +1,13 @@
+Significance Summary: Mean
+==================================================
+
+Total patients: 15
+Bonferroni significant: 5
+Nominally significant: 7
+
+Bonferroni Significant Patients:
+  Patient 113: Z = 0.325, p = 0.0002
+  Patient 294: Z = 0.520, p = 0.0001
+  Patient 473: Z = 0.525, p = 0.0001
+  Patient 702: Z = 0.779, p = 0.0001
+  Patient 939: Z = 0.285, p = 0.0001

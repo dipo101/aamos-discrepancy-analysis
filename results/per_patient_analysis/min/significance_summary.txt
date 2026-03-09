@@ -1,0 +1,7 @@
+Significance Summary: Minimum
+==================================================
+
+Total patients: 15
+Bonferroni significant: 0
+Nominally significant: 0
+

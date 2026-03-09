@@ -1,0 +1,6 @@
+pandas>=2.2.0
+numpy>=1.24.0
+scipy>=1.10.0
+google-cloud-storage==2.18.2
+pyarrow>=14.0.0
+

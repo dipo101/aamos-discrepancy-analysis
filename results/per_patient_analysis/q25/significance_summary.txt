@@ -1,0 +1,10 @@
+Significance Summary: 25th Percentile
+==================================================
+
+Total patients: 15
+Bonferroni significant: 2
+Nominally significant: 3
+
+Bonferroni Significant Patients:
+  Patient 294: Z = 0.430, p = 0.0001
+  Patient 939: Z = 0.230, p = 0.0011

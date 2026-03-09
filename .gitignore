@@ -1,0 +1,53 @@
+# Archived/unused files
+archived/
+
+# Large cache files
+permutation_cloudrun/aggregator/batch_results_cache*.json
+permutation_cloudrun/aggregator/*.parquet
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# API keys (safety)
+.env
+
+# Reference papers
+s41597-023-02241-9.pdf
+
+# Sensitive results (contain patient feedback text)
+results/concordant/sentiment_analysis/full_results.csv
+results/concordant/sentiment_analysis/main_text/analysis_summary.txt
+
+# Sensitive data files
+aamos00_*.csv
+aamos00_*.docx
+aamos00_*.xlsx
+aamos00-*.csv
+anonym_aamos00_*.csv

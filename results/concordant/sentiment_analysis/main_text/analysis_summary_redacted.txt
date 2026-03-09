@@ -1,0 +1,47 @@
+
+SENTIMENT ANALYSIS SUMMARY
+===================================================================
+
+METHODOLOGY ALIGNMENT:
+A. Preliminary Semantic Clustering: See inductive_clustering_analysis.py results
+B. Multi-Agent LLM Ensemble: 3 personas (Neutral, Skeptic, Optimist), 7 themes
+C. Embedding-Based Sentiment Classifier: Cosine similarity to reference sentiments
+D. Inter-Method Agreement: Cohen's Kappa between B and C
+
+PATIENT GROUPS:
+- Optimal (n=3): [294, 473, 702]
+- Remaining (n=6): [113, 190, 343, 514, 701, 939]
+- Total: 9 unique patients with feedback
+
+INTERNAL RELIABILITY (Section B):
+- Fleiss' Kappa across 3 LLM personas: 0.775
+  (Interpretation: Substantial agreement)
+
+INTER-METHOD AGREEMENT (Section D):
+- Cohen's Kappa (LLM vs Embedding): 0.633
+  (Interpretation: Substantial agreement)
+- Percentage Agreement: 77.8%
+
+LLM ENSEMBLE SENTIMENT RESULTS:
+Optimal Group: {'Positive': np.int64(2), 'Negative': np.int64(1)}
+Remaining Group: {'Neutral': np.int64(2), 'Positive': np.int64(2), 'Negative': np.int64(2)}
+
+EMBEDDING CLASSIFIER SENTIMENT RESULTS:
+Optimal Group: {'Positive': np.int64(2), 'Negative': np.int64(1)}
+Remaining Group: {'Positive': np.int64(3), 'Negative': np.int64(3)}
+
+THEME PRESENCE (LLM Ensemble):
+| Theme | Optimal | Remaining | Difference |
+|-------|---------|-----------|------------|
+| Reliability & Accuracy | 100% | 83% | +17% |
+| Integration & Interoperability | 0% | 50% | -50% |
+| Reminders & Motivation | 0% | 50% | -50% |
+| Insights & Self-Discovery | 67% | 33% | +33% |
+| Trends & Visualization | 33% | 17% | +17% |
+| Clinical Care Value | 67% | 0% | +67% |
+| Positive Experience & Gratitude | 67% | 50% | +17% |
+
+
+EVIDENCE QUOTES BY PATIENT:
+
+<removed for anonymisation>

@@ -1,0 +1,44 @@
+# Permutation Analysis V3 - Cloud Run Configuration
+# Project: power-line-monitoring-476216
+# Region: us-central1
+
+gcp:
+  project_id: "power-line-monitoring-476216"
+  region: "us-central1"
+  bucket_name: "patient-concordance-permutation-v3"
+
+analysis:
+  n_permutations: 10000
+  correlation_type: "spearman"  # or "pearson"
+  random_seed: 42
+  
+  # Batching configuration (optimized for current quotas)
+  perms_per_batch: 250  # Each Cloud Run invocation handles 250 permutations
+  batches_per_patient: 40  # 10,000 / 250 = 40 batches
+  
+  # Wave configuration (to stay within rate limits and vCPU quota)
+  max_concurrent_instances: 50  # Start conservatively to avoid rate limits
+  
+cloud_run:
+  service_name: "permutation-worker-v3"
+  cpu: 2  # vCPUs per instance
+  memory: "2Gi"  # Memory per instance
+  timeout: 3600  # 1 hour timeout (each batch should take ~30 min with 250 perms)
+  max_instances: 50  # Per wave (conservative to avoid rate limits)
+  
+data:
+  # Source data files (local paths to upload)
+  patient_info: "anonym_aamos00_patient_info.csv"
+  questionnaire: "anonym_aamos00_dailyquestionnaire_dt.csv"
+  inhaler: "anonym_aamos00_smartinhaler_dt.csv"
+  
+  # GCS paths (where data will be uploaded)
+  gcs_data_prefix: "data/"
+  gcs_results_prefix: "results/"
+  gcs_final_prefix: "final/"
+
+output:
+  local_results_dir: "../../results/permutation_aggregate_extended/"
+  final_report: "permutation_analysis_v3_FINAL.csv"
+  visualizations: true
+
