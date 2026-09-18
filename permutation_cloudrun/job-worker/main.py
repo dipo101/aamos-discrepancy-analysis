@@ -15,6 +15,8 @@ Environment variables:
     RANDOM_SEED       default 42; permutation i shuffles with seed RANDOM_SEED + i
     CORRELATION_TYPE  'spearman' (default) or 'pearson'
     COLLECT_DATASETS  'true' to also upload the categorised frames as Parquet
+    (the per-configuration Fisher Z vectors for both correlation types are always
+     uploaded, to <results prefix>perconfig/patient_<id>_batch_<b>.parquet)
     WORLD_ID          world id (default span=Q__case=A). Only the baseline is implemented so
                       far; any other value exits with an error rather than silently
                       computing the baseline. Results go to gs://<bucket>/<results prefix for the world>/
@@ -40,8 +42,7 @@ from scipy import stats
 from aamos_concordance import (
     build_record,
     generate_param_combinations,
-    run_single_permutation,
-    summarize_correlations,
+    run_batch,
 )
 from aamos_concordance.data import RAW_FILES
 from aamos_concordance.worlds import BASELINE, as_world, gcs_results_prefix
@@ -121,37 +122,28 @@ def main():
     logger.info(f"Generated {len(param_combinations)} parameter combinations")
 
     n_perms = perm_end - perm_start
-    all_correlations = []
-    all_datasets = []
-    valid_count = 0
     batch_start_time = time.time()
+    last_time = [batch_start_time]
 
-    for i in range(perm_start, perm_end):
-        perm_iteration = i - perm_start + 1
-        perm_start_time = time.time()
-
-        correlations, datasets = run_single_permutation(
-            patient_id, i, patient_questionnaire, patient_inhaler,
-            param_combinations, random_seed, correlation_type,
-            collect_datasets=collect_datasets,
-        )
-        if collect_datasets and datasets:
-            all_datasets.extend(datasets)
-
-        summary = summarize_correlations(correlations)
-        if summary['n_valid_configs'] > 0:
-            valid_count += 1
-        all_correlations.append({'permutation_idx': i, **summary})
-
+    def progress(perm_idx, record):
+        perm_iteration = perm_idx - perm_start + 1
+        now = time.time()
         if perm_iteration <= 5 or perm_iteration % 10 == 0:
-            elapsed_total = time.time() - batch_start_time
-            est_remaining = (elapsed_total / perm_iteration) * (n_perms - perm_iteration)
+            est_remaining = ((now - batch_start_time) / perm_iteration) * (n_perms - perm_iteration)
             logger.info(
-                f"Patient {patient_id}, permutation {i}: {summary['n_valid_configs']}/{len(param_combinations)} valid configs, "
-                f"{time.time() - perm_start_time:.2f}s | {perm_iteration}/{n_perms} | est. remaining {est_remaining / 60:.1f} min"
+                f"Patient {patient_id}, permutation {perm_idx}: {record['n_valid_configs']}/{len(param_combinations)} valid configs, "
+                f"{now - last_time[0]:.2f}s | {perm_iteration}/{n_perms} | est. remaining {est_remaining / 60:.1f} min"
             )
         if perm_iteration % 50 == 0:
             gc.collect()
+        last_time[0] = now
+
+    all_correlations, per_config, all_datasets = run_batch(
+        patient_id, patient_questionnaire, patient_inhaler, param_combinations,
+        perm_start, perm_end, random_seed, correlation_type,
+        collect_datasets=collect_datasets, progress=progress,
+    )
+    valid_count = sum(1 for r in all_correlations if r['n_valid_configs'] > 0)
 
     total_elapsed = time.time() - batch_start_time
     logger.info(f"Patient {patient_id}, batch {batch_id} complete: {n_perms} permutations in {total_elapsed / 60:.2f} min, "
@@ -172,7 +164,8 @@ def main():
             'avg_seconds_per_permutation': (time.time() - job_start_time) / n_perms,
         },
         'provenance': build_record(
-            config={'world_id': str(world), 'random_seed': random_seed, 'correlation_type': correlation_type,
+            config={'world_id': str(world), 'random_seed': random_seed, 'primary_correlation_type': correlation_type,
+                    'correlation_types_stored': ['spearman', 'pearson'],
                     'n_configs': len(param_combinations), 'perm_start': perm_start, 'perm_end': perm_end},
             data=data_provenance,
         ),
@@ -180,6 +173,13 @@ def main():
     output_path = f'{results_prefix}patient_{patient_id}_batch_{batch_id}.json'
     bucket.blob(output_path).upload_from_string(json.dumps(result_data))
     logger.info(f"Results saved to gs://{bucket_name}/{output_path}")
+
+    buf = io.BytesIO()
+    per_config.to_parquet(buf, engine='pyarrow', compression='snappy', index=False)
+    buf.seek(0)
+    per_config_path = f'{results_prefix}perconfig/patient_{patient_id}_batch_{batch_id}.parquet'
+    bucket.blob(per_config_path).upload_from_file(buf, content_type='application/octet-stream')
+    logger.info(f"Per-config Z ({len(per_config)} rows) saved to gs://{bucket_name}/{per_config_path}")
 
     if collect_datasets and all_datasets:
         combined_df = pd.concat(all_datasets, ignore_index=True)
