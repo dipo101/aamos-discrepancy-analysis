@@ -15,7 +15,7 @@ import pandas as pd
 import pytest
 from pandas.testing import assert_frame_equal
 
-from aamos_concordance.summary import build_world_summary, derive_concordant_sets
+from aamos_concordance.summary import PRIMARY, V1_SPEC, build_world_summary, derive_concordant_sets
 from aamos_concordance.worlds import (
     BASELINE,
     PER_CONFIG_Z,
@@ -50,25 +50,30 @@ def test_baseline_null_is_the_v1_parquet(baseline_dir, frozen_results_dir):
 
 def test_baseline_summary_is_reproducible_from_its_inputs(baseline_dir):
     committed = pd.read_csv(baseline_dir / SUMMARY_CSV)
-    rebuilt = build_world_summary(pd.read_csv(baseline_dir / PER_CONFIG_Z), pd.read_parquet(world_null_path(BASELINE)))
+    with pytest.warns(UserWarning):
+        rebuilt = build_world_summary(pd.read_csv(baseline_dir / PER_CONFIG_Z), pd.read_parquet(world_null_path(BASELINE)))
     assert_frame_equal(committed, rebuilt, check_dtype=False)
 
 
 def test_baseline_summary_yields_the_published_sets(baseline_dir):
     summary = pd.read_csv(baseline_dir / SUMMARY_CSV)
-    assert derive_concordant_sets(summary) == {"mean": V1_CONCORDANT_MEAN, "median": V1_CONCORDANT_MEDIAN}
+    assert derive_concordant_sets(summary) == {"all/spearman/mean": V1_CONCORDANT_MEAN, "all/spearman/median": V1_CONCORDANT_MEDIAN}
     assert sorted(summary["patient_id"].unique()) == V1_ASSESSED
 
 
 def test_generated_concordant_sets_file_matches_summary(baseline_dir):
     sets = json.loads(concordant_sets_path().read_text())
-    assert sets["span=Q__case=A"] == {"mean": V1_CONCORDANT_MEAN, "median": V1_CONCORDANT_MEDIAN}
+    assert sets["span=Q__case=A"] == {"all/spearman/mean": V1_CONCORDANT_MEAN, "all/spearman/median": V1_CONCORDANT_MEDIAN}
+    assert PRIMARY.key not in sets["span=Q__case=A"], "primary spec must not have sets until its null exists"
     assert "span=Q__case=A" in list_worlds()
 
 
 def test_config_groups_are_derived_not_typed():
     import config
     assert config.ACTIVE_WORLD == BASELINE
+    # The baseline has no primary-spec null yet, so config falls back to the v1 spec and says so.
+    assert config.ACTIVE_SPEC == V1_SPEC
+    assert config.GROUPS["concordant"]["summary_spec"] == "all/spearman/mean"
     assert config.GROUPS["concordant"]["patients"] == V1_CONCORDANT_MEAN
     assert config.GROUPS["median_concordant"]["patients"] == V1_CONCORDANT_MEDIAN
     assert config.GROUPS["concordant"]["world"] == "span=Q__case=A"
@@ -76,11 +81,35 @@ def test_config_groups_are_derived_not_typed():
     assert config.get_remaining_patients("concordant") == [p for p in V1_ASSESSED if p not in V1_CONCORDANT_MEAN]
 
 
+def test_set_active_world_warns_on_primary_fallback_and_honours_explicit_spec():
+    import config
+    with pytest.warns(UserWarning, match="no null distribution for the primary summary spec"):
+        config.set_active_world(BASELINE)
+    assert config.ACTIVE_SPEC == V1_SPEC
+    config.set_active_world(BASELINE, summary="all/spearman")  # explicit: no warning expected
+    assert config.GROUPS["concordant"]["patients"] == V1_CONCORDANT_MEAN
+    with pytest.raises(RuntimeError, match="no concordant sets for"):
+        config.set_active_world(BASELINE, summary="effective/spearman")
+    with pytest.warns(UserWarning):
+        config.set_active_world(BASELINE)  # restore default state for other tests
+
+
 def test_set_active_world_rejects_unbuilt_world():
     import config
     with pytest.raises(RuntimeError, match="No concordant sets recorded"):
         config.set_active_world("span=D__case=C")
     assert config.ACTIVE_WORLD == BASELINE  # unchanged after the failure
+
+
+def test_baseline_observed_and_sweep_files_exist(baseline_dir):
+    observed = pd.read_csv(baseline_dir / "observed.csv")
+    assert set(observed["config_set"]) == {"all", "effective"} and set(observed["correlation_type"]) == {"spearman", "pearson"}
+    eff = observed[(observed.config_set == "effective") & (observed.correlation_type == "spearman") & (observed.measure == "mean")].set_index("patient_id")
+    assert (eff["n_valid_configs_observed"] <= 60).all()
+    assert eff.loc[473, "observed_z"] == pytest.approx(0.432, abs=5e-4)
+    sweep = pd.read_csv(baseline_dir / "threshold_sweep.csv")
+    row = sweep[(sweep.config_set == "all") & (sweep.measure == "mean")].set_index("threshold")["concordant"]
+    assert row.loc[0.5] == "294 473 702" and row.loc[0.75] == "702" and pd.isna(row.loc[0.9])
 
 
 def test_output_dirs_are_per_world(tmp_path, monkeypatch):

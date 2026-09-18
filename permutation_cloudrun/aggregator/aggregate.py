@@ -21,9 +21,9 @@ import argparse
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # repo root, for aamos_concordance
 from aamos_concordance import write_sidecar
 from aamos_concordance.provenance import git_state
-from aamos_concordance.summary import build_world_summary, derive_concordant_sets, to_v1_measure_table
+from aamos_concordance.summary import build_world_summary, derive_concordant_sets, null_sources_for, observed_table, threshold_sweep, to_v1_measure_table
 from aamos_concordance.worlds import (
-    BASELINE, REPO_ROOT, NULL_PARQUET, NULL_PER_CONFIG_PARQUET, PER_CONFIG_Z, SUMMARY_CSV, as_world, gcs_results_prefix,
+    BASELINE, REPO_ROOT, NULL_PARQUET, NULL_PER_CONFIG_PARQUET, OBSERVED_CSV, PER_CONFIG_Z, SUMMARY_CSV, THRESHOLD_SWEEP_CSV, as_world, gcs_results_prefix,
     register_world, world_dir, write_concordant_sets, write_world_config,
 )
 import io
@@ -273,9 +273,15 @@ def save_world_outputs(world, permutation_df: pd.DataFrame, config: dict, *, upl
             f"{per_config_path} not found. Run per_patient_correlation_analysis.py --world {world} first; "
             "the summary needs the observed per-config Z table.")
     per_config = pd.read_csv(per_config_path)
-    summary = build_world_summary(per_config, permutation_df)
+    summary = build_world_summary(per_config, null_sources=null_sources_for(legacy_null=permutation_df, per_config_null=per_config_null))
     summary_path = wdir / SUMMARY_CSV
     summary.to_csv(summary_path, index=False)
+    observed_path = wdir / OBSERVED_CSV
+    observed_table(per_config).to_csv(observed_path, index=False)
+    write_sidecar(observed_path, config=config, extra={'script': 'aggregate.py', 'world': str(world)})
+    sweep_path = wdir / THRESHOLD_SWEEP_CSV
+    threshold_sweep(summary).to_csv(sweep_path, index=False)
+    write_sidecar(sweep_path, config=config, extra={'script': 'aggregate.py', 'world': str(world)})
     write_sidecar(summary_path, config=config, extra={'script': 'aggregate.py', 'world': str(world),
                                                        'inputs': {'per_config_z': str(per_config_path), 'null': str(null_path)}})
     logger.info(f" Saved summary to: {summary_path}")

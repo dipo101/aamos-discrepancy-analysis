@@ -1,0 +1,11 @@
+config_set,correlation_type,measure,threshold,n_concordant,concordant
+all,spearman,mean,0.1,5,113 294 473 702 939
+all,spearman,mean,0.25,5,113 294 473 702 939
+all,spearman,mean,0.5,3,294 473 702
+all,spearman,mean,0.75,1,702
+all,spearman,mean,0.9,0,
+all,spearman,median,0.1,7,113 294 398 473 702 917 939
+all,spearman,median,0.25,7,113 294 398 473 702 917 939
+all,spearman,median,0.5,4,294 473 702 917
+all,spearman,median,0.75,2,702 917
+all,spearman,median,0.9,1,917

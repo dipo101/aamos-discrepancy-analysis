@@ -35,6 +35,7 @@ from .join import (
 )
 from .permutation import CORRELATION_TYPES, evaluate_permutation, run_single_permutation, summarize_correlations
 from .provenance import build_record, read_sidecar, write_sidecar
+from .summary import PRIMARY, V1_SPEC, SummarySpec
 
 __all__ = [
     "PER_CONFIG_COLUMNS",
@@ -52,6 +53,9 @@ __all__ = [
     "resolve_paths",
     "verify_manifest",
     "write_manifest",
+    "PRIMARY",
+    "V1_SPEC",
+    "SummarySpec",
     "build_record",
     "read_sidecar",
     "write_sidecar",

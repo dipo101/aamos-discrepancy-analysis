@@ -1,7 +1,7 @@
 {
   "config": null,
   "data": null,
-  "git_commit": "c72471f19ce7779ffec829585fb7efca97a208ef",
+  "git_commit": "92602b5399092ed8f09d683c34776efc3b842238",
   "git_dirty": true,
   "git_source": "working-tree",
   "inputs": {
@@ -9,5 +9,9 @@
     "per_config_z": "results/v2/worlds/span=Q__case=A/per_config_z.csv"
   },
   "script": "build_baseline_world.py",
-  "written_at": "2026-09-18T14:23:02+00:00"
+  "specs": [
+    "all/spearman/mean",
+    "all/spearman/median"
+  ],
+  "written_at": "2026-09-18T16:15:40+00:00"
 }

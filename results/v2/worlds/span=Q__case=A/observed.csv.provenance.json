@@ -4,7 +4,7 @@
   "git_commit": "92602b5399092ed8f09d683c34776efc3b842238",
   "git_dirty": true,
   "git_source": "working-tree",
+  "input": "results/v2/worlds/span=Q__case=A/per_config_z.csv",
   "script": "build_baseline_world.py",
-  "source": "results/v1/per_patient_analysis/per_patient_correlation_results.csv",
-  "written_at": "2026-09-18T16:15:40+00:00"
+  "written_at": "2026-09-18T16:15:41+00:00"
 }

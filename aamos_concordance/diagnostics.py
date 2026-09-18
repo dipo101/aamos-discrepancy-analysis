@@ -13,25 +13,8 @@ from typing import Dict, List
 import numpy as np
 import pandas as pd
 
-from .configs import config_equivalence_classes, effective_config_indices, generate_param_combinations
+from .configs import attach_config_idx, config_equivalence_classes, effective_config_indices  # noqa: F401 (re-export)
 from .summary import DEFAULT_THRESHOLD
-
-CONFIG_KEY = ["timestamp_window", "use_daily_max_windows", "use_calendar_days",
-              "filter_out_zero_usage_entries", "categorization_method"]
-
-
-def attach_config_idx(per_config: pd.DataFrame) -> pd.DataFrame:
-    """Add ``config_idx`` (position in generate_param_combinations()) to an observed per-config table."""
-    combos = generate_param_combinations()
-    lookup = {
-        (c["timestamp_window"], c["use_daily_max_windows"], c["use_calendar_days"],
-         c["filter_out_zero_usage"], c["categorization_method"]): i
-        for i, c in enumerate(combos)
-    }
-    keys = list(zip(*(per_config[k] for k in CONFIG_KEY)))
-    out = per_config.copy()
-    out["config_idx"] = [lookup[k] for k in keys]
-    return out
 
 
 def equivalence_class_check(per_config: pd.DataFrame, correlation_type: str = "spearman") -> pd.DataFrame:
