@@ -6,7 +6,7 @@ set -e
 
 PROJECT_ID="power-line-monitoring-476216"
 REGION="us-central1"
-SERVICE_NAME="permutation-worker-v3"
+SERVICE_NAME="permutation-worker-v3"  # legacy HTTP service; safe to delete if it still exists
 BUCKET_NAME="patient-concordance-permutation-v3"
 
 echo "=========================================="

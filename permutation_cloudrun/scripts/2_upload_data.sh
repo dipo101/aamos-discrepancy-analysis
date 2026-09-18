@@ -36,6 +36,6 @@ echo "Verify upload:"
 echo "  gsutil ls gs://$BUCKET_NAME/data/"
 echo ""
 echo "Next step:"
-echo "  Deploy worker: ./scripts/3_deploy_worker.sh"
+echo "  Deploy job:    ./scripts/deploy_job.sh"
 echo ""
 

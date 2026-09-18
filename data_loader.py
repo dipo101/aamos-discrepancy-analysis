@@ -5,19 +5,18 @@ from enum import Enum
 import pandas as pd
 from pathlib import Path
 
+from aamos_concordance import (
+    CategorizationMethod,
+    categorize_inhaler_usage,
+    filter_zero_usage,
+    join_multi_patient,
+)
+
 # Set up logger
 logger = logging.getLogger(__name__)
 
 class DataJoiningMethod(Enum):
     TIMESTAMP_LEVEL = "timestamp_level"
-
-class CategorizationMethod(Enum):
-    ONE_HOT = "one_hot"
-    LOWER_BOUND = "lower_bound"
-    MIDPOINT = "midpoint" # >=12 would use 12 as representative
-    MIDPOINT_WITH_INHALER = "midpoint_with_inhaler" # midpoint representation for >=12 would require checking inhaler data too  
-    UPPER_BOUND = "upper_bound" # >=12 would still use 12 as representative
-    UPPER_BOUND_WITH_INHALER = "upper_bound_with_inhaler" # upper bound representation for >=12 would require checking inhaler data too 
 
 @dataclass
 class DataLoaderConfig:
@@ -115,160 +114,30 @@ class AsthmaDataLoader:
         return filtered_patients
     
     def _join_questionnaire_with_inhaler_data(self) -> pd.DataFrame:
-        """Join questionnaire data with inhaler data using specified time windows."""
-        inhaler_df = self.inhaler_data.copy()
-        questionnaire_df = self.daily_questionnaire.copy()
-        
-        # Convert time strings to datetime.time objects and combine with date
-        # Note: date is days from study start, so we'll use a reference date and add timedelta
-        reference_date = pd.Timestamp('2000-01-01')  # arbitrary reference date
-        
-        def combine_date_time(row):
-            # Convert days to timedelta and add to reference date
-            base_date = reference_date + pd.Timedelta(days=row['date'])
-            # Parse time string and combine with base date
-            time_obj = pd.to_datetime(row['time']).time()
-            return pd.Timestamp.combine(base_date.date(), time_obj)
-        
-        # Create timestamp columns
-        inhaler_df['timestamp'] = inhaler_df.apply(combine_date_time, axis=1)
-        questionnaire_df['timestamp'] = questionnaire_df.apply(combine_date_time, axis=1)
-        
-        def aggregate_window(row):
-            user_mask = inhaler_df['user_key'] == row['user_key']
-            
-            if self.config.use_calendar_days:
-                # Calculate target day based on timestamp_windows
-                days_back = self.config.timestamp_window_hours // 24
-                target_day = row['date'] - days_back
-                time_mask = inhaler_df['date'] == target_day
-                
-            else:
-                window_hours = pd.Timedelta(hours=self.config.timestamp_window_hours)
-                
-                if self.config.use_daily_max_windows:
-                    # Use 24-hour chunks
-                    window_start = row['timestamp'] - window_hours
-                    window_end = window_start + pd.Timedelta(hours=24)
-                    time_mask = (
-                        (inhaler_df['timestamp'] >= window_start) & 
-                        (inhaler_df['timestamp'] < window_end)
-                    )
-                else:
-                    # Original behavior
-                    time_mask = (
-                        (inhaler_df['timestamp'] <= row['timestamp']) & 
-                        (inhaler_df['timestamp'] >= row['timestamp'] - window_hours)
-                    )
-            
-            relevant_records = inhaler_df[user_mask & time_mask]
-            return len(relevant_records)  # Count occurrences instead of summing usage_count
-        
-        questionnaire_df['inhaler_usage'] = questionnaire_df.apply(aggregate_window, axis=1)
-        return questionnaire_df
+        """Join questionnaire data with inhaler data using the configured time window.
+
+        Delegates to :func:`aamos_concordance.join_multi_patient`, which
+        matches on ``user_key`` and counts inhaler records in each
+        questionnaire row's window.
+        """
+        return join_multi_patient(
+            self.daily_questionnaire,
+            self.inhaler_data,
+            self.config.timestamp_window_hours,
+            self.config.use_daily_max_windows,
+            self.config.use_calendar_days,
+        )
     
     def _categorize_inhaler_usage(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Apply the selected categorization method"""
-        categorized_df = df.copy()
-        
-        match self.config.categorization_method:
-            case CategorizationMethod.ONE_HOT:
-                categorize_fn = lambda x: 1 if x is not None and x >= 1 else 0
-                
-            case CategorizationMethod.LOWER_BOUND:
-                def categorize_fn(x):
-                    if x is None or x == 0:
-                        return 0
-                    elif x >= 1 and x <= 2:
-                        return 1
-                    elif x >= 3 and x <= 4:
-                        return 3
-                    elif x >= 5 and x <= 8:
-                        return 5
-                    elif x >= 9 and x <= 12:
-                        return 9
-                    else:
-                        return 12
-                        
-            case CategorizationMethod.MIDPOINT:
-                def categorize_fn(x):
-                    if x is None or x == 0:
-                        return 0
-                    elif x >= 1 and x <= 2:
-                        return 1.5
-                    elif x >= 3 and x <= 4:
-                        return 3.5
-                    elif x >= 5 and x <= 8:
-                        return 6.5
-                    elif x >= 9 and x <= 12:
-                        return 10.5
-                    else:
-                        return 12
-                        
-            case CategorizationMethod.UPPER_BOUND:
-                def categorize_fn(x):
-                    if x is None or x == 0:
-                        return 0
-                    elif x >= 1 and x <= 2:
-                        return 2
-                    elif x >= 3 and x <= 4:
-                        return 4
-                    elif x >= 5 and x <= 8:
-                        return 8
-                    elif x >= 9 and x <= 12:
-                        return 12
-                    else:
-                        return 12
-                        
-            case CategorizationMethod.MIDPOINT_WITH_INHALER:
-                midpoint_for_greater_than_12 = df[df['inhaler_usage'] >= 12]['inhaler_usage'].mean()
-                def categorize_fn(x):
-                    if x is None or x == 0:
-                        return 0
-                    elif x >= 1 and x <= 2:
-                        return 1.5
-                    elif x >= 3 and x <= 4:
-                        return 3.5
-                    elif x >= 5 and x <= 8:
-                        return 6.5
-                    elif x >= 9 and x <= 12:
-                        return 10.5
-                    else:
-                        return midpoint_for_greater_than_12
-                        
-            case CategorizationMethod.UPPER_BOUND_WITH_INHALER: 
-                max_above_12 = df[df['inhaler_usage'] > 12]['inhaler_usage'].max()
-                if max_above_12 > 24:
-                    # find standard deviation for points above 12
-                    sd_above_12 = df[df['inhaler_usage'] >= 12]['inhaler_usage'].std()
-                    # define max as 3*sd + median of above 12s
-                    median_above_12 = df[df['inhaler_usage'] >= 12]['inhaler_usage'].median()
-                    upper_bound_for_greater_than_12 = 3*sd_above_12 + median_above_12
-                else:
-                    upper_bound_for_greater_than_12 = max_above_12
+        """Apply the selected categorization method to both usage columns.
 
-                def categorize_fn(x):
-                    if x is None or x == 0:
-                        return 0
-                    elif x >= 1 and x <= 2:
-                        return 2
-                    elif x >= 3 and x <= 4:
-                        return 4
-                    elif x >= 5 and x <= 8:
-                        return 8
-                    elif x >= 9 and x <= 12:
-                        return 12
-                    else:
-                        return upper_bound_for_greater_than_12
-                        
-            case _:
-                raise ValueError(f"Invalid categorization method: {self.config.categorization_method}")
-        
-        # Apply the categorization function to both columns
-        categorized_df['inhaler_usage'] = categorized_df['inhaler_usage'].apply(categorize_fn)
-        categorized_df['daily_relief_inhaler'] = categorized_df['daily_relief_inhaler'].apply(categorize_fn)
-
-        return categorized_df
+        The data-driven ``*_WITH_INHALER`` methods derive their top-category
+        value from the whole (multi-patient) frame passed in, as this loader
+        always did. ``top_category_fallback`` is left at ``None`` so that a
+        frame with no usage >= 12 yields NaN for the top category, matching
+        the pre-refactor behaviour of this loader.
+        """
+        return categorize_inhaler_usage(df, self.config.categorization_method)
     
     def load_data(self) -> pd.DataFrame:
         """Main method to load and process all data according to config"""
@@ -307,9 +176,7 @@ class AsthmaDataLoader:
         
         # 4. Optionally filter out entries that have both 0 inhaler_usage and 0 daily_relief_inhaler
         if self.config.filter_out_zero_usage_entries:
-            final_data = final_data[
-                (final_data['inhaler_usage'] > 0) | (final_data['daily_relief_inhaler'] > 0)
-            ]   
+            final_data = filter_zero_usage(final_data)
 
         # 5. Add demographics if requested
         if self.config.include_demographics:

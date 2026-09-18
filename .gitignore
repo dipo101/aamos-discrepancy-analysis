@@ -1,6 +1,9 @@
 # Archived/unused files
 archived/
 
+# Build-time copy of the shared package staged by scripts/deploy_job.sh
+permutation_cloudrun/job-worker/aamos_concordance/
+
 # Large cache files
 permutation_cloudrun/aggregator/batch_results_cache*.json
 permutation_cloudrun/aggregator/*.parquet
