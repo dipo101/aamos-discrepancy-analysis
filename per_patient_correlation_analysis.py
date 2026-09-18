@@ -15,7 +15,10 @@ from aamos_concordance import (
     dedupe_combinations,
     filter_zero_usage,
     join_questionnaire_with_inhaler,
+    load_raw,
+    write_sidecar,
 )
+from aamos_concordance.data import sha256_of
 
 # Set up logger
 logger = logging.getLogger(__name__)
@@ -74,17 +77,34 @@ class PerPatientDataLoader:
     def __init__(
         self,
         config: PerPatientCorrelationConfig,
-        patient_info_path: str = 'anonym_aamos00_patient_info.csv',
-        daily_questionnaire_path: str = 'anonym_aamos00_dailyquestionnaire_dt.csv',
-        inhaler_data_path: str = 'anonym_aamos00_smartinhaler_dt.csv',
+        patient_info_path: Optional[str] = None,
+        daily_questionnaire_path: Optional[str] = None,
+        inhaler_data_path: Optional[str] = None,
+        data_dir: Optional[Path] = None,
     ):
+        """Load the raw frames (see AsthmaDataLoader for the lookup and manifest rules)."""
         self.config = config
         logger.setLevel(config.log_level)
         
         logger.info("Loading data files...")
-        self.patient_info = pd.read_csv(patient_info_path)
-        self.daily_questionnaire = pd.read_csv(daily_questionnaire_path)
-        self.inhaler_data = pd.read_csv(inhaler_data_path)
+        explicit = (patient_info_path, daily_questionnaire_path, inhaler_data_path)
+        if any(p is not None for p in explicit):
+            if not all(p is not None for p in explicit):
+                raise ValueError("Pass all three raw file paths or none of them.")
+            self.patient_info = pd.read_csv(patient_info_path)
+            self.daily_questionnaire = pd.read_csv(daily_questionnaire_path)
+            self.inhaler_data = pd.read_csv(inhaler_data_path)
+            self.data_provenance = {
+                "data_dir": None,
+                "sha256": {Path(p).name: sha256_of(Path(p)) for p in explicit},
+                "manifest_verified": False,
+            }
+        else:
+            raw = load_raw(data_dir)
+            self.patient_info = raw.patient_info
+            self.daily_questionnaire = raw.questionnaire
+            self.inhaler_data = raw.inhaler
+            self.data_provenance = raw.provenance()
         
         # Remove duplicates
         self.patient_info.drop_duplicates(inplace=True)
@@ -206,19 +226,10 @@ class PerPatientCorrelationAnalysis:
     
     def __init__(self, config: PerPatientCorrelationConfig, data_dir: Optional[Path] = None):
         """``data_dir`` optionally points at the folder holding the three raw CSVs;
-        by default they are read from the current working directory as before."""
+        by default they are located via aamos_concordance.load_raw."""
         self.config = config
         logger.setLevel(config.log_level)
-        if data_dir is None:
-            self.data_loader = PerPatientDataLoader(config)
-        else:
-            data_dir = Path(data_dir)
-            self.data_loader = PerPatientDataLoader(
-                config,
-                patient_info_path=str(data_dir / 'anonym_aamos00_patient_info.csv'),
-                daily_questionnaire_path=str(data_dir / 'anonym_aamos00_dailyquestionnaire_dt.csv'),
-                inhaler_data_path=str(data_dir / 'anonym_aamos00_smartinhaler_dt.csv'),
-            )
+        self.data_loader = PerPatientDataLoader(config, data_dir=data_dir)
     
     def run_analysis(self) -> pd.DataFrame:
         """Run correlation analysis for all patients with all parameter combinations"""
@@ -682,12 +693,14 @@ def main():
     # Save results
     results_path = output_dir / "per_patient_correlation_results.csv"
     results_df.to_csv(results_path, index=False)
+    write_sidecar(results_path, config=config, data=analyzer.data_loader.data_provenance)
     logger.info(f"Saved detailed results to {results_path}")
     
     # Create patient exclusion report
     exclusion_df = analyzer.create_patient_exclusion_report(results_df)
     exclusion_path = output_dir / "per_patient_exclusion_report.csv"
     exclusion_df.to_csv(exclusion_path, index=False)
+    write_sidecar(exclusion_path, config=config, data=analyzer.data_loader.data_provenance)
     logger.info(f"Saved patient exclusion report to {exclusion_path}")
     
     # Print exclusion summary
@@ -715,12 +728,14 @@ def main():
     summary_df = analyzer.create_summary_statistics(results_df, exclude_invalid=True)
     summary_path = output_dir / "per_patient_summary_statistics.csv"
     summary_df.to_csv(summary_path, index=False)
+    write_sidecar(summary_path, config=config, data=analyzer.data_loader.data_provenance)
     logger.info(f"Saved summary statistics to {summary_path} ({len(summary_df)} patients)")
     
     # Also create a summary with ALL patients (including invalid) for comparison
     summary_all_df = analyzer.create_summary_statistics(results_df, exclude_invalid=False)
     summary_all_path = output_dir / "per_patient_summary_statistics_all.csv"
     summary_all_df.to_csv(summary_all_path, index=False)
+    write_sidecar(summary_all_path, config=config, data=analyzer.data_loader.data_provenance)
     logger.info(f"Saved summary statistics (all patients) to {summary_all_path} ({len(summary_all_df)} patients)")
     
     # Create box plots (Fisher Z-transformed)

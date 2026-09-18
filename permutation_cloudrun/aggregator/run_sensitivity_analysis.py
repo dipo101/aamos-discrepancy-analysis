@@ -28,6 +28,8 @@ from datetime import datetime
 
 # Add current directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # repo root, for aamos_concordance
+from aamos_concordance import write_sidecar
 
 from sensitivity_core import (
     MEASURE_CONFIG, 
@@ -110,6 +112,9 @@ def run_analysis_for_measure(measure: str, detailed_df: pd.DataFrame, null_df: p
     # 4. Save results CSV
     results_file = output_dir / 'permutation_test_results.csv'
     results_df.to_csv(results_file, index=False)
+    write_sidecar(results_file, config={'measure': measure, **MEASURE_CONFIG[measure]},
+                  extra={'script': 'run_sensitivity_analysis.py',
+                         'inputs': {'summary_stats': str(SUMMARY_STATS_FILE), 'detailed_results': str(DETAILED_RESULTS_FILE), 'null_parquet': str(NULL_PARQUET_FILE)}})
     logger.info(f"  Saved results to: {results_file}")
     
     # 5. Generate all plots
@@ -171,6 +176,7 @@ def generate_comparison_summary(all_results: dict, output_dir: Path):
     # Save CSV
     comparison_file = output_dir / 'measure_comparison.csv'
     comparison_df.to_csv(comparison_file, index=False)
+    write_sidecar(comparison_file, config={'measures': list(all_results.keys())}, extra={'script': 'run_sensitivity_analysis.py'})
     logger.info(f"Saved comparison to: {comparison_file}")
     
     # Print summary

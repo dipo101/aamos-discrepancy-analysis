@@ -3,6 +3,12 @@ archived/
 
 # Build-time copy of the shared package staged by scripts/deploy_job.sh
 permutation_cloudrun/job-worker/aamos_concordance/
+aamos_concordance/_build_info.py
+
+# Raw data lives in data/raw/ (never committed); only the manifest is tracked
+data/raw/*
+!data/raw/MANIFEST.sha256
+!data/raw/README.md
 
 # Large cache files
 permutation_cloudrun/aggregator/batch_results_cache*.json

@@ -22,7 +22,7 @@ from pathlib import Path
 from typing import List, Tuple
 import warnings
 warnings.filterwarnings('ignore')
-from config import GROUPS, ASSESSED_PATIENTS, get_group_config, get_remaining_patients, get_output_dir
+from config import GROUPS, ASSESSED_PATIENTS, get_group_config, get_remaining_patients, get_output_dir, record_run_provenance
 
 # =============================================================================
 # CONFIGURATION
@@ -376,6 +376,7 @@ def main():
     group_label = group_cfg["label"]
     REMAINING_PATIENTS = get_remaining_patients(args.group)
     OUTPUT_DIR = get_output_dir(args.group, "temporal_correlation")
+    record_run_provenance(OUTPUT_DIR, group_name=args.group, script="temporal_correlation_analysis_v2.py")
 
     print("="*60)
     print("TEMPORAL CORRELATION ANALYSIS")

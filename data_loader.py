@@ -10,7 +10,9 @@ from aamos_concordance import (
     categorize_inhaler_usage,
     filter_zero_usage,
     join_multi_patient,
+    load_raw,
 )
+from aamos_concordance.data import sha256_of
 
 # Set up logger
 logger = logging.getLogger(__name__)
@@ -50,18 +52,42 @@ class AsthmaDataLoader:
     def __init__(
         self,
         config: DataLoaderConfig,
-        patient_info_path: Union[str, Path]='anonym_aamos00_patient_info.csv',
-        daily_questionnaire_path: Union[str, Path]='anonym_aamos00_dailyquestionnaire_dt.csv',
-        inhaler_data_path: Union[str, Path]='anonym_aamos00_smartinhaler_dt.csv',
+        patient_info_path: Optional[Union[str, Path]] = None,
+        daily_questionnaire_path: Optional[Union[str, Path]] = None,
+        inhaler_data_path: Optional[Union[str, Path]] = None,
+        data_dir: Optional[Union[str, Path]] = None,
     ):
+        """Load the raw frames.
+
+        With no explicit file paths the raw data is located via
+        :func:`aamos_concordance.load_raw` (``$AAMOS_DATA_DIR``, then
+        ``data/raw/``, then the repository root) and verified against the
+        committed manifest. Explicit paths bypass the manifest but are still
+        hashed so that ``self.data_provenance`` names the bytes that were read.
+        """
         self.config = config
         # Set log level from config
         logger.setLevel(self.config.log_level)
         
         logger.info("Loading data files...")
-        self.patient_info = pd.read_csv(patient_info_path)
-        self.daily_questionnaire = pd.read_csv(daily_questionnaire_path)
-        self.inhaler_data = pd.read_csv(inhaler_data_path)
+        explicit = (patient_info_path, daily_questionnaire_path, inhaler_data_path)
+        if any(p is not None for p in explicit):
+            if not all(p is not None for p in explicit):
+                raise ValueError("Pass all three raw file paths or none of them.")
+            self.patient_info = pd.read_csv(patient_info_path)
+            self.daily_questionnaire = pd.read_csv(daily_questionnaire_path)
+            self.inhaler_data = pd.read_csv(inhaler_data_path)
+            self.data_provenance = {
+                "data_dir": None,
+                "sha256": {Path(p).name: sha256_of(Path(p)) for p in explicit},
+                "manifest_verified": False,
+            }
+        else:
+            raw = load_raw(data_dir)
+            self.patient_info = raw.patient_info
+            self.daily_questionnaire = raw.questionnaire
+            self.inhaler_data = raw.inhaler
+            self.data_provenance = raw.provenance()
         
         logger.debug(f"Initial dataframe sizes:")
         logger.debug(f"Patient info: {len(self.patient_info)} rows")

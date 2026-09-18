@@ -28,7 +28,8 @@ from sklearn.manifold import TSNE
 from sklearn.metrics import silhouette_score, silhouette_samples
 from scipy.cluster.hierarchy import dendrogram, linkage
 import openai
-from config import GROUPS, FEEDBACK_PATIENTS, get_group_config, get_output_dir
+from aamos_concordance import find_raw_file
+from config import GROUPS, FEEDBACK_PATIENTS, get_group_config, get_output_dir, record_run_provenance
 
 # These module-level variables are set in main() based on --group arg
 OUTPUT_DIR = None
@@ -45,7 +46,7 @@ def load_feedback_data():
     """Load and prepare feedback data, de-duplicating user 514."""
     print("Loading feedback data...")
     
-    feedback_df = pd.read_csv("aamos00-end-final-freetext.csv")
+    feedback_df = pd.read_csv(find_raw_file("aamos00-end-final-freetext.csv"))
     
     # Combine feedback columns
     feedback_df['combined_feedback'] = (
@@ -340,6 +341,8 @@ def main():
     ALL_INCLUDED = concordant_with_feedback + REMAINING_ASSESSED
 
     OUTPUT_DIR = get_output_dir(args.group, "sentiment_analysis") / "clustering"
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    record_run_provenance(OUTPUT_DIR, group_name=args.group, script="inductive_clustering_analysis.py")
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     EMBEDDING_CACHE_PATH = OUTPUT_DIR / 'embedding_cache.npz'
 

@@ -18,7 +18,9 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 from typing import List, Dict, Optional, Tuple
+from aamos_concordance import load_raw
 from config import (
+    record_run_provenance,
     GROUPS, ALL_PATIENTS, ASSESSED_PATIENTS,
     get_group_config, get_remaining_patients, get_output_dir
 )
@@ -27,11 +29,8 @@ from config import (
 # CONFIGURATION
 # =============================================================================
 
-# Data file paths
-DATA_DIR = Path(__file__).parent
-PATIENT_INFO_FILE = DATA_DIR / "anonym_aamos00_patient_info.csv"
-DAILY_QUESTIONNAIRE_FILE = DATA_DIR / "anonym_aamos00_dailyquestionnaire_dt.csv"
-SMART_INHALER_FILE = DATA_DIR / "anonym_aamos00_smartinhaler_dt.csv"
+# Data file paths are resolved (and verified against the manifest) by
+# aamos_concordance.load_raw inside load_data().
 
 # Age range to midpoint mapping (for numeric calculations)
 AGE_MIDPOINTS = {
@@ -59,11 +58,15 @@ OLD_OPTIMAL_PATIENTS = [294, 343, 473]
 # DATA LOADING
 # =============================================================================
 
+DATA_PROVENANCE = None
+
+
 def load_data() -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    """Load all required data files."""
-    patient_info = pd.read_csv(PATIENT_INFO_FILE)
-    daily_questionnaire = pd.read_csv(DAILY_QUESTIONNAIRE_FILE)
-    smart_inhaler = pd.read_csv(SMART_INHALER_FILE)
+    """Load all required data files (manifest-verified)."""
+    global DATA_PROVENANCE
+    raw = load_raw()
+    DATA_PROVENANCE = raw.provenance()
+    patient_info, daily_questionnaire, smart_inhaler = raw.patient_info, raw.questionnaire, raw.inhaler
     
     # Prepare date columns
     if 'date' not in daily_questionnaire.columns and 'time' in daily_questionnaire.columns:
@@ -400,6 +403,7 @@ def main():
     output_dir = get_output_dir(args.group, "demographic_comparison")
 
     table.to_csv(output_dir / "comparison_table.csv")
+    record_run_provenance(output_dir, group_name=args.group, script="demographic_comparison.py", data=DATA_PROVENANCE)
 
     print(f"\nResults saved to: {output_dir}")
     print("  - comparison_table.csv")

@@ -13,7 +13,11 @@ from google.cloud import storage
 import matplotlib.pyplot as plt
 import seaborn as sns
 import logging
+import sys
 from tqdm import tqdm
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # repo root, for aamos_concordance
+from aamos_concordance import write_sidecar
 
 logging.basicConfig(
     level=logging.INFO,
@@ -378,6 +382,7 @@ def save_final_results(
     # Save locally
     results_file = output_dir / 'permutation_test_results.csv'
     results_df.to_csv(results_file, index=False)
+    write_sidecar(results_file, config=config, extra={'script': 'aggregate.py', 'n_patients': int(results_df['patient_id'].nunique())})
     logger.info(f" Saved results to: {results_file}")
     
     # Save to GCS
@@ -395,6 +400,7 @@ def save_final_results(
     # Upload full permutation data (Parquet for efficiency)
     permutation_file = output_dir / 'all_permutations.parquet'
     permutation_df.to_parquet(permutation_file, index=False)
+    write_sidecar(permutation_file, config=config, extra={'script': 'aggregate.py', 'n_rows': int(len(permutation_df))})
     
     blob = bucket.blob(f"final/all_permutations_{timestamp}.parquet")
     blob.upload_from_filename(permutation_file)

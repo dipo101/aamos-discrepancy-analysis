@@ -75,3 +75,23 @@ def get_output_dir(group_name: str, analysis_type: str) -> Path:
     output_dir = RESULTS_BASE / group_name / analysis_type
     output_dir.mkdir(parents=True, exist_ok=True)
     return output_dir
+
+
+def record_run_provenance(output_dir: Path, *, group_name: str, script: str, config=None, data=None) -> Path:
+    """Write ``<output_dir>/RUN.provenance.json`` describing this run.
+
+    ``data`` should be the loader's ``data_provenance`` dict when the script
+    read the raw CSVs through a loader; when omitted the raw files are
+    located and hashed here so the record still names them.
+    """
+    from aamos_concordance import find_data_dir, verify_manifest, write_sidecar
+    from aamos_concordance.data import DataNotFoundError
+
+    if data is None:
+        try:
+            d = find_data_dir()
+            data = {"data_dir": str(d), "sha256": verify_manifest(d), "manifest_verified": True}
+        except DataNotFoundError:
+            data = None
+    extra = {"script": script, "group": group_name, "group_patients": get_group_config(group_name)["patients"]}
+    return write_sidecar(output_dir / "RUN", config=config, data=data, extra=extra)

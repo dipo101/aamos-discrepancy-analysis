@@ -19,6 +19,7 @@ Environment variables:
     BATCH_ID + PERM_START + PERM_END                       single-task mode
 """
 import gc
+import hashlib
 import io
 import json
 import logging
@@ -34,10 +35,12 @@ from google.cloud import storage
 from scipy import stats
 
 from aamos_concordance import (
+    build_record,
     generate_param_combinations,
     run_single_permutation,
     summarize_correlations,
 )
+from aamos_concordance.data import RAW_FILES
 
 # Suppress ConstantInputWarning - it's expected and handled with np.nan
 warnings.filterwarnings('ignore', category=stats.ConstantInputWarning)
@@ -49,20 +52,17 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def load_data_from_gcs(bucket_name: str) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    """Load patient info, questionnaire and inhaler CSVs from gs://<bucket>/data/."""
+def load_data_from_gcs(bucket_name: str) -> Tuple[Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame], dict]:
+    """Load the raw CSVs from gs://<bucket>/data/ and return them with their SHA-256 hashes."""
     storage_client = storage.Client()
     bucket = storage_client.bucket(bucket_name)
-
-    def read(name: str) -> pd.DataFrame:
-        blob = bucket.blob(f'data/{name}')
-        return pd.read_csv(StringIO(blob.download_as_text()))
-
-    return (
-        read('anonym_aamos00_patient_info.csv'),
-        read('anonym_aamos00_dailyquestionnaire_dt.csv'),
-        read('anonym_aamos00_smartinhaler_dt.csv'),
-    )
+    frames, hashes = [], {}
+    for name in RAW_FILES:
+        raw_bytes = bucket.blob(f'data/{name}').download_as_bytes()
+        hashes[name] = hashlib.sha256(raw_bytes).hexdigest()
+        frames.append(pd.read_csv(StringIO(raw_bytes.decode('utf-8'))))
+    provenance = {'data_dir': f'gs://{bucket_name}/data', 'sha256': hashes, 'manifest_verified': False}
+    return tuple(frames), provenance
 
 
 def resolve_batch() -> Tuple[int, int, int]:
@@ -96,7 +96,7 @@ def main():
 
     logger.info(f"Loading data from gs://{bucket_name}/data/...")
     load_start = time.time()
-    _, questionnaire_df, inhaler_df = load_data_from_gcs(bucket_name)
+    (_, questionnaire_df, inhaler_df), data_provenance = load_data_from_gcs(bucket_name)
     logger.info(f"Data loaded in {time.time() - load_start:.2f}s: "
                 f"{len(questionnaire_df)} questionnaires, {len(inhaler_df)} inhaler records")
 
@@ -161,6 +161,11 @@ def main():
             'total_seconds': time.time() - job_start_time,
             'avg_seconds_per_permutation': (time.time() - job_start_time) / n_perms,
         },
+        'provenance': build_record(
+            config={'random_seed': random_seed, 'correlation_type': correlation_type,
+                    'n_configs': len(param_combinations), 'perm_start': perm_start, 'perm_end': perm_end},
+            data=data_provenance,
+        ),
     }
     output_path = f'results/patient_{patient_id}_batch_{batch_id}.json'
     bucket.blob(output_path).upload_from_string(json.dumps(result_data))

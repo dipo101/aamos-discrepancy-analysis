@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 import seaborn as sns
 from data_loader import DataLoaderConfig, AsthmaDataLoader, CategorizationMethod
-from config import GROUPS, ASSESSED_PATIENTS, get_group_config, get_remaining_patients, get_output_dir
+from config import GROUPS, ASSESSED_PATIENTS, get_group_config, get_remaining_patients, get_output_dir, record_run_provenance
 
 def create_bland_altman_plot(data, group_name, save_path=None, ylim=None):
     """
@@ -325,6 +325,7 @@ def main():
     print(f"Remaining assessed users: {len(remaining_data)} observations from {len(remaining_users)} patients")
 
     output_dir = get_output_dir(args.group, "bland_altman")
+    record_run_provenance(output_dir, group_name=args.group, script="bland_altman_comparison.py")
     st_dir = output_dir / 'supplementary'
     st_dir.mkdir(exist_ok=True)
 
