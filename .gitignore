@@ -58,6 +58,7 @@ results/v2/comparisons/*/*/sentiment_analysis/main_text/analysis_summary.txt
 
 # results/v1 is frozen; v2 world outputs are committed except large per-permutation parquets
 results/v2/worlds/*/null.parquet
+results/v2/worlds/*/null_per_config.parquet
 
 # Sensitive data files
 aamos00_*.csv

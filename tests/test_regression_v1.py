@@ -168,3 +168,23 @@ def test_permutation_null_matches_frozen(raw_frames, frozen_null, patient_id, pe
             ("std_fisher_z", "null_std_z"),
         ]:
             assert abs(ours[ours_key] - frozen[frozen_key]) < 1e-9, (patient_id, perm_idx, ours_key)
+
+
+@pytest.mark.parametrize("patient_id,perm_indices", [(917, [0, 1, 2, 3, 4]), (454, [0, 1, 2])])
+def test_batch_per_config_resummarised_matches_frozen(raw_frames, frozen_null, patient_id, perm_indices):
+    """Item 7: the stored per-config vectors, re-summarised, reproduce the v1 null summaries."""
+    from aamos_concordance import null_from_per_config, run_batch
+    questionnaire, inhaler = raw_frames
+    q = questionnaire[questionnaire["user_key"] == patient_id].copy()
+    inh = inhaler[inhaler["user_key"] == patient_id].copy()
+    lo, hi = min(perm_indices), max(perm_indices) + 1
+    records, per_config, _ = run_batch(patient_id, q, inh, generate_param_combinations(), lo, hi, 42, "spearman")
+    null = null_from_per_config(per_config).set_index("permutation_idx")
+    for perm_idx in perm_indices:
+        frozen = frozen_null.loc[(patient_id, perm_idx)]
+        row = null.loc[perm_idx]
+        assert row["n_valid_configs"] == frozen["n_valid_configs"]
+        for col in ["null_mean_z", "null_median_z", "null_min_z", "null_max_z", "null_q25_z", "null_q75_z", "null_std_z"]:
+            assert abs(row[col] - frozen[col]) < 1e-9, (patient_id, perm_idx, col)
+    # and the JSON-style records carry a Pearson summary alongside
+    assert all("pearson" in r and "mean_fisher_z" in r["pearson"] for r in records)

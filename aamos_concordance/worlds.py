@@ -25,6 +25,9 @@ Layout under ``results/``::
         per_config_z.csv                  patient x 132 configs x Fisher Z (observed)
         null.parquet                      patient x permutation x null summaries
                                           (or config.json:null_source pointing elsewhere)
+        null_per_config.parquet           patient x permutation x config x Z, both correlation
+                                          types; lets the null be re-summarised under any
+                                          config subset / statistic / type (absent for v1)
         summary.csv                       long table: patient, measure, observed Z, p-values
       groups/concordant_sets.json         {world_id: {measure: [patients]}}; generated
       comparisons/<world_id>/<group>/<analysis>/   downstream outputs
@@ -52,6 +55,7 @@ MEASURES = ("mean", "median")
 
 PER_CONFIG_Z = "per_config_z.csv"
 NULL_PARQUET = "null.parquet"
+NULL_PER_CONFIG_PARQUET = "null_per_config.parquet"  # patient x permutation x config x {spearman_z, pearson_z}
 SUMMARY_CSV = "summary.csv"
 CONFIG_JSON = "config.json"
 

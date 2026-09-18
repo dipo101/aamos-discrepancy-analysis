@@ -9,6 +9,7 @@ tests/test_join_equivalence.py, which runs the frozen originals in
 tests/oracles/ side by side with this package.
 """
 
+from .batch import PER_CONFIG_COLUMNS, null_from_per_config, run_batch
 from .categorization import (
     CategorizationMethod,
     categorize_inhaler_usage,
@@ -36,6 +37,9 @@ from .permutation import CORRELATION_TYPES, evaluate_permutation, run_single_per
 from .provenance import build_record, read_sidecar, write_sidecar
 
 __all__ = [
+    "PER_CONFIG_COLUMNS",
+    "null_from_per_config",
+    "run_batch",
     "CategorizationMethod",
     "categorize_inhaler_usage",
     "filter_zero_usage",
