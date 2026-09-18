@@ -292,7 +292,7 @@ def main(argv=None):
 
     summary = save_world_outputs(world, permutation_df, config, upload=not args.no_upload)
 
-    if not args.no_visualizations and not config['output'].get('visualizations', True) is False:
+    if not args.no_visualizations and config['output'].get('visualizations', True):
         create_visualizations(to_v1_measure_table(summary, 'median'), permutation_df, world_dir(world))
 
     logger.info("\n AGGREGATION COMPLETE!")
