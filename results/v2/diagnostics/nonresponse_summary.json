@@ -1,0 +1,8 @@
+{
+  "n_patients": 15,
+  "n_with_nonresponse_days": 15,
+  "median_nonresponse_rate": 0.22560975609756098,
+  "n_more_device_use_on_nonresponse_days": 1,
+  "n_mannwhitney_p_below_0_05": 4,
+  "n_clustered_runs_p_below_0_05": 9
+}
