@@ -12,7 +12,7 @@ raw file, and every loader verifies the files against it before reading.
 A mismatch raises :class:`DataIntegrityError` rather than silently
 producing results from a different dataset. If the manifest is absent the
 loaders warn instead, so the very first run (before the manifest has been
-generated with ``python -m aamos_concordance.data --write-manifest``) still
+generated with ``python -m aamos_concordance --write-manifest``) still
 works.
 
 Loaders return a :class:`RawData` bundle that carries the frames together
@@ -105,7 +105,7 @@ def write_manifest(data_dir: Path, manifest_path: Optional[Path] = None) -> Path
     manifest_path.parent.mkdir(parents=True, exist_ok=True)
     lines = [
         "# SHA-256 of the raw AAMOS-00 inputs. Verified by aamos_concordance.data on every load.",
-        "# Regenerate with: python -m aamos_concordance.data --write-manifest",
+        "# Regenerate with: python -m aamos_concordance --write-manifest",
         "# Format is compatible with `shasum -a 256 -c MANIFEST.sha256` run inside data/raw/.",
     ]
     for name in RAW_FILES + OPTIONAL_FILES:
@@ -138,7 +138,7 @@ def verify_manifest(
     if not manifest_path.exists():
         warnings.warn(
             f"No data manifest at {manifest_path}; raw files are NOT being verified. "
-            "Generate one with: python -m aamos_concordance.data --write-manifest",
+            "Generate one with: python -m aamos_concordance --write-manifest",
             stacklevel=2,
         )
         return actual

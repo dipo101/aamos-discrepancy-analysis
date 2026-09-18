@@ -13,10 +13,10 @@ before reading and refuses to run on a mismatch. After intentionally replacing
 the data, regenerate and commit it:
 
 ```bash
-python -m aamos_concordance.data --write-manifest
+python -m aamos_concordance --write-manifest
 ```
 
-Verify by hand with `python -m aamos_concordance.data --verify` or, inside this
+Verify by hand with `python -m aamos_concordance --verify` or, inside this
 folder, `shasum -a 256 -c MANIFEST.sha256`.
 
 Alternatively set `AAMOS_DATA_DIR` to a folder elsewhere on disk.
