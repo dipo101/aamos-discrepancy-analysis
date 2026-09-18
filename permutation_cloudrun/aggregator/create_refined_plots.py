@@ -42,9 +42,9 @@ def load_data(measure="median"):
 
     # 1. Detailed per-configuration results (shared across measures)
     potential_paths = [
-        Path("../../results/per_patient_analysis/per_patient_correlation_results.csv"),
-        Path("../results/per_patient_analysis/per_patient_correlation_results.csv"),
-        Path("results/per_patient_analysis/per_patient_correlation_results.csv"),
+        Path("../../results/v1/per_patient_analysis/per_patient_correlation_results.csv"),
+        Path("../results/v1/per_patient_analysis/per_patient_correlation_results.csv"),
+        Path("results/v1/per_patient_analysis/per_patient_correlation_results.csv"),
     ]
 
     detailed_results_path = None
@@ -60,7 +60,7 @@ def load_data(measure="median"):
     detailed_df = pd.read_csv(detailed_results_path)
 
     # 2. Significance results for this measure
-    sig_path = Path(f"../../results/permutation_by_measure/{measure}/permutation_test_results.csv")
+    sig_path = Path(f"../../results/v1/permutation_by_measure/{measure}/permutation_test_results.csv")
     if not sig_path.exists():
         raise FileNotFoundError(f"Could not find {sig_path}")
     sig_df = pd.read_csv(sig_path)
@@ -526,7 +526,7 @@ def main():
     print(f"Working directory: {current_dir}")
     print(f"Measure: {measure} (group: {group_label})")
 
-    output_dir = Path(f"../../results/permutation_aggregate_extended/{col_cfg['group_key']}/refined_plots")
+    output_dir = Path(f"../../results/v1/permutation_aggregate_extended/{col_cfg['group_key']}/refined_plots")
     output_dir.mkdir(parents=True, exist_ok=True)
 
     try:

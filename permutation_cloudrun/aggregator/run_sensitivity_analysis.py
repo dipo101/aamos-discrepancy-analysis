@@ -50,12 +50,12 @@ from sensitivity_plots import (
 # =============================================================================
 
 # File paths (relative to aggregator directory)
-SUMMARY_STATS_FILE = Path("../../results/per_patient_analysis/per_patient_summary_statistics.csv")
-DETAILED_RESULTS_FILE = Path("../../results/per_patient_analysis/per_patient_correlation_results.csv")
-NULL_PARQUET_FILE = Path("../../results/permutation_aggregate_extended/all_permutations.parquet")
+SUMMARY_STATS_FILE = Path("../../results/v1/per_patient_analysis/per_patient_summary_statistics.csv")
+DETAILED_RESULTS_FILE = Path("../../results/v1/per_patient_analysis/per_patient_correlation_results.csv")
+NULL_PARQUET_FILE = Path("../../results/v1/permutation_aggregate_extended/all_permutations.parquet")
 
 # Output directory
-OUTPUT_BASE_DIR = Path("../../results/permutation_by_measure")
+OUTPUT_BASE_DIR = Path("../../results/v1/permutation_by_measure")
 
 # Setup logging
 logging.basicConfig(

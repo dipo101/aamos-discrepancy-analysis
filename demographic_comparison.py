@@ -20,7 +20,7 @@ from pathlib import Path
 from typing import List, Dict, Optional, Tuple
 from aamos_concordance import load_raw
 from config import (
-    record_run_provenance,
+    add_world_argument, set_active_world, record_run_provenance,
     GROUPS, ALL_PATIENTS, ASSESSED_PATIENTS,
     get_group_config, get_remaining_patients, get_output_dir
 )
@@ -359,7 +359,10 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Demographic comparison analysis.")
     parser.add_argument("--group", choices=list(GROUPS.keys()), default="concordant",
                         help="Patient group definition to use (default: concordant)")
-    return parser.parse_args()
+    add_world_argument(parser)
+    args = parser.parse_args()
+    set_active_world(args.world)
+    return args
 
 
 def main():

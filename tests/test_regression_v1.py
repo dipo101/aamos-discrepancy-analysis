@@ -1,7 +1,7 @@
 """Real-data regression against the frozen v1 results that the manuscript reports.
 
 These tests rerun the refactored code on the real timestamped AAMOS-00 data
-and compare with the artifacts committed under ``results/``:
+and compare with the artifacts committed under ``results/v1/``:
 
 * ``per_patient_analysis/per_patient_correlation_results.csv`` is the
   per-patient, per-configuration Fisher Z table (the observed multiverse).

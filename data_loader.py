@@ -159,9 +159,10 @@ class AsthmaDataLoader:
 
         The data-driven ``*_WITH_INHALER`` methods derive their top-category
         value from the whole (multi-patient) frame passed in, as this loader
-        always did. ``top_category_fallback`` is left at ``None`` so that a
-        frame with no usage >= 12 yields NaN for the top category, matching
-        the pre-refactor behaviour of this loader.
+        always did. If that frame has no device usage >= 12 the top category
+        falls back to 12 (see aamos_concordance.categorization); the
+        pre-refactor loader produced NaN there, a case that cannot occur on
+        the AAMOS-00 data.
         """
         return categorize_inhaler_usage(df, self.config.categorization_method)
     

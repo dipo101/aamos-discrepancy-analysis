@@ -28,7 +28,7 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
-from .categorization import categorize_inhaler_usage, filter_zero_usage
+from .categorization import DEFAULT_TOP_CATEGORY_FALLBACK, categorize_inhaler_usage, filter_zero_usage
 from .join import join_questionnaire_with_inhaler
 
 MIN_ROWS_FOR_CORRELATION = 3
@@ -52,7 +52,7 @@ def run_single_permutation(
     correlation_type: str = "spearman",
     collect_datasets: bool = False,
     *,
-    top_category_fallback: Optional[float] = None,
+    top_category_fallback: Optional[float] = DEFAULT_TOP_CATEGORY_FALLBACK,
 ) -> Tuple[List[float], List[pd.DataFrame]]:
     """Evaluate every configuration on one shuffled copy of the questionnaire.
 
