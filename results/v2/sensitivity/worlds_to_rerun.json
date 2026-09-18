@@ -1,0 +1,15 @@
+{
+  "baseline": "span=union__case=A",
+  "spec": "effective/spearman/mean",
+  "threshold": 0.5,
+  "rerun": [
+    "span=D__case=C",
+    "span=Q__case=A",
+    "span=Q__case=C",
+    "span=intersection__case=A",
+    "span=intersection__case=C",
+    "span=union__case=C"
+  ],
+  "empty": [],
+  "case_b_flagged": []
+}

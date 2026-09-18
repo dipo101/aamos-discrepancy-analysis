@@ -49,6 +49,370 @@
       917
     ]
   },
+  "span=D__case=B__k=00": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [
+      702
+    ],
+    "effective/spearman/median": [
+      473,
+      702
+    ]
+  },
+  "span=D__case=B__k=01": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      702
+    ],
+    "all/spearman/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean": [
+      702
+    ],
+    "effective/spearman/median": [
+      398,
+      702
+    ]
+  },
+  "span=D__case=B__k=02": {
+    "all/pearson/mean": [
+      473,
+      702,
+      917
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": [
+      702
+    ]
+  },
+  "span=D__case=B__k=03": {
+    "all/pearson/mean": [
+      473,
+      702,
+      917
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702,
+      917
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": []
+  },
+  "span=D__case=B__k=04": {
+    "all/pearson/mean": [
+      473,
+      702,
+      917
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702,
+      917
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": []
+  },
+  "span=D__case=B__k=05": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702,
+      917
+    ],
+    "all/pearson/median": [
+      473,
+      702,
+      917
+    ],
+    "all/spearman/mean": [
+      294
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702,
+      917
+    ],
+    "effective/pearson/median": [
+      473,
+      702,
+      917
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": []
+  },
+  "span=D__case=B__k=06": {
+    "all/pearson/mean": [
+      473,
+      702,
+      917
+    ],
+    "all/pearson/median": [
+      473,
+      702,
+      917
+    ],
+    "all/spearman/mean": [
+      702
+    ],
+    "all/spearman/median": [
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702,
+      917
+    ],
+    "effective/pearson/median": [
+      473,
+      702,
+      917
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": []
+  },
+  "span=D__case=B__k=07": {
+    "all/pearson/mean": [
+      473,
+      702,
+      917
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702,
+      917
+    ],
+    "effective/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean": [
+      702
+    ],
+    "effective/spearman/median": [
+      294,
+      702
+    ]
+  },
+  "span=D__case=B__k=08": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [
+      702
+    ],
+    "effective/spearman/median": []
+  },
+  "span=D__case=B__k=09": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": [
+      294,
+      702
+    ]
+  },
+  "span=D__case=C": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/median": [
+      294,
+      473,
+      702
+    ]
+  },
   "span=Q__case=A": {
     "all/pearson/mean": [
       294,
@@ -93,6 +457,324 @@
       917
     ]
   },
+  "span=Q__case=B__k=00": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": [
+      473
+    ]
+  },
+  "span=Q__case=B__k=01": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": []
+  },
+  "span=Q__case=B__k=02": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": []
+  },
+  "span=Q__case=B__k=03": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": []
+  },
+  "span=Q__case=B__k=04": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": []
+  },
+  "span=Q__case=B__k=05": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": [
+      294
+    ]
+  },
+  "span=Q__case=B__k=06": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": []
+  },
+  "span=Q__case=B__k=07": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": [
+      294
+    ]
+  },
+  "span=Q__case=B__k=08": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": [
+      294
+    ]
+  },
+  "span=Q__case=B__k=09": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": [
+      702
+    ]
+  },
+  "span=Q__case=C": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/median": [
+      294,
+      473,
+      702
+    ]
+  },
   "span=intersection__case=A": {
     "all/pearson/mean": [
       294,
@@ -134,6 +816,330 @@
       294,
       702,
       917
+    ]
+  },
+  "span=intersection__case=B__k=00": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": [
+      473,
+      702
+    ]
+  },
+  "span=intersection__case=B__k=01": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": []
+  },
+  "span=intersection__case=B__k=02": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": []
+  },
+  "span=intersection__case=B__k=03": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": []
+  },
+  "span=intersection__case=B__k=04": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": []
+  },
+  "span=intersection__case=B__k=05": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": [
+      294
+    ]
+  },
+  "span=intersection__case=B__k=06": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": []
+  },
+  "span=intersection__case=B__k=07": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": [
+      294,
+      702
+    ]
+  },
+  "span=intersection__case=B__k=08": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": [
+      294
+    ]
+  },
+  "span=intersection__case=B__k=09": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean": [],
+    "effective/spearman/median": []
+  },
+  "span=intersection__case=C": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/median": [
+      294,
+      473,
+      702
     ]
   },
   "span=union__case=A": {
