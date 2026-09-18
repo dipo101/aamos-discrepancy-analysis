@@ -200,8 +200,12 @@ def compute_p_values_for_measure(
         null_values = patient_nulls.values
         n_perms = len(null_values)
         
-        # Two-tailed p-value
-        n_extreme = np.sum(np.abs(null_values) >= np.abs(observed_z))
+        # Two-tailed p-value about the null's own centre (see aamos_concordance.summary):
+        # the pipeline on permuted data is not centred on zero, so |null| >= |observed|
+        # (the rule used for the published v1 tables) answers a different question
+        # from the null-band figure. results/v1 tables were produced with the old rule.
+        centre = np.mean(null_values)
+        n_extreme = np.sum(np.abs(null_values - centre) >= np.abs(observed_z - centre))
         p_value = (n_extreme + 1) / (n_perms + 1)  # Continuity correction
         p_bonferroni = min(p_value * n_patients, 1.0)
         

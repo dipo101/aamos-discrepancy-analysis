@@ -134,7 +134,8 @@ def test_spearman_effective_p_values_use_the_effective_null(synthetic_world):
     for pid in patients:
         z = eff.loc[pid, "observed_z"]
         nv = null_eff[null_eff.patient_id == pid]["null_mean_z"].dropna().to_numpy()
-        expected = (np.sum(np.abs(nv) >= abs(z)) + 1) / (len(nv) + 1)
+        c = nv.mean()
+        expected = (np.sum(np.abs(nv - c) >= abs(z - c)) + 1) / (len(nv) + 1)
         assert eff.loc[pid, "p_value"] == pytest.approx(expected)
         assert eff.loc[pid, "n_permutations"] == len(nv)
 

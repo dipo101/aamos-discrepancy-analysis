@@ -109,7 +109,7 @@ def test_baseline_observed_and_sweep_files_exist(baseline_dir):
     assert eff.loc[473, "observed_z"] == pytest.approx(0.432, abs=5e-4)
     sweep = pd.read_csv(baseline_dir / "threshold_sweep.csv")
     row = sweep[(sweep.config_set == "all") & (sweep.measure == "mean")].set_index("threshold")["concordant"]
-    assert row.loc[0.5] == "294 473 702" and row.loc[0.75] == "702" and pd.isna(row.loc[0.9])
+    assert row.loc[0.5] == "294 473 702 917" and row.loc[0.75] == "702 917" and row.loc[0.9] == "917"
 
 
 def test_output_dirs_are_per_world(tmp_path, monkeypatch):

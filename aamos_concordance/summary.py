@@ -15,16 +15,29 @@ spec other than ``all/spearman`` requires the per-configuration null table
 (``null_per_config.parquet``); the v1 null only has ``all/spearman``
 summaries.
 
-Definitions, unchanged from v1 apart from the configuration set:
+Definitions (v1's, apart from the configuration set and the centred p-value):
 
 * The **observed statistic** for a patient is the mean (or median) of the
   *finite* Fisher Z values across the spec's configurations. Non-finite Z
   (a rho of exactly ±1, or an undefined correlation) is excluded.
-* The **permutation p-value** is two-tailed with the +1 correction,
-  ``(#{|null| >= |observed|} + 1) / (n_perm + 1)``.
+* The **permutation p-value** is two-tailed *about the null's own centre*,
+  with the +1 correction:
+  ``(#{|null - null_mean| >= |observed - null_mean|} + 1) / (n_perm + 1)``.
+  The pipeline applied to permuted data does not give a null centred on
+  zero: the zero filter drops rows where both signals are zero, so among the
+  survivors a shuffled zero self-report is always paired with a positive
+  device count, which manufactures a negative correlation (null means of
+  -0.5 or lower for some patients). v1 compared ``|null| >= |observed|``,
+  which counts ordinary negative null draws as "at least as extreme" as a
+  large positive observed value and answers a different question from the
+  null-band figure and the Methods text. The centred rule is what the
+  figure draws. ``null_mean`` and ``observed_distance_sd`` (how many null
+  standard deviations the observed value sits from the null centre) are
+  reported alongside so the shift is visible.
 * **Bonferroni** multiplies by the number of patients with a valid observed
   statistic and a non-empty null, capped at 1.
-* ``n_ties_at_observed`` counts null values within 1e-12 of |observed|.
+* ``n_ties_at_observed`` counts null values whose distance from the centre is
+  within 1e-12 of the observed distance.
   These arise when a permutation reproduces the observed arrangement (few
   distinct permutations for small-n patients). They are counted as extreme,
   but whether a tie registers as equal depends on the last bit of the
@@ -157,14 +170,18 @@ def permutation_p_values(
         g = grouped[pid]
         null_values = g[null_column].dropna().to_numpy(float)
         n_perms = len(null_values)
-        abs_null = np.abs(null_values)
-        n_extreme = int(np.sum(abs_null >= abs(z)))
-        n_ties = int(np.sum(np.abs(abs_null - abs(z)) <= TIE_TOLERANCE))
+        centre = float(np.mean(null_values))
+        null_sd = float(np.std(null_values))
+        dist_null = np.abs(null_values - centre)
+        dist_obs = abs(z - centre)
+        n_extreme = int(np.sum(dist_null >= dist_obs))
+        n_ties = int(np.sum(np.abs(dist_null - dist_obs) <= TIE_TOLERANCE))
         p = (n_extreme + 1) / (n_perms + 1)
         p_bonf = min(p * n_pat, 1.0)
         rows.append({
             "patient_id": pid,
             "observed_z": z,
+            "observed_distance_sd": (z - centre) / null_sd if null_sd > 0 else np.nan,
             "n_permutations": n_perms,
             "n_ties_at_observed": n_ties,
             "avg_valid_configs": float(g["n_valid_configs"].mean()) if "n_valid_configs" in g else np.nan,
@@ -172,8 +189,8 @@ def permutation_p_values(
             "p_bonferroni": p_bonf,
             "significant_uncorrected": p < ALPHA,
             "significant_bonferroni": p_bonf < ALPHA,
-            "null_mean": float(np.mean(null_values)),
-            "null_std": float(np.std(null_values)),
+            "null_mean": centre,
+            "null_std": null_sd,
             "null_q025": float(np.percentile(null_values, 2.5)),
             "null_q975": float(np.percentile(null_values, 97.5)),
             "n_patients_bonferroni": n_pat,
