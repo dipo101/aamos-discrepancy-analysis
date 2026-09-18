@@ -174,14 +174,22 @@ def build_world(
     pc_path = wdir / NULL_PER_CONFIG_PARQUET
     per_config_null.to_parquet(pc_path, index=False)
     write_sidecar(pc_path, config=config, data=prov, extra={"script": script, "engine": "vectorised"})
-    legacy = null_from_per_config(per_config_null, correlation_type="spearman")
+    return summarize_world(w, observed, per_config_null, modes, config, prov, script=script, data_hashes=raw.hashes)
+
+
+def summarize_world(world, observed, per_config_null, modes, config, prov, *, script, data_hashes=None,
+                    built_by: Optional[str] = None) -> Dict:
+    """Write summary.csv, observed.csv, threshold_sweep.csv, sets, config and index for a world."""
+    w = as_world(world)
+    wdir = world_dir(w, create=True)
     null_path = wdir / NULL_PARQUET
+    legacy = null_from_per_config(per_config_null, correlation_type="spearman")
     legacy.to_parquet(null_path, index=False)
     write_sidecar(null_path, config=config, data=prov, extra={"script": script, "engine": "vectorised"})
-
+    exact_patients = [int(pid) for pid, m in modes.items() if m.get("mode") == "exact"]
     summary = build_world_summary(
         observed, null_sources=null_sources_for(legacy_null=legacy, per_config_null=per_config_null, absence_case=w.absence_case),
-        absence_case=w.absence_case)
+        absence_case=w.absence_case, exact_patients=exact_patients)
     summary_path = wdir / SUMMARY_CSV
     summary.to_csv(summary_path, index=False)
     write_sidecar(summary_path, config=config, data=prov, extra={"script": script})
@@ -193,6 +201,20 @@ def build_world(
     sets = derive_concordant_sets(summary)
     write_concordant_sets(w, sets)
     write_world_config(w, {"null_source": str(null_path.relative_to(REPO_ROOT)), "null_engine": "vectorised",
-                           "null_modes": modes, "built_by": script})
-    register_world(w, git_commit=git_state()["git_commit"], data_hashes=raw.hashes, note=script)
+                           "null_modes": modes, "built_by": built_by or script})
+    register_world(w, git_commit=git_state()["git_commit"], data_hashes=data_hashes or {}, note=script)
     return sets
+
+
+def resummarize_world(world, raw: RawData, *, script: str = "resummarize") -> Dict:
+    """Re-derive every summary artifact of an already-built world from its stored observed table and per-config null."""
+    import json
+    w = as_world(world)
+    wdir = world_dir(w)
+    observed = pd.read_csv(wdir / PER_CONFIG_Z)
+    per_config_null = pd.read_parquet(wdir / NULL_PER_CONFIG_PARQUET)
+    cfg = json.loads((wdir / "config.json").read_text())
+    modes = {int(k): v for k, v in cfg.get("null_modes", {}).items()}
+    config = {"world": w.to_dict(), "resummarized_from": cfg.get("built_by"), "per_patient": modes}
+    return summarize_world(w, observed, per_config_null, modes, config, raw.provenance(), script=script,
+                           data_hashes=raw.hashes, built_by=cfg.get("built_by"))

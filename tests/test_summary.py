@@ -125,7 +125,7 @@ def test_summary_reproduces_v1_permutation_tables(v1_summary, frozen_results_dir
     for pid, row in s.iterrows():
         nv = null[null.patient_id == pid][f"null_{measure}_z"].dropna().to_numpy()
         c = nv.mean()
-        expected = (np.sum(np.abs(nv - c) >= abs(row["observed_z"] - c)) + 1) / (len(nv) + 1)
+        expected = (np.sum(np.abs(nv - c) >= abs(row["observed_z"] - c) - 1e-12) + 1) / (len(nv) + 1)  # ties count
         assert row["p_value"] == pytest.approx(expected, abs=1e-12), pid
 
 

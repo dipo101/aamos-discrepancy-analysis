@@ -1,49 +1,98 @@
 {
   "config": {
-    "analysis": {
-      "batches_per_patient": 40,
-      "correlation_type": "spearman",
-      "max_concurrent_instances": 50,
-      "n_permutations": 10000,
-      "perms_per_batch": 250,
-      "random_seed": 42
+    "per_patient": {
+      "113": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "seed": 42
+      },
+      "190": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "seed": 42
+      },
+      "294": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "seed": 42
+      },
+      "328": {
+        "mode": "exact",
+        "n_permutations": 136
+      },
+      "343": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "seed": 42
+      },
+      "398": {
+        "mode": "exact",
+        "n_permutations": 12650
+      },
+      "447": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "seed": 42
+      },
+      "454": {
+        "mode": "exact",
+        "n_permutations": 840
+      },
+      "473": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "seed": 42
+      },
+      "514": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "seed": 42
+      },
+      "625": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "seed": 42
+      },
+      "701": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "seed": 42
+      },
+      "702": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "seed": 42
+      },
+      "917": {
+        "mode": "exact",
+        "n_permutations": 2520
+      },
+      "939": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "seed": 42
+      }
     },
-    "cloud_run": {
-      "cpu": 2,
-      "job_name": "permutation-job-v3",
-      "memory": "4Gi",
-      "timeout": 3600
-    },
-    "data": {
-      "gcs_data_prefix": "data/",
-      "gcs_final_prefix": "final/",
-      "gcs_results_prefix": "results/",
-      "inhaler": "anonym_aamos00_smartinhaler_dt.csv",
-      "patient_info": "anonym_aamos00_patient_info.csv",
-      "questionnaire": "anonym_aamos00_dailyquestionnaire_dt.csv"
-    },
-    "gcp": {
-      "bucket_name": "patient-concordance-permutation-v3",
-      "project_id": "power-line-monitoring-476216",
-      "region": "us-central1"
-    },
-    "null_path": "/Users/ladidisu/aamos-discrepancy-analysis/results/v2/worlds/span=union__case=A/null.parquet",
-    "output": {
-      "final_report": "permutation_analysis_v3_FINAL.csv",
-      "local_results_dir": "../../results/v2/worlds/",
-      "visualizations": true
-    },
-    "source": "local"
+    "resummarized_from": "aggregate.py",
+    "world": {
+      "absence_case": "A",
+      "imputation": null,
+      "span": "union",
+      "world_id": "span=union__case=A"
+    }
   },
-  "data": null,
-  "git_commit": "e370b38fa1ea2f894147b2d029d657d25afef3dd",
+  "data": {
+    "data_dir": "/Users/ladidisu/aamos-discrepancy-analysis/data/raw",
+    "manifest_verified": true,
+    "sha256": {
+      "anonym_aamos00_dailyquestionnaire_dt.csv": "9e15599dc01235d472acd56a9a4a60450364db4541a50f8f91ac2c66b7e789f5",
+      "anonym_aamos00_patient_info.csv": "0563743582c295a87d488c8f51c7f7682fa51b25cadb91bc83b7af8201872644",
+      "anonym_aamos00_smartinhaler_dt.csv": "adff777b4aa141f71f82183a69412e313a91fba0d6859304b9ed9a4425731efc"
+    }
+  },
+  "git_commit": "99e6ab1b2616268627e7043a2ce27ae360ce6339",
   "git_dirty": true,
   "git_source": "working-tree",
-  "inputs": {
-    "null": "/Users/ladidisu/aamos-discrepancy-analysis/results/v2/worlds/span=union__case=A/null.parquet",
-    "per_config_z": "/Users/ladidisu/aamos-discrepancy-analysis/results/v2/worlds/span=union__case=A/per_config_z.csv"
-  },
-  "script": "aggregate.py",
-  "world": "span=union__case=A",
-  "written_at": "2026-09-18T18:26:20+00:00"
+  "script": "resummarize_worlds.py",
+  "written_at": "2026-09-18T22:28:26+00:00"
 }

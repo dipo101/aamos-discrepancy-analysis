@@ -37,7 +37,13 @@ Definitions (v1's, apart from the configuration set and the centred p-value):
 * **Bonferroni** multiplies by the number of patients with a valid observed
   statistic and a non-empty null, capped at 1.
 * ``n_ties_at_observed`` counts null values whose distance from the centre is
-  within 1e-12 of the observed distance.
+  within 1e-12 of the observed distance. Ties count as exceedances: a null
+  value that reproduces the observed statistic (the identity permutation
+  in an exact enumeration, or a permutation that happens to coincide) is
+  "at least as extreme", and the comparison must not depend on the last
+  bit of a value that has been through a CSV. Before this rule an exact
+  patient's p-value could move by ``n_ties / (n_perm + 1)`` between an
+  in-memory build and a re-summarise from disk.
   These arise when a permutation reproduces the observed arrangement (few
   distinct permutations for small-n patients). They are counted as extreme,
   but whether a tie registers as equal depends on the last bit of the
@@ -46,6 +52,11 @@ Definitions (v1's, apart from the configuration set and the centred p-value):
   patients removes this.
 * A patient is **concordant** when the observed statistic is at least the
   threshold (0.5 in v1) *and* the Bonferroni-corrected p-value is below 0.05.
+* For sampled (non-exact) nulls, ``resampling_risk`` is the probability that
+  the Bonferroni decision would differ under the exact p-value, and
+  ``n_perm_sequential`` the permutations a risk-bounded sequential rule would
+  have needed (:mod:`aamos_concordance.resampling`). The p-value itself
+  always uses the full sample.
 """
 
 from __future__ import annotations
@@ -59,6 +70,7 @@ import pandas as pd
 
 from .configs import CONFIG_SETS, attach_config_idx, config_indices_for
 from .permutation import CORRELATION_TYPES
+from .resampling import resampling_risk, sequential_stopping
 from .worlds import MEASURES
 
 DEFAULT_THRESHOLD = 0.5
@@ -114,8 +126,8 @@ class SummarySpec:
 PRIMARY = SummarySpec("effective", "spearman", "mean")
 V1_SPEC = SummarySpec("all", "spearman", "mean")
 ALL_SPECS = [SummarySpec(c, t, m) for c in CONFIG_SETS for t in CORRELATION_TYPES for m in MEASURES]
-# Null values this close to |observed| are reported as ties: whether they count
-# as ">= observed" depends on the last bits of the observed statistic.
+# Null values whose distance from the centre is this close to the observed
+# distance are ties; they count as exceedances (see module docstring).
 TIE_TOLERANCE = 1e-12
 
 
@@ -157,18 +169,28 @@ def permutation_p_values(
     *,
     null_column: str,
     n_patients: Optional[int] = None,
+    exact_patients: Optional[Iterable[int]] = None,
 ) -> pd.DataFrame:
     """Two-tailed permutation p-values for ``observed`` (indexed by patient id).
 
     ``null`` needs ``patient_id`` and ``null_column`` (and optionally
     ``n_valid_configs``). ``n_patients`` defaults to the number of patients
     that have both a finite observed value and a non-empty null, which is
-    what the v1 aggregator used for Bonferroni.
+    what the v1 aggregator used for Bonferroni. ``exact_patients`` marks
+    patients whose null is an exact enumeration: their resampling risk is
+    zero and no sequential stopping applies. For the others the Monte Carlo
+    resampling risk of the Bonferroni decision and the post-hoc sequential
+    stopping point are reported (see :mod:`aamos_concordance.resampling`);
+    the null must then be ordered by ``permutation_idx``.
     """
     rows: List[Dict] = []
+    exact = set(int(p) for p in exact_patients) if exact_patients is not None else set()
+    if "permutation_idx" in null.columns:
+        null = null.sort_values(["patient_id", "permutation_idx"], kind="stable")
     grouped = {pid: g for pid, g in null.groupby("patient_id")}
     eligible = [pid for pid, z in observed.items() if pd.notna(z) and pid in grouped and grouped[pid][null_column].notna().any()]
     n_pat = n_patients if n_patients is not None else len(eligible)
+    alpha_bonf = ALPHA / n_pat if n_pat else np.nan
 
     for pid in eligible:
         z = float(observed[pid])
@@ -179,10 +201,16 @@ def permutation_p_values(
         null_sd = float(np.std(null_values))
         dist_null = np.abs(null_values - centre)
         dist_obs = abs(z - centre)
-        n_extreme = int(np.sum(dist_null >= dist_obs))
+        exceed = dist_null >= dist_obs - TIE_TOLERANCE   # ties (within rounding) count as exceedances
+        n_extreme = int(np.sum(exceed))
         n_ties = int(np.sum(np.abs(dist_null - dist_obs) <= TIE_TOLERANCE))
         p = (n_extreme + 1) / (n_perms + 1)
         p_bonf = min(p * n_pat, 1.0)
+        if int(pid) in exact:
+            risk, seq = 0.0, None
+        else:
+            risk = resampling_risk(n_extreme, n_perms, alpha_bonf)
+            seq = sequential_stopping(exceed, alpha_bonf)
         rows.append({
             "patient_id": pid,
             "observed_z": z,
@@ -199,6 +227,11 @@ def permutation_p_values(
             "null_q025": float(np.percentile(null_values, 2.5)),
             "null_q975": float(np.percentile(null_values, 97.5)),
             "n_patients_bonferroni": n_pat,
+            "null_is_exact": int(pid) in exact,
+            "resampling_risk": risk,
+            "sequential_stopped": (seq.stopped if seq else False),
+            "n_perm_sequential": (seq.n_at_stop if seq else n_perms),
+            "sequential_matches_full": (seq.matches_full_sample if seq and seq.stopped else (True if seq is None else np.nan)),
         })
     return pd.DataFrame(rows)
 
@@ -236,6 +269,7 @@ def build_world_summary(
     specs: Iterable[SummarySpec] = ALL_SPECS,
     measures: Optional[Iterable[str]] = None,
     absence_case: str = "A",
+    exact_patients: Optional[Iterable[int]] = None,
 ) -> pd.DataFrame:
     """Long summary table with one row per (patient, spec) for every spec whose null is available.
 
@@ -258,7 +292,8 @@ def build_world_summary(
             continue
         indices = spec.config_indices_in(absence_case)
         obs = observed_statistics(per_config, f"{spec.correlation_type}_z", indices).set_index("patient_id")
-        table = permutation_p_values(obs[spec.measure], null_sources[spec.null_key], null_column=f"null_{spec.measure}_z")
+        table = permutation_p_values(obs[spec.measure], null_sources[spec.null_key], null_column=f"null_{spec.measure}_z",
+                                     exact_patients=exact_patients)
         if table.empty:
             continue
         table.insert(1, "config_set", spec.config_set)
