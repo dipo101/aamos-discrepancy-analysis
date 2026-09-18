@@ -32,7 +32,7 @@ from .join import (
     join_questionnaire_with_inhaler,
     join_multi_patient,
 )
-from .permutation import run_single_permutation, summarize_correlations
+from .permutation import CORRELATION_TYPES, evaluate_permutation, run_single_permutation, summarize_correlations
 from .provenance import build_record, read_sidecar, write_sidecar
 
 __all__ = [
@@ -57,6 +57,8 @@ __all__ = [
     "add_timestamps",
     "join_questionnaire_with_inhaler",
     "join_multi_patient",
+    "CORRELATION_TYPES",
+    "evaluate_permutation",
     "run_single_permutation",
     "summarize_correlations",
 ]
