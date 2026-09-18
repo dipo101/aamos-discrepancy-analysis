@@ -380,7 +380,7 @@ def jobworker_join_questionnaire_with_inhaler(
     questionnaire_df = questionnaire_df.copy()
     
     # DEBUG: Log input data for first call only (any patient, using function attribute)
-    if not hasattr(join_questionnaire_with_inhaler, '_first_call_logged'):
+    if not hasattr(jobworker_join_questionnaire_with_inhaler, '_first_call_logged'):
         import logging
         logger = logging.getLogger(__name__)
         logger.info(f"      🔍 JOIN FUNCTION FIRST CALL (Patient {user_key}):")
@@ -388,7 +388,7 @@ def jobworker_join_questionnaire_with_inhaler(
         logger.info(f"         Columns: {list(questionnaire_df.columns)}")
         logger.info(f"         daily_relief_inhaler dtype: {questionnaire_df['daily_relief_inhaler'].dtype}")
         logger.info(f"         daily_relief_inhaler unique: {questionnaire_df['daily_relief_inhaler'].nunique()}, values: {sorted(questionnaire_df['daily_relief_inhaler'].dropna().unique())[:10]}")
-        join_questionnaire_with_inhaler._first_call_logged = True
+        jobworker_join_questionnaire_with_inhaler._first_call_logged = True
     
     # Convert time strings to datetime (EXACT same logic)
     reference_date = pd.Timestamp('2000-01-01')
@@ -432,14 +432,14 @@ def jobworker_join_questionnaire_with_inhaler(
     questionnaire_df['inhaler_usage'] = questionnaire_df.apply(aggregate_window, axis=1)
     
     # Log output data for first call only
-    if hasattr(join_questionnaire_with_inhaler, '_first_call_logged') and not hasattr(join_questionnaire_with_inhaler, '_first_exit_logged'):
+    if hasattr(jobworker_join_questionnaire_with_inhaler, '_first_call_logged') and not hasattr(jobworker_join_questionnaire_with_inhaler, '_first_exit_logged'):
         import logging
         logger = logging.getLogger(__name__)
         logger.info(f"      🔍 JOIN FUNCTION EXIT (Patient {user_key}):")
         logger.info(f"         Output questionnaire rows: {len(questionnaire_df)}")
         logger.info(f"         daily_relief_inhaler dtype: {questionnaire_df['daily_relief_inhaler'].dtype}")
         logger.info(f"         daily_relief_inhaler unique: {questionnaire_df['daily_relief_inhaler'].nunique()}, values: {sorted(questionnaire_df['daily_relief_inhaler'].dropna().unique())[:10]}")
-        join_questionnaire_with_inhaler._first_exit_logged = True
+        jobworker_join_questionnaire_with_inhaler._first_exit_logged = True
     
     return questionnaire_df
 
