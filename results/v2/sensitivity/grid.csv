@@ -1,0 +1,1921 @@
+world_id,span,absence_case,imputation,config_set,correlation_type,measure,threshold,n_concordant,concordant,n_assessed,changed,joiners,leavers
+span=D__case=A,D,A,,all,pearson,mean,0.1,8,113 190 294 398 473 702 917 939,14,False,,
+span=D__case=A,D,A,,all,pearson,mean,0.25,7,113 190 294 473 702 917 939,14,False,,
+span=D__case=A,D,A,,all,pearson,mean,0.5,4,294 473 702 917,14,False,,
+span=D__case=A,D,A,,all,pearson,mean,0.75,2,702 917,14,False,,
+span=D__case=A,D,A,,all,pearson,mean,0.9,1,917,14,False,,
+span=D__case=A,D,A,,all,pearson,median,0.1,8,113 190 294 398 473 702 917 939,14,False,,
+span=D__case=A,D,A,,all,pearson,median,0.25,8,113 190 294 398 473 702 917 939,14,False,,
+span=D__case=A,D,A,,all,pearson,median,0.5,5,190 294 473 702 917,14,False,,
+span=D__case=A,D,A,,all,pearson,median,0.75,3,473 702 917,14,False,,
+span=D__case=A,D,A,,all,pearson,median,0.9,1,917,14,False,,
+span=D__case=A,D,A,,all,spearman,mean,0.1,8,113 190 294 398 473 702 917 939,14,False,,
+span=D__case=A,D,A,,all,spearman,mean,0.25,7,113 190 294 473 702 917 939,14,False,,
+span=D__case=A,D,A,,all,spearman,mean,0.5,4,294 473 702 917,14,False,,
+span=D__case=A,D,A,,all,spearman,mean,0.75,2,702 917,14,False,,
+span=D__case=A,D,A,,all,spearman,mean,0.9,1,917,14,False,,
+span=D__case=A,D,A,,all,spearman,median,0.1,8,113 190 294 398 473 702 917 939,14,False,,
+span=D__case=A,D,A,,all,spearman,median,0.25,8,113 190 294 398 473 702 917 939,14,False,,
+span=D__case=A,D,A,,all,spearman,median,0.5,5,190 294 473 702 917,14,False,,
+span=D__case=A,D,A,,all,spearman,median,0.75,2,702 917,14,False,,
+span=D__case=A,D,A,,all,spearman,median,0.9,1,917,14,False,,
+span=D__case=A,D,A,,effective,pearson,mean,0.1,8,113 190 294 398 473 702 917 939,14,False,,
+span=D__case=A,D,A,,effective,pearson,mean,0.25,7,113 190 294 473 702 917 939,14,False,,
+span=D__case=A,D,A,,effective,pearson,mean,0.5,4,294 473 702 917,14,False,,
+span=D__case=A,D,A,,effective,pearson,mean,0.75,2,702 917,14,False,,
+span=D__case=A,D,A,,effective,pearson,mean,0.9,1,917,14,False,,
+span=D__case=A,D,A,,effective,pearson,median,0.1,8,113 190 294 398 473 702 917 939,14,False,,
+span=D__case=A,D,A,,effective,pearson,median,0.25,8,113 190 294 398 473 702 917 939,14,False,,
+span=D__case=A,D,A,,effective,pearson,median,0.5,5,190 294 473 702 917,14,False,,
+span=D__case=A,D,A,,effective,pearson,median,0.75,3,473 702 917,14,False,,
+span=D__case=A,D,A,,effective,pearson,median,0.9,1,917,14,False,,
+span=D__case=A,D,A,,effective,spearman,mean,0.1,8,113 190 294 398 473 702 917 939,14,False,,
+span=D__case=A,D,A,,effective,spearman,mean,0.25,6,113 190 294 473 702 917,14,False,,
+span=D__case=A,D,A,,effective,spearman,mean,0.5,2,702 917,14,False,,
+span=D__case=A,D,A,,effective,spearman,mean,0.75,1,917,14,False,,
+span=D__case=A,D,A,,effective,spearman,mean,0.9,1,917,14,False,,
+span=D__case=A,D,A,,effective,spearman,median,0.1,8,113 190 294 398 473 702 917 939,14,False,,
+span=D__case=A,D,A,,effective,spearman,median,0.25,8,113 190 294 398 473 702 917 939,14,False,,
+span=D__case=A,D,A,,effective,spearman,median,0.5,3,294 702 917,14,True,,190
+span=D__case=A,D,A,,effective,spearman,median,0.75,1,917,14,False,,
+span=D__case=A,D,A,,effective,spearman,median,0.9,1,917,14,False,,
+span=D__case=B__k=00,D,B,0,all,pearson,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=00,D,B,0,all,pearson,mean,0.25,7,113 294 343 398 473 702 939,14,True,343 398,190 917
+span=D__case=B__k=00,D,B,0,all,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=D__case=B__k=00,D,B,0,all,pearson,mean,0.75,1,702,14,True,,917
+span=D__case=B__k=00,D,B,0,all,pearson,mean,0.9,0,,14,True,,917
+span=D__case=B__k=00,D,B,0,all,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=D__case=B__k=00,D,B,0,all,pearson,median,0.25,5,113 294 473 702 939,14,True,,190 398 917
+span=D__case=B__k=00,D,B,0,all,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=D__case=B__k=00,D,B,0,all,pearson,median,0.75,2,473 702,14,True,,917
+span=D__case=B__k=00,D,B,0,all,pearson,median,0.9,0,,14,True,,917
+span=D__case=B__k=00,D,B,0,all,spearman,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=00,D,B,0,all,spearman,mean,0.25,7,113 294 343 398 473 702 939,14,True,343 398,190 917
+span=D__case=B__k=00,D,B,0,all,spearman,mean,0.5,1,702,14,True,,294 473 917
+span=D__case=B__k=00,D,B,0,all,spearman,mean,0.75,0,,14,True,,702 917
+span=D__case=B__k=00,D,B,0,all,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=00,D,B,0,all,spearman,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=D__case=B__k=00,D,B,0,all,spearman,median,0.25,5,113 294 473 702 939,14,True,,190 398 917
+span=D__case=B__k=00,D,B,0,all,spearman,median,0.5,3,294 473 702,14,True,,190 917
+span=D__case=B__k=00,D,B,0,all,spearman,median,0.75,0,,14,True,,702 917
+span=D__case=B__k=00,D,B,0,all,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=00,D,B,0,effective,pearson,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=00,D,B,0,effective,pearson,mean,0.25,7,113 294 343 398 473 702 939,14,True,343 398,190 917
+span=D__case=B__k=00,D,B,0,effective,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=D__case=B__k=00,D,B,0,effective,pearson,mean,0.75,1,702,14,True,,917
+span=D__case=B__k=00,D,B,0,effective,pearson,mean,0.9,0,,14,True,,917
+span=D__case=B__k=00,D,B,0,effective,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=D__case=B__k=00,D,B,0,effective,pearson,median,0.25,5,113 294 473 702 939,14,True,,190 398 917
+span=D__case=B__k=00,D,B,0,effective,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=D__case=B__k=00,D,B,0,effective,pearson,median,0.75,2,473 702,14,True,,917
+span=D__case=B__k=00,D,B,0,effective,pearson,median,0.9,0,,14,True,,917
+span=D__case=B__k=00,D,B,0,effective,spearman,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=00,D,B,0,effective,spearman,mean,0.25,7,113 294 343 398 473 702 939,14,True,343 398 939,190 917
+span=D__case=B__k=00,D,B,0,effective,spearman,mean,0.5,1,702,14,True,,917
+span=D__case=B__k=00,D,B,0,effective,spearman,mean,0.75,0,,14,True,,917
+span=D__case=B__k=00,D,B,0,effective,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=00,D,B,0,effective,spearman,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=D__case=B__k=00,D,B,0,effective,spearman,median,0.25,5,113 294 473 702 939,14,True,,190 398 917
+span=D__case=B__k=00,D,B,0,effective,spearman,median,0.5,2,473 702,14,True,473,190 294 917
+span=D__case=B__k=00,D,B,0,effective,spearman,median,0.75,0,,14,True,,917
+span=D__case=B__k=00,D,B,0,effective,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=01,D,B,1,all,pearson,mean,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=01,D,B,1,all,pearson,mean,0.25,8,113 190 294 343 398 473 702 939,14,True,343 398,917
+span=D__case=B__k=01,D,B,1,all,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=D__case=B__k=01,D,B,1,all,pearson,mean,0.75,1,702,14,True,,917
+span=D__case=B__k=01,D,B,1,all,pearson,mean,0.9,0,,14,True,,917
+span=D__case=B__k=01,D,B,1,all,pearson,median,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=01,D,B,1,all,pearson,median,0.25,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=01,D,B,1,all,pearson,median,0.5,3,398 473 702,14,True,398,190 294 917
+span=D__case=B__k=01,D,B,1,all,pearson,median,0.75,2,473 702,14,True,,917
+span=D__case=B__k=01,D,B,1,all,pearson,median,0.9,0,,14,True,,917
+span=D__case=B__k=01,D,B,1,all,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=01,D,B,1,all,spearman,mean,0.25,8,113 190 294 343 398 473 702 939,14,True,343 398,917
+span=D__case=B__k=01,D,B,1,all,spearman,mean,0.5,1,702,14,True,,294 473 917
+span=D__case=B__k=01,D,B,1,all,spearman,mean,0.75,0,,14,True,,702 917
+span=D__case=B__k=01,D,B,1,all,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=01,D,B,1,all,spearman,median,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=01,D,B,1,all,spearman,median,0.25,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=01,D,B,1,all,spearman,median,0.5,3,398 473 702,14,True,398,190 294 917
+span=D__case=B__k=01,D,B,1,all,spearman,median,0.75,0,,14,True,,702 917
+span=D__case=B__k=01,D,B,1,all,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=01,D,B,1,effective,pearson,mean,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=01,D,B,1,effective,pearson,mean,0.25,8,113 190 294 343 398 473 702 939,14,True,343 398,917
+span=D__case=B__k=01,D,B,1,effective,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=D__case=B__k=01,D,B,1,effective,pearson,mean,0.75,1,702,14,True,,917
+span=D__case=B__k=01,D,B,1,effective,pearson,mean,0.9,0,,14,True,,917
+span=D__case=B__k=01,D,B,1,effective,pearson,median,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=01,D,B,1,effective,pearson,median,0.25,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=01,D,B,1,effective,pearson,median,0.5,3,398 473 702,14,True,398,190 294 917
+span=D__case=B__k=01,D,B,1,effective,pearson,median,0.75,2,473 702,14,True,,917
+span=D__case=B__k=01,D,B,1,effective,pearson,median,0.9,0,,14,True,,917
+span=D__case=B__k=01,D,B,1,effective,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=01,D,B,1,effective,spearman,mean,0.25,7,190 294 343 398 473 702 939,14,True,343 398 939,113 917
+span=D__case=B__k=01,D,B,1,effective,spearman,mean,0.5,1,702,14,True,,917
+span=D__case=B__k=01,D,B,1,effective,spearman,mean,0.75,0,,14,True,,917
+span=D__case=B__k=01,D,B,1,effective,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=01,D,B,1,effective,spearman,median,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=01,D,B,1,effective,spearman,median,0.25,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=01,D,B,1,effective,spearman,median,0.5,2,398 702,14,True,398,190 294 917
+span=D__case=B__k=01,D,B,1,effective,spearman,median,0.75,0,,14,True,,917
+span=D__case=B__k=01,D,B,1,effective,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=02,D,B,2,all,pearson,mean,0.1,8,113 294 343 398 473 702 917 939,14,True,343,190
+span=D__case=B__k=02,D,B,2,all,pearson,mean,0.25,8,113 294 343 398 473 702 917 939,14,True,343 398,190
+span=D__case=B__k=02,D,B,2,all,pearson,mean,0.5,3,473 702 917,14,True,,294
+span=D__case=B__k=02,D,B,2,all,pearson,mean,0.75,1,917,14,True,,702
+span=D__case=B__k=02,D,B,2,all,pearson,mean,0.9,1,917,14,False,,
+span=D__case=B__k=02,D,B,2,all,pearson,median,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=02,D,B,2,all,pearson,median,0.25,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=02,D,B,2,all,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=D__case=B__k=02,D,B,2,all,pearson,median,0.75,2,473 702,14,True,,917
+span=D__case=B__k=02,D,B,2,all,pearson,median,0.9,0,,14,True,,917
+span=D__case=B__k=02,D,B,2,all,spearman,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=02,D,B,2,all,spearman,mean,0.25,7,113 294 343 398 473 702 939,14,True,343 398,190 917
+span=D__case=B__k=02,D,B,2,all,spearman,mean,0.5,1,473,14,True,,294 702 917
+span=D__case=B__k=02,D,B,2,all,spearman,mean,0.75,0,,14,True,,702 917
+span=D__case=B__k=02,D,B,2,all,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=02,D,B,2,all,spearman,median,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=02,D,B,2,all,spearman,median,0.25,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=02,D,B,2,all,spearman,median,0.5,3,294 473 702,14,True,,190 917
+span=D__case=B__k=02,D,B,2,all,spearman,median,0.75,0,,14,True,,702 917
+span=D__case=B__k=02,D,B,2,all,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=02,D,B,2,effective,pearson,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=02,D,B,2,effective,pearson,mean,0.25,7,113 294 343 398 473 702 939,14,True,343 398,190 917
+span=D__case=B__k=02,D,B,2,effective,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=D__case=B__k=02,D,B,2,effective,pearson,mean,0.75,0,,14,True,,702 917
+span=D__case=B__k=02,D,B,2,effective,pearson,mean,0.9,0,,14,True,,917
+span=D__case=B__k=02,D,B,2,effective,pearson,median,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=02,D,B,2,effective,pearson,median,0.25,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=02,D,B,2,effective,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=D__case=B__k=02,D,B,2,effective,pearson,median,0.75,2,473 702,14,True,,917
+span=D__case=B__k=02,D,B,2,effective,pearson,median,0.9,0,,14,True,,917
+span=D__case=B__k=02,D,B,2,effective,spearman,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=02,D,B,2,effective,spearman,mean,0.25,6,294 343 398 473 702 939,14,True,343 398 939,113 190 917
+span=D__case=B__k=02,D,B,2,effective,spearman,mean,0.5,0,,14,True,,702 917
+span=D__case=B__k=02,D,B,2,effective,spearman,mean,0.75,0,,14,True,,917
+span=D__case=B__k=02,D,B,2,effective,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=02,D,B,2,effective,spearman,median,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=02,D,B,2,effective,spearman,median,0.25,6,113 294 398 473 702 939,14,True,,190 917
+span=D__case=B__k=02,D,B,2,effective,spearman,median,0.5,1,702,14,True,,190 294 917
+span=D__case=B__k=02,D,B,2,effective,spearman,median,0.75,0,,14,True,,917
+span=D__case=B__k=02,D,B,2,effective,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=03,D,B,3,all,pearson,mean,0.1,9,113 190 294 343 398 473 702 917 939,14,True,343,
+span=D__case=B__k=03,D,B,3,all,pearson,mean,0.25,9,113 190 294 343 398 473 702 917 939,14,True,343 398,
+span=D__case=B__k=03,D,B,3,all,pearson,mean,0.5,3,473 702 917,14,True,,294
+span=D__case=B__k=03,D,B,3,all,pearson,mean,0.75,1,917,14,True,,702
+span=D__case=B__k=03,D,B,3,all,pearson,mean,0.9,1,917,14,False,,
+span=D__case=B__k=03,D,B,3,all,pearson,median,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=03,D,B,3,all,pearson,median,0.25,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=03,D,B,3,all,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=D__case=B__k=03,D,B,3,all,pearson,median,0.75,1,473,14,True,,702 917
+span=D__case=B__k=03,D,B,3,all,pearson,median,0.9,0,,14,True,,917
+span=D__case=B__k=03,D,B,3,all,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=03,D,B,3,all,spearman,mean,0.25,8,113 190 294 343 398 473 702 939,14,True,343 398,917
+span=D__case=B__k=03,D,B,3,all,spearman,mean,0.5,0,,14,True,,294 473 702 917
+span=D__case=B__k=03,D,B,3,all,spearman,mean,0.75,0,,14,True,,702 917
+span=D__case=B__k=03,D,B,3,all,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=03,D,B,3,all,spearman,median,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=03,D,B,3,all,spearman,median,0.25,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=03,D,B,3,all,spearman,median,0.5,1,473,14,True,,190 294 702 917
+span=D__case=B__k=03,D,B,3,all,spearman,median,0.75,0,,14,True,,702 917
+span=D__case=B__k=03,D,B,3,all,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=03,D,B,3,effective,pearson,mean,0.1,9,113 190 294 343 398 473 702 917 939,14,True,343,
+span=D__case=B__k=03,D,B,3,effective,pearson,mean,0.25,9,113 190 294 343 398 473 702 917 939,14,True,343 398,
+span=D__case=B__k=03,D,B,3,effective,pearson,mean,0.5,3,473 702 917,14,True,,294
+span=D__case=B__k=03,D,B,3,effective,pearson,mean,0.75,1,917,14,True,,702
+span=D__case=B__k=03,D,B,3,effective,pearson,mean,0.9,1,917,14,False,,
+span=D__case=B__k=03,D,B,3,effective,pearson,median,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=03,D,B,3,effective,pearson,median,0.25,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=03,D,B,3,effective,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=D__case=B__k=03,D,B,3,effective,pearson,median,0.75,1,473,14,True,,702 917
+span=D__case=B__k=03,D,B,3,effective,pearson,median,0.9,0,,14,True,,917
+span=D__case=B__k=03,D,B,3,effective,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=03,D,B,3,effective,spearman,mean,0.25,7,190 294 343 398 473 702 939,14,True,343 398 939,113 917
+span=D__case=B__k=03,D,B,3,effective,spearman,mean,0.5,0,,14,True,,702 917
+span=D__case=B__k=03,D,B,3,effective,spearman,mean,0.75,0,,14,True,,917
+span=D__case=B__k=03,D,B,3,effective,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=03,D,B,3,effective,spearman,median,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=03,D,B,3,effective,spearman,median,0.25,6,190 294 398 473 702 939,14,True,,113 917
+span=D__case=B__k=03,D,B,3,effective,spearman,median,0.5,0,,14,True,,190 294 702 917
+span=D__case=B__k=03,D,B,3,effective,spearman,median,0.75,0,,14,True,,917
+span=D__case=B__k=03,D,B,3,effective,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=04,D,B,4,all,pearson,mean,0.1,8,113 294 343 398 473 702 917 939,14,True,343,190
+span=D__case=B__k=04,D,B,4,all,pearson,mean,0.25,8,113 294 343 398 473 702 917 939,14,True,343 398,190
+span=D__case=B__k=04,D,B,4,all,pearson,mean,0.5,3,473 702 917,14,True,,294
+span=D__case=B__k=04,D,B,4,all,pearson,mean,0.75,1,917,14,True,,702
+span=D__case=B__k=04,D,B,4,all,pearson,mean,0.9,1,917,14,False,,
+span=D__case=B__k=04,D,B,4,all,pearson,median,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=04,D,B,4,all,pearson,median,0.25,7,113 190 294 398 473 702 939,14,True,,917
+span=D__case=B__k=04,D,B,4,all,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=D__case=B__k=04,D,B,4,all,pearson,median,0.75,2,473 702,14,True,,917
+span=D__case=B__k=04,D,B,4,all,pearson,median,0.9,0,,14,True,,917
+span=D__case=B__k=04,D,B,4,all,spearman,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=04,D,B,4,all,spearman,mean,0.25,7,113 294 343 398 473 702 939,14,True,343 398,190 917
+span=D__case=B__k=04,D,B,4,all,spearman,mean,0.5,1,473,14,True,,294 702 917
+span=D__case=B__k=04,D,B,4,all,spearman,mean,0.75,0,,14,True,,702 917
+span=D__case=B__k=04,D,B,4,all,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=04,D,B,4,all,spearman,median,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=04,D,B,4,all,spearman,median,0.25,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=04,D,B,4,all,spearman,median,0.5,2,473 702,14,True,,190 294 917
+span=D__case=B__k=04,D,B,4,all,spearman,median,0.75,0,,14,True,,702 917
+span=D__case=B__k=04,D,B,4,all,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=04,D,B,4,effective,pearson,mean,0.1,8,113 294 343 398 473 702 917 939,14,True,343,190
+span=D__case=B__k=04,D,B,4,effective,pearson,mean,0.25,8,113 294 343 398 473 702 917 939,14,True,343 398,190
+span=D__case=B__k=04,D,B,4,effective,pearson,mean,0.5,3,473 702 917,14,True,,294
+span=D__case=B__k=04,D,B,4,effective,pearson,mean,0.75,1,917,14,True,,702
+span=D__case=B__k=04,D,B,4,effective,pearson,mean,0.9,1,917,14,False,,
+span=D__case=B__k=04,D,B,4,effective,pearson,median,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=04,D,B,4,effective,pearson,median,0.25,7,113 190 294 398 473 702 939,14,True,,917
+span=D__case=B__k=04,D,B,4,effective,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=D__case=B__k=04,D,B,4,effective,pearson,median,0.75,2,473 702,14,True,,917
+span=D__case=B__k=04,D,B,4,effective,pearson,median,0.9,0,,14,True,,917
+span=D__case=B__k=04,D,B,4,effective,spearman,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=04,D,B,4,effective,spearman,mean,0.25,6,294 343 398 473 702 939,14,True,343 398 939,113 190 917
+span=D__case=B__k=04,D,B,4,effective,spearman,mean,0.5,0,,14,True,,702 917
+span=D__case=B__k=04,D,B,4,effective,spearman,mean,0.75,0,,14,True,,917
+span=D__case=B__k=04,D,B,4,effective,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=04,D,B,4,effective,spearman,median,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=04,D,B,4,effective,spearman,median,0.25,6,190 294 398 473 702 939,14,True,,113 917
+span=D__case=B__k=04,D,B,4,effective,spearman,median,0.5,0,,14,True,,190 294 702 917
+span=D__case=B__k=04,D,B,4,effective,spearman,median,0.75,0,,14,True,,917
+span=D__case=B__k=04,D,B,4,effective,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=05,D,B,5,all,pearson,mean,0.1,8,113 294 343 398 473 702 917 939,14,True,343,190
+span=D__case=B__k=05,D,B,5,all,pearson,mean,0.25,8,113 294 343 398 473 702 917 939,14,True,343 398,190
+span=D__case=B__k=05,D,B,5,all,pearson,mean,0.5,4,294 473 702 917,14,False,,
+span=D__case=B__k=05,D,B,5,all,pearson,mean,0.75,1,917,14,True,,702
+span=D__case=B__k=05,D,B,5,all,pearson,mean,0.9,1,917,14,False,,
+span=D__case=B__k=05,D,B,5,all,pearson,median,0.1,8,113 294 343 398 473 702 917 939,14,True,343,190
+span=D__case=B__k=05,D,B,5,all,pearson,median,0.25,8,113 294 343 398 473 702 917 939,14,True,343,190
+span=D__case=B__k=05,D,B,5,all,pearson,median,0.5,3,473 702 917,14,True,,190 294
+span=D__case=B__k=05,D,B,5,all,pearson,median,0.75,2,473 917,14,True,,702
+span=D__case=B__k=05,D,B,5,all,pearson,median,0.9,1,917,14,False,,
+span=D__case=B__k=05,D,B,5,all,spearman,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=05,D,B,5,all,spearman,mean,0.25,7,113 294 343 398 473 702 939,14,True,343 398,190 917
+span=D__case=B__k=05,D,B,5,all,spearman,mean,0.5,1,294,14,True,,473 702 917
+span=D__case=B__k=05,D,B,5,all,spearman,mean,0.75,0,,14,True,,702 917
+span=D__case=B__k=05,D,B,5,all,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=05,D,B,5,all,spearman,median,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=05,D,B,5,all,spearman,median,0.25,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=05,D,B,5,all,spearman,median,0.5,2,294 473,14,True,,190 702 917
+span=D__case=B__k=05,D,B,5,all,spearman,median,0.75,0,,14,True,,702 917
+span=D__case=B__k=05,D,B,5,all,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=05,D,B,5,effective,pearson,mean,0.1,8,113 294 343 398 473 702 917 939,14,True,343,190
+span=D__case=B__k=05,D,B,5,effective,pearson,mean,0.25,8,113 294 343 398 473 702 917 939,14,True,343 398,190
+span=D__case=B__k=05,D,B,5,effective,pearson,mean,0.5,4,294 473 702 917,14,False,,
+span=D__case=B__k=05,D,B,5,effective,pearson,mean,0.75,1,917,14,True,,702
+span=D__case=B__k=05,D,B,5,effective,pearson,mean,0.9,1,917,14,False,,
+span=D__case=B__k=05,D,B,5,effective,pearson,median,0.1,8,113 294 343 398 473 702 917 939,14,True,343,190
+span=D__case=B__k=05,D,B,5,effective,pearson,median,0.25,8,113 294 343 398 473 702 917 939,14,True,343,190
+span=D__case=B__k=05,D,B,5,effective,pearson,median,0.5,3,473 702 917,14,True,,190 294
+span=D__case=B__k=05,D,B,5,effective,pearson,median,0.75,2,473 917,14,True,,702
+span=D__case=B__k=05,D,B,5,effective,pearson,median,0.9,1,917,14,False,,
+span=D__case=B__k=05,D,B,5,effective,spearman,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=05,D,B,5,effective,spearman,mean,0.25,6,294 343 398 473 702 939,14,True,343 398 939,113 190 917
+span=D__case=B__k=05,D,B,5,effective,spearman,mean,0.5,0,,14,True,,702 917
+span=D__case=B__k=05,D,B,5,effective,spearman,mean,0.75,0,,14,True,,917
+span=D__case=B__k=05,D,B,5,effective,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=05,D,B,5,effective,spearman,median,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=05,D,B,5,effective,spearman,median,0.25,6,113 294 398 473 702 939,14,True,,190 917
+span=D__case=B__k=05,D,B,5,effective,spearman,median,0.5,0,,14,True,,190 294 702 917
+span=D__case=B__k=05,D,B,5,effective,spearman,median,0.75,0,,14,True,,917
+span=D__case=B__k=05,D,B,5,effective,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=06,D,B,6,all,pearson,mean,0.1,9,113 190 294 343 398 473 702 917 939,14,True,343,
+span=D__case=B__k=06,D,B,6,all,pearson,mean,0.25,8,113 190 294 398 473 702 917 939,14,True,398,
+span=D__case=B__k=06,D,B,6,all,pearson,mean,0.5,3,473 702 917,14,True,,294
+span=D__case=B__k=06,D,B,6,all,pearson,mean,0.75,2,702 917,14,False,,
+span=D__case=B__k=06,D,B,6,all,pearson,mean,0.9,1,917,14,False,,
+span=D__case=B__k=06,D,B,6,all,pearson,median,0.1,8,113 294 343 398 473 702 917 939,14,True,343,190
+span=D__case=B__k=06,D,B,6,all,pearson,median,0.25,7,113 294 398 473 702 917 939,14,True,,190
+span=D__case=B__k=06,D,B,6,all,pearson,median,0.5,3,473 702 917,14,True,,190 294
+span=D__case=B__k=06,D,B,6,all,pearson,median,0.75,3,473 702 917,14,False,,
+span=D__case=B__k=06,D,B,6,all,pearson,median,0.9,1,917,14,False,,
+span=D__case=B__k=06,D,B,6,all,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=06,D,B,6,all,spearman,mean,0.25,7,113 190 294 398 473 702 939,14,True,398,917
+span=D__case=B__k=06,D,B,6,all,spearman,mean,0.5,1,702,14,True,,294 473 917
+span=D__case=B__k=06,D,B,6,all,spearman,mean,0.75,0,,14,True,,702 917
+span=D__case=B__k=06,D,B,6,all,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=06,D,B,6,all,spearman,median,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=06,D,B,6,all,spearman,median,0.25,6,113 294 398 473 702 939,14,True,,190 917
+span=D__case=B__k=06,D,B,6,all,spearman,median,0.5,2,473 702,14,True,,190 294 917
+span=D__case=B__k=06,D,B,6,all,spearman,median,0.75,0,,14,True,,702 917
+span=D__case=B__k=06,D,B,6,all,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=06,D,B,6,effective,pearson,mean,0.1,9,113 190 294 343 398 473 702 917 939,14,True,343,
+span=D__case=B__k=06,D,B,6,effective,pearson,mean,0.25,8,113 190 294 398 473 702 917 939,14,True,398,
+span=D__case=B__k=06,D,B,6,effective,pearson,mean,0.5,3,473 702 917,14,True,,294
+span=D__case=B__k=06,D,B,6,effective,pearson,mean,0.75,2,702 917,14,False,,
+span=D__case=B__k=06,D,B,6,effective,pearson,mean,0.9,1,917,14,False,,
+span=D__case=B__k=06,D,B,6,effective,pearson,median,0.1,8,113 294 343 398 473 702 917 939,14,True,343,190
+span=D__case=B__k=06,D,B,6,effective,pearson,median,0.25,7,113 294 398 473 702 917 939,14,True,,190
+span=D__case=B__k=06,D,B,6,effective,pearson,median,0.5,3,473 702 917,14,True,,190 294
+span=D__case=B__k=06,D,B,6,effective,pearson,median,0.75,3,473 702 917,14,False,,
+span=D__case=B__k=06,D,B,6,effective,pearson,median,0.9,1,917,14,False,,
+span=D__case=B__k=06,D,B,6,effective,spearman,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=06,D,B,6,effective,spearman,mean,0.25,5,294 398 473 702 939,14,True,398 939,113 190 917
+span=D__case=B__k=06,D,B,6,effective,spearman,mean,0.5,0,,14,True,,702 917
+span=D__case=B__k=06,D,B,6,effective,spearman,mean,0.75,0,,14,True,,917
+span=D__case=B__k=06,D,B,6,effective,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=06,D,B,6,effective,spearman,median,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=06,D,B,6,effective,spearman,median,0.25,6,113 294 398 473 702 939,14,True,,190 917
+span=D__case=B__k=06,D,B,6,effective,spearman,median,0.5,0,,14,True,,190 294 702 917
+span=D__case=B__k=06,D,B,6,effective,spearman,median,0.75,0,,14,True,,917
+span=D__case=B__k=06,D,B,6,effective,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=07,D,B,7,all,pearson,mean,0.1,8,113 294 343 398 473 702 917 939,14,True,343,190
+span=D__case=B__k=07,D,B,7,all,pearson,mean,0.25,8,113 294 343 398 473 702 917 939,14,True,343 398,190
+span=D__case=B__k=07,D,B,7,all,pearson,mean,0.5,3,473 702 917,14,True,,294
+span=D__case=B__k=07,D,B,7,all,pearson,mean,0.75,2,702 917,14,False,,
+span=D__case=B__k=07,D,B,7,all,pearson,mean,0.9,1,917,14,False,,
+span=D__case=B__k=07,D,B,7,all,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=D__case=B__k=07,D,B,7,all,pearson,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=D__case=B__k=07,D,B,7,all,pearson,median,0.5,3,294 473 702,14,True,,190 917
+span=D__case=B__k=07,D,B,7,all,pearson,median,0.75,2,473 702,14,True,,917
+span=D__case=B__k=07,D,B,7,all,pearson,median,0.9,0,,14,True,,917
+span=D__case=B__k=07,D,B,7,all,spearman,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=07,D,B,7,all,spearman,mean,0.25,6,294 343 398 473 702 939,14,True,343 398,113 190 917
+span=D__case=B__k=07,D,B,7,all,spearman,mean,0.5,2,473 702,14,True,,294 917
+span=D__case=B__k=07,D,B,7,all,spearman,mean,0.75,0,,14,True,,702 917
+span=D__case=B__k=07,D,B,7,all,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=07,D,B,7,all,spearman,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=D__case=B__k=07,D,B,7,all,spearman,median,0.25,5,294 343 473 702 939,14,True,343,113 190 398 917
+span=D__case=B__k=07,D,B,7,all,spearman,median,0.5,3,294 473 702,14,True,,190 917
+span=D__case=B__k=07,D,B,7,all,spearman,median,0.75,0,,14,True,,702 917
+span=D__case=B__k=07,D,B,7,all,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=07,D,B,7,effective,pearson,mean,0.1,8,113 294 343 398 473 702 917 939,14,True,343,190
+span=D__case=B__k=07,D,B,7,effective,pearson,mean,0.25,8,113 294 343 398 473 702 917 939,14,True,343 398,190
+span=D__case=B__k=07,D,B,7,effective,pearson,mean,0.5,3,473 702 917,14,True,,294
+span=D__case=B__k=07,D,B,7,effective,pearson,mean,0.75,2,702 917,14,False,,
+span=D__case=B__k=07,D,B,7,effective,pearson,mean,0.9,1,917,14,False,,
+span=D__case=B__k=07,D,B,7,effective,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=D__case=B__k=07,D,B,7,effective,pearson,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=D__case=B__k=07,D,B,7,effective,pearson,median,0.5,3,294 473 702,14,True,,190 917
+span=D__case=B__k=07,D,B,7,effective,pearson,median,0.75,2,473 702,14,True,,917
+span=D__case=B__k=07,D,B,7,effective,pearson,median,0.9,0,,14,True,,917
+span=D__case=B__k=07,D,B,7,effective,spearman,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=07,D,B,7,effective,spearman,mean,0.25,6,294 343 398 473 702 939,14,True,343 398 939,113 190 917
+span=D__case=B__k=07,D,B,7,effective,spearman,mean,0.5,1,702,14,True,,917
+span=D__case=B__k=07,D,B,7,effective,spearman,mean,0.75,0,,14,True,,917
+span=D__case=B__k=07,D,B,7,effective,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=07,D,B,7,effective,spearman,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=D__case=B__k=07,D,B,7,effective,spearman,median,0.25,5,294 343 473 702 939,14,True,343,113 190 398 917
+span=D__case=B__k=07,D,B,7,effective,spearman,median,0.5,2,294 702,14,True,,190 917
+span=D__case=B__k=07,D,B,7,effective,spearman,median,0.75,0,,14,True,,917
+span=D__case=B__k=07,D,B,7,effective,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=08,D,B,8,all,pearson,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=08,D,B,8,all,pearson,mean,0.25,7,113 294 343 398 473 702 939,14,True,343 398,190 917
+span=D__case=B__k=08,D,B,8,all,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=D__case=B__k=08,D,B,8,all,pearson,mean,0.75,1,702,14,True,,917
+span=D__case=B__k=08,D,B,8,all,pearson,mean,0.9,0,,14,True,,917
+span=D__case=B__k=08,D,B,8,all,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=D__case=B__k=08,D,B,8,all,pearson,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=D__case=B__k=08,D,B,8,all,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=D__case=B__k=08,D,B,8,all,pearson,median,0.75,2,473 702,14,True,,917
+span=D__case=B__k=08,D,B,8,all,pearson,median,0.9,0,,14,True,,917
+span=D__case=B__k=08,D,B,8,all,spearman,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=08,D,B,8,all,spearman,mean,0.25,7,113 294 343 398 473 702 939,14,True,343 398,190 917
+span=D__case=B__k=08,D,B,8,all,spearman,mean,0.5,1,702,14,True,,294 473 917
+span=D__case=B__k=08,D,B,8,all,spearman,mean,0.75,0,,14,True,,702 917
+span=D__case=B__k=08,D,B,8,all,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=08,D,B,8,all,spearman,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=D__case=B__k=08,D,B,8,all,spearman,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=D__case=B__k=08,D,B,8,all,spearman,median,0.5,3,294 473 702,14,True,,190 917
+span=D__case=B__k=08,D,B,8,all,spearman,median,0.75,0,,14,True,,702 917
+span=D__case=B__k=08,D,B,8,all,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=08,D,B,8,effective,pearson,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=08,D,B,8,effective,pearson,mean,0.25,7,113 294 343 398 473 702 939,14,True,343 398,190 917
+span=D__case=B__k=08,D,B,8,effective,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=D__case=B__k=08,D,B,8,effective,pearson,mean,0.75,1,702,14,True,,917
+span=D__case=B__k=08,D,B,8,effective,pearson,mean,0.9,0,,14,True,,917
+span=D__case=B__k=08,D,B,8,effective,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=D__case=B__k=08,D,B,8,effective,pearson,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=D__case=B__k=08,D,B,8,effective,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=D__case=B__k=08,D,B,8,effective,pearson,median,0.75,2,473 702,14,True,,917
+span=D__case=B__k=08,D,B,8,effective,pearson,median,0.9,0,,14,True,,917
+span=D__case=B__k=08,D,B,8,effective,spearman,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=08,D,B,8,effective,spearman,mean,0.25,6,294 343 398 473 702 939,14,True,343 398 939,113 190 917
+span=D__case=B__k=08,D,B,8,effective,spearman,mean,0.5,1,702,14,True,,917
+span=D__case=B__k=08,D,B,8,effective,spearman,mean,0.75,0,,14,True,,917
+span=D__case=B__k=08,D,B,8,effective,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=08,D,B,8,effective,spearman,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=D__case=B__k=08,D,B,8,effective,spearman,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=D__case=B__k=08,D,B,8,effective,spearman,median,0.5,0,,14,True,,190 294 702 917
+span=D__case=B__k=08,D,B,8,effective,spearman,median,0.75,0,,14,True,,917
+span=D__case=B__k=08,D,B,8,effective,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=09,D,B,9,all,pearson,mean,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=09,D,B,9,all,pearson,mean,0.25,8,113 190 294 343 398 473 702 939,14,True,343 398,917
+span=D__case=B__k=09,D,B,9,all,pearson,mean,0.5,3,294 473 702,14,True,,917
+span=D__case=B__k=09,D,B,9,all,pearson,mean,0.75,1,702,14,True,,917
+span=D__case=B__k=09,D,B,9,all,pearson,mean,0.9,0,,14,True,,917
+span=D__case=B__k=09,D,B,9,all,pearson,median,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=09,D,B,9,all,pearson,median,0.25,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=09,D,B,9,all,pearson,median,0.5,3,294 473 702,14,True,,190 917
+span=D__case=B__k=09,D,B,9,all,pearson,median,0.75,2,473 702,14,True,,917
+span=D__case=B__k=09,D,B,9,all,pearson,median,0.9,0,,14,True,,917
+span=D__case=B__k=09,D,B,9,all,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=09,D,B,9,all,spearman,mean,0.25,8,113 190 294 343 398 473 702 939,14,True,343 398,917
+span=D__case=B__k=09,D,B,9,all,spearman,mean,0.5,2,294 702,14,True,,473 917
+span=D__case=B__k=09,D,B,9,all,spearman,mean,0.75,0,,14,True,,702 917
+span=D__case=B__k=09,D,B,9,all,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=09,D,B,9,all,spearman,median,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=09,D,B,9,all,spearman,median,0.25,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=09,D,B,9,all,spearman,median,0.5,3,294 473 702,14,True,,190 917
+span=D__case=B__k=09,D,B,9,all,spearman,median,0.75,0,,14,True,,702 917
+span=D__case=B__k=09,D,B,9,all,spearman,median,0.9,0,,14,True,,917
+span=D__case=B__k=09,D,B,9,effective,pearson,mean,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=09,D,B,9,effective,pearson,mean,0.25,8,113 190 294 343 398 473 702 939,14,True,343 398,917
+span=D__case=B__k=09,D,B,9,effective,pearson,mean,0.5,3,294 473 702,14,True,,917
+span=D__case=B__k=09,D,B,9,effective,pearson,mean,0.75,1,702,14,True,,917
+span=D__case=B__k=09,D,B,9,effective,pearson,mean,0.9,0,,14,True,,917
+span=D__case=B__k=09,D,B,9,effective,pearson,median,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=09,D,B,9,effective,pearson,median,0.25,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=09,D,B,9,effective,pearson,median,0.5,3,294 473 702,14,True,,190 917
+span=D__case=B__k=09,D,B,9,effective,pearson,median,0.75,2,473 702,14,True,,917
+span=D__case=B__k=09,D,B,9,effective,pearson,median,0.9,0,,14,True,,917
+span=D__case=B__k=09,D,B,9,effective,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=D__case=B__k=09,D,B,9,effective,spearman,mean,0.25,7,190 294 343 398 473 702 939,14,True,343 398 939,113 917
+span=D__case=B__k=09,D,B,9,effective,spearman,mean,0.5,0,,14,True,,702 917
+span=D__case=B__k=09,D,B,9,effective,spearman,mean,0.75,0,,14,True,,917
+span=D__case=B__k=09,D,B,9,effective,spearman,mean,0.9,0,,14,True,,917
+span=D__case=B__k=09,D,B,9,effective,spearman,median,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=D__case=B__k=09,D,B,9,effective,spearman,median,0.25,5,294 398 473 702 939,14,True,,113 190 917
+span=D__case=B__k=09,D,B,9,effective,spearman,median,0.5,2,294 702,14,True,,190 917
+span=D__case=B__k=09,D,B,9,effective,spearman,median,0.75,0,,14,True,,917
+span=D__case=B__k=09,D,B,9,effective,spearman,median,0.9,0,,14,True,,917
+span=D__case=C,D,C,,all,pearson,mean,0.1,5,113 294 473 702 939,12,True,,190 398 917
+span=D__case=C,D,C,,all,pearson,mean,0.25,5,113 294 473 702 939,12,True,,190 917
+span=D__case=C,D,C,,all,pearson,mean,0.5,3,294 473 702,12,True,,917
+span=D__case=C,D,C,,all,pearson,mean,0.75,0,,12,True,,702 917
+span=D__case=C,D,C,,all,pearson,mean,0.9,0,,12,True,,917
+span=D__case=C,D,C,,all,pearson,median,0.1,5,113 294 473 702 939,12,True,,190 398 917
+span=D__case=C,D,C,,all,pearson,median,0.25,5,113 294 473 702 939,12,True,,190 398 917
+span=D__case=C,D,C,,all,pearson,median,0.5,3,294 473 702,12,True,,190 917
+span=D__case=C,D,C,,all,pearson,median,0.75,2,473 702,12,True,,917
+span=D__case=C,D,C,,all,pearson,median,0.9,0,,12,True,,917
+span=D__case=C,D,C,,all,spearman,mean,0.1,5,113 294 473 702 939,12,True,,190 398 917
+span=D__case=C,D,C,,all,spearman,mean,0.25,5,113 294 473 702 939,12,True,,190 917
+span=D__case=C,D,C,,all,spearman,mean,0.5,3,294 473 702,12,True,,917
+span=D__case=C,D,C,,all,spearman,mean,0.75,0,,12,True,,702 917
+span=D__case=C,D,C,,all,spearman,mean,0.9,0,,12,True,,917
+span=D__case=C,D,C,,all,spearman,median,0.1,5,113 294 473 702 939,12,True,,190 398 917
+span=D__case=C,D,C,,all,spearman,median,0.25,5,113 294 473 702 939,12,True,,190 398 917
+span=D__case=C,D,C,,all,spearman,median,0.5,3,294 473 702,12,True,,190 917
+span=D__case=C,D,C,,all,spearman,median,0.75,0,,12,True,,702 917
+span=D__case=C,D,C,,all,spearman,median,0.9,0,,12,True,,917
+span=D__case=C,D,C,,effective,pearson,mean,0.1,5,113 294 473 702 939,12,True,,190 398 917
+span=D__case=C,D,C,,effective,pearson,mean,0.25,5,113 294 473 702 939,12,True,,190 917
+span=D__case=C,D,C,,effective,pearson,mean,0.5,3,294 473 702,12,True,,917
+span=D__case=C,D,C,,effective,pearson,mean,0.75,0,,12,True,,702 917
+span=D__case=C,D,C,,effective,pearson,mean,0.9,0,,12,True,,917
+span=D__case=C,D,C,,effective,pearson,median,0.1,5,113 294 473 702 939,12,True,,190 398 917
+span=D__case=C,D,C,,effective,pearson,median,0.25,5,113 294 473 702 939,12,True,,190 398 917
+span=D__case=C,D,C,,effective,pearson,median,0.5,3,294 473 702,12,True,,190 917
+span=D__case=C,D,C,,effective,pearson,median,0.75,2,473 702,12,True,,917
+span=D__case=C,D,C,,effective,pearson,median,0.9,0,,12,True,,917
+span=D__case=C,D,C,,effective,spearman,mean,0.1,5,113 294 473 702 939,12,True,,190 398 917
+span=D__case=C,D,C,,effective,spearman,mean,0.25,5,113 294 473 702 939,12,True,939,190 917
+span=D__case=C,D,C,,effective,spearman,mean,0.5,3,294 473 702,12,True,294 473,917
+span=D__case=C,D,C,,effective,spearman,mean,0.75,0,,12,True,,917
+span=D__case=C,D,C,,effective,spearman,mean,0.9,0,,12,True,,917
+span=D__case=C,D,C,,effective,spearman,median,0.1,5,113 294 473 702 939,12,True,,190 398 917
+span=D__case=C,D,C,,effective,spearman,median,0.25,5,113 294 473 702 939,12,True,,190 398 917
+span=D__case=C,D,C,,effective,spearman,median,0.5,3,294 473 702,12,True,473,190 917
+span=D__case=C,D,C,,effective,spearman,median,0.75,0,,12,True,,917
+span=D__case=C,D,C,,effective,spearman,median,0.9,0,,12,True,,917
+span=Q__case=A,Q,A,,all,pearson,mean,0.1,7,113 190 294 398 473 702 939,15,True,,917
+span=Q__case=A,Q,A,,all,pearson,mean,0.25,6,113 190 294 473 702 939,15,True,,917
+span=Q__case=A,Q,A,,all,pearson,mean,0.5,3,294 473 702,15,True,,917
+span=Q__case=A,Q,A,,all,pearson,mean,0.75,1,702,15,True,,917
+span=Q__case=A,Q,A,,all,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=A,Q,A,,all,pearson,median,0.1,7,113 190 294 398 473 702 939,15,True,,917
+span=Q__case=A,Q,A,,all,pearson,median,0.25,7,113 190 294 398 473 702 939,15,True,,917
+span=Q__case=A,Q,A,,all,pearson,median,0.5,4,190 294 473 702,15,True,,917
+span=Q__case=A,Q,A,,all,pearson,median,0.75,2,473 702,15,True,,917
+span=Q__case=A,Q,A,,all,pearson,median,0.9,0,,15,True,,917
+span=Q__case=A,Q,A,,all,spearman,mean,0.1,7,113 190 294 398 473 702 939,15,True,,917
+span=Q__case=A,Q,A,,all,spearman,mean,0.25,6,113 190 294 473 702 939,15,True,,917
+span=Q__case=A,Q,A,,all,spearman,mean,0.5,3,294 473 702,15,True,,917
+span=Q__case=A,Q,A,,all,spearman,mean,0.75,1,702,15,True,,917
+span=Q__case=A,Q,A,,all,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=A,Q,A,,all,spearman,median,0.1,7,113 190 294 398 473 702 939,15,True,,917
+span=Q__case=A,Q,A,,all,spearman,median,0.25,7,113 190 294 398 473 702 939,15,True,,917
+span=Q__case=A,Q,A,,all,spearman,median,0.5,4,190 294 473 702,15,True,,917
+span=Q__case=A,Q,A,,all,spearman,median,0.75,1,702,15,True,,917
+span=Q__case=A,Q,A,,all,spearman,median,0.9,0,,15,True,,917
+span=Q__case=A,Q,A,,effective,pearson,mean,0.1,7,113 190 294 398 473 702 939,15,True,,917
+span=Q__case=A,Q,A,,effective,pearson,mean,0.25,6,113 190 294 473 702 939,15,True,,917
+span=Q__case=A,Q,A,,effective,pearson,mean,0.5,3,294 473 702,15,True,,917
+span=Q__case=A,Q,A,,effective,pearson,mean,0.75,1,702,15,True,,917
+span=Q__case=A,Q,A,,effective,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=A,Q,A,,effective,pearson,median,0.1,7,113 190 294 398 473 702 939,15,True,,917
+span=Q__case=A,Q,A,,effective,pearson,median,0.25,7,113 190 294 398 473 702 939,15,True,,917
+span=Q__case=A,Q,A,,effective,pearson,median,0.5,4,190 294 473 702,15,True,,917
+span=Q__case=A,Q,A,,effective,pearson,median,0.75,2,473 702,15,True,,917
+span=Q__case=A,Q,A,,effective,pearson,median,0.9,0,,15,True,,917
+span=Q__case=A,Q,A,,effective,spearman,mean,0.1,7,113 190 294 398 473 702 939,15,True,,917
+span=Q__case=A,Q,A,,effective,spearman,mean,0.25,5,113 190 294 473 702,15,True,,917
+span=Q__case=A,Q,A,,effective,spearman,mean,0.5,1,702,15,True,,917
+span=Q__case=A,Q,A,,effective,spearman,mean,0.75,0,,15,True,,917
+span=Q__case=A,Q,A,,effective,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=A,Q,A,,effective,spearman,median,0.1,8,113 190 294 398 473 702 917 939,15,False,,
+span=Q__case=A,Q,A,,effective,spearman,median,0.25,8,113 190 294 398 473 702 917 939,15,False,,
+span=Q__case=A,Q,A,,effective,spearman,median,0.5,4,190 294 702 917,15,False,,
+span=Q__case=A,Q,A,,effective,spearman,median,0.75,1,917,15,False,,
+span=Q__case=A,Q,A,,effective,spearman,median,0.9,1,917,15,False,,
+span=Q__case=B__k=00,Q,B,0,all,pearson,mean,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=00,Q,B,0,all,pearson,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=00,Q,B,0,all,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=Q__case=B__k=00,Q,B,0,all,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=00,Q,B,0,all,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=00,Q,B,0,all,pearson,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=00,Q,B,0,all,pearson,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=Q__case=B__k=00,Q,B,0,all,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=00,Q,B,0,all,pearson,median,0.75,1,473,15,True,,702 917
+span=Q__case=B__k=00,Q,B,0,all,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=00,Q,B,0,all,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=Q__case=B__k=00,Q,B,0,all,spearman,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=00,Q,B,0,all,spearman,mean,0.5,0,,15,True,,294 473 702 917
+span=Q__case=B__k=00,Q,B,0,all,spearman,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=00,Q,B,0,all,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=00,Q,B,0,all,spearman,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=00,Q,B,0,all,spearman,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=Q__case=B__k=00,Q,B,0,all,spearman,median,0.5,2,294 473,15,True,,190 702 917
+span=Q__case=B__k=00,Q,B,0,all,spearman,median,0.75,0,,15,True,,702 917
+span=Q__case=B__k=00,Q,B,0,all,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=00,Q,B,0,effective,pearson,mean,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=00,Q,B,0,effective,pearson,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=00,Q,B,0,effective,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=Q__case=B__k=00,Q,B,0,effective,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=00,Q,B,0,effective,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=00,Q,B,0,effective,pearson,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=00,Q,B,0,effective,pearson,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=Q__case=B__k=00,Q,B,0,effective,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=00,Q,B,0,effective,pearson,median,0.75,1,473,15,True,,702 917
+span=Q__case=B__k=00,Q,B,0,effective,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=00,Q,B,0,effective,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=Q__case=B__k=00,Q,B,0,effective,spearman,mean,0.25,5,113 294 473 702 939,15,True,939,190 917
+span=Q__case=B__k=00,Q,B,0,effective,spearman,mean,0.5,0,,15,True,,702 917
+span=Q__case=B__k=00,Q,B,0,effective,spearman,mean,0.75,0,,15,True,,917
+span=Q__case=B__k=00,Q,B,0,effective,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=00,Q,B,0,effective,spearman,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=00,Q,B,0,effective,spearman,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=Q__case=B__k=00,Q,B,0,effective,spearman,median,0.5,1,473,15,True,473,190 294 702 917
+span=Q__case=B__k=00,Q,B,0,effective,spearman,median,0.75,0,,15,True,,917
+span=Q__case=B__k=00,Q,B,0,effective,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=01,Q,B,1,all,pearson,mean,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=01,Q,B,1,all,pearson,mean,0.25,6,113 294 343 473 702 939,15,True,343,190 917
+span=Q__case=B__k=01,Q,B,1,all,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=Q__case=B__k=01,Q,B,1,all,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=01,Q,B,1,all,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=01,Q,B,1,all,pearson,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=01,Q,B,1,all,pearson,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=01,Q,B,1,all,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=01,Q,B,1,all,pearson,median,0.75,2,473 702,15,True,,917
+span=Q__case=B__k=01,Q,B,1,all,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=01,Q,B,1,all,spearman,mean,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=01,Q,B,1,all,spearman,mean,0.25,5,294 343 473 702 939,15,True,343,113 190 917
+span=Q__case=B__k=01,Q,B,1,all,spearman,mean,0.5,0,,15,True,,294 473 702 917
+span=Q__case=B__k=01,Q,B,1,all,spearman,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=01,Q,B,1,all,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=01,Q,B,1,all,spearman,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=01,Q,B,1,all,spearman,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=01,Q,B,1,all,spearman,median,0.5,1,473,15,True,,190 294 702 917
+span=Q__case=B__k=01,Q,B,1,all,spearman,median,0.75,0,,15,True,,702 917
+span=Q__case=B__k=01,Q,B,1,all,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=01,Q,B,1,effective,pearson,mean,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=01,Q,B,1,effective,pearson,mean,0.25,6,113 294 343 473 702 939,15,True,343,190 917
+span=Q__case=B__k=01,Q,B,1,effective,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=Q__case=B__k=01,Q,B,1,effective,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=01,Q,B,1,effective,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=01,Q,B,1,effective,pearson,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=01,Q,B,1,effective,pearson,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=01,Q,B,1,effective,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=01,Q,B,1,effective,pearson,median,0.75,2,473 702,15,True,,917
+span=Q__case=B__k=01,Q,B,1,effective,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=01,Q,B,1,effective,spearman,mean,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=01,Q,B,1,effective,spearman,mean,0.25,5,294 343 473 702 939,15,True,343 939,113 190 917
+span=Q__case=B__k=01,Q,B,1,effective,spearman,mean,0.5,0,,15,True,,702 917
+span=Q__case=B__k=01,Q,B,1,effective,spearman,mean,0.75,0,,15,True,,917
+span=Q__case=B__k=01,Q,B,1,effective,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=01,Q,B,1,effective,spearman,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=01,Q,B,1,effective,spearman,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=Q__case=B__k=01,Q,B,1,effective,spearman,median,0.5,0,,15,True,,190 294 702 917
+span=Q__case=B__k=01,Q,B,1,effective,spearman,median,0.75,0,,15,True,,917
+span=Q__case=B__k=01,Q,B,1,effective,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=02,Q,B,2,all,pearson,mean,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=02,Q,B,2,all,pearson,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=02,Q,B,2,all,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=Q__case=B__k=02,Q,B,2,all,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=02,Q,B,2,all,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=02,Q,B,2,all,pearson,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=02,Q,B,2,all,pearson,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=02,Q,B,2,all,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=02,Q,B,2,all,pearson,median,0.75,1,473,15,True,,702 917
+span=Q__case=B__k=02,Q,B,2,all,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=02,Q,B,2,all,spearman,mean,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=02,Q,B,2,all,spearman,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=02,Q,B,2,all,spearman,mean,0.5,1,473,15,True,,294 702 917
+span=Q__case=B__k=02,Q,B,2,all,spearman,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=02,Q,B,2,all,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=02,Q,B,2,all,spearman,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=02,Q,B,2,all,spearman,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=02,Q,B,2,all,spearman,median,0.5,3,294 473 702,15,True,,190 917
+span=Q__case=B__k=02,Q,B,2,all,spearman,median,0.75,0,,15,True,,702 917
+span=Q__case=B__k=02,Q,B,2,all,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=02,Q,B,2,effective,pearson,mean,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=02,Q,B,2,effective,pearson,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=02,Q,B,2,effective,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=Q__case=B__k=02,Q,B,2,effective,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=02,Q,B,2,effective,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=02,Q,B,2,effective,pearson,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=02,Q,B,2,effective,pearson,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=02,Q,B,2,effective,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=02,Q,B,2,effective,pearson,median,0.75,1,473,15,True,,702 917
+span=Q__case=B__k=02,Q,B,2,effective,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=02,Q,B,2,effective,spearman,mean,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=02,Q,B,2,effective,spearman,mean,0.25,4,294 473 702 939,15,True,939,113 190 917
+span=Q__case=B__k=02,Q,B,2,effective,spearman,mean,0.5,0,,15,True,,702 917
+span=Q__case=B__k=02,Q,B,2,effective,spearman,mean,0.75,0,,15,True,,917
+span=Q__case=B__k=02,Q,B,2,effective,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=02,Q,B,2,effective,spearman,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=02,Q,B,2,effective,spearman,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=02,Q,B,2,effective,spearman,median,0.5,0,,15,True,,190 294 702 917
+span=Q__case=B__k=02,Q,B,2,effective,spearman,median,0.75,0,,15,True,,917
+span=Q__case=B__k=02,Q,B,2,effective,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=03,Q,B,3,all,pearson,mean,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=03,Q,B,3,all,pearson,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=03,Q,B,3,all,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=Q__case=B__k=03,Q,B,3,all,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=03,Q,B,3,all,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=03,Q,B,3,all,pearson,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=03,Q,B,3,all,pearson,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=03,Q,B,3,all,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=03,Q,B,3,all,pearson,median,0.75,1,473,15,True,,702 917
+span=Q__case=B__k=03,Q,B,3,all,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=03,Q,B,3,all,spearman,mean,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=03,Q,B,3,all,spearman,mean,0.25,4,294 473 702 939,15,True,,113 190 917
+span=Q__case=B__k=03,Q,B,3,all,spearman,mean,0.5,0,,15,True,,294 473 702 917
+span=Q__case=B__k=03,Q,B,3,all,spearman,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=03,Q,B,3,all,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=03,Q,B,3,all,spearman,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=03,Q,B,3,all,spearman,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=03,Q,B,3,all,spearman,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=03,Q,B,3,all,spearman,median,0.75,0,,15,True,,702 917
+span=Q__case=B__k=03,Q,B,3,all,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=03,Q,B,3,effective,pearson,mean,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=03,Q,B,3,effective,pearson,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=03,Q,B,3,effective,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=Q__case=B__k=03,Q,B,3,effective,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=03,Q,B,3,effective,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=03,Q,B,3,effective,pearson,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=03,Q,B,3,effective,pearson,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=03,Q,B,3,effective,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=03,Q,B,3,effective,pearson,median,0.75,1,473,15,True,,702 917
+span=Q__case=B__k=03,Q,B,3,effective,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=03,Q,B,3,effective,spearman,mean,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=03,Q,B,3,effective,spearman,mean,0.25,4,294 473 702 939,15,True,939,113 190 917
+span=Q__case=B__k=03,Q,B,3,effective,spearman,mean,0.5,0,,15,True,,702 917
+span=Q__case=B__k=03,Q,B,3,effective,spearman,mean,0.75,0,,15,True,,917
+span=Q__case=B__k=03,Q,B,3,effective,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=03,Q,B,3,effective,spearman,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=03,Q,B,3,effective,spearman,median,0.25,4,294 473 702 939,15,True,,113 190 398 917
+span=Q__case=B__k=03,Q,B,3,effective,spearman,median,0.5,0,,15,True,,190 294 702 917
+span=Q__case=B__k=03,Q,B,3,effective,spearman,median,0.75,0,,15,True,,917
+span=Q__case=B__k=03,Q,B,3,effective,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=04,Q,B,4,all,pearson,mean,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=04,Q,B,4,all,pearson,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=04,Q,B,4,all,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=Q__case=B__k=04,Q,B,4,all,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=04,Q,B,4,all,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=04,Q,B,4,all,pearson,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=04,Q,B,4,all,pearson,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=04,Q,B,4,all,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=04,Q,B,4,all,pearson,median,0.75,1,473,15,True,,702 917
+span=Q__case=B__k=04,Q,B,4,all,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=04,Q,B,4,all,spearman,mean,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=04,Q,B,4,all,spearman,mean,0.25,4,294 473 702 939,15,True,,113 190 917
+span=Q__case=B__k=04,Q,B,4,all,spearman,mean,0.5,1,473,15,True,,294 702 917
+span=Q__case=B__k=04,Q,B,4,all,spearman,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=04,Q,B,4,all,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=04,Q,B,4,all,spearman,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=04,Q,B,4,all,spearman,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=Q__case=B__k=04,Q,B,4,all,spearman,median,0.5,1,473,15,True,,190 294 702 917
+span=Q__case=B__k=04,Q,B,4,all,spearman,median,0.75,0,,15,True,,702 917
+span=Q__case=B__k=04,Q,B,4,all,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=04,Q,B,4,effective,pearson,mean,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=04,Q,B,4,effective,pearson,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=04,Q,B,4,effective,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=Q__case=B__k=04,Q,B,4,effective,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=04,Q,B,4,effective,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=04,Q,B,4,effective,pearson,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=04,Q,B,4,effective,pearson,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=04,Q,B,4,effective,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=04,Q,B,4,effective,pearson,median,0.75,1,473,15,True,,702 917
+span=Q__case=B__k=04,Q,B,4,effective,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=04,Q,B,4,effective,spearman,mean,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=04,Q,B,4,effective,spearman,mean,0.25,4,294 473 702 939,15,True,939,113 190 917
+span=Q__case=B__k=04,Q,B,4,effective,spearman,mean,0.5,0,,15,True,,702 917
+span=Q__case=B__k=04,Q,B,4,effective,spearman,mean,0.75,0,,15,True,,917
+span=Q__case=B__k=04,Q,B,4,effective,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=04,Q,B,4,effective,spearman,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=04,Q,B,4,effective,spearman,median,0.25,4,294 473 702 939,15,True,,113 190 398 917
+span=Q__case=B__k=04,Q,B,4,effective,spearman,median,0.5,0,,15,True,,190 294 702 917
+span=Q__case=B__k=04,Q,B,4,effective,spearman,median,0.75,0,,15,True,,917
+span=Q__case=B__k=04,Q,B,4,effective,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=05,Q,B,5,all,pearson,mean,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=05,Q,B,5,all,pearson,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=05,Q,B,5,all,pearson,mean,0.5,3,294 473 702,15,True,,917
+span=Q__case=B__k=05,Q,B,5,all,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=05,Q,B,5,all,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=05,Q,B,5,all,pearson,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=05,Q,B,5,all,pearson,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=Q__case=B__k=05,Q,B,5,all,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=05,Q,B,5,all,pearson,median,0.75,2,473 702,15,True,,917
+span=Q__case=B__k=05,Q,B,5,all,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=05,Q,B,5,all,spearman,mean,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=05,Q,B,5,all,spearman,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=05,Q,B,5,all,spearman,mean,0.5,1,294,15,True,,473 702 917
+span=Q__case=B__k=05,Q,B,5,all,spearman,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=05,Q,B,5,all,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=05,Q,B,5,all,spearman,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=05,Q,B,5,all,spearman,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=Q__case=B__k=05,Q,B,5,all,spearman,median,0.5,3,294 473 702,15,True,,190 917
+span=Q__case=B__k=05,Q,B,5,all,spearman,median,0.75,0,,15,True,,702 917
+span=Q__case=B__k=05,Q,B,5,all,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=05,Q,B,5,effective,pearson,mean,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=05,Q,B,5,effective,pearson,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=05,Q,B,5,effective,pearson,mean,0.5,3,294 473 702,15,True,,917
+span=Q__case=B__k=05,Q,B,5,effective,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=05,Q,B,5,effective,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=05,Q,B,5,effective,pearson,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=05,Q,B,5,effective,pearson,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=Q__case=B__k=05,Q,B,5,effective,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=05,Q,B,5,effective,pearson,median,0.75,2,473 702,15,True,,917
+span=Q__case=B__k=05,Q,B,5,effective,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=05,Q,B,5,effective,spearman,mean,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=05,Q,B,5,effective,spearman,mean,0.25,4,294 473 702 939,15,True,939,113 190 917
+span=Q__case=B__k=05,Q,B,5,effective,spearman,mean,0.5,0,,15,True,,702 917
+span=Q__case=B__k=05,Q,B,5,effective,spearman,mean,0.75,0,,15,True,,917
+span=Q__case=B__k=05,Q,B,5,effective,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=05,Q,B,5,effective,spearman,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=05,Q,B,5,effective,spearman,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=Q__case=B__k=05,Q,B,5,effective,spearman,median,0.5,1,294,15,True,,190 702 917
+span=Q__case=B__k=05,Q,B,5,effective,spearman,median,0.75,0,,15,True,,917
+span=Q__case=B__k=05,Q,B,5,effective,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=06,Q,B,6,all,pearson,mean,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=06,Q,B,6,all,pearson,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=06,Q,B,6,all,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=Q__case=B__k=06,Q,B,6,all,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=06,Q,B,6,all,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=06,Q,B,6,all,pearson,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=06,Q,B,6,all,pearson,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=06,Q,B,6,all,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=06,Q,B,6,all,pearson,median,0.75,1,473,15,True,,702 917
+span=Q__case=B__k=06,Q,B,6,all,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=06,Q,B,6,all,spearman,mean,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=06,Q,B,6,all,spearman,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=06,Q,B,6,all,spearman,mean,0.5,0,,15,True,,294 473 702 917
+span=Q__case=B__k=06,Q,B,6,all,spearman,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=06,Q,B,6,all,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=06,Q,B,6,all,spearman,median,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=Q__case=B__k=06,Q,B,6,all,spearman,median,0.25,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=Q__case=B__k=06,Q,B,6,all,spearman,median,0.5,2,294 473,15,True,,190 702 917
+span=Q__case=B__k=06,Q,B,6,all,spearman,median,0.75,0,,15,True,,702 917
+span=Q__case=B__k=06,Q,B,6,all,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=06,Q,B,6,effective,pearson,mean,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=06,Q,B,6,effective,pearson,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=06,Q,B,6,effective,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=Q__case=B__k=06,Q,B,6,effective,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=06,Q,B,6,effective,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=06,Q,B,6,effective,pearson,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=06,Q,B,6,effective,pearson,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=06,Q,B,6,effective,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=06,Q,B,6,effective,pearson,median,0.75,1,473,15,True,,702 917
+span=Q__case=B__k=06,Q,B,6,effective,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=06,Q,B,6,effective,spearman,mean,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=06,Q,B,6,effective,spearman,mean,0.25,4,294 473 702 939,15,True,939,113 190 917
+span=Q__case=B__k=06,Q,B,6,effective,spearman,mean,0.5,0,,15,True,,702 917
+span=Q__case=B__k=06,Q,B,6,effective,spearman,mean,0.75,0,,15,True,,917
+span=Q__case=B__k=06,Q,B,6,effective,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=06,Q,B,6,effective,spearman,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=06,Q,B,6,effective,spearman,median,0.25,5,294 343 473 702 939,15,True,343,113 190 398 917
+span=Q__case=B__k=06,Q,B,6,effective,spearman,median,0.5,0,,15,True,,190 294 702 917
+span=Q__case=B__k=06,Q,B,6,effective,spearman,median,0.75,0,,15,True,,917
+span=Q__case=B__k=06,Q,B,6,effective,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=07,Q,B,7,all,pearson,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=Q__case=B__k=07,Q,B,7,all,pearson,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=07,Q,B,7,all,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=Q__case=B__k=07,Q,B,7,all,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=07,Q,B,7,all,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=07,Q,B,7,all,pearson,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=07,Q,B,7,all,pearson,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=Q__case=B__k=07,Q,B,7,all,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=07,Q,B,7,all,pearson,median,0.75,1,473,15,True,,702 917
+span=Q__case=B__k=07,Q,B,7,all,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=07,Q,B,7,all,spearman,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=Q__case=B__k=07,Q,B,7,all,spearman,mean,0.25,4,294 473 702 939,15,True,,113 190 917
+span=Q__case=B__k=07,Q,B,7,all,spearman,mean,0.5,1,473,15,True,,294 702 917
+span=Q__case=B__k=07,Q,B,7,all,spearman,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=07,Q,B,7,all,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=07,Q,B,7,all,spearman,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=07,Q,B,7,all,spearman,median,0.25,4,294 473 702 939,15,True,,113 190 398 917
+span=Q__case=B__k=07,Q,B,7,all,spearman,median,0.5,2,294 473,15,True,,190 702 917
+span=Q__case=B__k=07,Q,B,7,all,spearman,median,0.75,0,,15,True,,702 917
+span=Q__case=B__k=07,Q,B,7,all,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=07,Q,B,7,effective,pearson,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=Q__case=B__k=07,Q,B,7,effective,pearson,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=07,Q,B,7,effective,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=Q__case=B__k=07,Q,B,7,effective,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=07,Q,B,7,effective,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=07,Q,B,7,effective,pearson,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=07,Q,B,7,effective,pearson,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=Q__case=B__k=07,Q,B,7,effective,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=07,Q,B,7,effective,pearson,median,0.75,1,473,15,True,,702 917
+span=Q__case=B__k=07,Q,B,7,effective,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=07,Q,B,7,effective,spearman,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=Q__case=B__k=07,Q,B,7,effective,spearman,mean,0.25,4,294 473 702 939,15,True,939,113 190 917
+span=Q__case=B__k=07,Q,B,7,effective,spearman,mean,0.5,0,,15,True,,702 917
+span=Q__case=B__k=07,Q,B,7,effective,spearman,mean,0.75,0,,15,True,,917
+span=Q__case=B__k=07,Q,B,7,effective,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=07,Q,B,7,effective,spearman,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=07,Q,B,7,effective,spearman,median,0.25,4,294 473 702 939,15,True,,113 190 398 917
+span=Q__case=B__k=07,Q,B,7,effective,spearman,median,0.5,1,294,15,True,,190 702 917
+span=Q__case=B__k=07,Q,B,7,effective,spearman,median,0.75,0,,15,True,,917
+span=Q__case=B__k=07,Q,B,7,effective,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=08,Q,B,8,all,pearson,mean,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=08,Q,B,8,all,pearson,mean,0.25,6,113 294 343 473 702 939,15,True,343,190 917
+span=Q__case=B__k=08,Q,B,8,all,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=Q__case=B__k=08,Q,B,8,all,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=08,Q,B,8,all,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=08,Q,B,8,all,pearson,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=08,Q,B,8,all,pearson,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=08,Q,B,8,all,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=08,Q,B,8,all,pearson,median,0.75,1,473,15,True,,702 917
+span=Q__case=B__k=08,Q,B,8,all,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=08,Q,B,8,all,spearman,mean,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=08,Q,B,8,all,spearman,mean,0.25,6,113 294 343 473 702 939,15,True,343,190 917
+span=Q__case=B__k=08,Q,B,8,all,spearman,mean,0.5,0,,15,True,,294 473 702 917
+span=Q__case=B__k=08,Q,B,8,all,spearman,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=08,Q,B,8,all,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=08,Q,B,8,all,spearman,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=08,Q,B,8,all,spearman,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=08,Q,B,8,all,spearman,median,0.5,2,294 473,15,True,,190 702 917
+span=Q__case=B__k=08,Q,B,8,all,spearman,median,0.75,0,,15,True,,702 917
+span=Q__case=B__k=08,Q,B,8,all,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=08,Q,B,8,effective,pearson,mean,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=08,Q,B,8,effective,pearson,mean,0.25,6,113 294 343 473 702 939,15,True,343,190 917
+span=Q__case=B__k=08,Q,B,8,effective,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=Q__case=B__k=08,Q,B,8,effective,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=08,Q,B,8,effective,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=08,Q,B,8,effective,pearson,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=08,Q,B,8,effective,pearson,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=Q__case=B__k=08,Q,B,8,effective,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=08,Q,B,8,effective,pearson,median,0.75,1,473,15,True,,702 917
+span=Q__case=B__k=08,Q,B,8,effective,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=08,Q,B,8,effective,spearman,mean,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=08,Q,B,8,effective,spearman,mean,0.25,5,294 343 473 702 939,15,True,343 939,113 190 917
+span=Q__case=B__k=08,Q,B,8,effective,spearman,mean,0.5,0,,15,True,,702 917
+span=Q__case=B__k=08,Q,B,8,effective,spearman,mean,0.75,0,,15,True,,917
+span=Q__case=B__k=08,Q,B,8,effective,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=08,Q,B,8,effective,spearman,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=08,Q,B,8,effective,spearman,median,0.25,5,294 343 473 702 939,15,True,343,113 190 398 917
+span=Q__case=B__k=08,Q,B,8,effective,spearman,median,0.5,1,294,15,True,,190 702 917
+span=Q__case=B__k=08,Q,B,8,effective,spearman,median,0.75,0,,15,True,,917
+span=Q__case=B__k=08,Q,B,8,effective,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=09,Q,B,9,all,pearson,mean,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=09,Q,B,9,all,pearson,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=09,Q,B,9,all,pearson,mean,0.5,3,294 473 702,15,True,,917
+span=Q__case=B__k=09,Q,B,9,all,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=09,Q,B,9,all,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=09,Q,B,9,all,pearson,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=09,Q,B,9,all,pearson,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=Q__case=B__k=09,Q,B,9,all,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=09,Q,B,9,all,pearson,median,0.75,2,473 702,15,True,,917
+span=Q__case=B__k=09,Q,B,9,all,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=09,Q,B,9,all,spearman,mean,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=09,Q,B,9,all,spearman,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=09,Q,B,9,all,spearman,mean,0.5,2,294 702,15,True,,473 917
+span=Q__case=B__k=09,Q,B,9,all,spearman,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=09,Q,B,9,all,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=09,Q,B,9,all,spearman,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=09,Q,B,9,all,spearman,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=Q__case=B__k=09,Q,B,9,all,spearman,median,0.5,3,294 473 702,15,True,,190 917
+span=Q__case=B__k=09,Q,B,9,all,spearman,median,0.75,0,,15,True,,702 917
+span=Q__case=B__k=09,Q,B,9,all,spearman,median,0.9,0,,15,True,,917
+span=Q__case=B__k=09,Q,B,9,effective,pearson,mean,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=09,Q,B,9,effective,pearson,mean,0.25,5,113 294 473 702 939,15,True,,190 917
+span=Q__case=B__k=09,Q,B,9,effective,pearson,mean,0.5,3,294 473 702,15,True,,917
+span=Q__case=B__k=09,Q,B,9,effective,pearson,mean,0.75,0,,15,True,,702 917
+span=Q__case=B__k=09,Q,B,9,effective,pearson,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=09,Q,B,9,effective,pearson,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=Q__case=B__k=09,Q,B,9,effective,pearson,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=Q__case=B__k=09,Q,B,9,effective,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=Q__case=B__k=09,Q,B,9,effective,pearson,median,0.75,2,473 702,15,True,,917
+span=Q__case=B__k=09,Q,B,9,effective,pearson,median,0.9,0,,15,True,,917
+span=Q__case=B__k=09,Q,B,9,effective,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=Q__case=B__k=09,Q,B,9,effective,spearman,mean,0.25,4,294 473 702 939,15,True,939,113 190 917
+span=Q__case=B__k=09,Q,B,9,effective,spearman,mean,0.5,0,,15,True,,702 917
+span=Q__case=B__k=09,Q,B,9,effective,spearman,mean,0.75,0,,15,True,,917
+span=Q__case=B__k=09,Q,B,9,effective,spearman,mean,0.9,0,,15,True,,917
+span=Q__case=B__k=09,Q,B,9,effective,spearman,median,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=Q__case=B__k=09,Q,B,9,effective,spearman,median,0.25,4,294 473 702 939,15,True,,113 190 398 917
+span=Q__case=B__k=09,Q,B,9,effective,spearman,median,0.5,1,702,15,True,,190 294 917
+span=Q__case=B__k=09,Q,B,9,effective,spearman,median,0.75,0,,15,True,,917
+span=Q__case=B__k=09,Q,B,9,effective,spearman,median,0.9,0,,15,True,,917
+span=Q__case=C,Q,C,,all,pearson,mean,0.1,5,113 294 473 702 939,13,True,,190 398 917
+span=Q__case=C,Q,C,,all,pearson,mean,0.25,5,113 294 473 702 939,13,True,,190 917
+span=Q__case=C,Q,C,,all,pearson,mean,0.5,3,294 473 702,13,True,,917
+span=Q__case=C,Q,C,,all,pearson,mean,0.75,0,,13,True,,702 917
+span=Q__case=C,Q,C,,all,pearson,mean,0.9,0,,13,True,,917
+span=Q__case=C,Q,C,,all,pearson,median,0.1,5,113 294 473 702 939,13,True,,190 398 917
+span=Q__case=C,Q,C,,all,pearson,median,0.25,5,113 294 473 702 939,13,True,,190 398 917
+span=Q__case=C,Q,C,,all,pearson,median,0.5,3,294 473 702,13,True,,190 917
+span=Q__case=C,Q,C,,all,pearson,median,0.75,2,473 702,13,True,,917
+span=Q__case=C,Q,C,,all,pearson,median,0.9,0,,13,True,,917
+span=Q__case=C,Q,C,,all,spearman,mean,0.1,5,113 294 473 702 939,13,True,,190 398 917
+span=Q__case=C,Q,C,,all,spearman,mean,0.25,5,113 294 473 702 939,13,True,,190 917
+span=Q__case=C,Q,C,,all,spearman,mean,0.5,3,294 473 702,13,True,,917
+span=Q__case=C,Q,C,,all,spearman,mean,0.75,0,,13,True,,702 917
+span=Q__case=C,Q,C,,all,spearman,mean,0.9,0,,13,True,,917
+span=Q__case=C,Q,C,,all,spearman,median,0.1,5,113 294 473 702 939,13,True,,190 398 917
+span=Q__case=C,Q,C,,all,spearman,median,0.25,5,113 294 473 702 939,13,True,,190 398 917
+span=Q__case=C,Q,C,,all,spearman,median,0.5,3,294 473 702,13,True,,190 917
+span=Q__case=C,Q,C,,all,spearman,median,0.75,0,,13,True,,702 917
+span=Q__case=C,Q,C,,all,spearman,median,0.9,0,,13,True,,917
+span=Q__case=C,Q,C,,effective,pearson,mean,0.1,5,113 294 473 702 939,13,True,,190 398 917
+span=Q__case=C,Q,C,,effective,pearson,mean,0.25,5,113 294 473 702 939,13,True,,190 917
+span=Q__case=C,Q,C,,effective,pearson,mean,0.5,3,294 473 702,13,True,,917
+span=Q__case=C,Q,C,,effective,pearson,mean,0.75,0,,13,True,,702 917
+span=Q__case=C,Q,C,,effective,pearson,mean,0.9,0,,13,True,,917
+span=Q__case=C,Q,C,,effective,pearson,median,0.1,5,113 294 473 702 939,13,True,,190 398 917
+span=Q__case=C,Q,C,,effective,pearson,median,0.25,5,113 294 473 702 939,13,True,,190 398 917
+span=Q__case=C,Q,C,,effective,pearson,median,0.5,3,294 473 702,13,True,,190 917
+span=Q__case=C,Q,C,,effective,pearson,median,0.75,2,473 702,13,True,,917
+span=Q__case=C,Q,C,,effective,pearson,median,0.9,0,,13,True,,917
+span=Q__case=C,Q,C,,effective,spearman,mean,0.1,5,113 294 473 702 939,13,True,,190 398 917
+span=Q__case=C,Q,C,,effective,spearman,mean,0.25,5,113 294 473 702 939,13,True,939,190 917
+span=Q__case=C,Q,C,,effective,spearman,mean,0.5,3,294 473 702,13,True,294 473,917
+span=Q__case=C,Q,C,,effective,spearman,mean,0.75,0,,13,True,,917
+span=Q__case=C,Q,C,,effective,spearman,mean,0.9,0,,13,True,,917
+span=Q__case=C,Q,C,,effective,spearman,median,0.1,5,113 294 473 702 939,13,True,,190 398 917
+span=Q__case=C,Q,C,,effective,spearman,median,0.25,5,113 294 473 702 939,13,True,,190 398 917
+span=Q__case=C,Q,C,,effective,spearman,median,0.5,3,294 473 702,13,True,473,190 917
+span=Q__case=C,Q,C,,effective,spearman,median,0.75,0,,13,True,,917
+span=Q__case=C,Q,C,,effective,spearman,median,0.9,0,,13,True,,917
+span=intersection__case=A,intersection,A,,all,pearson,mean,0.1,7,113 190 294 398 473 702 939,14,True,,917
+span=intersection__case=A,intersection,A,,all,pearson,mean,0.25,6,113 190 294 473 702 939,14,True,,917
+span=intersection__case=A,intersection,A,,all,pearson,mean,0.5,3,294 473 702,14,True,,917
+span=intersection__case=A,intersection,A,,all,pearson,mean,0.75,1,702,14,True,,917
+span=intersection__case=A,intersection,A,,all,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=A,intersection,A,,all,pearson,median,0.1,7,113 190 294 398 473 702 939,14,True,,917
+span=intersection__case=A,intersection,A,,all,pearson,median,0.25,7,113 190 294 398 473 702 939,14,True,,917
+span=intersection__case=A,intersection,A,,all,pearson,median,0.5,4,190 294 473 702,14,True,,917
+span=intersection__case=A,intersection,A,,all,pearson,median,0.75,2,473 702,14,True,,917
+span=intersection__case=A,intersection,A,,all,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=A,intersection,A,,all,spearman,mean,0.1,7,113 190 294 398 473 702 939,14,True,,917
+span=intersection__case=A,intersection,A,,all,spearman,mean,0.25,6,113 190 294 473 702 939,14,True,,917
+span=intersection__case=A,intersection,A,,all,spearman,mean,0.5,3,294 473 702,14,True,,917
+span=intersection__case=A,intersection,A,,all,spearman,mean,0.75,1,702,14,True,,917
+span=intersection__case=A,intersection,A,,all,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=A,intersection,A,,all,spearman,median,0.1,7,113 190 294 398 473 702 939,14,True,,917
+span=intersection__case=A,intersection,A,,all,spearman,median,0.25,7,113 190 294 398 473 702 939,14,True,,917
+span=intersection__case=A,intersection,A,,all,spearman,median,0.5,4,190 294 473 702,14,True,,917
+span=intersection__case=A,intersection,A,,all,spearman,median,0.75,1,702,14,True,,917
+span=intersection__case=A,intersection,A,,all,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=A,intersection,A,,effective,pearson,mean,0.1,7,113 190 294 398 473 702 939,14,True,,917
+span=intersection__case=A,intersection,A,,effective,pearson,mean,0.25,6,113 190 294 473 702 939,14,True,,917
+span=intersection__case=A,intersection,A,,effective,pearson,mean,0.5,3,294 473 702,14,True,,917
+span=intersection__case=A,intersection,A,,effective,pearson,mean,0.75,1,702,14,True,,917
+span=intersection__case=A,intersection,A,,effective,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=A,intersection,A,,effective,pearson,median,0.1,7,113 190 294 398 473 702 939,14,True,,917
+span=intersection__case=A,intersection,A,,effective,pearson,median,0.25,7,113 190 294 398 473 702 939,14,True,,917
+span=intersection__case=A,intersection,A,,effective,pearson,median,0.5,4,190 294 473 702,14,True,,917
+span=intersection__case=A,intersection,A,,effective,pearson,median,0.75,2,473 702,14,True,,917
+span=intersection__case=A,intersection,A,,effective,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=A,intersection,A,,effective,spearman,mean,0.1,7,113 190 294 398 473 702 939,14,True,,917
+span=intersection__case=A,intersection,A,,effective,spearman,mean,0.25,5,113 190 294 473 702,14,True,,917
+span=intersection__case=A,intersection,A,,effective,spearman,mean,0.5,1,702,14,True,,917
+span=intersection__case=A,intersection,A,,effective,spearman,mean,0.75,0,,14,True,,917
+span=intersection__case=A,intersection,A,,effective,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=A,intersection,A,,effective,spearman,median,0.1,8,113 190 294 398 473 702 917 939,14,False,,
+span=intersection__case=A,intersection,A,,effective,spearman,median,0.25,8,113 190 294 398 473 702 917 939,14,False,,
+span=intersection__case=A,intersection,A,,effective,spearman,median,0.5,3,294 702 917,14,True,,190
+span=intersection__case=A,intersection,A,,effective,spearman,median,0.75,1,917,14,False,,
+span=intersection__case=A,intersection,A,,effective,spearman,median,0.9,1,917,14,False,,
+span=intersection__case=B__k=00,intersection,B,0,all,pearson,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=00,intersection,B,0,all,pearson,mean,0.25,6,113 294 343 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=00,intersection,B,0,all,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=intersection__case=B__k=00,intersection,B,0,all,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=00,intersection,B,0,all,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=00,intersection,B,0,all,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=00,intersection,B,0,all,pearson,median,0.25,5,113 294 473 702 939,14,True,,190 398 917
+span=intersection__case=B__k=00,intersection,B,0,all,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=00,intersection,B,0,all,pearson,median,0.75,2,473 702,14,True,,917
+span=intersection__case=B__k=00,intersection,B,0,all,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=00,intersection,B,0,all,spearman,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=00,intersection,B,0,all,spearman,mean,0.25,6,113 294 343 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=00,intersection,B,0,all,spearman,mean,0.5,0,,14,True,,294 473 702 917
+span=intersection__case=B__k=00,intersection,B,0,all,spearman,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=00,intersection,B,0,all,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=00,intersection,B,0,all,spearman,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=00,intersection,B,0,all,spearman,median,0.25,5,113 294 473 702 939,14,True,,190 398 917
+span=intersection__case=B__k=00,intersection,B,0,all,spearman,median,0.5,3,294 473 702,14,True,,190 917
+span=intersection__case=B__k=00,intersection,B,0,all,spearman,median,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=00,intersection,B,0,all,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=00,intersection,B,0,effective,pearson,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=00,intersection,B,0,effective,pearson,mean,0.25,6,113 294 343 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=00,intersection,B,0,effective,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=intersection__case=B__k=00,intersection,B,0,effective,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=00,intersection,B,0,effective,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=00,intersection,B,0,effective,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=00,intersection,B,0,effective,pearson,median,0.25,5,113 294 473 702 939,14,True,,190 398 917
+span=intersection__case=B__k=00,intersection,B,0,effective,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=00,intersection,B,0,effective,pearson,median,0.75,2,473 702,14,True,,917
+span=intersection__case=B__k=00,intersection,B,0,effective,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=00,intersection,B,0,effective,spearman,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=00,intersection,B,0,effective,spearman,mean,0.25,6,113 294 343 473 702 939,14,True,343 939,190 917
+span=intersection__case=B__k=00,intersection,B,0,effective,spearman,mean,0.5,0,,14,True,,702 917
+span=intersection__case=B__k=00,intersection,B,0,effective,spearman,mean,0.75,0,,14,True,,917
+span=intersection__case=B__k=00,intersection,B,0,effective,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=00,intersection,B,0,effective,spearman,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=00,intersection,B,0,effective,spearman,median,0.25,5,113 294 473 702 939,14,True,,190 398 917
+span=intersection__case=B__k=00,intersection,B,0,effective,spearman,median,0.5,2,473 702,14,True,473,190 294 917
+span=intersection__case=B__k=00,intersection,B,0,effective,spearman,median,0.75,0,,14,True,,917
+span=intersection__case=B__k=00,intersection,B,0,effective,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=01,intersection,B,1,all,pearson,mean,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=01,intersection,B,1,all,pearson,mean,0.25,7,113 190 294 343 473 702 939,14,True,343,917
+span=intersection__case=B__k=01,intersection,B,1,all,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=intersection__case=B__k=01,intersection,B,1,all,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=01,intersection,B,1,all,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=01,intersection,B,1,all,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=01,intersection,B,1,all,pearson,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=01,intersection,B,1,all,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=01,intersection,B,1,all,pearson,median,0.75,2,473 702,14,True,,917
+span=intersection__case=B__k=01,intersection,B,1,all,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=01,intersection,B,1,all,spearman,mean,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=01,intersection,B,1,all,spearman,mean,0.25,7,113 190 294 343 473 702 939,14,True,343,917
+span=intersection__case=B__k=01,intersection,B,1,all,spearman,mean,0.5,0,,14,True,,294 473 702 917
+span=intersection__case=B__k=01,intersection,B,1,all,spearman,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=01,intersection,B,1,all,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=01,intersection,B,1,all,spearman,median,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=01,intersection,B,1,all,spearman,median,0.25,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=01,intersection,B,1,all,spearman,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=01,intersection,B,1,all,spearman,median,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=01,intersection,B,1,all,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=01,intersection,B,1,effective,pearson,mean,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=01,intersection,B,1,effective,pearson,mean,0.25,7,113 190 294 343 473 702 939,14,True,343,917
+span=intersection__case=B__k=01,intersection,B,1,effective,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=intersection__case=B__k=01,intersection,B,1,effective,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=01,intersection,B,1,effective,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=01,intersection,B,1,effective,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=01,intersection,B,1,effective,pearson,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=01,intersection,B,1,effective,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=01,intersection,B,1,effective,pearson,median,0.75,2,473 702,14,True,,917
+span=intersection__case=B__k=01,intersection,B,1,effective,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=01,intersection,B,1,effective,spearman,mean,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=01,intersection,B,1,effective,spearman,mean,0.25,6,190 294 343 473 702 939,14,True,343 939,113 917
+span=intersection__case=B__k=01,intersection,B,1,effective,spearman,mean,0.5,0,,14,True,,702 917
+span=intersection__case=B__k=01,intersection,B,1,effective,spearman,mean,0.75,0,,14,True,,917
+span=intersection__case=B__k=01,intersection,B,1,effective,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=01,intersection,B,1,effective,spearman,median,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=01,intersection,B,1,effective,spearman,median,0.25,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=01,intersection,B,1,effective,spearman,median,0.5,0,,14,True,,190 294 702 917
+span=intersection__case=B__k=01,intersection,B,1,effective,spearman,median,0.75,0,,14,True,,917
+span=intersection__case=B__k=01,intersection,B,1,effective,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=02,intersection,B,2,all,pearson,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=02,intersection,B,2,all,pearson,mean,0.25,6,113 294 343 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=02,intersection,B,2,all,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=intersection__case=B__k=02,intersection,B,2,all,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=02,intersection,B,2,all,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=02,intersection,B,2,all,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=02,intersection,B,2,all,pearson,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=02,intersection,B,2,all,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=02,intersection,B,2,all,pearson,median,0.75,1,473,14,True,,702 917
+span=intersection__case=B__k=02,intersection,B,2,all,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=02,intersection,B,2,all,spearman,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=02,intersection,B,2,all,spearman,mean,0.25,6,113 294 343 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=02,intersection,B,2,all,spearman,mean,0.5,1,473,14,True,,294 702 917
+span=intersection__case=B__k=02,intersection,B,2,all,spearman,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=02,intersection,B,2,all,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=02,intersection,B,2,all,spearman,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=02,intersection,B,2,all,spearman,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=02,intersection,B,2,all,spearman,median,0.5,3,294 473 702,14,True,,190 917
+span=intersection__case=B__k=02,intersection,B,2,all,spearman,median,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=02,intersection,B,2,all,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=02,intersection,B,2,effective,pearson,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=02,intersection,B,2,effective,pearson,mean,0.25,6,113 294 343 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=02,intersection,B,2,effective,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=intersection__case=B__k=02,intersection,B,2,effective,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=02,intersection,B,2,effective,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=02,intersection,B,2,effective,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=02,intersection,B,2,effective,pearson,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=02,intersection,B,2,effective,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=02,intersection,B,2,effective,pearson,median,0.75,1,473,14,True,,702 917
+span=intersection__case=B__k=02,intersection,B,2,effective,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=02,intersection,B,2,effective,spearman,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=02,intersection,B,2,effective,spearman,mean,0.25,5,294 343 473 702 939,14,True,343 939,113 190 917
+span=intersection__case=B__k=02,intersection,B,2,effective,spearman,mean,0.5,0,,14,True,,702 917
+span=intersection__case=B__k=02,intersection,B,2,effective,spearman,mean,0.75,0,,14,True,,917
+span=intersection__case=B__k=02,intersection,B,2,effective,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=02,intersection,B,2,effective,spearman,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=02,intersection,B,2,effective,spearman,median,0.25,5,113 294 473 702 939,14,True,,190 398 917
+span=intersection__case=B__k=02,intersection,B,2,effective,spearman,median,0.5,0,,14,True,,190 294 702 917
+span=intersection__case=B__k=02,intersection,B,2,effective,spearman,median,0.75,0,,14,True,,917
+span=intersection__case=B__k=02,intersection,B,2,effective,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=03,intersection,B,3,all,pearson,mean,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=03,intersection,B,3,all,pearson,mean,0.25,7,113 190 294 343 473 702 939,14,True,343,917
+span=intersection__case=B__k=03,intersection,B,3,all,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=intersection__case=B__k=03,intersection,B,3,all,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=03,intersection,B,3,all,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=03,intersection,B,3,all,pearson,median,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=03,intersection,B,3,all,pearson,median,0.25,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=03,intersection,B,3,all,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=03,intersection,B,3,all,pearson,median,0.75,1,473,14,True,,702 917
+span=intersection__case=B__k=03,intersection,B,3,all,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=03,intersection,B,3,all,spearman,mean,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=03,intersection,B,3,all,spearman,mean,0.25,7,113 190 294 343 473 702 939,14,True,343,917
+span=intersection__case=B__k=03,intersection,B,3,all,spearman,mean,0.5,0,,14,True,,294 473 702 917
+span=intersection__case=B__k=03,intersection,B,3,all,spearman,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=03,intersection,B,3,all,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=03,intersection,B,3,all,spearman,median,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=03,intersection,B,3,all,spearman,median,0.25,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=03,intersection,B,3,all,spearman,median,0.5,1,473,14,True,,190 294 702 917
+span=intersection__case=B__k=03,intersection,B,3,all,spearman,median,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=03,intersection,B,3,all,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=03,intersection,B,3,effective,pearson,mean,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=03,intersection,B,3,effective,pearson,mean,0.25,7,113 190 294 343 473 702 939,14,True,343,917
+span=intersection__case=B__k=03,intersection,B,3,effective,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=intersection__case=B__k=03,intersection,B,3,effective,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=03,intersection,B,3,effective,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=03,intersection,B,3,effective,pearson,median,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=03,intersection,B,3,effective,pearson,median,0.25,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=03,intersection,B,3,effective,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=03,intersection,B,3,effective,pearson,median,0.75,1,473,14,True,,702 917
+span=intersection__case=B__k=03,intersection,B,3,effective,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=03,intersection,B,3,effective,spearman,mean,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=03,intersection,B,3,effective,spearman,mean,0.25,6,190 294 343 473 702 939,14,True,343 939,113 917
+span=intersection__case=B__k=03,intersection,B,3,effective,spearman,mean,0.5,0,,14,True,,702 917
+span=intersection__case=B__k=03,intersection,B,3,effective,spearman,mean,0.75,0,,14,True,,917
+span=intersection__case=B__k=03,intersection,B,3,effective,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=03,intersection,B,3,effective,spearman,median,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=03,intersection,B,3,effective,spearman,median,0.25,5,190 294 473 702 939,14,True,,113 398 917
+span=intersection__case=B__k=03,intersection,B,3,effective,spearman,median,0.5,0,,14,True,,190 294 702 917
+span=intersection__case=B__k=03,intersection,B,3,effective,spearman,median,0.75,0,,14,True,,917
+span=intersection__case=B__k=03,intersection,B,3,effective,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=04,intersection,B,4,all,pearson,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=04,intersection,B,4,all,pearson,mean,0.25,6,113 294 343 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=04,intersection,B,4,all,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=intersection__case=B__k=04,intersection,B,4,all,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=04,intersection,B,4,all,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=04,intersection,B,4,all,pearson,median,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=04,intersection,B,4,all,pearson,median,0.25,6,113 190 294 473 702 939,14,True,,398 917
+span=intersection__case=B__k=04,intersection,B,4,all,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=04,intersection,B,4,all,pearson,median,0.75,1,473,14,True,,702 917
+span=intersection__case=B__k=04,intersection,B,4,all,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=04,intersection,B,4,all,spearman,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=04,intersection,B,4,all,spearman,mean,0.25,6,113 294 343 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=04,intersection,B,4,all,spearman,mean,0.5,1,473,14,True,,294 702 917
+span=intersection__case=B__k=04,intersection,B,4,all,spearman,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=04,intersection,B,4,all,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=04,intersection,B,4,all,spearman,median,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=04,intersection,B,4,all,spearman,median,0.25,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=04,intersection,B,4,all,spearman,median,0.5,1,473,14,True,,190 294 702 917
+span=intersection__case=B__k=04,intersection,B,4,all,spearman,median,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=04,intersection,B,4,all,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=04,intersection,B,4,effective,pearson,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=04,intersection,B,4,effective,pearson,mean,0.25,6,113 294 343 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=04,intersection,B,4,effective,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=intersection__case=B__k=04,intersection,B,4,effective,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=04,intersection,B,4,effective,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=04,intersection,B,4,effective,pearson,median,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=04,intersection,B,4,effective,pearson,median,0.25,6,113 190 294 473 702 939,14,True,,398 917
+span=intersection__case=B__k=04,intersection,B,4,effective,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=04,intersection,B,4,effective,pearson,median,0.75,1,473,14,True,,702 917
+span=intersection__case=B__k=04,intersection,B,4,effective,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=04,intersection,B,4,effective,spearman,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=04,intersection,B,4,effective,spearman,mean,0.25,5,294 343 473 702 939,14,True,343 939,113 190 917
+span=intersection__case=B__k=04,intersection,B,4,effective,spearman,mean,0.5,0,,14,True,,702 917
+span=intersection__case=B__k=04,intersection,B,4,effective,spearman,mean,0.75,0,,14,True,,917
+span=intersection__case=B__k=04,intersection,B,4,effective,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=04,intersection,B,4,effective,spearman,median,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=04,intersection,B,4,effective,spearman,median,0.25,5,190 294 473 702 939,14,True,,113 398 917
+span=intersection__case=B__k=04,intersection,B,4,effective,spearman,median,0.5,0,,14,True,,190 294 702 917
+span=intersection__case=B__k=04,intersection,B,4,effective,spearman,median,0.75,0,,14,True,,917
+span=intersection__case=B__k=04,intersection,B,4,effective,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=05,intersection,B,5,all,pearson,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=05,intersection,B,5,all,pearson,mean,0.25,6,113 294 343 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=05,intersection,B,5,all,pearson,mean,0.5,3,294 473 702,14,True,,917
+span=intersection__case=B__k=05,intersection,B,5,all,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=05,intersection,B,5,all,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=05,intersection,B,5,all,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=05,intersection,B,5,all,pearson,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=05,intersection,B,5,all,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=05,intersection,B,5,all,pearson,median,0.75,1,473,14,True,,702 917
+span=intersection__case=B__k=05,intersection,B,5,all,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=05,intersection,B,5,all,spearman,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=05,intersection,B,5,all,spearman,mean,0.25,6,113 294 343 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=05,intersection,B,5,all,spearman,mean,0.5,1,294,14,True,,473 702 917
+span=intersection__case=B__k=05,intersection,B,5,all,spearman,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=05,intersection,B,5,all,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=05,intersection,B,5,all,spearman,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=05,intersection,B,5,all,spearman,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=05,intersection,B,5,all,spearman,median,0.5,2,294 473,14,True,,190 702 917
+span=intersection__case=B__k=05,intersection,B,5,all,spearman,median,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=05,intersection,B,5,all,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=05,intersection,B,5,effective,pearson,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=05,intersection,B,5,effective,pearson,mean,0.25,6,113 294 343 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=05,intersection,B,5,effective,pearson,mean,0.5,3,294 473 702,14,True,,917
+span=intersection__case=B__k=05,intersection,B,5,effective,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=05,intersection,B,5,effective,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=05,intersection,B,5,effective,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=05,intersection,B,5,effective,pearson,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=05,intersection,B,5,effective,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=05,intersection,B,5,effective,pearson,median,0.75,1,473,14,True,,702 917
+span=intersection__case=B__k=05,intersection,B,5,effective,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=05,intersection,B,5,effective,spearman,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=05,intersection,B,5,effective,spearman,mean,0.25,5,294 343 473 702 939,14,True,343 939,113 190 917
+span=intersection__case=B__k=05,intersection,B,5,effective,spearman,mean,0.5,0,,14,True,,702 917
+span=intersection__case=B__k=05,intersection,B,5,effective,spearman,mean,0.75,0,,14,True,,917
+span=intersection__case=B__k=05,intersection,B,5,effective,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=05,intersection,B,5,effective,spearman,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=05,intersection,B,5,effective,spearman,median,0.25,5,113 294 473 702 939,14,True,,190 398 917
+span=intersection__case=B__k=05,intersection,B,5,effective,spearman,median,0.5,1,294,14,True,,190 702 917
+span=intersection__case=B__k=05,intersection,B,5,effective,spearman,median,0.75,0,,14,True,,917
+span=intersection__case=B__k=05,intersection,B,5,effective,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=06,intersection,B,6,all,pearson,mean,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=06,intersection,B,6,all,pearson,mean,0.25,6,113 190 294 473 702 939,14,True,,917
+span=intersection__case=B__k=06,intersection,B,6,all,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=intersection__case=B__k=06,intersection,B,6,all,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=06,intersection,B,6,all,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=06,intersection,B,6,all,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=06,intersection,B,6,all,pearson,median,0.25,5,113 294 473 702 939,14,True,,190 398 917
+span=intersection__case=B__k=06,intersection,B,6,all,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=06,intersection,B,6,all,pearson,median,0.75,2,473 702,14,True,,917
+span=intersection__case=B__k=06,intersection,B,6,all,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=06,intersection,B,6,all,spearman,mean,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=06,intersection,B,6,all,spearman,mean,0.25,6,113 190 294 473 702 939,14,True,,917
+span=intersection__case=B__k=06,intersection,B,6,all,spearman,mean,0.5,1,702,14,True,,294 473 917
+span=intersection__case=B__k=06,intersection,B,6,all,spearman,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=06,intersection,B,6,all,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=06,intersection,B,6,all,spearman,median,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=06,intersection,B,6,all,spearman,median,0.25,6,113 294 398 473 702 939,14,True,,190 917
+span=intersection__case=B__k=06,intersection,B,6,all,spearman,median,0.5,3,294 473 702,14,True,,190 917
+span=intersection__case=B__k=06,intersection,B,6,all,spearman,median,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=06,intersection,B,6,all,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=06,intersection,B,6,effective,pearson,mean,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=06,intersection,B,6,effective,pearson,mean,0.25,6,113 190 294 473 702 939,14,True,,917
+span=intersection__case=B__k=06,intersection,B,6,effective,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=intersection__case=B__k=06,intersection,B,6,effective,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=06,intersection,B,6,effective,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=06,intersection,B,6,effective,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=06,intersection,B,6,effective,pearson,median,0.25,5,113 294 473 702 939,14,True,,190 398 917
+span=intersection__case=B__k=06,intersection,B,6,effective,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=06,intersection,B,6,effective,pearson,median,0.75,2,473 702,14,True,,917
+span=intersection__case=B__k=06,intersection,B,6,effective,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=06,intersection,B,6,effective,spearman,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=06,intersection,B,6,effective,spearman,mean,0.25,4,294 473 702 939,14,True,939,113 190 917
+span=intersection__case=B__k=06,intersection,B,6,effective,spearman,mean,0.5,0,,14,True,,702 917
+span=intersection__case=B__k=06,intersection,B,6,effective,spearman,mean,0.75,0,,14,True,,917
+span=intersection__case=B__k=06,intersection,B,6,effective,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=06,intersection,B,6,effective,spearman,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=06,intersection,B,6,effective,spearman,median,0.25,5,113 294 473 702 939,14,True,,190 398 917
+span=intersection__case=B__k=06,intersection,B,6,effective,spearman,median,0.5,0,,14,True,,190 294 702 917
+span=intersection__case=B__k=06,intersection,B,6,effective,spearman,median,0.75,0,,14,True,,917
+span=intersection__case=B__k=06,intersection,B,6,effective,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=07,intersection,B,7,all,pearson,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=07,intersection,B,7,all,pearson,mean,0.25,6,113 294 343 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=07,intersection,B,7,all,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=intersection__case=B__k=07,intersection,B,7,all,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=07,intersection,B,7,all,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=07,intersection,B,7,all,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=07,intersection,B,7,all,pearson,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=07,intersection,B,7,all,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=07,intersection,B,7,all,pearson,median,0.75,2,473 702,14,True,,917
+span=intersection__case=B__k=07,intersection,B,7,all,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=07,intersection,B,7,all,spearman,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=07,intersection,B,7,all,spearman,mean,0.25,5,294 343 473 702 939,14,True,343,113 190 917
+span=intersection__case=B__k=07,intersection,B,7,all,spearman,mean,0.5,2,473 702,14,True,,294 917
+span=intersection__case=B__k=07,intersection,B,7,all,spearman,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=07,intersection,B,7,all,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=07,intersection,B,7,all,spearman,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=07,intersection,B,7,all,spearman,median,0.25,5,294 343 473 702 939,14,True,343,113 190 398 917
+span=intersection__case=B__k=07,intersection,B,7,all,spearman,median,0.5,3,294 473 702,14,True,,190 917
+span=intersection__case=B__k=07,intersection,B,7,all,spearman,median,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=07,intersection,B,7,all,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=07,intersection,B,7,effective,pearson,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=07,intersection,B,7,effective,pearson,mean,0.25,6,113 294 343 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=07,intersection,B,7,effective,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=intersection__case=B__k=07,intersection,B,7,effective,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=07,intersection,B,7,effective,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=07,intersection,B,7,effective,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=07,intersection,B,7,effective,pearson,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=07,intersection,B,7,effective,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=07,intersection,B,7,effective,pearson,median,0.75,2,473 702,14,True,,917
+span=intersection__case=B__k=07,intersection,B,7,effective,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=07,intersection,B,7,effective,spearman,mean,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=07,intersection,B,7,effective,spearman,mean,0.25,5,294 343 473 702 939,14,True,343 939,113 190 917
+span=intersection__case=B__k=07,intersection,B,7,effective,spearman,mean,0.5,0,,14,True,,702 917
+span=intersection__case=B__k=07,intersection,B,7,effective,spearman,mean,0.75,0,,14,True,,917
+span=intersection__case=B__k=07,intersection,B,7,effective,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=07,intersection,B,7,effective,spearman,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=07,intersection,B,7,effective,spearman,median,0.25,5,294 343 473 702 939,14,True,343,113 190 398 917
+span=intersection__case=B__k=07,intersection,B,7,effective,spearman,median,0.5,2,294 702,14,True,,190 917
+span=intersection__case=B__k=07,intersection,B,7,effective,spearman,median,0.75,0,,14,True,,917
+span=intersection__case=B__k=07,intersection,B,7,effective,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=08,intersection,B,8,all,pearson,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=08,intersection,B,8,all,pearson,mean,0.25,6,113 294 343 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=08,intersection,B,8,all,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=intersection__case=B__k=08,intersection,B,8,all,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=08,intersection,B,8,all,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=08,intersection,B,8,all,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=08,intersection,B,8,all,pearson,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=08,intersection,B,8,all,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=08,intersection,B,8,all,pearson,median,0.75,1,473,14,True,,702 917
+span=intersection__case=B__k=08,intersection,B,8,all,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=08,intersection,B,8,all,spearman,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=08,intersection,B,8,all,spearman,mean,0.25,6,113 294 343 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=08,intersection,B,8,all,spearman,mean,0.5,1,702,14,True,,294 473 917
+span=intersection__case=B__k=08,intersection,B,8,all,spearman,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=08,intersection,B,8,all,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=08,intersection,B,8,all,spearman,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=08,intersection,B,8,all,spearman,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=08,intersection,B,8,all,spearman,median,0.5,2,294 473,14,True,,190 702 917
+span=intersection__case=B__k=08,intersection,B,8,all,spearman,median,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=08,intersection,B,8,all,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=08,intersection,B,8,effective,pearson,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=08,intersection,B,8,effective,pearson,mean,0.25,6,113 294 343 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=08,intersection,B,8,effective,pearson,mean,0.5,2,473 702,14,True,,294 917
+span=intersection__case=B__k=08,intersection,B,8,effective,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=08,intersection,B,8,effective,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=08,intersection,B,8,effective,pearson,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=08,intersection,B,8,effective,pearson,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=08,intersection,B,8,effective,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=08,intersection,B,8,effective,pearson,median,0.75,1,473,14,True,,702 917
+span=intersection__case=B__k=08,intersection,B,8,effective,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=08,intersection,B,8,effective,spearman,mean,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=08,intersection,B,8,effective,spearman,mean,0.25,5,294 343 473 702 939,14,True,343 939,113 190 917
+span=intersection__case=B__k=08,intersection,B,8,effective,spearman,mean,0.5,0,,14,True,,702 917
+span=intersection__case=B__k=08,intersection,B,8,effective,spearman,mean,0.75,0,,14,True,,917
+span=intersection__case=B__k=08,intersection,B,8,effective,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=08,intersection,B,8,effective,spearman,median,0.1,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=08,intersection,B,8,effective,spearman,median,0.25,6,113 294 343 473 702 939,14,True,343,190 398 917
+span=intersection__case=B__k=08,intersection,B,8,effective,spearman,median,0.5,1,294,14,True,,190 702 917
+span=intersection__case=B__k=08,intersection,B,8,effective,spearman,median,0.75,0,,14,True,,917
+span=intersection__case=B__k=08,intersection,B,8,effective,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=09,intersection,B,9,all,pearson,mean,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=09,intersection,B,9,all,pearson,mean,0.25,7,113 190 294 343 473 702 939,14,True,343,917
+span=intersection__case=B__k=09,intersection,B,9,all,pearson,mean,0.5,3,294 473 702,14,True,,917
+span=intersection__case=B__k=09,intersection,B,9,all,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=09,intersection,B,9,all,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=09,intersection,B,9,all,pearson,median,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=09,intersection,B,9,all,pearson,median,0.25,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=09,intersection,B,9,all,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=09,intersection,B,9,all,pearson,median,0.75,2,473 702,14,True,,917
+span=intersection__case=B__k=09,intersection,B,9,all,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=09,intersection,B,9,all,spearman,mean,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=09,intersection,B,9,all,spearman,mean,0.25,7,113 190 294 343 473 702 939,14,True,343,917
+span=intersection__case=B__k=09,intersection,B,9,all,spearman,mean,0.5,1,294,14,True,,473 702 917
+span=intersection__case=B__k=09,intersection,B,9,all,spearman,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=09,intersection,B,9,all,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=09,intersection,B,9,all,spearman,median,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=09,intersection,B,9,all,spearman,median,0.25,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=09,intersection,B,9,all,spearman,median,0.5,3,294 473 702,14,True,,190 917
+span=intersection__case=B__k=09,intersection,B,9,all,spearman,median,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=09,intersection,B,9,all,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=09,intersection,B,9,effective,pearson,mean,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=09,intersection,B,9,effective,pearson,mean,0.25,7,113 190 294 343 473 702 939,14,True,343,917
+span=intersection__case=B__k=09,intersection,B,9,effective,pearson,mean,0.5,3,294 473 702,14,True,,917
+span=intersection__case=B__k=09,intersection,B,9,effective,pearson,mean,0.75,0,,14,True,,702 917
+span=intersection__case=B__k=09,intersection,B,9,effective,pearson,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=09,intersection,B,9,effective,pearson,median,0.1,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=09,intersection,B,9,effective,pearson,median,0.25,7,113 190 294 343 473 702 939,14,True,343,398 917
+span=intersection__case=B__k=09,intersection,B,9,effective,pearson,median,0.5,2,473 702,14,True,,190 294 917
+span=intersection__case=B__k=09,intersection,B,9,effective,pearson,median,0.75,2,473 702,14,True,,917
+span=intersection__case=B__k=09,intersection,B,9,effective,pearson,median,0.9,0,,14,True,,917
+span=intersection__case=B__k=09,intersection,B,9,effective,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,14,True,343,917
+span=intersection__case=B__k=09,intersection,B,9,effective,spearman,mean,0.25,6,190 294 343 473 702 939,14,True,343 939,113 917
+span=intersection__case=B__k=09,intersection,B,9,effective,spearman,mean,0.5,0,,14,True,,702 917
+span=intersection__case=B__k=09,intersection,B,9,effective,spearman,mean,0.75,0,,14,True,,917
+span=intersection__case=B__k=09,intersection,B,9,effective,spearman,mean,0.9,0,,14,True,,917
+span=intersection__case=B__k=09,intersection,B,9,effective,spearman,median,0.1,7,113 294 343 398 473 702 939,14,True,343,190 917
+span=intersection__case=B__k=09,intersection,B,9,effective,spearman,median,0.25,4,294 473 702 939,14,True,,113 190 398 917
+span=intersection__case=B__k=09,intersection,B,9,effective,spearman,median,0.5,0,,14,True,,190 294 702 917
+span=intersection__case=B__k=09,intersection,B,9,effective,spearman,median,0.75,0,,14,True,,917
+span=intersection__case=B__k=09,intersection,B,9,effective,spearman,median,0.9,0,,14,True,,917
+span=intersection__case=C,intersection,C,,all,pearson,mean,0.1,5,113 294 473 702 939,12,True,,190 398 917
+span=intersection__case=C,intersection,C,,all,pearson,mean,0.25,5,113 294 473 702 939,12,True,,190 917
+span=intersection__case=C,intersection,C,,all,pearson,mean,0.5,3,294 473 702,12,True,,917
+span=intersection__case=C,intersection,C,,all,pearson,mean,0.75,0,,12,True,,702 917
+span=intersection__case=C,intersection,C,,all,pearson,mean,0.9,0,,12,True,,917
+span=intersection__case=C,intersection,C,,all,pearson,median,0.1,5,113 294 473 702 939,12,True,,190 398 917
+span=intersection__case=C,intersection,C,,all,pearson,median,0.25,5,113 294 473 702 939,12,True,,190 398 917
+span=intersection__case=C,intersection,C,,all,pearson,median,0.5,3,294 473 702,12,True,,190 917
+span=intersection__case=C,intersection,C,,all,pearson,median,0.75,2,473 702,12,True,,917
+span=intersection__case=C,intersection,C,,all,pearson,median,0.9,0,,12,True,,917
+span=intersection__case=C,intersection,C,,all,spearman,mean,0.1,5,113 294 473 702 939,12,True,,190 398 917
+span=intersection__case=C,intersection,C,,all,spearman,mean,0.25,5,113 294 473 702 939,12,True,,190 917
+span=intersection__case=C,intersection,C,,all,spearman,mean,0.5,3,294 473 702,12,True,,917
+span=intersection__case=C,intersection,C,,all,spearman,mean,0.75,0,,12,True,,702 917
+span=intersection__case=C,intersection,C,,all,spearman,mean,0.9,0,,12,True,,917
+span=intersection__case=C,intersection,C,,all,spearman,median,0.1,5,113 294 473 702 939,12,True,,190 398 917
+span=intersection__case=C,intersection,C,,all,spearman,median,0.25,5,113 294 473 702 939,12,True,,190 398 917
+span=intersection__case=C,intersection,C,,all,spearman,median,0.5,3,294 473 702,12,True,,190 917
+span=intersection__case=C,intersection,C,,all,spearman,median,0.75,0,,12,True,,702 917
+span=intersection__case=C,intersection,C,,all,spearman,median,0.9,0,,12,True,,917
+span=intersection__case=C,intersection,C,,effective,pearson,mean,0.1,5,113 294 473 702 939,12,True,,190 398 917
+span=intersection__case=C,intersection,C,,effective,pearson,mean,0.25,5,113 294 473 702 939,12,True,,190 917
+span=intersection__case=C,intersection,C,,effective,pearson,mean,0.5,3,294 473 702,12,True,,917
+span=intersection__case=C,intersection,C,,effective,pearson,mean,0.75,0,,12,True,,702 917
+span=intersection__case=C,intersection,C,,effective,pearson,mean,0.9,0,,12,True,,917
+span=intersection__case=C,intersection,C,,effective,pearson,median,0.1,5,113 294 473 702 939,12,True,,190 398 917
+span=intersection__case=C,intersection,C,,effective,pearson,median,0.25,5,113 294 473 702 939,12,True,,190 398 917
+span=intersection__case=C,intersection,C,,effective,pearson,median,0.5,3,294 473 702,12,True,,190 917
+span=intersection__case=C,intersection,C,,effective,pearson,median,0.75,2,473 702,12,True,,917
+span=intersection__case=C,intersection,C,,effective,pearson,median,0.9,0,,12,True,,917
+span=intersection__case=C,intersection,C,,effective,spearman,mean,0.1,5,113 294 473 702 939,12,True,,190 398 917
+span=intersection__case=C,intersection,C,,effective,spearman,mean,0.25,5,113 294 473 702 939,12,True,939,190 917
+span=intersection__case=C,intersection,C,,effective,spearman,mean,0.5,3,294 473 702,12,True,294 473,917
+span=intersection__case=C,intersection,C,,effective,spearman,mean,0.75,0,,12,True,,917
+span=intersection__case=C,intersection,C,,effective,spearman,mean,0.9,0,,12,True,,917
+span=intersection__case=C,intersection,C,,effective,spearman,median,0.1,5,113 294 473 702 939,12,True,,190 398 917
+span=intersection__case=C,intersection,C,,effective,spearman,median,0.25,5,113 294 473 702 939,12,True,,190 398 917
+span=intersection__case=C,intersection,C,,effective,spearman,median,0.5,3,294 473 702,12,True,473,190 917
+span=intersection__case=C,intersection,C,,effective,spearman,median,0.75,0,,12,True,,917
+span=intersection__case=C,intersection,C,,effective,spearman,median,0.9,0,,12,True,,917
+span=union__case=A,union,A,,all,pearson,mean,0.1,8,113 190 294 398 473 702 917 939,15,False,,
+span=union__case=A,union,A,,all,pearson,mean,0.25,7,113 190 294 473 702 917 939,15,False,,
+span=union__case=A,union,A,,all,pearson,mean,0.5,4,294 473 702 917,15,False,,
+span=union__case=A,union,A,,all,pearson,mean,0.75,2,702 917,15,False,,
+span=union__case=A,union,A,,all,pearson,mean,0.9,1,917,15,False,,
+span=union__case=A,union,A,,all,pearson,median,0.1,8,113 190 294 398 473 702 917 939,15,False,,
+span=union__case=A,union,A,,all,pearson,median,0.25,8,113 190 294 398 473 702 917 939,15,False,,
+span=union__case=A,union,A,,all,pearson,median,0.5,5,190 294 473 702 917,15,False,,
+span=union__case=A,union,A,,all,pearson,median,0.75,3,473 702 917,15,False,,
+span=union__case=A,union,A,,all,pearson,median,0.9,1,917,15,False,,
+span=union__case=A,union,A,,all,spearman,mean,0.1,8,113 190 294 398 473 702 917 939,15,False,,
+span=union__case=A,union,A,,all,spearman,mean,0.25,7,113 190 294 473 702 917 939,15,False,,
+span=union__case=A,union,A,,all,spearman,mean,0.5,4,294 473 702 917,15,False,,
+span=union__case=A,union,A,,all,spearman,mean,0.75,2,702 917,15,False,,
+span=union__case=A,union,A,,all,spearman,mean,0.9,1,917,15,False,,
+span=union__case=A,union,A,,all,spearman,median,0.1,8,113 190 294 398 473 702 917 939,15,False,,
+span=union__case=A,union,A,,all,spearman,median,0.25,8,113 190 294 398 473 702 917 939,15,False,,
+span=union__case=A,union,A,,all,spearman,median,0.5,5,190 294 473 702 917,15,False,,
+span=union__case=A,union,A,,all,spearman,median,0.75,2,702 917,15,False,,
+span=union__case=A,union,A,,all,spearman,median,0.9,1,917,15,False,,
+span=union__case=A,union,A,,effective,pearson,mean,0.1,8,113 190 294 398 473 702 917 939,15,False,,
+span=union__case=A,union,A,,effective,pearson,mean,0.25,7,113 190 294 473 702 917 939,15,False,,
+span=union__case=A,union,A,,effective,pearson,mean,0.5,4,294 473 702 917,15,False,,
+span=union__case=A,union,A,,effective,pearson,mean,0.75,2,702 917,15,False,,
+span=union__case=A,union,A,,effective,pearson,mean,0.9,1,917,15,False,,
+span=union__case=A,union,A,,effective,pearson,median,0.1,8,113 190 294 398 473 702 917 939,15,False,,
+span=union__case=A,union,A,,effective,pearson,median,0.25,8,113 190 294 398 473 702 917 939,15,False,,
+span=union__case=A,union,A,,effective,pearson,median,0.5,5,190 294 473 702 917,15,False,,
+span=union__case=A,union,A,,effective,pearson,median,0.75,3,473 702 917,15,False,,
+span=union__case=A,union,A,,effective,pearson,median,0.9,1,917,15,False,,
+span=union__case=A,union,A,,effective,spearman,mean,0.1,8,113 190 294 398 473 702 917 939,15,False,,
+span=union__case=A,union,A,,effective,spearman,mean,0.25,6,113 190 294 473 702 917,15,False,,
+span=union__case=A,union,A,,effective,spearman,mean,0.5,2,702 917,15,False,,
+span=union__case=A,union,A,,effective,spearman,mean,0.75,1,917,15,False,,
+span=union__case=A,union,A,,effective,spearman,mean,0.9,1,917,15,False,,
+span=union__case=A,union,A,,effective,spearman,median,0.1,8,113 190 294 398 473 702 917 939,15,False,,
+span=union__case=A,union,A,,effective,spearman,median,0.25,8,113 190 294 398 473 702 917 939,15,False,,
+span=union__case=A,union,A,,effective,spearman,median,0.5,4,190 294 702 917,15,False,,
+span=union__case=A,union,A,,effective,spearman,median,0.75,1,917,15,False,,
+span=union__case=A,union,A,,effective,spearman,median,0.9,1,917,15,False,,
+span=union__case=B__k=00,union,B,0,all,pearson,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=00,union,B,0,all,pearson,mean,0.25,6,113 294 398 473 702 939,15,True,398,190 917
+span=union__case=B__k=00,union,B,0,all,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=union__case=B__k=00,union,B,0,all,pearson,mean,0.75,1,702,15,True,,917
+span=union__case=B__k=00,union,B,0,all,pearson,mean,0.9,0,,15,True,,917
+span=union__case=B__k=00,union,B,0,all,pearson,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=union__case=B__k=00,union,B,0,all,pearson,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=union__case=B__k=00,union,B,0,all,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=union__case=B__k=00,union,B,0,all,pearson,median,0.75,2,473 702,15,True,,917
+span=union__case=B__k=00,union,B,0,all,pearson,median,0.9,0,,15,True,,917
+span=union__case=B__k=00,union,B,0,all,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=00,union,B,0,all,spearman,mean,0.25,6,113 294 398 473 702 939,15,True,398,190 917
+span=union__case=B__k=00,union,B,0,all,spearman,mean,0.5,1,702,15,True,,294 473 917
+span=union__case=B__k=00,union,B,0,all,spearman,mean,0.75,0,,15,True,,702 917
+span=union__case=B__k=00,union,B,0,all,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=00,union,B,0,all,spearman,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=union__case=B__k=00,union,B,0,all,spearman,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=union__case=B__k=00,union,B,0,all,spearman,median,0.5,3,294 473 702,15,True,,190 917
+span=union__case=B__k=00,union,B,0,all,spearman,median,0.75,0,,15,True,,702 917
+span=union__case=B__k=00,union,B,0,all,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=00,union,B,0,effective,pearson,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=00,union,B,0,effective,pearson,mean,0.25,6,113 294 398 473 702 939,15,True,398,190 917
+span=union__case=B__k=00,union,B,0,effective,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=union__case=B__k=00,union,B,0,effective,pearson,mean,0.75,1,702,15,True,,917
+span=union__case=B__k=00,union,B,0,effective,pearson,mean,0.9,0,,15,True,,917
+span=union__case=B__k=00,union,B,0,effective,pearson,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=union__case=B__k=00,union,B,0,effective,pearson,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=union__case=B__k=00,union,B,0,effective,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=union__case=B__k=00,union,B,0,effective,pearson,median,0.75,2,473 702,15,True,,917
+span=union__case=B__k=00,union,B,0,effective,pearson,median,0.9,0,,15,True,,917
+span=union__case=B__k=00,union,B,0,effective,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=00,union,B,0,effective,spearman,mean,0.25,6,113 294 398 473 702 939,15,True,398 939,190 917
+span=union__case=B__k=00,union,B,0,effective,spearman,mean,0.5,0,,15,True,,702 917
+span=union__case=B__k=00,union,B,0,effective,spearman,mean,0.75,0,,15,True,,917
+span=union__case=B__k=00,union,B,0,effective,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=00,union,B,0,effective,spearman,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=union__case=B__k=00,union,B,0,effective,spearman,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=union__case=B__k=00,union,B,0,effective,spearman,median,0.5,1,473,15,True,473,190 294 702 917
+span=union__case=B__k=00,union,B,0,effective,spearman,median,0.75,0,,15,True,,917
+span=union__case=B__k=00,union,B,0,effective,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=01,union,B,1,all,pearson,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=01,union,B,1,all,pearson,mean,0.25,7,113 294 343 398 473 702 939,15,True,343 398,190 917
+span=union__case=B__k=01,union,B,1,all,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=union__case=B__k=01,union,B,1,all,pearson,mean,0.75,1,702,15,True,,917
+span=union__case=B__k=01,union,B,1,all,pearson,mean,0.9,0,,15,True,,917
+span=union__case=B__k=01,union,B,1,all,pearson,median,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=01,union,B,1,all,pearson,median,0.25,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=01,union,B,1,all,pearson,median,0.5,3,398 473 702,15,True,398,190 294 917
+span=union__case=B__k=01,union,B,1,all,pearson,median,0.75,2,473 702,15,True,,917
+span=union__case=B__k=01,union,B,1,all,pearson,median,0.9,0,,15,True,,917
+span=union__case=B__k=01,union,B,1,all,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=01,union,B,1,all,spearman,mean,0.25,6,294 343 398 473 702 939,15,True,343 398,113 190 917
+span=union__case=B__k=01,union,B,1,all,spearman,mean,0.5,1,702,15,True,,294 473 917
+span=union__case=B__k=01,union,B,1,all,spearman,mean,0.75,0,,15,True,,702 917
+span=union__case=B__k=01,union,B,1,all,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=01,union,B,1,all,spearman,median,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=01,union,B,1,all,spearman,median,0.25,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=01,union,B,1,all,spearman,median,0.5,3,398 473 702,15,True,398,190 294 917
+span=union__case=B__k=01,union,B,1,all,spearman,median,0.75,0,,15,True,,702 917
+span=union__case=B__k=01,union,B,1,all,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=01,union,B,1,effective,pearson,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=01,union,B,1,effective,pearson,mean,0.25,7,113 294 343 398 473 702 939,15,True,343 398,190 917
+span=union__case=B__k=01,union,B,1,effective,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=union__case=B__k=01,union,B,1,effective,pearson,mean,0.75,1,702,15,True,,917
+span=union__case=B__k=01,union,B,1,effective,pearson,mean,0.9,0,,15,True,,917
+span=union__case=B__k=01,union,B,1,effective,pearson,median,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=01,union,B,1,effective,pearson,median,0.25,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=01,union,B,1,effective,pearson,median,0.5,3,398 473 702,15,True,398,190 294 917
+span=union__case=B__k=01,union,B,1,effective,pearson,median,0.75,2,473 702,15,True,,917
+span=union__case=B__k=01,union,B,1,effective,pearson,median,0.9,0,,15,True,,917
+span=union__case=B__k=01,union,B,1,effective,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=01,union,B,1,effective,spearman,mean,0.25,6,294 343 398 473 702 939,15,True,343 398 939,113 190 917
+span=union__case=B__k=01,union,B,1,effective,spearman,mean,0.5,0,,15,True,,702 917
+span=union__case=B__k=01,union,B,1,effective,spearman,mean,0.75,0,,15,True,,917
+span=union__case=B__k=01,union,B,1,effective,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=01,union,B,1,effective,spearman,median,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=01,union,B,1,effective,spearman,median,0.25,6,113 294 398 473 702 939,15,True,,190 917
+span=union__case=B__k=01,union,B,1,effective,spearman,median,0.5,1,398,15,True,398,190 294 702 917
+span=union__case=B__k=01,union,B,1,effective,spearman,median,0.75,0,,15,True,,917
+span=union__case=B__k=01,union,B,1,effective,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=02,union,B,2,all,pearson,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=02,union,B,2,all,pearson,mean,0.25,6,113 294 398 473 702 939,15,True,398,190 917
+span=union__case=B__k=02,union,B,2,all,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=union__case=B__k=02,union,B,2,all,pearson,mean,0.75,1,702,15,True,,917
+span=union__case=B__k=02,union,B,2,all,pearson,mean,0.9,0,,15,True,,917
+span=union__case=B__k=02,union,B,2,all,pearson,median,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=02,union,B,2,all,pearson,median,0.25,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=02,union,B,2,all,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=union__case=B__k=02,union,B,2,all,pearson,median,0.75,2,473 702,15,True,,917
+span=union__case=B__k=02,union,B,2,all,pearson,median,0.9,0,,15,True,,917
+span=union__case=B__k=02,union,B,2,all,spearman,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=02,union,B,2,all,spearman,mean,0.25,6,113 294 398 473 702 939,15,True,398,190 917
+span=union__case=B__k=02,union,B,2,all,spearman,mean,0.5,2,473 702,15,True,,294 917
+span=union__case=B__k=02,union,B,2,all,spearman,mean,0.75,0,,15,True,,702 917
+span=union__case=B__k=02,union,B,2,all,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=02,union,B,2,all,spearman,median,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=02,union,B,2,all,spearman,median,0.25,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=02,union,B,2,all,spearman,median,0.5,3,294 473 702,15,True,,190 917
+span=union__case=B__k=02,union,B,2,all,spearman,median,0.75,0,,15,True,,702 917
+span=union__case=B__k=02,union,B,2,all,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=02,union,B,2,effective,pearson,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=02,union,B,2,effective,pearson,mean,0.25,6,113 294 398 473 702 939,15,True,398,190 917
+span=union__case=B__k=02,union,B,2,effective,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=union__case=B__k=02,union,B,2,effective,pearson,mean,0.75,1,702,15,True,,917
+span=union__case=B__k=02,union,B,2,effective,pearson,mean,0.9,0,,15,True,,917
+span=union__case=B__k=02,union,B,2,effective,pearson,median,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=02,union,B,2,effective,pearson,median,0.25,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=02,union,B,2,effective,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=union__case=B__k=02,union,B,2,effective,pearson,median,0.75,2,473 702,15,True,,917
+span=union__case=B__k=02,union,B,2,effective,pearson,median,0.9,0,,15,True,,917
+span=union__case=B__k=02,union,B,2,effective,spearman,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=02,union,B,2,effective,spearman,mean,0.25,5,294 398 473 702 939,15,True,398 939,113 190 917
+span=union__case=B__k=02,union,B,2,effective,spearman,mean,0.5,1,702,15,True,,917
+span=union__case=B__k=02,union,B,2,effective,spearman,mean,0.75,0,,15,True,,917
+span=union__case=B__k=02,union,B,2,effective,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=02,union,B,2,effective,spearman,median,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=02,union,B,2,effective,spearman,median,0.25,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=02,union,B,2,effective,spearman,median,0.5,1,702,15,True,,190 294 917
+span=union__case=B__k=02,union,B,2,effective,spearman,median,0.75,0,,15,True,,917
+span=union__case=B__k=02,union,B,2,effective,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=03,union,B,3,all,pearson,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=03,union,B,3,all,pearson,mean,0.25,6,113 294 398 473 702 939,15,True,398,190 917
+span=union__case=B__k=03,union,B,3,all,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=union__case=B__k=03,union,B,3,all,pearson,mean,0.75,1,702,15,True,,917
+span=union__case=B__k=03,union,B,3,all,pearson,mean,0.9,0,,15,True,,917
+span=union__case=B__k=03,union,B,3,all,pearson,median,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=03,union,B,3,all,pearson,median,0.25,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=03,union,B,3,all,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=union__case=B__k=03,union,B,3,all,pearson,median,0.75,2,473 702,15,True,,917
+span=union__case=B__k=03,union,B,3,all,pearson,median,0.9,0,,15,True,,917
+span=union__case=B__k=03,union,B,3,all,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=03,union,B,3,all,spearman,mean,0.25,5,294 398 473 702 939,15,True,398,113 190 917
+span=union__case=B__k=03,union,B,3,all,spearman,mean,0.5,1,702,15,True,,294 473 917
+span=union__case=B__k=03,union,B,3,all,spearman,mean,0.75,0,,15,True,,702 917
+span=union__case=B__k=03,union,B,3,all,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=03,union,B,3,all,spearman,median,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=03,union,B,3,all,spearman,median,0.25,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=03,union,B,3,all,spearman,median,0.5,2,473 702,15,True,,190 294 917
+span=union__case=B__k=03,union,B,3,all,spearman,median,0.75,0,,15,True,,702 917
+span=union__case=B__k=03,union,B,3,all,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=03,union,B,3,effective,pearson,mean,0.1,8,113 294 343 398 473 702 917 939,15,True,343,190
+span=union__case=B__k=03,union,B,3,effective,pearson,mean,0.25,7,113 294 398 473 702 917 939,15,True,398,190
+span=union__case=B__k=03,union,B,3,effective,pearson,mean,0.5,3,473 702 917,15,True,,294
+span=union__case=B__k=03,union,B,3,effective,pearson,mean,0.75,2,702 917,15,False,,
+span=union__case=B__k=03,union,B,3,effective,pearson,mean,0.9,1,917,15,False,,
+span=union__case=B__k=03,union,B,3,effective,pearson,median,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=03,union,B,3,effective,pearson,median,0.25,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=03,union,B,3,effective,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=union__case=B__k=03,union,B,3,effective,pearson,median,0.75,2,473 702,15,True,,917
+span=union__case=B__k=03,union,B,3,effective,pearson,median,0.9,0,,15,True,,917
+span=union__case=B__k=03,union,B,3,effective,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=03,union,B,3,effective,spearman,mean,0.25,5,294 398 473 702 939,15,True,398 939,113 190 917
+span=union__case=B__k=03,union,B,3,effective,spearman,mean,0.5,0,,15,True,,702 917
+span=union__case=B__k=03,union,B,3,effective,spearman,mean,0.75,0,,15,True,,917
+span=union__case=B__k=03,union,B,3,effective,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=03,union,B,3,effective,spearman,median,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=03,union,B,3,effective,spearman,median,0.25,5,294 398 473 702 939,15,True,,113 190 917
+span=union__case=B__k=03,union,B,3,effective,spearman,median,0.5,1,702,15,True,,190 294 917
+span=union__case=B__k=03,union,B,3,effective,spearman,median,0.75,0,,15,True,,917
+span=union__case=B__k=03,union,B,3,effective,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=04,union,B,4,all,pearson,mean,0.1,9,113 190 294 343 398 473 702 917 939,15,True,343,
+span=union__case=B__k=04,union,B,4,all,pearson,mean,0.25,7,113 294 398 473 702 917 939,15,True,398,190
+span=union__case=B__k=04,union,B,4,all,pearson,mean,0.5,3,473 702 917,15,True,,294
+span=union__case=B__k=04,union,B,4,all,pearson,mean,0.75,2,702 917,15,False,,
+span=union__case=B__k=04,union,B,4,all,pearson,mean,0.9,1,917,15,False,,
+span=union__case=B__k=04,union,B,4,all,pearson,median,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=04,union,B,4,all,pearson,median,0.25,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=04,union,B,4,all,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=union__case=B__k=04,union,B,4,all,pearson,median,0.75,2,473 702,15,True,,917
+span=union__case=B__k=04,union,B,4,all,pearson,median,0.9,0,,15,True,,917
+span=union__case=B__k=04,union,B,4,all,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=04,union,B,4,all,spearman,mean,0.25,5,294 398 473 702 939,15,True,398,113 190 917
+span=union__case=B__k=04,union,B,4,all,spearman,mean,0.5,2,473 702,15,True,,294 917
+span=union__case=B__k=04,union,B,4,all,spearman,mean,0.75,0,,15,True,,702 917
+span=union__case=B__k=04,union,B,4,all,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=04,union,B,4,all,spearman,median,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=04,union,B,4,all,spearman,median,0.25,6,113 294 398 473 702 939,15,True,,190 917
+span=union__case=B__k=04,union,B,4,all,spearman,median,0.5,2,473 702,15,True,,190 294 917
+span=union__case=B__k=04,union,B,4,all,spearman,median,0.75,0,,15,True,,702 917
+span=union__case=B__k=04,union,B,4,all,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=04,union,B,4,effective,pearson,mean,0.1,9,113 190 294 343 398 473 702 917 939,15,True,343,
+span=union__case=B__k=04,union,B,4,effective,pearson,mean,0.25,7,113 294 398 473 702 917 939,15,True,398,190
+span=union__case=B__k=04,union,B,4,effective,pearson,mean,0.5,3,473 702 917,15,True,,294
+span=union__case=B__k=04,union,B,4,effective,pearson,mean,0.75,2,702 917,15,False,,
+span=union__case=B__k=04,union,B,4,effective,pearson,mean,0.9,1,917,15,False,,
+span=union__case=B__k=04,union,B,4,effective,pearson,median,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=04,union,B,4,effective,pearson,median,0.25,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=04,union,B,4,effective,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=union__case=B__k=04,union,B,4,effective,pearson,median,0.75,2,473 702,15,True,,917
+span=union__case=B__k=04,union,B,4,effective,pearson,median,0.9,0,,15,True,,917
+span=union__case=B__k=04,union,B,4,effective,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=04,union,B,4,effective,spearman,mean,0.25,5,294 398 473 702 939,15,True,398 939,113 190 917
+span=union__case=B__k=04,union,B,4,effective,spearman,mean,0.5,0,,15,True,,702 917
+span=union__case=B__k=04,union,B,4,effective,spearman,mean,0.75,0,,15,True,,917
+span=union__case=B__k=04,union,B,4,effective,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=04,union,B,4,effective,spearman,median,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=04,union,B,4,effective,spearman,median,0.25,5,294 398 473 702 939,15,True,,113 190 917
+span=union__case=B__k=04,union,B,4,effective,spearman,median,0.5,0,,15,True,,190 294 702 917
+span=union__case=B__k=04,union,B,4,effective,spearman,median,0.75,0,,15,True,,917
+span=union__case=B__k=04,union,B,4,effective,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=05,union,B,5,all,pearson,mean,0.1,8,113 294 343 398 473 702 917 939,15,True,343,190
+span=union__case=B__k=05,union,B,5,all,pearson,mean,0.25,7,113 294 398 473 702 917 939,15,True,398,190
+span=union__case=B__k=05,union,B,5,all,pearson,mean,0.5,4,294 473 702 917,15,False,,
+span=union__case=B__k=05,union,B,5,all,pearson,mean,0.75,1,917,15,True,,702
+span=union__case=B__k=05,union,B,5,all,pearson,mean,0.9,1,917,15,False,,
+span=union__case=B__k=05,union,B,5,all,pearson,median,0.1,8,113 294 343 398 473 702 917 939,15,True,343,190
+span=union__case=B__k=05,union,B,5,all,pearson,median,0.25,7,113 294 398 473 702 917 939,15,True,,190
+span=union__case=B__k=05,union,B,5,all,pearson,median,0.5,3,473 702 917,15,True,,190 294
+span=union__case=B__k=05,union,B,5,all,pearson,median,0.75,3,473 702 917,15,False,,
+span=union__case=B__k=05,union,B,5,all,pearson,median,0.9,1,917,15,False,,
+span=union__case=B__k=05,union,B,5,all,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=05,union,B,5,all,spearman,mean,0.25,6,113 294 398 473 702 939,15,True,398,190 917
+span=union__case=B__k=05,union,B,5,all,spearman,mean,0.5,1,294,15,True,,473 702 917
+span=union__case=B__k=05,union,B,5,all,spearman,mean,0.75,0,,15,True,,702 917
+span=union__case=B__k=05,union,B,5,all,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=05,union,B,5,all,spearman,median,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=05,union,B,5,all,spearman,median,0.25,6,113 294 398 473 702 939,15,True,,190 917
+span=union__case=B__k=05,union,B,5,all,spearman,median,0.5,3,294 473 702,15,True,,190 917
+span=union__case=B__k=05,union,B,5,all,spearman,median,0.75,0,,15,True,,702 917
+span=union__case=B__k=05,union,B,5,all,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=05,union,B,5,effective,pearson,mean,0.1,8,113 294 343 398 473 702 917 939,15,True,343,190
+span=union__case=B__k=05,union,B,5,effective,pearson,mean,0.25,7,113 294 398 473 702 917 939,15,True,398,190
+span=union__case=B__k=05,union,B,5,effective,pearson,mean,0.5,4,294 473 702 917,15,False,,
+span=union__case=B__k=05,union,B,5,effective,pearson,mean,0.75,1,917,15,True,,702
+span=union__case=B__k=05,union,B,5,effective,pearson,mean,0.9,1,917,15,False,,
+span=union__case=B__k=05,union,B,5,effective,pearson,median,0.1,8,113 294 343 398 473 702 917 939,15,True,343,190
+span=union__case=B__k=05,union,B,5,effective,pearson,median,0.25,7,113 294 398 473 702 917 939,15,True,,190
+span=union__case=B__k=05,union,B,5,effective,pearson,median,0.5,3,473 702 917,15,True,,190 294
+span=union__case=B__k=05,union,B,5,effective,pearson,median,0.75,3,473 702 917,15,False,,
+span=union__case=B__k=05,union,B,5,effective,pearson,median,0.9,1,917,15,False,,
+span=union__case=B__k=05,union,B,5,effective,spearman,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=05,union,B,5,effective,spearman,mean,0.25,5,294 398 473 702 939,15,True,398 939,113 190 917
+span=union__case=B__k=05,union,B,5,effective,spearman,mean,0.5,0,,15,True,,702 917
+span=union__case=B__k=05,union,B,5,effective,spearman,mean,0.75,0,,15,True,,917
+span=union__case=B__k=05,union,B,5,effective,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=05,union,B,5,effective,spearman,median,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=05,union,B,5,effective,spearman,median,0.25,6,113 294 398 473 702 939,15,True,,190 917
+span=union__case=B__k=05,union,B,5,effective,spearman,median,0.5,0,,15,True,,190 294 702 917
+span=union__case=B__k=05,union,B,5,effective,spearman,median,0.75,0,,15,True,,917
+span=union__case=B__k=05,union,B,5,effective,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=06,union,B,6,all,pearson,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=06,union,B,6,all,pearson,mean,0.25,6,113 294 398 473 702 939,15,True,398,190 917
+span=union__case=B__k=06,union,B,6,all,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=union__case=B__k=06,union,B,6,all,pearson,mean,0.75,0,,15,True,,702 917
+span=union__case=B__k=06,union,B,6,all,pearson,mean,0.9,0,,15,True,,917
+span=union__case=B__k=06,union,B,6,all,pearson,median,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=06,union,B,6,all,pearson,median,0.25,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=06,union,B,6,all,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=union__case=B__k=06,union,B,6,all,pearson,median,0.75,2,473 702,15,True,,917
+span=union__case=B__k=06,union,B,6,all,pearson,median,0.9,0,,15,True,,917
+span=union__case=B__k=06,union,B,6,all,spearman,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=06,union,B,6,all,spearman,mean,0.25,6,113 294 398 473 702 939,15,True,398,190 917
+span=union__case=B__k=06,union,B,6,all,spearman,mean,0.5,0,,15,True,,294 473 702 917
+span=union__case=B__k=06,union,B,6,all,spearman,mean,0.75,0,,15,True,,702 917
+span=union__case=B__k=06,union,B,6,all,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=06,union,B,6,all,spearman,median,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=06,union,B,6,all,spearman,median,0.25,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=06,union,B,6,all,spearman,median,0.5,1,473,15,True,,190 294 702 917
+span=union__case=B__k=06,union,B,6,all,spearman,median,0.75,0,,15,True,,702 917
+span=union__case=B__k=06,union,B,6,all,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=06,union,B,6,effective,pearson,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=06,union,B,6,effective,pearson,mean,0.25,6,113 294 398 473 702 939,15,True,398,190 917
+span=union__case=B__k=06,union,B,6,effective,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=union__case=B__k=06,union,B,6,effective,pearson,mean,0.75,0,,15,True,,702 917
+span=union__case=B__k=06,union,B,6,effective,pearson,mean,0.9,0,,15,True,,917
+span=union__case=B__k=06,union,B,6,effective,pearson,median,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=06,union,B,6,effective,pearson,median,0.25,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=06,union,B,6,effective,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=union__case=B__k=06,union,B,6,effective,pearson,median,0.75,2,473 702,15,True,,917
+span=union__case=B__k=06,union,B,6,effective,pearson,median,0.9,0,,15,True,,917
+span=union__case=B__k=06,union,B,6,effective,spearman,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=06,union,B,6,effective,spearman,mean,0.25,5,294 398 473 702 939,15,True,398 939,113 190 917
+span=union__case=B__k=06,union,B,6,effective,spearman,mean,0.5,0,,15,True,,702 917
+span=union__case=B__k=06,union,B,6,effective,spearman,mean,0.75,0,,15,True,,917
+span=union__case=B__k=06,union,B,6,effective,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=06,union,B,6,effective,spearman,median,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=06,union,B,6,effective,spearman,median,0.25,6,294 343 398 473 702 939,15,True,343,113 190 917
+span=union__case=B__k=06,union,B,6,effective,spearman,median,0.5,0,,15,True,,190 294 702 917
+span=union__case=B__k=06,union,B,6,effective,spearman,median,0.75,0,,15,True,,917
+span=union__case=B__k=06,union,B,6,effective,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=07,union,B,7,all,pearson,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=07,union,B,7,all,pearson,mean,0.25,6,113 294 398 473 702 939,15,True,398,190 917
+span=union__case=B__k=07,union,B,7,all,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=union__case=B__k=07,union,B,7,all,pearson,mean,0.75,0,,15,True,,702 917
+span=union__case=B__k=07,union,B,7,all,pearson,mean,0.9,0,,15,True,,917
+span=union__case=B__k=07,union,B,7,all,pearson,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=union__case=B__k=07,union,B,7,all,pearson,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=union__case=B__k=07,union,B,7,all,pearson,median,0.5,3,294 473 702,15,True,,190 917
+span=union__case=B__k=07,union,B,7,all,pearson,median,0.75,2,473 702,15,True,,917
+span=union__case=B__k=07,union,B,7,all,pearson,median,0.9,0,,15,True,,917
+span=union__case=B__k=07,union,B,7,all,spearman,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=07,union,B,7,all,spearman,mean,0.25,5,294 398 473 702 939,15,True,398,113 190 917
+span=union__case=B__k=07,union,B,7,all,spearman,mean,0.5,1,473,15,True,,294 702 917
+span=union__case=B__k=07,union,B,7,all,spearman,mean,0.75,0,,15,True,,702 917
+span=union__case=B__k=07,union,B,7,all,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=07,union,B,7,all,spearman,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=union__case=B__k=07,union,B,7,all,spearman,median,0.25,4,294 473 702 939,15,True,,113 190 398 917
+span=union__case=B__k=07,union,B,7,all,spearman,median,0.5,3,294 473 702,15,True,,190 917
+span=union__case=B__k=07,union,B,7,all,spearman,median,0.75,0,,15,True,,702 917
+span=union__case=B__k=07,union,B,7,all,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=07,union,B,7,effective,pearson,mean,0.1,8,113 294 343 398 473 702 917 939,15,True,343,190
+span=union__case=B__k=07,union,B,7,effective,pearson,mean,0.25,7,113 294 398 473 702 917 939,15,True,398,190
+span=union__case=B__k=07,union,B,7,effective,pearson,mean,0.5,3,473 702 917,15,True,,294
+span=union__case=B__k=07,union,B,7,effective,pearson,mean,0.75,1,917,15,True,,702
+span=union__case=B__k=07,union,B,7,effective,pearson,mean,0.9,1,917,15,False,,
+span=union__case=B__k=07,union,B,7,effective,pearson,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=union__case=B__k=07,union,B,7,effective,pearson,median,0.25,5,113 294 473 702 939,15,True,,190 398 917
+span=union__case=B__k=07,union,B,7,effective,pearson,median,0.5,3,294 473 702,15,True,,190 917
+span=union__case=B__k=07,union,B,7,effective,pearson,median,0.75,2,473 702,15,True,,917
+span=union__case=B__k=07,union,B,7,effective,pearson,median,0.9,0,,15,True,,917
+span=union__case=B__k=07,union,B,7,effective,spearman,mean,0.1,7,113 294 343 398 473 702 939,15,True,343,190 917
+span=union__case=B__k=07,union,B,7,effective,spearman,mean,0.25,5,294 398 473 702 939,15,True,398 939,113 190 917
+span=union__case=B__k=07,union,B,7,effective,spearman,mean,0.5,0,,15,True,,702 917
+span=union__case=B__k=07,union,B,7,effective,spearman,mean,0.75,0,,15,True,,917
+span=union__case=B__k=07,union,B,7,effective,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=07,union,B,7,effective,spearman,median,0.1,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=union__case=B__k=07,union,B,7,effective,spearman,median,0.25,4,294 473 702 939,15,True,,113 190 398 917
+span=union__case=B__k=07,union,B,7,effective,spearman,median,0.5,1,294,15,True,,190 702 917
+span=union__case=B__k=07,union,B,7,effective,spearman,median,0.75,0,,15,True,,917
+span=union__case=B__k=07,union,B,7,effective,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=08,union,B,8,all,pearson,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=08,union,B,8,all,pearson,mean,0.25,7,113 294 343 398 473 702 939,15,True,343 398,190 917
+span=union__case=B__k=08,union,B,8,all,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=union__case=B__k=08,union,B,8,all,pearson,mean,0.75,1,702,15,True,,917
+span=union__case=B__k=08,union,B,8,all,pearson,mean,0.9,0,,15,True,,917
+span=union__case=B__k=08,union,B,8,all,pearson,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=union__case=B__k=08,union,B,8,all,pearson,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=union__case=B__k=08,union,B,8,all,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=union__case=B__k=08,union,B,8,all,pearson,median,0.75,2,473 702,15,True,,917
+span=union__case=B__k=08,union,B,8,all,pearson,median,0.9,0,,15,True,,917
+span=union__case=B__k=08,union,B,8,all,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=08,union,B,8,all,spearman,mean,0.25,7,113 294 343 398 473 702 939,15,True,343 398,190 917
+span=union__case=B__k=08,union,B,8,all,spearman,mean,0.5,1,702,15,True,,294 473 917
+span=union__case=B__k=08,union,B,8,all,spearman,mean,0.75,0,,15,True,,702 917
+span=union__case=B__k=08,union,B,8,all,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=08,union,B,8,all,spearman,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=union__case=B__k=08,union,B,8,all,spearman,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=union__case=B__k=08,union,B,8,all,spearman,median,0.5,3,294 473 702,15,True,,190 917
+span=union__case=B__k=08,union,B,8,all,spearman,median,0.75,0,,15,True,,702 917
+span=union__case=B__k=08,union,B,8,all,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=08,union,B,8,effective,pearson,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=08,union,B,8,effective,pearson,mean,0.25,7,113 294 343 398 473 702 939,15,True,343 398,190 917
+span=union__case=B__k=08,union,B,8,effective,pearson,mean,0.5,2,473 702,15,True,,294 917
+span=union__case=B__k=08,union,B,8,effective,pearson,mean,0.75,1,702,15,True,,917
+span=union__case=B__k=08,union,B,8,effective,pearson,mean,0.9,0,,15,True,,917
+span=union__case=B__k=08,union,B,8,effective,pearson,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=union__case=B__k=08,union,B,8,effective,pearson,median,0.25,6,113 294 343 473 702 939,15,True,343,190 398 917
+span=union__case=B__k=08,union,B,8,effective,pearson,median,0.5,2,473 702,15,True,,190 294 917
+span=union__case=B__k=08,union,B,8,effective,pearson,median,0.75,2,473 702,15,True,,917
+span=union__case=B__k=08,union,B,8,effective,pearson,median,0.9,0,,15,True,,917
+span=union__case=B__k=08,union,B,8,effective,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=08,union,B,8,effective,spearman,mean,0.25,6,294 343 398 473 702 939,15,True,343 398 939,113 190 917
+span=union__case=B__k=08,union,B,8,effective,spearman,mean,0.5,0,,15,True,,702 917
+span=union__case=B__k=08,union,B,8,effective,spearman,mean,0.75,0,,15,True,,917
+span=union__case=B__k=08,union,B,8,effective,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=08,union,B,8,effective,spearman,median,0.1,7,113 190 294 343 473 702 939,15,True,343,398 917
+span=union__case=B__k=08,union,B,8,effective,spearman,median,0.25,5,294 343 473 702 939,15,True,343,113 190 398 917
+span=union__case=B__k=08,union,B,8,effective,spearman,median,0.5,1,702,15,True,,190 294 917
+span=union__case=B__k=08,union,B,8,effective,spearman,median,0.75,0,,15,True,,917
+span=union__case=B__k=08,union,B,8,effective,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=09,union,B,9,all,pearson,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=09,union,B,9,all,pearson,mean,0.25,6,113 294 398 473 702 939,15,True,398,190 917
+span=union__case=B__k=09,union,B,9,all,pearson,mean,0.5,3,294 473 702,15,True,,917
+span=union__case=B__k=09,union,B,9,all,pearson,mean,0.75,1,702,15,True,,917
+span=union__case=B__k=09,union,B,9,all,pearson,mean,0.9,0,,15,True,,917
+span=union__case=B__k=09,union,B,9,all,pearson,median,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=09,union,B,9,all,pearson,median,0.25,6,113 294 398 473 702 939,15,True,,190 917
+span=union__case=B__k=09,union,B,9,all,pearson,median,0.5,3,294 473 702,15,True,,190 917
+span=union__case=B__k=09,union,B,9,all,pearson,median,0.75,2,473 702,15,True,,917
+span=union__case=B__k=09,union,B,9,all,pearson,median,0.9,0,,15,True,,917
+span=union__case=B__k=09,union,B,9,all,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=09,union,B,9,all,spearman,mean,0.25,6,113 294 398 473 702 939,15,True,398,190 917
+span=union__case=B__k=09,union,B,9,all,spearman,mean,0.5,2,294 702,15,True,,473 917
+span=union__case=B__k=09,union,B,9,all,spearman,mean,0.75,0,,15,True,,702 917
+span=union__case=B__k=09,union,B,9,all,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=09,union,B,9,all,spearman,median,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=09,union,B,9,all,spearman,median,0.25,6,113 294 398 473 702 939,15,True,,190 917
+span=union__case=B__k=09,union,B,9,all,spearman,median,0.5,3,294 473 702,15,True,,190 917
+span=union__case=B__k=09,union,B,9,all,spearman,median,0.75,0,,15,True,,702 917
+span=union__case=B__k=09,union,B,9,all,spearman,median,0.9,0,,15,True,,917
+span=union__case=B__k=09,union,B,9,effective,pearson,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=09,union,B,9,effective,pearson,mean,0.25,6,113 294 398 473 702 939,15,True,398,190 917
+span=union__case=B__k=09,union,B,9,effective,pearson,mean,0.5,3,294 473 702,15,True,,917
+span=union__case=B__k=09,union,B,9,effective,pearson,mean,0.75,1,702,15,True,,917
+span=union__case=B__k=09,union,B,9,effective,pearson,mean,0.9,0,,15,True,,917
+span=union__case=B__k=09,union,B,9,effective,pearson,median,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=09,union,B,9,effective,pearson,median,0.25,6,113 294 398 473 702 939,15,True,,190 917
+span=union__case=B__k=09,union,B,9,effective,pearson,median,0.5,3,294 473 702,15,True,,190 917
+span=union__case=B__k=09,union,B,9,effective,pearson,median,0.75,2,473 702,15,True,,917
+span=union__case=B__k=09,union,B,9,effective,pearson,median,0.9,0,,15,True,,917
+span=union__case=B__k=09,union,B,9,effective,spearman,mean,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=09,union,B,9,effective,spearman,mean,0.25,5,294 398 473 702 939,15,True,398 939,113 190 917
+span=union__case=B__k=09,union,B,9,effective,spearman,mean,0.5,1,702,15,True,,917
+span=union__case=B__k=09,union,B,9,effective,spearman,mean,0.75,0,,15,True,,917
+span=union__case=B__k=09,union,B,9,effective,spearman,mean,0.9,0,,15,True,,917
+span=union__case=B__k=09,union,B,9,effective,spearman,median,0.1,8,113 190 294 343 398 473 702 939,15,True,343,917
+span=union__case=B__k=09,union,B,9,effective,spearman,median,0.25,5,294 398 473 702 939,15,True,,113 190 917
+span=union__case=B__k=09,union,B,9,effective,spearman,median,0.5,2,294 702,15,True,,190 917
+span=union__case=B__k=09,union,B,9,effective,spearman,median,0.75,0,,15,True,,917
+span=union__case=B__k=09,union,B,9,effective,spearman,median,0.9,0,,15,True,,917
+span=union__case=C,union,C,,all,pearson,mean,0.1,5,113 294 473 702 939,13,True,,190 398 917
+span=union__case=C,union,C,,all,pearson,mean,0.25,5,113 294 473 702 939,13,True,,190 917
+span=union__case=C,union,C,,all,pearson,mean,0.5,3,294 473 702,13,True,,917
+span=union__case=C,union,C,,all,pearson,mean,0.75,0,,13,True,,702 917
+span=union__case=C,union,C,,all,pearson,mean,0.9,0,,13,True,,917
+span=union__case=C,union,C,,all,pearson,median,0.1,5,113 294 473 702 939,13,True,,190 398 917
+span=union__case=C,union,C,,all,pearson,median,0.25,5,113 294 473 702 939,13,True,,190 398 917
+span=union__case=C,union,C,,all,pearson,median,0.5,3,294 473 702,13,True,,190 917
+span=union__case=C,union,C,,all,pearson,median,0.75,2,473 702,13,True,,917
+span=union__case=C,union,C,,all,pearson,median,0.9,0,,13,True,,917
+span=union__case=C,union,C,,all,spearman,mean,0.1,5,113 294 473 702 939,13,True,,190 398 917
+span=union__case=C,union,C,,all,spearman,mean,0.25,5,113 294 473 702 939,13,True,,190 917
+span=union__case=C,union,C,,all,spearman,mean,0.5,3,294 473 702,13,True,,917
+span=union__case=C,union,C,,all,spearman,mean,0.75,0,,13,True,,702 917
+span=union__case=C,union,C,,all,spearman,mean,0.9,0,,13,True,,917
+span=union__case=C,union,C,,all,spearman,median,0.1,5,113 294 473 702 939,13,True,,190 398 917
+span=union__case=C,union,C,,all,spearman,median,0.25,5,113 294 473 702 939,13,True,,190 398 917
+span=union__case=C,union,C,,all,spearman,median,0.5,3,294 473 702,13,True,,190 917
+span=union__case=C,union,C,,all,spearman,median,0.75,0,,13,True,,702 917
+span=union__case=C,union,C,,all,spearman,median,0.9,0,,13,True,,917
+span=union__case=C,union,C,,effective,pearson,mean,0.1,5,113 294 473 702 939,13,True,,190 398 917
+span=union__case=C,union,C,,effective,pearson,mean,0.25,5,113 294 473 702 939,13,True,,190 917
+span=union__case=C,union,C,,effective,pearson,mean,0.5,3,294 473 702,13,True,,917
+span=union__case=C,union,C,,effective,pearson,mean,0.75,0,,13,True,,702 917
+span=union__case=C,union,C,,effective,pearson,mean,0.9,0,,13,True,,917
+span=union__case=C,union,C,,effective,pearson,median,0.1,5,113 294 473 702 939,13,True,,190 398 917
+span=union__case=C,union,C,,effective,pearson,median,0.25,5,113 294 473 702 939,13,True,,190 398 917
+span=union__case=C,union,C,,effective,pearson,median,0.5,3,294 473 702,13,True,,190 917
+span=union__case=C,union,C,,effective,pearson,median,0.75,2,473 702,13,True,,917
+span=union__case=C,union,C,,effective,pearson,median,0.9,0,,13,True,,917
+span=union__case=C,union,C,,effective,spearman,mean,0.1,5,113 294 473 702 939,13,True,,190 398 917
+span=union__case=C,union,C,,effective,spearman,mean,0.25,5,113 294 473 702 939,13,True,939,190 917
+span=union__case=C,union,C,,effective,spearman,mean,0.5,3,294 473 702,13,True,294 473,917
+span=union__case=C,union,C,,effective,spearman,mean,0.75,0,,13,True,,917
+span=union__case=C,union,C,,effective,spearman,mean,0.9,0,,13,True,,917
+span=union__case=C,union,C,,effective,spearman,median,0.1,5,113 294 473 702 939,13,True,,190 398 917
+span=union__case=C,union,C,,effective,spearman,median,0.25,5,113 294 473 702 939,13,True,,190 398 917
+span=union__case=C,union,C,,effective,spearman,median,0.5,3,294 473 702,13,True,473,190 917
+span=union__case=C,union,C,,effective,spearman,median,0.75,0,,13,True,,917
+span=union__case=C,union,C,,effective,spearman,median,0.9,0,,13,True,,917

@@ -1,0 +1,13 @@
+world_id,span,absence_case,n_concordant,concordant,n_assessed,changed,joiners,leavers,imputations
+span=union__case=A,union,A,2,702 917,15,False,,,
+span=union__case=B,union,B,0,,15,True,,702 917,702:2/10
+span=union__case=C,union,C,3,294 473 702,13,True,294 473,917,
+span=Q__case=A,Q,A,1,702,15,True,,917,
+span=Q__case=B,Q,B,0,,15,True,,702 917,
+span=Q__case=C,Q,C,3,294 473 702,13,True,294 473,917,
+span=D__case=A,D,A,2,702 917,14,False,,,
+span=D__case=B,D,B,0,,14,True,,702 917,702:4/10
+span=D__case=C,D,C,3,294 473 702,12,True,294 473,917,
+span=intersection__case=A,intersection,A,1,702,14,True,,917,
+span=intersection__case=B,intersection,B,0,,14,True,,702 917,
+span=intersection__case=C,intersection,C,3,294 473 702,12,True,294 473,917,

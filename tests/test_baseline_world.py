@@ -88,7 +88,7 @@ def test_no_leaked_perfect_correlations_in_the_regenerated_summary(summary):
     assert -0.4 < s398["null_mean"] < -0.1  # was -1.45 on the v1 null
 
 
-def test_config_groups_use_the_primary_spec_without_fallback():
+def test_config_groups_use_the_primary_spec_without_fallback(restore_active_world):
     import warnings
     import config
     with warnings.catch_warnings():
@@ -104,17 +104,25 @@ def test_config_groups_use_the_primary_spec_without_fallback():
     config.set_active_world(BASELINE)
 
 
-def test_set_active_world_rejects_unbuilt_world():
+@pytest.fixture
+def restore_active_world():
+    import config
+    yield
+    config.set_active_world(BASELINE)
+
+
+def test_set_active_world_rejects_unbuilt_world(restore_active_world):
     import config
     with pytest.raises(RuntimeError, match="No concordant sets recorded"):
-        config.set_active_world("span=D__case=C")
+        config.set_active_world("span=intersection__case=B__k=99")  # never built
     assert config.ACTIVE_WORLD == BASELINE
 
 
 def test_output_dirs_are_per_world(tmp_path, monkeypatch):
     import config
     from aamos_concordance import worlds
-    monkeypatch.setattr(worlds, "V2_DIR", tmp_path)
+    config.set_active_world(BASELINE)
+    monkeypatch.setattr(worlds, "V2_DIR", tmp_path)  # only affects path resolution; active world untouched
     assert config.get_output_dir("concordant", "bland_altman") == tmp_path / "comparisons" / "span=union__case=A" / "concordant" / "bland_altman"
 
 
