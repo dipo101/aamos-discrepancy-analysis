@@ -36,6 +36,6 @@ effective,spearman,mean,0.75,0,
 effective,spearman,mean,0.9,0,
 effective,spearman,median,0.1,8,113 190 294 398 473 702 917 939
 effective,spearman,median,0.25,8,113 190 294 398 473 702 917 939
-effective,spearman,median,0.5,4,190 294 702 917
+effective,spearman,median,0.5,3,294 702 917
 effective,spearman,median,0.75,1,917
 effective,spearman,median,0.9,1,917

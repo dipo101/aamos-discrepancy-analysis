@@ -11,13 +11,13 @@ results/
     worlds.csv                    Index of every world that has been built:
                                   parameters, build time, git commit, data hashes.
     worlds/<world_id>/            One folder per world, named by its parameters,
-                                  e.g. span=Q__case=A (the baseline = v1).
+                                  e.g. span=union__case=A (the baseline = v1: the union span trims
+                                  nothing; Q/D/intersection trim raw entries outside the period).
       config.json                 The world spec and how it was built.
       per_config_z.csv            Observed multiverse: patient x 132 configs x Fisher Z.
-                                  Written by per_patient_correlation_analysis.py --world ...
+                                  Written by scripts/build_world.py --world ... (engine)
       null.parquet                Null distribution: patient x permutation x summary stats.
-                                  Written by permutation_cloudrun/aggregator/aggregate.py --world ...
-                                  (git-ignored; the baseline points at the v1 parquet instead)
+                                  Written by scripts/build_world.py (engine, local; git-ignored)
       summary.csv                 Long table: patient, measure, observed Z, permutation
                                   p-value, Bonferroni, n_ties_at_observed. Derived from the two above.
     groups/concordant_sets.json   {world_id: {mean: [...], median: [...]}}. GENERATED from

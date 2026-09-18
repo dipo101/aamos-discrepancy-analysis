@@ -7,13 +7,13 @@
     "113": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 163,
+      "n_rows": 158,
       "seed": 42
     },
     "190": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 163,
+      "n_rows": 19,
       "seed": 42
     },
     "294": {
@@ -30,7 +30,7 @@
     "343": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 173,
+      "n_rows": 93,
       "seed": 42
     },
     "398": {
@@ -41,13 +41,13 @@
     "447": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 99,
+      "n_rows": 89,
       "seed": 42
     },
     "454": {
       "mode": "exact",
-      "n_permutations": 840,
-      "n_rows": 10
+      "n_permutations": 2,
+      "n_rows": 2
     },
     "473": {
       "mode": "sampled",
@@ -58,25 +58,25 @@
     "514": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 54,
+      "n_rows": 36,
       "seed": 42
     },
     "625": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 62,
+      "n_rows": 16,
       "seed": 42
     },
     "701": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 127,
+      "n_rows": 30,
       "seed": 42
     },
     "702": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 124,
+      "n_rows": 120,
       "seed": 42
     },
     "917": {
@@ -91,7 +91,7 @@
       "seed": 42
     }
   },
-  "null_source": "results/v2/worlds/span=Q__case=A/null.parquet",
-  "span": "Q",
-  "world_id": "span=Q__case=A"
+  "null_source": "results/v2/worlds/span=D__case=A/null.parquet",
+  "span": "D",
+  "world_id": "span=D__case=A"
 }

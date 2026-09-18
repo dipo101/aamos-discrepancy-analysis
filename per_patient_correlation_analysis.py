@@ -650,7 +650,7 @@ def main(argv=None):
     import argparse
     parser = argparse.ArgumentParser(description="Per-patient multiverse: observed Fisher Z for all 132 configurations.")
     parser.add_argument('--world', default=str(BASELINE),
-                        help='world id to write into (default: baseline span=Q__case=A). '
+                        help='world id to write into (default: baseline span=union__case=A). '
                              'Only the baseline is implemented so far.')
     args = parser.parse_args(argv)
     world = as_world(args.world)

@@ -11,8 +11,12 @@ sensitivity analysis varies around the fixed 132-configuration multiverse:
                     Poisson imputation, ``C`` dropped;
 * ``imputation``    the draw index for case ``B`` (``None`` otherwise).
 
-The baseline world ``span=Q__case=A`` is the published v1 analysis and must
-reproduce it exactly (``tests/test_regression_v1.py``).
+The baseline world ``span=union__case=A`` is the published v1 analysis and must
+reproduce it exactly (``tests/test_regression_v1.py``). v1 trimmed nothing,
+and every record lies inside the union of the two periods by definition, so
+``union`` is the no-trimming span; ``Q`` removes device records before the
+first and after the last questionnaire, which changes the edge windows of
+the calendar-day lookbacks.
 
 Layout under ``results/``::
 
@@ -68,7 +72,7 @@ _WORLD_ID_RE = re.compile(r"^span=(?P<span>[A-Za-z]+)__case=(?P<case>[ABC])(?:__
 
 @dataclass(frozen=True)
 class WorldSpec:
-    span: str = "Q"
+    span: str = "union"
     absence_case: str = "A"
     imputation: Optional[int] = None
 
@@ -91,7 +95,7 @@ class WorldSpec:
     def parse(cls, world_id: str) -> "WorldSpec":
         m = _WORLD_ID_RE.match(world_id)
         if not m:
-            raise ValueError(f"not a world id: {world_id!r} (expected e.g. span=Q__case=A or span=D__case=B__k=03)")
+            raise ValueError(f"not a world id: {world_id!r} (expected e.g. span=union__case=A or span=D__case=B__k=03)")
         k = m.group("k")
         return cls(span=m.group("span"), absence_case=m.group("case"), imputation=int(k) if k is not None else None)
 

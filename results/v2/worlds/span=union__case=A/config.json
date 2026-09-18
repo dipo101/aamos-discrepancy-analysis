@@ -1,97 +1,83 @@
 {
   "absence_case": "A",
-  "built_by": "build_world.py",
+  "built_by": "aggregate.py",
   "imputation": null,
+  "note": "Baseline world reconstructed from the frozen v1 artifacts; identical to the published analysis.",
   "null_engine": "vectorised",
   "null_modes": {
     "113": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 163,
       "seed": 42
     },
     "190": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 163,
       "seed": 42
     },
     "294": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 173,
       "seed": 42
     },
     "328": {
       "mode": "exact",
-      "n_permutations": 136,
-      "n_rows": 17
+      "n_permutations": 136
     },
     "343": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 173,
       "seed": 42
     },
     "398": {
       "mode": "exact",
-      "n_permutations": 12650,
-      "n_rows": 25
+      "n_permutations": 12650
     },
     "447": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 99,
       "seed": 42
     },
     "454": {
       "mode": "exact",
-      "n_permutations": 840,
-      "n_rows": 10
+      "n_permutations": 840
     },
     "473": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 69,
       "seed": 42
     },
     "514": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 54,
       "seed": 42
     },
     "625": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 62,
       "seed": 42
     },
     "701": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 127,
       "seed": 42
     },
     "702": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 124,
       "seed": 42
     },
     "917": {
       "mode": "exact",
-      "n_permutations": 2520,
-      "n_rows": 9
+      "n_permutations": 2520
     },
     "939": {
       "mode": "sampled",
       "n_permutations": 10000,
-      "n_rows": 158,
       "seed": 42
     }
   },
-  "null_source": "results/v2/worlds/span=Q__case=A/null.parquet",
-  "span": "Q",
-  "world_id": "span=Q__case=A"
+  "null_source": "results/v2/worlds/span=union__case=A/null.parquet",
+  "span": "union",
+  "world_id": "span=union__case=A"
 }

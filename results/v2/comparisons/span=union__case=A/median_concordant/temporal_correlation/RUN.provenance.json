@@ -29,13 +29,15 @@
   "git_commit": "e370b38fa1ea2f894147b2d029d657d25afef3dd",
   "git_dirty": true,
   "git_source": "working-tree",
-  "group": "concordant",
+  "group": "median_concordant",
   "group_patients": [
+    190,
+    294,
     702,
     917
   ],
-  "script": "bland_altman_comparison.py",
+  "script": "temporal_correlation_analysis_v2.py",
   "summary_spec": "effective/spearman",
-  "world": "span=Q__case=A",
-  "written_at": "2026-09-18T18:29:14+00:00"
+  "world": "span=union__case=A",
+  "written_at": "2026-09-18T18:29:29+00:00"
 }

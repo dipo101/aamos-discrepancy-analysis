@@ -1,0 +1,41 @@
+config_set,correlation_type,measure,threshold,n_concordant,concordant
+all,pearson,mean,0.1,8,113 190 294 398 473 702 917 939
+all,pearson,mean,0.25,7,113 190 294 473 702 917 939
+all,pearson,mean,0.5,4,294 473 702 917
+all,pearson,mean,0.75,2,702 917
+all,pearson,mean,0.9,1,917
+all,pearson,median,0.1,8,113 190 294 398 473 702 917 939
+all,pearson,median,0.25,8,113 190 294 398 473 702 917 939
+all,pearson,median,0.5,5,190 294 473 702 917
+all,pearson,median,0.75,3,473 702 917
+all,pearson,median,0.9,1,917
+all,spearman,mean,0.1,8,113 190 294 398 473 702 917 939
+all,spearman,mean,0.25,7,113 190 294 473 702 917 939
+all,spearman,mean,0.5,4,294 473 702 917
+all,spearman,mean,0.75,2,702 917
+all,spearman,mean,0.9,1,917
+all,spearman,median,0.1,8,113 190 294 398 473 702 917 939
+all,spearman,median,0.25,8,113 190 294 398 473 702 917 939
+all,spearman,median,0.5,5,190 294 473 702 917
+all,spearman,median,0.75,2,702 917
+all,spearman,median,0.9,1,917
+effective,pearson,mean,0.1,8,113 190 294 398 473 702 917 939
+effective,pearson,mean,0.25,7,113 190 294 473 702 917 939
+effective,pearson,mean,0.5,4,294 473 702 917
+effective,pearson,mean,0.75,2,702 917
+effective,pearson,mean,0.9,1,917
+effective,pearson,median,0.1,8,113 190 294 398 473 702 917 939
+effective,pearson,median,0.25,8,113 190 294 398 473 702 917 939
+effective,pearson,median,0.5,5,190 294 473 702 917
+effective,pearson,median,0.75,3,473 702 917
+effective,pearson,median,0.9,1,917
+effective,spearman,mean,0.1,8,113 190 294 398 473 702 917 939
+effective,spearman,mean,0.25,6,113 190 294 473 702 917
+effective,spearman,mean,0.5,2,702 917
+effective,spearman,mean,0.75,1,917
+effective,spearman,mean,0.9,1,917
+effective,spearman,median,0.1,8,113 190 294 398 473 702 917 939
+effective,spearman,median,0.25,8,113 190 294 398 473 702 917 939
+effective,spearman,median,0.5,4,190 294 702 917
+effective,spearman,median,0.75,1,917
+effective,spearman,median,0.9,1,917

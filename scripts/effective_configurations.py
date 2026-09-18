@@ -9,7 +9,7 @@ Reads a world's observed per-config Z table and writes to results/v2/diagnostics
   config_equivalence_classes_<world>.csv   each structural class, its members, and the largest
                                            within-class spread of Z on this data (0 = confirmed duplicate)
 
-Usage:  python scripts/effective_configurations.py [--world span=Q__case=A]
+Usage:  python scripts/effective_configurations.py [--world span=union__case=A]
 """
 
 from __future__ import annotations

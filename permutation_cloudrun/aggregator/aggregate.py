@@ -311,7 +311,7 @@ def save_world_outputs(world, permutation_df: pd.DataFrame, config: dict, *, upl
 def main(argv=None):
     """Aggregate one world's permutation batches into null.parquet + summary.csv."""
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--world', default=str(BASELINE), help='world id, e.g. span=Q__case=A (default: baseline)')
+    parser.add_argument('--world', default=str(BASELINE), help='world id, e.g. span=union__case=A (default: baseline)')
     parser.add_argument('--no-visualizations', action='store_true')
     parser.add_argument('--no-upload', action='store_true', help='do not copy outputs back to GCS final/')
     parser.add_argument('--local', action='store_true',

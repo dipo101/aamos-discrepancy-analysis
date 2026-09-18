@@ -1,0 +1,11 @@
+{
+  "config": {
+    "world": "span=union__case=A"
+  },
+  "data": null,
+  "git_commit": "91d46aca15931bf5617a692c362970f8510052b7",
+  "git_dirty": true,
+  "git_source": "working-tree",
+  "script": "effective_configurations.py",
+  "written_at": "2026-09-18T19:34:01+00:00"
+}
