@@ -130,36 +130,48 @@ def _window_key(window: int, daily_max: bool, calendar: bool):
     return ("fixed_chunk" if daily_max else "rolling", window)
 
 
-def spearman_equivalence_key(cfg: Dict):
-    """Configurations sharing this key give the same Spearman result on any data."""
+def spearman_equivalence_key(cfg: Dict, absence_case: str = "A"):
+    """Configurations sharing this key give the same Spearman result on any data.
+
+    Under absence cases B and C the zero filter is forced off, so the filter
+    flag does not distinguish configurations.
+    """
     return (
         _window_key(cfg["timestamp_window"], cfg["use_daily_max_windows"], cfg["use_calendar_days"]),
-        cfg["filter_out_zero_usage"],
+        cfg["filter_out_zero_usage"] if absence_case == "A" else None,
         SPEARMAN_METHOD_CLASS[cfg["categorization_method"]],
     )
 
 
-def config_equivalence_classes(correlation_type: str = "spearman") -> Dict[Tuple, List[int]]:
+def pearson_equivalence_key(cfg: Dict, idx: int, absence_case: str = "A"):
+    """Under Pearson nothing collapses except the inert filter flag under B/C."""
+    if absence_case == "A":
+        return (idx,)
+    return (cfg["timestamp_window"], cfg["use_daily_max_windows"], cfg["use_calendar_days"], cfg["categorization_method"])
+
+
+def config_equivalence_classes(correlation_type: str = "spearman", absence_case: str = "A") -> Dict[Tuple, List[int]]:
     """Map each equivalence class to the indices (into generate_param_combinations()) it contains."""
     combos = generate_param_combinations()
     classes: Dict[Tuple, List[int]] = {}
     for idx, cfg in enumerate(combos):
         if correlation_type == "spearman":
-            key = spearman_equivalence_key(cfg)
+            key = spearman_equivalence_key(cfg, absence_case)
         elif correlation_type == "pearson":
-            key = (idx,)
+            key = pearson_equivalence_key(cfg, idx, absence_case)
         else:
             raise ValueError(f"unknown correlation_type {correlation_type!r}")
         classes.setdefault(key, []).append(idx)
     return classes
 
 
-def effective_config_indices(correlation_type: str = "spearman") -> List[int]:
+def effective_config_indices(correlation_type: str = "spearman", absence_case: str = "A") -> List[int]:
     """Indices of one representative per equivalence class, in canonical order.
 
-    60 for Spearman (10 windows x 2 zero-filter x 3 method classes), 132 for Pearson.
+    Case A: 60 for Spearman (10 windows x 2 zero-filter x 3 method classes), 132 for Pearson.
+    Cases B/C (filter inert): 30 for Spearman, 66 for Pearson.
     """
-    return sorted(members[0] for members in config_equivalence_classes(correlation_type).values())
+    return sorted(members[0] for members in config_equivalence_classes(correlation_type, absence_case).values())
 
 
 N_SPEARMAN_EFFECTIVE = 60
@@ -170,12 +182,12 @@ OBSERVED_CONFIG_KEY = ["timestamp_window", "use_daily_max_windows", "use_calenda
                        "filter_out_zero_usage_entries", "categorization_method"]
 
 
-def config_indices_for(config_set: str, correlation_type: str) -> List[int]:
+def config_indices_for(config_set: str, correlation_type: str, absence_case: str = "A") -> List[int]:
     """Indices (into generate_param_combinations()) making up a named configuration set."""
     if config_set == "all":
         return list(range(N_UNIQUE_COMBINATIONS))
     if config_set == "effective":
-        return effective_config_indices(correlation_type)
+        return effective_config_indices(correlation_type, absence_case)
     raise ValueError(f"config_set must be one of {CONFIG_SETS}, got {config_set!r}")
 
 
