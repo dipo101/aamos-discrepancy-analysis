@@ -368,7 +368,7 @@ def parse_args():
                         help="Patient group definition to use (default: concordant)")
     add_world_argument(parser)
     args = parser.parse_args()
-    set_active_world(args.world)
+    set_active_world(args.world, args.summary)
     return args
 
 
