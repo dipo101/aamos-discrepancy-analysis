@@ -10,9 +10,9 @@ def load_data():
     # 1. Detailed results (192 configs per patient)
     # Try multiple potential locations
     potential_paths = [
-        Path("../../results/per_patient_analysis/per_patient_correlation_results.csv"),
-        Path("../results/per_patient_analysis/per_patient_correlation_results.csv"),
-        Path("results/per_patient_analysis/per_patient_correlation_results.csv"),
+        Path("../../results/v1/per_patient_analysis/per_patient_correlation_results.csv"),
+        Path("../results/v1/per_patient_analysis/per_patient_correlation_results.csv"),
+        Path("results/v1/per_patient_analysis/per_patient_correlation_results.csv"),
     ]
     
     detailed_results_path = None
@@ -28,12 +28,12 @@ def load_data():
     detailed_df = pd.read_csv(detailed_results_path)
     
     # 2. Significance results (from permutation test)
-    sig_results_path = Path("../../results/permutation_aggregate_extended/permutation_test_results.csv")
+    sig_results_path = Path("../../results/v1/permutation_aggregate_extended/permutation_test_results.csv")
     sig_df = pd.read_csv(sig_results_path)
     
     # 3. Permutation null data (for the null band)
     # We'll use the all_permutations.parquet if available, or approximate from summary stats
-    perm_path = Path("../../results/permutation_aggregate_extended/all_permutations.parquet")
+    perm_path = Path("../../results/v1/permutation_aggregate_extended/all_permutations.parquet")
     if perm_path.exists():
         null_df = pd.read_parquet(perm_path)
     else:
@@ -299,7 +299,7 @@ def main():
     current_dir = Path.cwd()
     print(f"Working directory: {current_dir}")
     
-    output_dir = Path("../../results/permutation_aggregate_extended/advanced_plots")
+    output_dir = Path("../../results/v1/permutation_aggregate_extended/advanced_plots")
     output_dir.mkdir(parents=True, exist_ok=True)
     
     try:

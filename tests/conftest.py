@@ -31,4 +31,4 @@ def data_dir() -> Path:
 
 @pytest.fixture(scope="session")
 def frozen_results_dir() -> Path:
-    return REPO_ROOT / "results"
+    return REPO_ROOT / "results" / "v1"

@@ -1,0 +1,9 @@
+{
+  "absence_case": "A",
+  "built_by": "scripts/build_baseline_world.py",
+  "imputation": null,
+  "note": "Baseline world reconstructed from the frozen v1 artifacts; identical to the published analysis.",
+  "null_source": "results/v1/permutation_aggregate_extended/median_concordant/all_permutations.parquet",
+  "span": "Q",
+  "world_id": "span=Q__case=A"
+}

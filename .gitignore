@@ -51,8 +51,13 @@ Thumbs.db
 s41597-023-02241-9.pdf
 
 # Sensitive results (contain patient feedback text)
-results/concordant/sentiment_analysis/full_results.csv
-results/concordant/sentiment_analysis/main_text/analysis_summary.txt
+results/*/concordant/sentiment_analysis/full_results.csv
+results/*/concordant/sentiment_analysis/main_text/analysis_summary.txt
+results/v2/comparisons/*/*/sentiment_analysis/full_results.csv
+results/v2/comparisons/*/*/sentiment_analysis/main_text/analysis_summary.txt
+
+# results/v1 is frozen; v2 world outputs are committed except large per-permutation parquets
+results/v2/worlds/*/null.parquet
 
 # Sensitive data files
 aamos00_*.csv

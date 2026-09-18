@@ -29,7 +29,7 @@ from sklearn.metrics import silhouette_score, silhouette_samples
 from scipy.cluster.hierarchy import dendrogram, linkage
 import openai
 from aamos_concordance import find_raw_file
-from config import GROUPS, FEEDBACK_PATIENTS, get_group_config, get_output_dir, record_run_provenance
+from config import GROUPS, FEEDBACK_PATIENTS, get_group_config, get_output_dir, add_world_argument, set_active_world, record_run_provenance
 
 # These module-level variables are set in main() based on --group arg
 OUTPUT_DIR = None
@@ -324,7 +324,10 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Inductive clustering analysis.")
     parser.add_argument("--group", choices=list(GROUPS.keys()), default="concordant",
                         help="Patient group definition to use (default: concordant)")
-    return parser.parse_args()
+    add_world_argument(parser)
+    args = parser.parse_args()
+    set_active_world(args.world)
+    return args
 
 
 def main():

@@ -15,6 +15,9 @@ Environment variables:
     RANDOM_SEED       default 42; permutation i shuffles with seed RANDOM_SEED + i
     CORRELATION_TYPE  'spearman' (default) or 'pearson'
     COLLECT_DATASETS  'true' to also upload the categorised frames as Parquet
+    WORLD_ID          world id (default span=Q__case=A). Only the baseline is implemented so
+                      far; any other value exits with an error rather than silently
+                      computing the baseline. Results go to gs://<bucket>/<results prefix for the world>/
     TOTAL_PERMS + PERMS_PER_TASK + CLOUD_RUN_TASK_INDEX   multi-task mode, or
     BATCH_ID + PERM_START + PERM_END                       single-task mode
 """
@@ -41,6 +44,7 @@ from aamos_concordance import (
     summarize_correlations,
 )
 from aamos_concordance.data import RAW_FILES
+from aamos_concordance.worlds import BASELINE, as_world, gcs_results_prefix
 
 # Suppress ConstantInputWarning - it's expected and handled with np.nan
 warnings.filterwarnings('ignore', category=stats.ConstantInputWarning)
@@ -90,6 +94,12 @@ def main():
     correlation_type = os.environ.get('CORRELATION_TYPE', 'spearman')
     bucket_name = os.environ['BUCKET_NAME']
     collect_datasets = os.environ.get('COLLECT_DATASETS', 'false').lower() == 'true'
+    world = as_world(os.environ.get('WORLD_ID', str(BASELINE)))
+    if world != BASELINE:
+        logger.error(f"WORLD_ID={world}: span/absence-case handling is not implemented in the worker yet; "
+                     "refusing to run so that baseline results are not written under a non-baseline world.")
+        sys.exit(2)
+    results_prefix = gcs_results_prefix(world)
     batch_id, perm_start, perm_end = resolve_batch()
 
     logger.info(f"   Patient {patient_id} | seed {random_seed} | {correlation_type} | bucket {bucket_name}")
@@ -162,12 +172,12 @@ def main():
             'avg_seconds_per_permutation': (time.time() - job_start_time) / n_perms,
         },
         'provenance': build_record(
-            config={'random_seed': random_seed, 'correlation_type': correlation_type,
+            config={'world_id': str(world), 'random_seed': random_seed, 'correlation_type': correlation_type,
                     'n_configs': len(param_combinations), 'perm_start': perm_start, 'perm_end': perm_end},
             data=data_provenance,
         ),
     }
-    output_path = f'results/patient_{patient_id}_batch_{batch_id}.json'
+    output_path = f'{results_prefix}patient_{patient_id}_batch_{batch_id}.json'
     bucket.blob(output_path).upload_from_string(json.dumps(result_data))
     logger.info(f"Results saved to gs://{bucket_name}/{output_path}")
 

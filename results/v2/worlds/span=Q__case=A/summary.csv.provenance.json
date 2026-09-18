@@ -1,0 +1,13 @@
+{
+  "config": null,
+  "data": null,
+  "git_commit": "c72471f19ce7779ffec829585fb7efca97a208ef",
+  "git_dirty": true,
+  "git_source": "working-tree",
+  "inputs": {
+    "null": "results/v1/permutation_aggregate_extended/median_concordant/all_permutations.parquet",
+    "per_config_z": "results/v2/worlds/span=Q__case=A/per_config_z.csv"
+  },
+  "script": "build_baseline_world.py",
+  "written_at": "2026-09-18T14:23:02+00:00"
+}

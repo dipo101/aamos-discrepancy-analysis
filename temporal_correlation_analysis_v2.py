@@ -22,7 +22,7 @@ from pathlib import Path
 from typing import List, Tuple
 import warnings
 warnings.filterwarnings('ignore')
-from config import GROUPS, ASSESSED_PATIENTS, get_group_config, get_remaining_patients, get_output_dir, record_run_provenance
+from config import GROUPS, ASSESSED_PATIENTS, get_group_config, get_remaining_patients, get_output_dir, add_world_argument, set_active_world, record_run_provenance
 
 # =============================================================================
 # CONFIGURATION
@@ -366,7 +366,10 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Temporal correlation analysis.")
     parser.add_argument("--group", choices=list(GROUPS.keys()), default="concordant",
                         help="Patient group definition to use (default: concordant)")
-    return parser.parse_args()
+    add_world_argument(parser)
+    args = parser.parse_args()
+    set_active_world(args.world)
+    return args
 
 
 def main():

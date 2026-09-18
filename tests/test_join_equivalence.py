@@ -121,7 +121,7 @@ def _joined_frames(seed):
 @pytest.mark.parametrize("method", list(CategorizationMethod))
 def test_categorize_matches_data_loader_and_jobworker(seed, method):
     for df in _joined_frames(seed):
-        ours = categorize_inhaler_usage(df, method)  # fallback=None reproduces these two callers
+        ours = categorize_inhaler_usage(df, method, top_category_fallback=None)  # None reproduces these two (pre-fix) callers
         cfg = legacy._Cfg(categorization_method=legacy.CategorizationMethod(method.value))
         dl = _data_loader_oracle(cfg, None, None)._categorize_inhaler_usage(df)
         assert_frame_equal(ours, dl)
@@ -133,7 +133,7 @@ def test_categorize_matches_data_loader_and_jobworker(seed, method):
 @pytest.mark.parametrize("method", list(CategorizationMethod))
 def test_categorize_matches_per_patient_with_fallback_12(seed, method):
     for df in _joined_frames(seed):
-        ours = categorize_inhaler_usage(df, method, top_category_fallback=12)
+        ours = categorize_inhaler_usage(df, method)  # default fallback of 12 is the per-patient behaviour
         pp = _per_patient_oracle()._categorize_inhaler_usage(df, legacy.CategorizationMethod(method.value))
         assert_frame_equal(ours, pp)
 
@@ -142,8 +142,8 @@ def test_top_category_fallback_documents_the_historical_disagreement():
     """When no usage >= 12 exists, data_loader/job-worker gave NaN and per-patient gave 12."""
     df = pd.DataFrame({"inhaler_usage": [0, 3, 5, 15], "daily_relief_inhaler": [13.0, 0, 1, 2]})
     df_low = df.assign(inhaler_usage=[0, 3, 5, 6])
-    assert math.isnan(categorize_inhaler_usage(df_low, "midpoint_with_inhaler")["daily_relief_inhaler"].iloc[0])
-    assert categorize_inhaler_usage(df_low, "midpoint_with_inhaler", top_category_fallback=12)["daily_relief_inhaler"].iloc[0] == 12
+    assert math.isnan(categorize_inhaler_usage(df_low, "midpoint_with_inhaler", top_category_fallback=None)["daily_relief_inhaler"].iloc[0])
+    assert categorize_inhaler_usage(df_low, "midpoint_with_inhaler")["daily_relief_inhaler"].iloc[0] == 12
     # With data at or above 12 both agree.
     a = categorize_inhaler_usage(df, "midpoint_with_inhaler")
     b = categorize_inhaler_usage(df, "midpoint_with_inhaler", top_category_fallback=12)
@@ -166,7 +166,7 @@ def test_categorize_rejects_unknown_method():
 @pytest.mark.parametrize("method", list(CategorizationMethod))
 def test_zero_filter_matches_jobworker(seed, method):
     for df in _joined_frames(seed):
-        ours = filter_zero_usage(categorize_inhaler_usage(df, method))
+        ours = filter_zero_usage(categorize_inhaler_usage(df, method, top_category_fallback=None))
         jw = legacy.jobworker_categorize_inhaler_usage(df, method.value, True)
         if jw is None:
             assert len(ours) == 0
@@ -219,7 +219,7 @@ def test_run_single_permutation_matches_jobworker(seed, perm_idx):
     for user_key in questionnaire["user_key"].unique():
         q = questionnaire[questionnaire["user_key"] == user_key]
         inh = inhaler[inhaler["user_key"] == user_key]
-        ours, _ = run_single_permutation(user_key, perm_idx, q, inh, combos, 42, "spearman")
+        ours, _ = run_single_permutation(user_key, perm_idx, q, inh, combos, 42, "spearman", top_category_fallback=None)
         theirs, _ = legacy.jobworker_run_single_permutation(user_key, perm_idx, q.copy(), inh.copy(), combos, 42, "spearman")
         assert _nan_equal(ours, theirs), f"patient {user_key} perm {perm_idx}"
 
@@ -230,7 +230,7 @@ def test_run_single_permutation_pearson_matches_jobworker():
     user_key = 104
     q = questionnaire[questionnaire["user_key"] == user_key]
     inh = inhaler[inhaler["user_key"] == user_key]
-    ours, _ = run_single_permutation(user_key, 2, q, inh, combos, 42, "pearson")
+    ours, _ = run_single_permutation(user_key, 2, q, inh, combos, 42, "pearson", top_category_fallback=None)
     theirs, _ = legacy.jobworker_run_single_permutation(user_key, 2, q.copy(), inh.copy(), combos, 42, "pearson")
     assert _nan_equal(ours, theirs)
 
