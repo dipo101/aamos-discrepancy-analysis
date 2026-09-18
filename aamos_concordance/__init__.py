@@ -14,7 +14,7 @@ from .categorization import (
     categorize_inhaler_usage,
     filter_zero_usage,
 )
-from .configs import generate_param_combinations
+from .configs import dedupe_combinations, generate_param_combinations
 from .join import (
     REFERENCE_DATE,
     add_timestamps,
@@ -27,6 +27,7 @@ __all__ = [
     "CategorizationMethod",
     "categorize_inhaler_usage",
     "filter_zero_usage",
+    "dedupe_combinations",
     "generate_param_combinations",
     "REFERENCE_DATE",
     "add_timestamps",
