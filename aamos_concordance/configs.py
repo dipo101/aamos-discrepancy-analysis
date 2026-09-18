@@ -93,3 +93,73 @@ def generate_param_combinations() -> List[Dict]:
     ]
     assert len(combinations) == N_UNIQUE_COMBINATIONS, len(combinations)
     return combinations
+
+
+# --------------------------------------------------------------------------
+# Effective configurations under a rank-based statistic
+# --------------------------------------------------------------------------
+#
+# Spearman's rho depends only on ranks. Every categorisation method maps the
+# self-report codes {0, 1, 3, 5, 9, 12} monotonically, so the self-report
+# ranks are the same under every method; categorisation can only change a
+# Spearman result through the *device* column, by which counts it merges into
+# the same bin. Four methods bin device counts into the same six groups with
+# strictly increasing values and are therefore rank-identical; upper_bound
+# merges the 9-12 and >12 groups; one_hot merges everything above zero.
+# Separately, the fixed 24-hour chunk starting 24 h before the questionnaire
+# is the rolling 24-hour window except for a record at the questionnaire's
+# exact second. The v1 table confirms both collapses (tests/test_configs.py).
+#
+# Under Pearson the categorisation values matter, so nothing collapses.
+
+SPEARMAN_METHOD_CLASS = {
+    "lower_bound": "six_bins_monotone",
+    "midpoint": "six_bins_monotone",
+    "midpoint_with_inhaler": "six_bins_monotone",
+    "upper_bound_with_inhaler": "six_bins_monotone",
+    "upper_bound": "top_two_bins_merged",
+    "one_hot": "binary",
+}
+
+
+def _window_key(window: int, daily_max: bool, calendar: bool):
+    if calendar:
+        return ("calendar", window // 24)
+    if daily_max and window == 24:
+        return ("rolling", 24)  # chunk starting 24 h back == rolling 24 h (bar the exact-second case)
+    return ("fixed_chunk" if daily_max else "rolling", window)
+
+
+def spearman_equivalence_key(cfg: Dict):
+    """Configurations sharing this key give the same Spearman result on any data."""
+    return (
+        _window_key(cfg["timestamp_window"], cfg["use_daily_max_windows"], cfg["use_calendar_days"]),
+        cfg["filter_out_zero_usage"],
+        SPEARMAN_METHOD_CLASS[cfg["categorization_method"]],
+    )
+
+
+def config_equivalence_classes(correlation_type: str = "spearman") -> Dict[Tuple, List[int]]:
+    """Map each equivalence class to the indices (into generate_param_combinations()) it contains."""
+    combos = generate_param_combinations()
+    classes: Dict[Tuple, List[int]] = {}
+    for idx, cfg in enumerate(combos):
+        if correlation_type == "spearman":
+            key = spearman_equivalence_key(cfg)
+        elif correlation_type == "pearson":
+            key = (idx,)
+        else:
+            raise ValueError(f"unknown correlation_type {correlation_type!r}")
+        classes.setdefault(key, []).append(idx)
+    return classes
+
+
+def effective_config_indices(correlation_type: str = "spearman") -> List[int]:
+    """Indices of one representative per equivalence class, in canonical order.
+
+    60 for Spearman (10 windows x 2 zero-filter x 3 method classes), 132 for Pearson.
+    """
+    return sorted(members[0] for members in config_equivalence_classes(correlation_type).values())
+
+
+N_SPEARMAN_EFFECTIVE = 60
