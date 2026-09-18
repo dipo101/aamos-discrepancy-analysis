@@ -1,0 +1,11 @@
+{
+  "config": {
+    "world": "span=Q__case=A"
+  },
+  "data": null,
+  "git_commit": "5462019b518dd369419891504cae5eba34bb3d71",
+  "git_dirty": true,
+  "git_source": "working-tree",
+  "script": "effective_configurations.py",
+  "written_at": "2026-09-18T15:10:13+00:00"
+}
