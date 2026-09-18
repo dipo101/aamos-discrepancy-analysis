@@ -27,15 +27,15 @@ SENTIMENT_SCRIPTS = [
 ]
 
 
-def run_script(script: str, group: str, world: str) -> bool:
-    """Run a single analysis script for a given group and world. Returns True on success."""
+def run_script(script: str, group: str, world: str, summary: str | None) -> bool:
+    """Run a single analysis script for a given group, world and summary spec. Returns True on success."""
+    cmd = [sys.executable, script, "--group", group, "--world", world]
+    if summary:
+        cmd += ["--summary", summary]
     print(f"\n{'='*60}")
-    print(f"Running: {script} --group {group} --world {world}")
+    print(f"Running: {' '.join(cmd[1:])}")
     print(f"{'='*60}")
-    result = subprocess.run(
-        [sys.executable, script, "--group", group, "--world", world],
-        capture_output=False
-    )
+    result = subprocess.run(cmd, capture_output=False)
     if result.returncode != 0:
         print(f"WARNING: {script} exited with code {result.returncode}")
         return False
@@ -50,7 +50,7 @@ def main():
                         help="Skip sentiment and clustering analyses (require OpenAI API)")
     add_world_argument(parser)
     args = parser.parse_args()
-    set_active_world(args.world)
+    set_active_world(args.world, args.summary)
 
     groups = [args.group] if args.group else list(GROUPS.keys())
     scripts = COMPARISON_SCRIPTS + ([] if args.skip_sentiment else SENTIMENT_SCRIPTS)
@@ -65,7 +65,7 @@ def main():
 
         for script in scripts:
             key = f"{script} --group {group} --world {args.world}"
-            results[key] = run_script(script, group, args.world)
+            results[key] = run_script(script, group, args.world, args.summary)
 
     print(f"\n\n{'='*60}")
     print("SUMMARY")
