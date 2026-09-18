@@ -9,7 +9,10 @@ from pathlib import Path
 from datetime import datetime
 import pandas as pd
 import numpy as np
-from google.cloud import storage
+try:
+    from google.cloud import storage
+except ImportError:  # local mode does not need GCS
+    storage = None
 import matplotlib.pyplot as plt
 import seaborn as sns
 import logging
@@ -35,9 +38,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def load_config(config_path: str = '../config.yaml') -> dict:
-    """Load configuration file."""
-    with open(config_path, 'r') as f:
+def load_config(config_path: str = None) -> dict:
+    """Load configuration file (permutation_cloudrun/config.yaml by default)."""
+    path = Path(config_path) if config_path else Path(__file__).resolve().parent.parent / 'config.yaml'
+    with open(path, 'r') as f:
         return yaml.safe_load(f)
 
 
@@ -310,6 +314,9 @@ def main(argv=None):
     parser.add_argument('--world', default=str(BASELINE), help='world id, e.g. span=Q__case=A (default: baseline)')
     parser.add_argument('--no-visualizations', action='store_true')
     parser.add_argument('--no-upload', action='store_true', help='do not copy outputs back to GCS final/')
+    parser.add_argument('--local', action='store_true',
+                        help='summarise from null.parquet / null_per_config.parquet already in the world folder '
+                             '(e.g. written by scripts/run_null_local.py) instead of downloading batches; implies --no-upload')
     args = parser.parse_args(argv)
     world = as_world(args.world)
 
@@ -318,12 +325,21 @@ def main(argv=None):
     logger.info("="*80 + "\n")
 
     config = load_config()
-    prefix = gcs_results_prefix(world)
-    batch_results = download_batch_results(config, cache_file=f'batch_results_cache_{world}.json', prefix=prefix)
-    permutation_df = combine_permutation_results(batch_results)
-    per_config_null = download_per_config_null(config, prefix)
-
-    summary = save_world_outputs(world, permutation_df, config, upload=not args.no_upload, per_config_null=per_config_null)
+    if args.local:
+        wdir = world_dir(world)
+        null_path, pc_path = wdir / NULL_PARQUET, wdir / NULL_PER_CONFIG_PARQUET
+        if not null_path.exists():
+            raise SystemExit(f"--local: {null_path} not found; run scripts/run_null_local.py --world {world} first")
+        permutation_df = pd.read_parquet(null_path)
+        per_config_null = pd.read_parquet(pc_path) if pc_path.exists() else None
+        config = {**config, 'source': 'local', 'null_path': str(null_path)}
+        summary = save_world_outputs(world, permutation_df, config, upload=False, per_config_null=per_config_null)
+    else:
+        prefix = gcs_results_prefix(world)
+        batch_results = download_batch_results(config, cache_file=f'batch_results_cache_{world}.json', prefix=prefix)
+        permutation_df = combine_permutation_results(batch_results)
+        per_config_null = download_per_config_null(config, prefix)
+        summary = save_world_outputs(world, permutation_df, config, upload=not args.no_upload, per_config_null=per_config_null)
 
     if not args.no_visualizations and config['output'].get('visualizations', True):
         create_visualizations(to_v1_measure_table(summary, 'median'), permutation_df, world_dir(world))
