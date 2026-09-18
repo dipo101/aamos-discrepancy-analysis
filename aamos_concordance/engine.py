@@ -24,6 +24,28 @@ consume it unchanged. Equivalence to the kernel is checked by
 ``tests/test_engine.py`` on synthetic data and against the v1 null on the
 real data.
 
+Device-side absence cases (v2 items 9 and 10), applied per window after the
+join and before categorisation, selected by the world's ``absence_case``:
+
+* ``A`` naive zero: a window with no device records has count 0 (v1).
+* ``B`` Poisson imputation: every such window gets a draw from
+  ``Poisson(rate * window_hours)`` where ``rate`` is the patient's device
+  records per hour over the device-active period of the (span-trimmed)
+  data. Draws are seeded by (patient, imputation index, window), so a world
+  ``k`` is one coherent set of draws across all configurations; all twelve
+  configurations sharing a window share its draws. Windows with a zero
+  self-report are imputed too (KT8).
+* ``C`` complete case: every such window is dropped from that
+  configuration (a permutation-independent row mask; under a permutation
+  the surviving rows receive self-reports from anywhere, exactly as the
+  zero filter's survivors do).
+
+The zero-usage filter is an active axis only under ``A``. Under ``B`` the
+imputed cells are what the case is about, and under ``C`` no ``rec = 0``
+row survives, so for both the filter is forced off and the
+``filter_out_zero_usage=True`` configurations duplicate their ``False``
+counterparts (``configs.effective_config_indices`` collapses them).
+
 Permutation sources:
 
 * :func:`sampled_permutations` reproduces the kernel's shuffle exactly
@@ -159,20 +181,21 @@ class PatientTables:
 
     patient_id: int
     n_rows: int
-    # config_idx -> (device categorised (n,), self-report categorised (n,), filter flag)
-    per_config: Dict[int, Tuple[np.ndarray, np.ndarray, bool]]
+    # config_idx -> (device categorised (n,), self-report categorised (n,), filter flag, keep mask (n,))
+    per_config: Dict[int, Tuple[np.ndarray, np.ndarray, bool, np.ndarray]]
     world: WorldSpec = BASELINE
 
     def observed_row_count(self, config_idx: int) -> int:
         """Rows the unshuffled evaluation of a configuration correlates (after the zero filter if on).
 
-        Counts rows as v1's ``sample_size`` did: every joined row, minus those
-        the zero filter removes. A NaN categorised value (the hybrid upper
-        bound with a single count >= 12 has an undefined SD) still counts as
-        a row; it makes the correlation NaN, not the row absent.
+        Counts rows as v1's ``sample_size`` did: every joined row the case
+        keeps, minus those the zero filter removes. A NaN categorised value
+        (the hybrid upper bound with a single count >= 12 has an undefined
+        SD) still counts as a row; it makes the correlation NaN, not the row
+        absent.
         """
-        d, s, use_filter = self.per_config[config_idx]
-        keep = np.ones(len(d), dtype=bool)
+        d, s, use_filter, keep = self.per_config[config_idx]
+        keep = keep.copy()
         if use_filter:
             keep &= (d > 0) | (s > 0)
         return int(keep.sum())
@@ -197,19 +220,24 @@ def precompute_patient(
     implemented so far.
     """
     w = as_world(world)
-    if w.absence_case != "A":
-        raise NotImplementedError(f"absence case {w.absence_case!r} is not implemented in the engine yet")
     combos = list(param_combinations) if param_combinations is not None else generate_param_combinations()
     n = len(questionnaire_df)
+    rate = device_rate_per_hour(inhaler_df) if w.absence_case == "B" else 0.0
     joined_by_window: Dict[Tuple, pd.DataFrame] = {}
+    keep_by_window: Dict[Tuple, np.ndarray] = {}
     cat_by_window_method: Dict[Tuple, Tuple[np.ndarray, np.ndarray]] = {}
-    per_config: Dict[int, Tuple[np.ndarray, np.ndarray, bool]] = {}
+    per_config: Dict[int, Tuple[np.ndarray, np.ndarray, bool, np.ndarray]] = {}
+    window_index = 0
 
     for idx, cfg in enumerate(combos):
         wkey = (cfg["timestamp_window"], cfg["use_daily_max_windows"], cfg["use_calendar_days"])
         if wkey not in joined_by_window:
-            joined_by_window[wkey] = join_questionnaire_with_inhaler(
-                questionnaire_df, inhaler_df, *wkey)
+            merged = join_questionnaire_with_inhaler(questionnaire_df, inhaler_df, *wkey)
+            merged, keep = apply_absence_case(merged, w, patient_id=patient_id, window_key=wkey,
+                                              window_index=window_index, rate_per_hour=rate)
+            window_index += 1
+            joined_by_window[wkey] = merged
+            keep_by_window[wkey] = keep
         merged = joined_by_window[wkey]
         mkey = (wkey, cfg["categorization_method"])
         if mkey not in cat_by_window_method:
@@ -218,8 +246,59 @@ def precompute_patient(
             s = merged["daily_relief_inhaler"].apply(fn).to_numpy(dtype=float)
             cat_by_window_method[mkey] = (d, s)
         d, s = cat_by_window_method[mkey]
-        per_config[idx] = (d, s, bool(cfg["filter_out_zero_usage"]))
+        use_filter = bool(cfg["filter_out_zero_usage"]) and w.absence_case == "A"   # item 10
+        per_config[idx] = (d, s, use_filter, keep_by_window[wkey])
     return PatientTables(patient_id=patient_id, n_rows=n, per_config=per_config, world=w)
+
+
+def window_hours(window_key: Tuple[int, bool, bool]) -> float:
+    """Duration in hours of a window configuration (rolling = its length; chunk and calendar day = 24)."""
+    timestamp_window, use_daily_max, use_calendar = window_key
+    if use_calendar or use_daily_max:
+        return 24.0
+    return float(timestamp_window)
+
+
+def device_rate_per_hour(inhaler_df: pd.DataFrame) -> float:
+    """Device records per hour over the device-active period (first to last record, inclusive days)."""
+    if len(inhaler_df) == 0:
+        return 0.0
+    days = int(inhaler_df["date"].max() - inhaler_df["date"].min()) + 1
+    return float(len(inhaler_df)) / (24.0 * days)
+
+
+def imputation_seed(patient_id: int, imputation: int, window_index: int) -> int:
+    """Deterministic seed for the Poisson draws of one (patient, imputation world, window)."""
+    return int(np.random.SeedSequence([int(patient_id), int(imputation), int(window_index), 2026]).generate_state(1)[0])
+
+
+def apply_absence_case(
+    merged: pd.DataFrame,
+    world: WorldSpec,
+    *,
+    patient_id: int,
+    window_key: Tuple[int, bool, bool],
+    window_index: int,
+    rate_per_hour: float,
+) -> Tuple[pd.DataFrame, np.ndarray]:
+    """Treat windows with no device records per the world's case. Returns (frame, keep mask)."""
+    n = len(merged)
+    keep = np.ones(n, dtype=bool)
+    empty = (merged["inhaler_usage"] == 0).to_numpy()
+    if world.absence_case == "A" or not empty.any():
+        return merged, keep
+    if world.absence_case == "C":
+        return merged, ~empty
+    if world.absence_case == "B":
+        rng = np.random.default_rng(imputation_seed(patient_id, world.imputation, window_index))
+        lam = rate_per_hour * window_hours(window_key)
+        draws = rng.poisson(lam, size=int(empty.sum()))
+        out = merged.copy()
+        counts = out["inhaler_usage"].to_numpy().copy()
+        counts[empty] = draws
+        out["inhaler_usage"] = counts
+        return out, keep
+    raise ValueError(f"unknown absence case {world.absence_case!r}")
 
 
 # --------------------------------------------------------------------------
@@ -259,11 +338,13 @@ def _fisher_z(r: np.ndarray) -> np.ndarray:
     return out
 
 
-def evaluate_config(d: np.ndarray, s: np.ndarray, use_filter: bool, P: np.ndarray) -> Dict[str, np.ndarray]:
+def evaluate_config(d: np.ndarray, s: np.ndarray, use_filter: bool, P: np.ndarray,
+                    keep: Optional[np.ndarray] = None) -> Dict[str, np.ndarray]:
     """Fisher Z of both correlation types for every permutation row of ``P``.
 
     ``d`` is the categorised device vector, ``s`` the categorised
-    (unshuffled) self-report vector, ``P`` a ``(K, n)`` index matrix.
+    (unshuffled) self-report vector, ``P`` a ``(K, n)`` index matrix,
+    ``keep`` an optional permutation-independent row mask (case C).
     Applies the kernel's validity rules: at least three rows after the
     filter, and neither column constant.
     """
@@ -274,6 +355,8 @@ def evaluate_config(d: np.ndarray, s: np.ndarray, use_filter: bool, P: np.ndarra
         valid = (D > 0) | (S > 0)
     else:
         valid = np.ones((K, n), dtype=bool)
+    if keep is not None:
+        valid = valid & keep[None, :]
     # NaN in either column: the kernel's nunique() counts NaN as a value but
     # scipy propagates NaN into the coefficient -> NaN Z. Treat NaN entries as
     # present for the row-count and constancy checks, then let the statistic be NaN.
@@ -319,8 +402,8 @@ def run_patient(
     spearman = np.empty((n_cfg, K))
     pearson = np.empty((n_cfg, K))
     for j, ci in enumerate(cfg_ids):
-        d, s, use_filter = tables.per_config[ci]
-        z = evaluate_config(d, s, use_filter, P)
+        d, s, use_filter, keep = tables.per_config[ci]
+        z = evaluate_config(d, s, use_filter, P, keep)
         spearman[j] = z["spearman"]
         pearson[j] = z["pearson"]
     perm_col = np.repeat(np.asarray(perm_indices, dtype=np.int64), n_cfg)

@@ -100,7 +100,12 @@ class SummarySpec:
 
     @property
     def config_indices(self) -> List[int]:
+        """Configuration indices under absence case A (the baseline)."""
         return config_indices_for(self.config_set, self.correlation_type)
+
+    def config_indices_in(self, absence_case: str) -> List[int]:
+        """Configuration indices in a world with the given absence case (B/C collapse the filter axis)."""
+        return config_indices_for(self.config_set, self.correlation_type, absence_case)
 
     def __str__(self) -> str:
         return self.key
@@ -201,6 +206,7 @@ def permutation_p_values(
 def null_sources_for(
     legacy_null: Optional[pd.DataFrame] = None,
     per_config_null: Optional[pd.DataFrame] = None,
+    absence_case: str = "A",
 ) -> Dict[str, pd.DataFrame]:
     """Map each available ``config_set/correlation_type`` null key to its per-permutation null table.
 
@@ -218,7 +224,7 @@ def null_sources_for(
         for c in CONFIG_SETS:
             for t in CORRELATION_TYPES:
                 sources[f"{c}/{t}"] = null_from_per_config(
-                    per_config_null, correlation_type=t, config_indices=config_indices_for(c, t))
+                    per_config_null, correlation_type=t, config_indices=config_indices_for(c, t, absence_case))
     return sources
 
 
@@ -229,12 +235,15 @@ def build_world_summary(
     null_sources: Optional[Dict[str, pd.DataFrame]] = None,
     specs: Iterable[SummarySpec] = ALL_SPECS,
     measures: Optional[Iterable[str]] = None,
+    absence_case: str = "A",
 ) -> pd.DataFrame:
     """Long summary table with one row per (patient, spec) for every spec whose null is available.
 
     ``null`` is the legacy all/spearman null (kept for the v1 call signature);
     ``null_sources`` is the general form from :func:`null_sources_for`.
-    Specs with no null source are skipped with a warning, never fabricated.
+    ``absence_case`` selects the effective configuration set (the filter axis
+    is inert under B/C). Specs with no null source are skipped with a
+    warning, never fabricated.
     """
     if null_sources is None:
         null_sources = null_sources_for(legacy_null=null)
@@ -247,7 +256,8 @@ def build_world_summary(
         if spec.null_key not in null_sources:
             skipped.append(spec.key)
             continue
-        obs = observed_statistics(per_config, f"{spec.correlation_type}_z", spec.config_indices).set_index("patient_id")
+        indices = spec.config_indices_in(absence_case)
+        obs = observed_statistics(per_config, f"{spec.correlation_type}_z", indices).set_index("patient_id")
         table = permutation_p_values(obs[spec.measure], null_sources[spec.null_key], null_column=f"null_{spec.measure}_z")
         if table.empty:
             continue
@@ -255,7 +265,7 @@ def build_world_summary(
         table.insert(2, "correlation_type", spec.correlation_type)
         table.insert(3, "measure", spec.measure)
         table["n_valid_configs_observed"] = table["patient_id"].map(obs["n_valid"]).astype(int)
-        table["n_configs_in_set"] = len(spec.config_indices)
+        table["n_configs_in_set"] = len(indices)
         parts.append(table)
     if skipped:
         warnings.warn(f"No null distribution for summary specs {skipped}; they are omitted.", stacklevel=2)
@@ -265,7 +275,7 @@ def build_world_summary(
     return out.sort_values(["config_set", "correlation_type", "measure", "p_value", "patient_id"], kind="stable").reset_index(drop=True)
 
 
-def observed_table(per_config: pd.DataFrame, specs: Iterable[SummarySpec] = ALL_SPECS) -> pd.DataFrame:
+def observed_table(per_config: pd.DataFrame, specs: Iterable[SummarySpec] = ALL_SPECS, absence_case: str = "A") -> pd.DataFrame:
     """Observed statistics under every spec, with no p-values.
 
     Needs only the observed per-config table, so it is available for every
@@ -273,12 +283,13 @@ def observed_table(per_config: pd.DataFrame, specs: Iterable[SummarySpec] = ALL_
     """
     parts = []
     for spec in specs:
-        obs = observed_statistics(per_config, f"{spec.correlation_type}_z", spec.config_indices)
+        indices = spec.config_indices_in(absence_case)
+        obs = observed_statistics(per_config, f"{spec.correlation_type}_z", indices)
         obs = obs.rename(columns={spec.measure: "observed_z"})[["patient_id", "observed_z", "n_valid"]]
         obs.insert(1, "config_set", spec.config_set)
         obs.insert(2, "correlation_type", spec.correlation_type)
         obs.insert(3, "measure", spec.measure)
-        obs["n_configs_in_set"] = len(spec.config_indices)
+        obs["n_configs_in_set"] = len(indices)
         parts.append(obs.rename(columns={"n_valid": "n_valid_configs_observed"}))
     return pd.concat(parts, ignore_index=True)
 

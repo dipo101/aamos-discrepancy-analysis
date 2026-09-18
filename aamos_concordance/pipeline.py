@@ -179,11 +179,13 @@ def build_world(
     legacy.to_parquet(null_path, index=False)
     write_sidecar(null_path, config=config, data=prov, extra={"script": script, "engine": "vectorised"})
 
-    summary = build_world_summary(observed, null_sources=null_sources_for(legacy_null=legacy, per_config_null=per_config_null))
+    summary = build_world_summary(
+        observed, null_sources=null_sources_for(legacy_null=legacy, per_config_null=per_config_null, absence_case=w.absence_case),
+        absence_case=w.absence_case)
     summary_path = wdir / SUMMARY_CSV
     summary.to_csv(summary_path, index=False)
     write_sidecar(summary_path, config=config, data=prov, extra={"script": script})
-    observed_table(observed).to_csv(wdir / OBSERVED_CSV, index=False)
+    observed_table(observed, absence_case=w.absence_case).to_csv(wdir / OBSERVED_CSV, index=False)
     write_sidecar(wdir / OBSERVED_CSV, config=config, data=prov, extra={"script": script})
     threshold_sweep(summary).to_csv(wdir / THRESHOLD_SWEEP_CSV, index=False)
     write_sidecar(wdir / THRESHOLD_SWEEP_CSV, config=config, data=prov, extra={"script": script})

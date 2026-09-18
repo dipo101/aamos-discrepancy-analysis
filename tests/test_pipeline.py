@@ -52,12 +52,6 @@ def test_union_is_no_trimming_and_Q_keeps_all_questionnaire_rows():
         assert len(qq_q) == len(qq_u) and len(ii_q) <= len(ii_u)
 
 
-def test_engine_refuses_unimplemented_cases():
-    q, inh = make_dataset(0)
-    with pytest.raises(NotImplementedError):
-        precompute_patient(104, q[q.user_key == 104], inh[inh.user_key == 104], world=WorldSpec("union", "C"))
-
-
 def test_observed_table_layout_and_sample_sizes():
     q, inh = make_dataset(2)
     pats = sorted(q.user_key.unique())
