@@ -1,10 +1,45 @@
 {
-  "config": null,
+  "config": {
+    "analysis": {
+      "batches_per_patient": 40,
+      "correlation_type": "spearman",
+      "max_concurrent_instances": 50,
+      "n_permutations": 10000,
+      "perms_per_batch": 250,
+      "random_seed": 42
+    },
+    "cloud_run": {
+      "cpu": 2,
+      "job_name": "permutation-job-v3",
+      "memory": "4Gi",
+      "timeout": 3600
+    },
+    "data": {
+      "gcs_data_prefix": "data/",
+      "gcs_final_prefix": "final/",
+      "gcs_results_prefix": "results/",
+      "inhaler": "anonym_aamos00_smartinhaler_dt.csv",
+      "patient_info": "anonym_aamos00_patient_info.csv",
+      "questionnaire": "anonym_aamos00_dailyquestionnaire_dt.csv"
+    },
+    "gcp": {
+      "bucket_name": "patient-concordance-permutation-v3",
+      "project_id": "power-line-monitoring-476216",
+      "region": "us-central1"
+    },
+    "null_path": "/Users/ladidisu/aamos-discrepancy-analysis/results/v2/worlds/span=Q__case=A/null.parquet",
+    "output": {
+      "final_report": "permutation_analysis_v3_FINAL.csv",
+      "local_results_dir": "../../results/v2/worlds/",
+      "visualizations": true
+    },
+    "source": "local"
+  },
   "data": null,
-  "git_commit": "a6e66d73984a8d96c51c4f5e6a9bd673dcd54429",
+  "git_commit": "e370b38fa1ea2f894147b2d029d657d25afef3dd",
   "git_dirty": true,
   "git_source": "working-tree",
-  "input": "results/v2/worlds/span=Q__case=A/summary.csv",
-  "script": "build_baseline_world.py",
-  "written_at": "2026-09-18T18:01:35+00:00"
+  "script": "aggregate.py",
+  "world": "span=Q__case=A",
+  "written_at": "2026-09-18T18:26:20+00:00"
 }

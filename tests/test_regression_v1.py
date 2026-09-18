@@ -56,11 +56,11 @@ def test_frozen_observed_statistics_are_derived_from_per_config_table(frozen_res
     assert (summary["median_spearman_z"] - derived.loc[summary.index, "median"]).abs().max() < 1e-12
 
 
-def test_group_config_matches_centred_rule_on_v1_null():
+def test_group_config_matches_primary_spec_on_regenerated_null():
     from config import GROUPS
-    from tests.test_summary import V1_CONCORDANT_MEAN, V1_CONCORDANT_MEDIAN
-    assert sorted(GROUPS["concordant"]["patients"]) == V1_CONCORDANT_MEAN
-    assert sorted(GROUPS["median_concordant"]["patients"]) == V1_CONCORDANT_MEDIAN
+    from tests.test_baseline_world import BASELINE_CONCORDANT_MEAN, BASELINE_CONCORDANT_MEDIAN
+    assert sorted(GROUPS["concordant"]["patients"]) == BASELINE_CONCORDANT_MEAN
+    assert sorted(GROUPS["median_concordant"]["patients"]) == BASELINE_CONCORDANT_MEDIAN
 
 
 # --------------------------------------------------------------------------
