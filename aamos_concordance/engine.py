@@ -57,6 +57,7 @@ from .categorization import DEFAULT_TOP_CATEGORY_FALLBACK, build_categorize_fn
 from .configs import CATEGORIZATION_METHODS, generate_param_combinations
 from .join import join_questionnaire_with_inhaler
 from .permutation import CORRELATION_TYPES, MIN_ROWS_FOR_CORRELATION
+from .worlds import BASELINE, WorldSpec, as_world
 
 PER_CONFIG_COLUMNS = ["patient_id", "permutation_idx", "config_idx", "spearman_z", "pearson_z"]
 
@@ -160,6 +161,21 @@ class PatientTables:
     n_rows: int
     # config_idx -> (device categorised (n,), self-report categorised (n,), filter flag)
     per_config: Dict[int, Tuple[np.ndarray, np.ndarray, bool]]
+    world: WorldSpec = BASELINE
+
+    def observed_row_count(self, config_idx: int) -> int:
+        """Rows the unshuffled evaluation of a configuration correlates (after the zero filter if on).
+
+        Counts rows as v1's ``sample_size`` did: every joined row, minus those
+        the zero filter removes. A NaN categorised value (the hybrid upper
+        bound with a single count >= 12 has an undefined SD) still counts as
+        a row; it makes the correlation NaN, not the row absent.
+        """
+        d, s, use_filter = self.per_config[config_idx]
+        keep = np.ones(len(d), dtype=bool)
+        if use_filter:
+            keep &= (d > 0) | (s > 0)
+        return int(keep.sum())
 
 
 def precompute_patient(
@@ -169,13 +185,20 @@ def precompute_patient(
     param_combinations: Optional[Sequence[Dict]] = None,
     *,
     top_category_fallback: Optional[float] = DEFAULT_TOP_CATEGORY_FALLBACK,
+    world: "WorldSpec | str | None" = None,
 ) -> PatientTables:
     """Join once per distinct window and categorise once per (window, method).
 
     ``questionnaire_df`` / ``inhaler_df`` must already be filtered to the
-    patient. Row order of ``questionnaire_df`` is the row order of every
-    vector, so permutation index matrices refer to it.
+    patient and trimmed to the world's span (see ``pipeline.world_frames``).
+    Row order of ``questionnaire_df`` is the row order of every vector, so
+    permutation index matrices refer to it. ``world`` selects the device-side
+    absence case applied after each join; only case A (the v1 behaviour) is
+    implemented so far.
     """
+    w = as_world(world)
+    if w.absence_case != "A":
+        raise NotImplementedError(f"absence case {w.absence_case!r} is not implemented in the engine yet")
     combos = list(param_combinations) if param_combinations is not None else generate_param_combinations()
     n = len(questionnaire_df)
     joined_by_window: Dict[Tuple, pd.DataFrame] = {}
@@ -196,7 +219,7 @@ def precompute_patient(
             cat_by_window_method[mkey] = (d, s)
         d, s = cat_by_window_method[mkey]
         per_config[idx] = (d, s, bool(cfg["filter_out_zero_usage"]))
-    return PatientTables(patient_id=patient_id, n_rows=n, per_config=per_config)
+    return PatientTables(patient_id=patient_id, n_rows=n, per_config=per_config, world=w)
 
 
 # --------------------------------------------------------------------------
@@ -321,9 +344,10 @@ def run_patient_sampled(
     *,
     param_combinations: Optional[Sequence[Dict]] = None,
     chunk: int = 2000,
+    world: "WorldSpec | str | None" = None,
 ) -> pd.DataFrame:
     """Drop-in for the per-config output of ``batch.run_batch`` for one patient."""
-    tables = precompute_patient(patient_id, questionnaire_df, inhaler_df, param_combinations)
+    tables = precompute_patient(patient_id, questionnaire_df, inhaler_df, param_combinations, world=world)
     parts = []
     idx = list(range(perm_start, perm_end))
     for i in range(0, len(idx), chunk):
@@ -342,9 +366,10 @@ def run_patient_exact(
     *,
     param_combinations: Optional[Sequence[Dict]] = None,
     limit: Optional[int] = None,
+    world: "WorldSpec | str | None" = None,
 ) -> pd.DataFrame:
     """Per-config table over every distinct arrangement of the self-report (row 0 = observed)."""
-    tables = precompute_patient(patient_id, questionnaire_df, inhaler_df, param_combinations)
+    tables = precompute_patient(patient_id, questionnaire_df, inhaler_df, param_combinations, world=world)
     P = distinct_permutations(questionnaire_df["daily_relief_inhaler"].to_numpy(dtype=float), limit=limit)
     return run_patient(tables, P, list(range(P.shape[0])))
 
@@ -355,8 +380,9 @@ def observed_per_config(
     inhaler_df: pd.DataFrame,
     *,
     param_combinations: Optional[Sequence[Dict]] = None,
+    world: "WorldSpec | str | None" = None,
 ) -> pd.DataFrame:
     """The unshuffled evaluation (permutation_idx = -1): the observed multiverse for one patient."""
-    tables = precompute_patient(patient_id, questionnaire_df, inhaler_df, param_combinations)
+    tables = precompute_patient(patient_id, questionnaire_df, inhaler_df, param_combinations, world=world)
     P = np.arange(tables.n_rows, dtype=np.intp)[None, :]
     return run_patient(tables, P, [-1])

@@ -23,8 +23,8 @@
     "world": {
       "absence_case": "A",
       "imputation": null,
-      "span": "Q",
-      "world_id": "span=Q__case=A"
+      "span": "intersection",
+      "world_id": "span=intersection__case=A"
     }
   },
   "data": {
@@ -41,5 +41,5 @@
   "git_dirty": true,
   "git_source": "working-tree",
   "script": "build_world.py",
-  "written_at": "2026-09-18T19:29:31+00:00"
+  "written_at": "2026-09-18T19:32:36+00:00"
 }

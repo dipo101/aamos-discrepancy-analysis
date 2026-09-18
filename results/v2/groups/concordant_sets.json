@@ -1,5 +1,142 @@
 {
+  "span=D__case=A": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702,
+      917
+    ],
+    "all/pearson/median": [
+      190,
+      294,
+      473,
+      702,
+      917
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702,
+      917
+    ],
+    "all/spearman/median": [
+      190,
+      294,
+      473,
+      702,
+      917
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702,
+      917
+    ],
+    "effective/pearson/median": [
+      190,
+      294,
+      473,
+      702,
+      917
+    ],
+    "effective/spearman/mean": [
+      702,
+      917
+    ],
+    "effective/spearman/median": [
+      294,
+      702,
+      917
+    ]
+  },
   "span=Q__case=A": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean": [
+      702
+    ],
+    "effective/spearman/median": [
+      190,
+      294,
+      702,
+      917
+    ]
+  },
+  "span=intersection__case=A": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean": [
+      702
+    ],
+    "effective/spearman/median": [
+      294,
+      702,
+      917
+    ]
+  },
+  "span=union__case=A": {
     "all/pearson/mean": [
       294,
       473,

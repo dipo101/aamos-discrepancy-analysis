@@ -166,7 +166,7 @@ def add_world_argument(parser) -> None:
     """Add the standard ``--world`` and ``--summary`` options to an argparse parser."""
     parser.add_argument(
         "--world", default=str(BASELINE),
-        help="world id whose concordant sets and output folder to use (default: baseline span=Q__case=A)",
+        help="world id whose concordant sets and output folder to use (default: baseline span=union__case=A)",
     )
     parser.add_argument(
         "--summary", default=None,

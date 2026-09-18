@@ -17,7 +17,7 @@ Environment variables:
     COLLECT_DATASETS  'true' to also upload the categorised frames as Parquet
     (the per-configuration Fisher Z vectors for both correlation types are always
      uploaded, to <results prefix>perconfig/patient_<id>_batch_<b>.parquet)
-    WORLD_ID          world id (default span=Q__case=A). Only the baseline is implemented so
+    WORLD_ID          world id (default span=union__case=A). Only the baseline is implemented so
                       far; any other value exits with an error rather than silently
                       computing the baseline. Results go to gs://<bucket>/<results prefix for the world>/
     TOTAL_PERMS + PERMS_PER_TASK + CLOUD_RUN_TASK_INDEX   multi-task mode, or

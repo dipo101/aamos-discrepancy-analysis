@@ -34,8 +34,8 @@
     702,
     917
   ],
-  "script": "temporal_correlation_analysis_v2.py",
+  "script": "demographic_comparison.py",
   "summary_spec": "effective/spearman",
-  "world": "span=Q__case=A",
+  "world": "span=union__case=A",
   "written_at": "2026-09-18T18:29:11+00:00"
 }

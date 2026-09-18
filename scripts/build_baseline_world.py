@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-"""Build the baseline world (span=Q__case=A) from the frozen v1 artifacts.
+"""Build the baseline world (span=union__case=A) from the frozen v1 artifacts.
 
 The published analysis did not have the v2 layout. This script creates
-``results/v2/worlds/span=Q__case=A/`` from ``results/v1/`` so that:
+``results/v2/worlds/span=union__case=A/`` from ``results/v1/`` so that:
 
 * the per-config Z table is the v1 table verbatim;
 * the null distribution is the v1 parquet (referenced, not copied: it is
