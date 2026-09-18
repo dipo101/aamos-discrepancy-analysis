@@ -2,7 +2,7 @@
   "baseline": "span=union__case=A",
   "config": null,
   "data": null,
-  "git_commit": "57f9df012fdaf671e2102ad4d6529e21ee49ed20",
+  "git_commit": "99e6ab1b2616268627e7043a2ce27ae360ce6339",
   "git_dirty": true,
   "git_source": "working-tree",
   "primary_spec": "effective/spearman/mean",
@@ -57,5 +57,5 @@
     "span=union__case=B__k=09",
     "span=union__case=C"
   ],
-  "written_at": "2026-09-18T21:08:29+00:00"
+  "written_at": "2026-09-18T22:29:39+00:00"
 }

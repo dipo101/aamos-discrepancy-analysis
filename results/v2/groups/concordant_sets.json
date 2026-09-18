@@ -120,8 +120,7 @@
   "span=D__case=B__k=02": {
     "all/pearson/mean": [
       473,
-      702,
-      917
+      702
     ],
     "all/pearson/median": [
       473,
@@ -1306,8 +1305,7 @@
     ],
     "effective/pearson/mean": [
       473,
-      702,
-      917
+      702
     ],
     "effective/pearson/median": [
       473,
@@ -1426,8 +1424,7 @@
     ],
     "effective/pearson/mean": [
       473,
-      702,
-      917
+      702
     ],
     "effective/pearson/median": [
       294,

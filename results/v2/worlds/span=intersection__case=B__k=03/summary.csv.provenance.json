@@ -1,24 +1,5 @@
 {
   "config": {
-    "exact_max": 20000,
-    "n_perm": 10000,
-    "patients": [
-      113,
-      190,
-      294,
-      328,
-      343,
-      398,
-      447,
-      454,
-      473,
-      514,
-      625,
-      701,
-      702,
-      917,
-      939
-    ],
     "per_patient": {
       "113": {
         "mode": "sampled",
@@ -107,7 +88,7 @@
         "seed": 42
       }
     },
-    "seed": 42,
+    "resummarized_from": "build_world.py",
     "world": {
       "absence_case": "B",
       "imputation": 3,
@@ -124,9 +105,9 @@
       "anonym_aamos00_smartinhaler_dt.csv": "adff777b4aa141f71f82183a69412e313a91fba0d6859304b9ed9a4425731efc"
     }
   },
-  "git_commit": "57f9df012fdaf671e2102ad4d6529e21ee49ed20",
+  "git_commit": "99e6ab1b2616268627e7043a2ce27ae360ce6339",
   "git_dirty": true,
   "git_source": "working-tree",
-  "script": "build_world.py",
-  "written_at": "2026-09-18T20:59:42+00:00"
+  "script": "resummarize_worlds.py",
+  "written_at": "2026-09-18T22:27:35+00:00"
 }

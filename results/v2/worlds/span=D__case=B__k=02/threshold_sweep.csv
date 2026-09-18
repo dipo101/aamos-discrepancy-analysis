@@ -1,9 +1,9 @@
 config_set,correlation_type,measure,threshold,n_concordant,concordant
-all,pearson,mean,0.1,8,113 294 343 398 473 702 917 939
-all,pearson,mean,0.25,8,113 294 343 398 473 702 917 939
-all,pearson,mean,0.5,3,473 702 917
-all,pearson,mean,0.75,1,917
-all,pearson,mean,0.9,1,917
+all,pearson,mean,0.1,7,113 294 343 398 473 702 939
+all,pearson,mean,0.25,7,113 294 343 398 473 702 939
+all,pearson,mean,0.5,2,473 702
+all,pearson,mean,0.75,0,
+all,pearson,mean,0.9,0,
 all,pearson,median,0.1,7,113 294 343 398 473 702 939
 all,pearson,median,0.25,7,113 294 343 398 473 702 939
 all,pearson,median,0.5,2,473 702
