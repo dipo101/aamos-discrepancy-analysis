@@ -16,6 +16,7 @@ from .categorization import (
     filter_zero_usage,
 )
 from .configs import dedupe_combinations, generate_param_combinations
+from .spans import Span, apply_span, patient_spans
 from .engine import observed_per_config, run_patient_exact, run_patient_sampled
 from .data import (
     DataIntegrityError,
@@ -39,6 +40,9 @@ from .provenance import build_record, read_sidecar, write_sidecar
 from .summary import PRIMARY, V1_SPEC, SummarySpec
 
 __all__ = [
+    "Span",
+    "apply_span",
+    "patient_spans",
     "observed_per_config",
     "run_patient_exact",
     "run_patient_sampled",
