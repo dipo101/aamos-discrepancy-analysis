@@ -13,7 +13,19 @@ from google.cloud import storage
 import matplotlib.pyplot as plt
 import seaborn as sns
 import logging
+import sys
 from tqdm import tqdm
+
+import argparse
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # repo root, for aamos_concordance
+from aamos_concordance import write_sidecar
+from aamos_concordance.provenance import git_state
+from aamos_concordance.summary import build_world_summary, derive_concordant_sets, to_v1_measure_table
+from aamos_concordance.worlds import (
+    BASELINE, REPO_ROOT, NULL_PARQUET, PER_CONFIG_Z, SUMMARY_CSV, as_world, gcs_results_prefix,
+    register_world, world_dir, write_concordant_sets, write_world_config,
+)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -28,7 +40,7 @@ def load_config(config_path: str = '../config.yaml') -> dict:
         return yaml.safe_load(f)
 
 
-def download_batch_results(config: dict, cache_file: str = 'batch_results_cache.json') -> list:
+def download_batch_results(config: dict, cache_file: str = 'batch_results_cache.json', prefix: str = 'results/') -> list:
     """
     Download all batch results from GCS, with local caching.
     """
@@ -48,10 +60,10 @@ def download_batch_results(config: dict, cache_file: str = 'batch_results_cache.
     storage_client = storage.Client()
     bucket = storage_client.bucket(bucket_name)
     
-    logger.info(f" Downloading results from gs://{bucket_name}/results/")
+    logger.info(f" Downloading results from gs://{bucket_name}/{prefix}")
     
     # List all result files
-    blobs = list(bucket.list_blobs(prefix='results/'))
+    blobs = [b for b in bucket.list_blobs(prefix=prefix) if b.name[len(prefix):].count('/') == 0]
     
     logger.info(f"Found {len(blobs)} result files")
     
@@ -73,22 +85,6 @@ def download_batch_results(config: dict, cache_file: str = 'batch_results_cache.
         json.dump(batch_results, f)
     
     return batch_results
-
-
-def load_observed_medians(config: dict) -> pd.DataFrame:
-    """Load the observed median Z-scores for each patient."""
-    # From the original per-patient analysis
-    
-    results_file = Path(config.get('observed_medians_file', 
-                                    '../../results/per_patient_analysis/per_patient_summary_statistics.csv'))
-    
-    if results_file.exists():
-        df = pd.read_csv(results_file)
-        logger.info(f" Loaded observed medians for {len(df)} patients")
-        return df
-    else:
-        logger.warning(f"  Observed medians file not found: {results_file}")
-        return None
 
 
 def combine_permutation_results(batch_results: list) -> pd.DataFrame:
@@ -144,137 +140,6 @@ def combine_permutation_results(batch_results: list) -> pd.DataFrame:
     logger.info(f"   Available stats: {list(df.columns)}")
     
     return df
-
-
-def compute_distribution_stats(values: np.ndarray, prefix: str) -> dict:
-    """Compute distribution statistics for an array of values."""
-    if len(values) == 0 or np.all(np.isnan(values)):
-        return {
-            f'{prefix}_mean': None,
-            f'{prefix}_std': None,
-            f'{prefix}_min': None,
-            f'{prefix}_max': None,
-            f'{prefix}_q25': None,
-            f'{prefix}_q75': None,
-        }
-    
-    valid_values = values[~np.isnan(values)]
-    if len(valid_values) == 0:
-        return {
-            f'{prefix}_mean': None,
-            f'{prefix}_std': None,
-            f'{prefix}_min': None,
-            f'{prefix}_max': None,
-            f'{prefix}_q25': None,
-            f'{prefix}_q75': None,
-        }
-    
-    return {
-        f'{prefix}_mean': float(np.mean(valid_values)),
-        f'{prefix}_std': float(np.std(valid_values)),
-        f'{prefix}_min': float(np.min(valid_values)),
-        f'{prefix}_max': float(np.max(valid_values)),
-        f'{prefix}_q25': float(np.percentile(valid_values, 25)),
-        f'{prefix}_q75': float(np.percentile(valid_values, 75)),
-    }
-
-
-def compute_p_values(
-    permutation_df: pd.DataFrame,
-    observed_df: pd.DataFrame,
-    correlation_type: str = 'spearman'
-) -> pd.DataFrame:
-    """
-    Compute permutation p-values for each patient.
-    
-    Args:
-        permutation_df: Combined permutation results
-        observed_df: Observed median Z-scores per patient
-        correlation_type: 'spearman' or 'pearson'
-    
-    Returns:
-        DataFrame with p-values and significance flags
-    """
-    logger.info(" Computing p-values...")
-    
-    results = []
-    
-    z_col = f'median_{correlation_type}_z'
-    n_patients = observed_df['user_key'].nunique()
-    
-    # Summary stats we want to compute distributions for
-    null_stat_columns = [
-        'null_median_z', 'null_mean_z', 'null_min_z', 'null_max_z',
-        'null_q25_z', 'null_q75_z', 'null_std_z', 'null_iqr_z',
-        'null_lower_whisker', 'null_upper_whisker'
-    ]
-    
-    for patient_id in tqdm(observed_df['user_key'].unique(), desc="Computing p-values"):
-        # Get observed median Z
-        obs_row = observed_df[observed_df['user_key'] == patient_id]
-        if len(obs_row) == 0:
-            continue
-        
-        observed_z = obs_row[z_col].values[0]
-        
-        if np.isnan(observed_z):
-            continue
-        
-        # Get patient's permutation data
-        patient_perms = permutation_df[permutation_df['patient_id'] == patient_id]
-        
-        if len(patient_perms) == 0:
-            continue
-        
-        # Get null distribution (median)
-        null_median_dist = patient_perms['null_median_z'].values
-        
-        # Compute two-tailed p-value using median
-        n_perms = len(null_median_dist)
-        n_extreme = np.sum(np.abs(null_median_dist) >= np.abs(observed_z))
-        p_value = (n_extreme + 1) / (n_perms + 1)  # +1 for continuity correction
-        p_bonferroni = min(p_value * n_patients, 1.0)
-        
-        # Build result row
-        row = {
-            'patient_id': patient_id,
-            'observed_median_z': observed_z,
-            'n_permutations': n_perms,
-            'avg_valid_configs': patient_perms['n_valid_configs'].mean() if 'n_valid_configs' in patient_perms.columns else None,
-            # Primary significance (using median)
-            'p_value': p_value,
-            'p_bonferroni': p_bonferroni,
-            'significant_uncorrected': p_value < 0.05,
-            'significant_bonferroni': p_bonferroni < 0.05,
-        }
-        
-        # Compute distribution stats for each null statistic
-        for col in null_stat_columns:
-            if col in patient_perms.columns:
-                dist_stats = compute_distribution_stats(
-                    patient_perms[col].values, 
-                    prefix=f'dist_{col}'
-                )
-                row.update(dist_stats)
-        
-        results.append(row)
-    
-    results_df = pd.DataFrame(results)
-    logger.info(f" Computed p-values for {len(results_df)} patients")
-    
-    # Summary
-    n_sig_uncorrected = results_df['significant_uncorrected'].sum()
-    n_sig_bonferroni = results_df['significant_bonferroni'].sum()
-    
-    logger.info(f"\n{'='*80}")
-    logger.info("SIGNIFICANCE SUMMARY")
-    logger.info(f"{'='*80}")
-    logger.info(f"Total patients: {len(results_df)}")
-    logger.info(f"Significant (p < 0.05, uncorrected): {n_sig_uncorrected}")
-    logger.info(f"Significant (p < 0.05, Bonferroni): {n_sig_bonferroni}")
-    logger.info(f"{'='*80}\n")
-    
-    return results_df
 
 
 def create_visualizations(
@@ -366,93 +231,78 @@ def create_visualizations(
     logger.info(" All visualizations created")
 
 
-def save_final_results(
-    results_df: pd.DataFrame,
-    permutation_df: pd.DataFrame,
-    config: dict,
-    output_dir: Path
-):
-    """Save final results to CSV and GCS."""
-    output_dir.mkdir(parents=True, exist_ok=True)
-    
-    # Save locally
-    results_file = output_dir / 'permutation_test_results.csv'
-    results_df.to_csv(results_file, index=False)
-    logger.info(f" Saved results to: {results_file}")
-    
-    # Save to GCS
-    bucket_name = config['gcp']['bucket_name']
-    storage_client = storage.Client()
-    bucket = storage_client.bucket(bucket_name)
-    
-    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    
-    # Upload results CSV
-    blob = bucket.blob(f"final/permutation_test_results_{timestamp}.csv")
-    blob.upload_from_filename(results_file)
-    logger.info(f" Uploaded to: gs://{bucket_name}/{blob.name}")
-    
-    # Upload full permutation data (Parquet for efficiency)
-    permutation_file = output_dir / 'all_permutations.parquet'
-    permutation_df.to_parquet(permutation_file, index=False)
-    
-    blob = bucket.blob(f"final/all_permutations_{timestamp}.parquet")
-    blob.upload_from_filename(permutation_file)
-    logger.info(f" Uploaded to: gs://{bucket_name}/{blob.name}")
 
 
-def main():
-    """Main aggregation function."""
+def save_world_outputs(world, permutation_df: pd.DataFrame, config: dict, *, upload: bool = True) -> pd.DataFrame:
+    """Write null.parquet and summary.csv into the world directory, derive the concordant sets, register the world."""
+    wdir = world_dir(world, create=True)
+
+    null_path = wdir / NULL_PARQUET
+    permutation_df.to_parquet(null_path, index=False)
+    write_sidecar(null_path, config=config, extra={'script': 'aggregate.py', 'world': str(world), 'n_rows': int(len(permutation_df))})
+    logger.info(f" Saved null distribution to: {null_path}")
+
+    per_config_path = wdir / PER_CONFIG_Z
+    if not per_config_path.exists():
+        raise FileNotFoundError(
+            f"{per_config_path} not found. Run per_patient_correlation_analysis.py --world {world} first; "
+            "the summary needs the observed per-config Z table.")
+    per_config = pd.read_csv(per_config_path)
+    summary = build_world_summary(per_config, permutation_df)
+    summary_path = wdir / SUMMARY_CSV
+    summary.to_csv(summary_path, index=False)
+    write_sidecar(summary_path, config=config, extra={'script': 'aggregate.py', 'world': str(world),
+                                                       'inputs': {'per_config_z': str(per_config_path), 'null': str(null_path)}})
+    logger.info(f" Saved summary to: {summary_path}")
+
+    sets = derive_concordant_sets(summary)
+    write_concordant_sets(world, sets)
+    write_world_config(world, {'null_source': str(null_path.relative_to(REPO_ROOT)), 'built_by': 'aggregate.py'})
+    register_world(world, git_commit=git_state()['git_commit'], note='aggregate.py')
+    logger.info(f" Concordant sets: {sets}")
+
+    if upload:
+        bucket_name = config['gcp']['bucket_name']
+        bucket = storage.Client().bucket(bucket_name)
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        for local in (summary_path, null_path):
+            blob = bucket.blob(f"final/{world}/{local.stem}_{timestamp}{local.suffix}")
+            blob.upload_from_filename(local)
+            logger.info(f" Uploaded to: gs://{bucket_name}/{blob.name}")
+    return summary
+
+
+def main(argv=None):
+    """Aggregate one world's permutation batches into null.parquet + summary.csv."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--world', default=str(BASELINE), help='world id, e.g. span=Q__case=A (default: baseline)')
+    parser.add_argument('--no-visualizations', action='store_true')
+    parser.add_argument('--no-upload', action='store_true', help='do not copy outputs back to GCS final/')
+    args = parser.parse_args(argv)
+    world = as_world(args.world)
+
     logger.info("="*80)
-    logger.info("PERMUTATION ANALYSIS V3 - RESULT AGGREGATOR")
+    logger.info(f"PERMUTATION RESULT AGGREGATOR - world {world}")
     logger.info("="*80 + "\n")
-    
-    # Load config
+
     config = load_config()
-    correlation_type = config['analysis']['correlation_type']
-    
-    # Create output directory
-    output_dir = Path(config['output']['local_results_dir'])
-    output_dir.mkdir(parents=True, exist_ok=True)
-    
-    # Download batch results from GCS
-    batch_results = download_batch_results(config)
-    
-    # Load observed medians
-    observed_df = load_observed_medians(config)
-    
-    if observed_df is None:
-        logger.error(" Cannot proceed without observed medians")
-        return
-    
-    # Combine permutation results
+    prefix = gcs_results_prefix(world)
+    batch_results = download_batch_results(config, cache_file=f'batch_results_cache_{world}.json', prefix=prefix)
     permutation_df = combine_permutation_results(batch_results)
-    
-    # Compute p-values
-    results_df = compute_p_values(
-        permutation_df,
-        observed_df,
-        correlation_type
-    )
-    
-    # Create visualizations
-    if config['output'].get('visualizations', True):
-        create_visualizations(results_df, permutation_df, output_dir)
-    
-    # Save final results
-    save_final_results(results_df, permutation_df, config, output_dir)
-    
+
+    summary = save_world_outputs(world, permutation_df, config, upload=not args.no_upload)
+
+    if not args.no_visualizations and config['output'].get('visualizations', True):
+        create_visualizations(to_v1_measure_table(summary, 'median'), permutation_df, world_dir(world))
+
     logger.info("\n AGGREGATION COMPLETE!")
-    logger.info(f"   Results saved to: {output_dir}")
-    
-    # Print final summary
+    logger.info(f"   Results saved to: {world_dir(world)}")
     print("\n" + "="*80)
-    print("FINAL RESULTS SUMMARY")
+    print(f"SUMMARY - world {world}")
     print("="*80)
-    print(results_df.to_string())
+    print(summary.to_string())
     print("="*80 + "\n")
 
 
 if __name__ == '__main__':
     main()
-

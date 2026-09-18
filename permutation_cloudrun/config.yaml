@@ -37,11 +37,11 @@ data:
   
   # GCS paths (where data will be uploaded)
   gcs_data_prefix: "data/"
-  gcs_results_prefix: "results/"
+  gcs_results_prefix: "results/"  # baseline world; other worlds use results/<world_id>/ (see aamos_concordance.worlds.gcs_results_prefix)
   gcs_final_prefix: "final/"
 
 output:
-  local_results_dir: "../../results/permutation_aggregate_extended/"
+  local_results_dir: "../../results/v2/worlds/"  # aggregate.py writes into results/v2/worlds/<world_id>/
   final_report: "permutation_analysis_v3_FINAL.csv"
   visualizations: true
 

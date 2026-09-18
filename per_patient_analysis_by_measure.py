@@ -58,10 +58,10 @@ MEASURE_CONFIG = {
 MEASURES = ['median', 'mean', 'min', 'max', 'q25', 'q75']
 
 # Paths
-DETAILED_RESULTS_PATH = Path("results/per_patient_analysis/per_patient_correlation_results.csv")
-SUMMARY_STATS_PATH = Path("results/per_patient_analysis/per_patient_summary_statistics.csv")
-SENSITIVITY_RESULTS_DIR = Path("results/permutation_by_measure")
-OUTPUT_BASE_DIR = Path("results/per_patient_analysis")
+DETAILED_RESULTS_PATH = Path("results/v1/per_patient_analysis/per_patient_correlation_results.csv")
+SUMMARY_STATS_PATH = Path("results/v1/per_patient_analysis/per_patient_summary_statistics.csv")
+SENSITIVITY_RESULTS_DIR = Path("results/v1/permutation_by_measure")
+OUTPUT_BASE_DIR = Path("results/v1/per_patient_analysis")
 
 
 # =============================================================================
@@ -164,7 +164,7 @@ def plot_per_patient_boxplots_with_significance(
     # Create box plot
     bp = ax.boxplot(
         patient_data,
-        labels=patients,
+        **{("tick_labels" if tuple(int(x) for x in __import__("matplotlib").__version__.split(".")[:2]) >= (3, 9) else "labels"): patients},
         patch_artist=True,
         showmeans=True,
         meanprops=dict(marker='D', markerfacecolor='red', markersize=5),

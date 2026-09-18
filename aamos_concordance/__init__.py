@@ -15,6 +15,17 @@ from .categorization import (
     filter_zero_usage,
 )
 from .configs import dedupe_combinations, generate_param_combinations
+from .data import (
+    DataIntegrityError,
+    DataNotFoundError,
+    RawData,
+    find_data_dir,
+    find_raw_file,
+    load_raw,
+    resolve_paths,
+    verify_manifest,
+    write_manifest,
+)
 from .join import (
     REFERENCE_DATE,
     add_timestamps,
@@ -22,11 +33,24 @@ from .join import (
     join_multi_patient,
 )
 from .permutation import run_single_permutation, summarize_correlations
+from .provenance import build_record, read_sidecar, write_sidecar
 
 __all__ = [
     "CategorizationMethod",
     "categorize_inhaler_usage",
     "filter_zero_usage",
+    "DataIntegrityError",
+    "DataNotFoundError",
+    "RawData",
+    "find_data_dir",
+    "find_raw_file",
+    "load_raw",
+    "resolve_paths",
+    "verify_manifest",
+    "write_manifest",
+    "build_record",
+    "read_sidecar",
+    "write_sidecar",
     "dedupe_combinations",
     "generate_param_combinations",
     "REFERENCE_DATE",

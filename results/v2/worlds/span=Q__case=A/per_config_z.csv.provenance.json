@@ -1,0 +1,10 @@
+{
+  "config": null,
+  "data": null,
+  "git_commit": "c72471f19ce7779ffec829585fb7efca97a208ef",
+  "git_dirty": true,
+  "git_source": "working-tree",
+  "script": "build_baseline_world.py",
+  "source": "results/v1/per_patient_analysis/per_patient_correlation_results.csv",
+  "written_at": "2026-09-18T14:23:02+00:00"
+}

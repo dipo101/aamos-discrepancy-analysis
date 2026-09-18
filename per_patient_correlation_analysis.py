@@ -7,7 +7,11 @@ from dataclasses import dataclass
 from typing import Dict, List, Tuple, Optional
 from pathlib import Path
 import seaborn as sns
+import matplotlib
 import matplotlib.pyplot as plt
+
+# matplotlib 3.9 renamed Axes.boxplot(labels=...) to tick_labels=...
+_MPL_HAS_TICK_LABELS = tuple(int(x) for x in matplotlib.__version__.split('.')[:2]) >= (3, 9)
 
 from aamos_concordance import (
     CategorizationMethod,
@@ -15,16 +19,16 @@ from aamos_concordance import (
     dedupe_combinations,
     filter_zero_usage,
     join_questionnaire_with_inhaler,
+    load_raw,
+    write_sidecar,
 )
+from aamos_concordance.data import sha256_of
+from aamos_concordance.provenance import git_state
+from aamos_concordance.worlds import BASELINE, PER_CONFIG_Z, as_world, register_world, world_dir, write_world_config
 
 # Set up logger
 logger = logging.getLogger(__name__)
 
-# The pre-refactor copy of the categoriser in this script returned 12 for the
-# data-driven top category when a patient had no usage >= 12, whereas
-# data_loader.py and the job-worker returned NaN. The published per-patient
-# results were produced with 12, so this script keeps that behaviour.
-TOP_CATEGORY_FALLBACK = 12
 
 @dataclass
 class PerPatientCorrelationConfig:
@@ -74,17 +78,34 @@ class PerPatientDataLoader:
     def __init__(
         self,
         config: PerPatientCorrelationConfig,
-        patient_info_path: str = 'anonym_aamos00_patient_info.csv',
-        daily_questionnaire_path: str = 'anonym_aamos00_dailyquestionnaire_dt.csv',
-        inhaler_data_path: str = 'anonym_aamos00_smartinhaler_dt.csv',
+        patient_info_path: Optional[str] = None,
+        daily_questionnaire_path: Optional[str] = None,
+        inhaler_data_path: Optional[str] = None,
+        data_dir: Optional[Path] = None,
     ):
+        """Load the raw frames (see AsthmaDataLoader for the lookup and manifest rules)."""
         self.config = config
         logger.setLevel(config.log_level)
         
         logger.info("Loading data files...")
-        self.patient_info = pd.read_csv(patient_info_path)
-        self.daily_questionnaire = pd.read_csv(daily_questionnaire_path)
-        self.inhaler_data = pd.read_csv(inhaler_data_path)
+        explicit = (patient_info_path, daily_questionnaire_path, inhaler_data_path)
+        if any(p is not None for p in explicit):
+            if not all(p is not None for p in explicit):
+                raise ValueError("Pass all three raw file paths or none of them.")
+            self.patient_info = pd.read_csv(patient_info_path)
+            self.daily_questionnaire = pd.read_csv(daily_questionnaire_path)
+            self.inhaler_data = pd.read_csv(inhaler_data_path)
+            self.data_provenance = {
+                "data_dir": None,
+                "sha256": {Path(p).name: sha256_of(Path(p)) for p in explicit},
+                "manifest_verified": False,
+            }
+        else:
+            raw = load_raw(data_dir)
+            self.patient_info = raw.patient_info
+            self.daily_questionnaire = raw.questionnaire
+            self.inhaler_data = raw.inhaler
+            self.data_provenance = raw.provenance()
         
         # Remove duplicates
         self.patient_info.drop_duplicates(inplace=True)
@@ -197,28 +218,17 @@ class PerPatientDataLoader:
         categorization_method: CategorizationMethod
     ) -> pd.DataFrame:
         """Apply categorization to both usage columns (shared implementation)."""
-        return categorize_inhaler_usage(
-            df, categorization_method, top_category_fallback=TOP_CATEGORY_FALLBACK
-        )
+        return categorize_inhaler_usage(df, categorization_method)
 
 class PerPatientCorrelationAnalysis:
     """Analyzes correlations on a per-patient basis"""
     
     def __init__(self, config: PerPatientCorrelationConfig, data_dir: Optional[Path] = None):
         """``data_dir`` optionally points at the folder holding the three raw CSVs;
-        by default they are read from the current working directory as before."""
+        by default they are located via aamos_concordance.load_raw."""
         self.config = config
         logger.setLevel(config.log_level)
-        if data_dir is None:
-            self.data_loader = PerPatientDataLoader(config)
-        else:
-            data_dir = Path(data_dir)
-            self.data_loader = PerPatientDataLoader(
-                config,
-                patient_info_path=str(data_dir / 'anonym_aamos00_patient_info.csv'),
-                daily_questionnaire_path=str(data_dir / 'anonym_aamos00_dailyquestionnaire_dt.csv'),
-                inhaler_data_path=str(data_dir / 'anonym_aamos00_smartinhaler_dt.csv'),
-            )
+        self.data_loader = PerPatientDataLoader(config, data_dir=data_dir)
     
     def run_analysis(self) -> pd.DataFrame:
         """Run correlation analysis for all patients with all parameter combinations"""
@@ -399,7 +409,7 @@ class PerPatientCorrelationAnalysis:
         # Create box plot
         bp = ax.boxplot(
             patient_data,
-            labels=patients,
+            **{('tick_labels' if _MPL_HAS_TICK_LABELS else 'labels'): patients},
             patch_artist=True,
             showmeans=True,
             meanprops=dict(marker='D', markerfacecolor='red', markersize=5),
@@ -635,8 +645,18 @@ class PerPatientCorrelationAnalysis:
         return report_df
 
 
-def main():
+def main(argv=None):
     """Main execution function"""
+    import argparse
+    parser = argparse.ArgumentParser(description="Per-patient multiverse: observed Fisher Z for all 132 configurations.")
+    parser.add_argument('--world', default=str(BASELINE),
+                        help='world id to write into (default: baseline span=Q__case=A). '
+                             'Only the baseline is implemented so far.')
+    args = parser.parse_args(argv)
+    world = as_world(args.world)
+    if world != BASELINE:
+        raise SystemExit(f"world {world}: span/absence-case handling is not implemented yet; refusing to write "
+                         "baseline results under a non-baseline world id.")
     
     # Configure logging
     logging.basicConfig(
@@ -675,19 +695,24 @@ def main():
     # Run analysis
     results_df = analyzer.run_analysis()
     
-    # Create output directory
-    output_dir = Path("./results/per_patient_analysis")
-    output_dir.mkdir(parents=True, exist_ok=True)
+    # Output directory: the world's folder under results/v2/worlds/
+    output_dir = world_dir(world, create=True)
     
-    # Save results
-    results_path = output_dir / "per_patient_correlation_results.csv"
+    # Save the per-config Z table (the world's observed multiverse)
+    results_path = output_dir / PER_CONFIG_Z
     results_df.to_csv(results_path, index=False)
-    logger.info(f"Saved detailed results to {results_path}")
+    write_sidecar(results_path, config=config, data=analyzer.data_loader.data_provenance)
+    write_world_config(world, {'built_by': 'per_patient_correlation_analysis.py'})
+    register_world(world, git_commit=git_state()['git_commit'],
+                   data_hashes=analyzer.data_loader.data_provenance.get('sha256', {}),
+                   note='per_patient_correlation_analysis.py (observed multiverse)')
+    logger.info(f"Saved per-config Z table to {results_path}")
     
     # Create patient exclusion report
     exclusion_df = analyzer.create_patient_exclusion_report(results_df)
     exclusion_path = output_dir / "per_patient_exclusion_report.csv"
     exclusion_df.to_csv(exclusion_path, index=False)
+    write_sidecar(exclusion_path, config=config, data=analyzer.data_loader.data_provenance)
     logger.info(f"Saved patient exclusion report to {exclusion_path}")
     
     # Print exclusion summary
@@ -715,12 +740,14 @@ def main():
     summary_df = analyzer.create_summary_statistics(results_df, exclude_invalid=True)
     summary_path = output_dir / "per_patient_summary_statistics.csv"
     summary_df.to_csv(summary_path, index=False)
+    write_sidecar(summary_path, config=config, data=analyzer.data_loader.data_provenance)
     logger.info(f"Saved summary statistics to {summary_path} ({len(summary_df)} patients)")
     
     # Also create a summary with ALL patients (including invalid) for comparison
     summary_all_df = analyzer.create_summary_statistics(results_df, exclude_invalid=False)
     summary_all_path = output_dir / "per_patient_summary_statistics_all.csv"
     summary_all_df.to_csv(summary_all_path, index=False)
+    write_sidecar(summary_all_path, config=config, data=analyzer.data_loader.data_provenance)
     logger.info(f"Saved summary statistics (all patients) to {summary_all_path} ({len(summary_all_df)} patients)")
     
     # Create box plots (Fisher Z-transformed)

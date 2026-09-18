@@ -27,6 +27,10 @@ REPO_ROOT="$(cd ../.. && pwd)"
 rm -rf ./aamos_concordance
 cp -R "$REPO_ROOT/aamos_concordance" ./aamos_concordance
 find ./aamos_concordance -name '__pycache__' -type d -exec rm -rf {} + 2>/dev/null || true
+# Stamp the commit into the package so results carry provenance without git in the container.
+GIT_COMMIT="$(git -C "$REPO_ROOT" rev-parse HEAD)"
+GIT_DIRTY="False"; [ -n "$(git -C "$REPO_ROOT" status --porcelain --untracked-files=no)" ] && GIT_DIRTY="True"
+printf 'GIT_COMMIT = "%s"\nGIT_DIRTY = %s\n' "$GIT_COMMIT" "$GIT_DIRTY" > ./aamos_concordance/_build_info.py
 trap 'rm -rf ./aamos_concordance' EXIT
 
 # Build and push container

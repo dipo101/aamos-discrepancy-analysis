@@ -1,0 +1,15 @@
+Patient 113: n=132 (131 valid), mean=0.317, median=0.383, std=0.209
+Patient 190: n=132 (90 valid), mean=0.373, median=0.683, std=0.537
+Patient 294: n=132 (131 valid), mean=0.523, median=0.554, std=0.218
+Patient 328: n=132 (119 valid), mean=-0.116, median=0.074, std=0.365
+Patient 343: n=132 (132 valid), mean=-0.035, median=-0.067, std=0.569
+Patient 398: n=126 (114 valid), mean=0.201, median=0.281, std=0.646
+Patient 447: n=132 (126 valid), mean=0.002, median=0.022, std=0.125
+Patient 454: n=132 (128 valid), mean=-0.716, median=-0.788, std=0.255
+Patient 473: n=132 (132 valid), mean=0.684, median=0.771, std=0.366
+Patient 514: n=132 (131 valid), mean=-0.140, median=-0.052, std=0.327
+Patient 625: n=132 (131 valid), mean=-0.033, median=0.037, std=0.189
+Patient 701: n=132 (110 valid), mean=-0.036, median=-0.035, std=0.014
+Patient 702: n=132 (127 valid), mean=0.810, median=0.871, std=0.490
+Patient 917: n=132 (122 valid), mean=1.046, median=1.099, std=0.393
+Patient 939: n=132 (128 valid), mean=0.343, median=0.379, std=0.199

@@ -30,7 +30,8 @@ import seaborn as sns
 from sklearn.metrics import cohen_kappa_score
 from scipy import stats
 import openai
-from config import GROUPS, FEEDBACK_PATIENTS, get_group_config, get_output_dir
+from aamos_concordance import find_raw_file
+from config import GROUPS, FEEDBACK_PATIENTS, get_group_config, get_output_dir, add_world_argument, set_active_world, record_run_provenance
 
 # Download NLTK data
 nltk.download('vader_lexicon', quiet=True)
@@ -58,7 +59,7 @@ def load_feedback_data():
     """Load and prepare feedback data with de-duplication."""
     print("Loading feedback data...")
     
-    feedback_df = pd.read_csv("aamos00-end-final-freetext.csv")
+    feedback_df = pd.read_csv(find_raw_file("aamos00-end-final-freetext.csv"))
     
     # Combine feedback columns
     feedback_df['combined_feedback'] = (
@@ -738,7 +739,10 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Sentiment analysis.")
     parser.add_argument("--group", choices=list(GROUPS.keys()), default="concordant",
                         help="Patient group definition to use (default: concordant)")
-    return parser.parse_args()
+    add_world_argument(parser)
+    args = parser.parse_args()
+    set_active_world(args.world)
+    return args
 
 
 def main():
@@ -757,6 +761,7 @@ def main():
     ALL_INCLUDED = concordant_with_feedback + REMAINING_ASSESSED
 
     OUTPUT_DIR = get_output_dir(args.group, "sentiment_analysis")
+    record_run_provenance(OUTPUT_DIR, group_name=args.group, script="sentiment_analysis.py")
     MAIN_DIR = OUTPUT_DIR / 'main_text'
     SUPP_DIR = OUTPUT_DIR / 'supplementary'
     MAIN_DIR.mkdir(exist_ok=True)

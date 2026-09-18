@@ -14,12 +14,17 @@ purpose because the published results depend on them:
   category (except for ``ONE_HOT``, where it maps to 0);
 * a value strictly between 0 and 1 also lands in the top category.
 
-``top_category_fallback`` controls what the two data-driven methods return
-for the top category when the input frame has no usage at or above 12. The
-pre-refactor copies disagreed on this: ``data_loader.py`` and the Cloud Run
-job-worker returned NaN, while ``per_patient_correlation_analysis.py``
-returned 12. Callers pass the value that reproduces their own historical
-behaviour; unifying it is a separate, deliberate decision.
+``top_category_fallback`` is what the two data-driven methods return for the
+top category when the input frame has no device usage at or above 12 (so
+the data-driven value would be the mean or max of an empty set). The
+pre-refactor copies disagreed: ``data_loader.py`` and the Cloud Run
+job-worker let it be NaN (an unguarded edge case, which then invalidated the
+whole configuration), while ``per_patient_correlation_analysis.py`` used 12.
+The default is now 12 everywhere, i.e. the plain midpoint/upper-bound value.
+On the AAMOS-00 data the case is unreachable: self-reports are coded
+{0, 1, 3, 5, 9, 12}, so only device counts above 12 ever reach the top
+branch, and then the data-driven set is non-empty by construction. Pass
+``None`` only to reproduce the old NaN behaviour (the oracle tests do).
 """
 
 from __future__ import annotations
@@ -93,11 +98,14 @@ def _top_value_upper_bound_with_inhaler(df: pd.DataFrame, fallback: Optional[flo
     return above.max()
 
 
+DEFAULT_TOP_CATEGORY_FALLBACK = 12
+
+
 def build_categorize_fn(
     df: pd.DataFrame,
     method: MethodLike,
     *,
-    top_category_fallback: Optional[float] = None,
+    top_category_fallback: Optional[float] = DEFAULT_TOP_CATEGORY_FALLBACK,
 ) -> Callable:
     """Return the scalar step function for ``method``.
 
@@ -127,7 +135,7 @@ def categorize_inhaler_usage(
     df: pd.DataFrame,
     method: MethodLike,
     *,
-    top_category_fallback: Optional[float] = None,
+    top_category_fallback: Optional[float] = DEFAULT_TOP_CATEGORY_FALLBACK,
 ) -> pd.DataFrame:
     """Return a copy of ``df`` with both usage columns mapped through ``method``."""
     fn = build_categorize_fn(df, method, top_category_fallback=top_category_fallback)
