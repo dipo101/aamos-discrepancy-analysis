@@ -20,11 +20,14 @@ analysis:
   max_concurrent_instances: 50  # Start conservatively to avoid rate limits
   
 cloud_run:
-  service_name: "permutation-worker-v3"
-  cpu: 2  # vCPUs per instance
-  memory: "2Gi"  # Memory per instance
-  timeout: 3600  # 1 hour timeout (each batch should take ~30 min with 250 perms)
-  max_instances: 50  # Per wave (conservative to avoid rate limits)
+  # Permutations run as a Cloud Run JOB (job-worker/, deployed by scripts/deploy_job.sh
+  # and driven by orchestrator/orchestrate_jobs.py or orchestrate_multi_task.py).
+  # The earlier HTTP-service worker was removed; it iterated all 192 raw
+  # configurations rather than the 132 unique ones.
+  job_name: "permutation-job-v3"
+  cpu: 2  # vCPUs per task
+  memory: "4Gi"  # Memory per task
+  timeout: 3600  # 1 hour timeout per task
   
 data:
   # Source data files (local paths to upload)

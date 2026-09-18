@@ -20,6 +20,15 @@ echo ""
 # Navigate to job-worker directory
 cd "$(dirname "$0")/../job-worker"
 
+# Stage the shared analysis package into the build context. It is the single
+# implementation of the join/categorisation/permutation logic and lives at the
+# repository root; the copy here is build-only and git-ignored.
+REPO_ROOT="$(cd ../.. && pwd)"
+rm -rf ./aamos_concordance
+cp -R "$REPO_ROOT/aamos_concordance" ./aamos_concordance
+find ./aamos_concordance -name '__pycache__' -type d -exec rm -rf {} + 2>/dev/null || true
+trap 'rm -rf ./aamos_concordance' EXIT
+
 # Build and push container
 echo "Building container..."
 gcloud builds submit \
