@@ -1,4 +1,4 @@
-"""Missingness diagnostics (v2 item 19: cell counts per span).
+"""Missingness diagnostics (v2 items 19 and 20).
 
 Item 19, :func:`cell_counts`: for each patient and each span, the join's
 rows classified by device count (zero / positive) and self-report code
@@ -9,15 +9,24 @@ trimmed. Counts depend on the window configuration; the default is the
 calendar-day, same-day window, which is the most literal "did the device
 record anything on the day of the questionnaire".
 
-Descriptive only: nothing here imputes.
+Item 20, :func:`nonresponse_check`: is questionnaire non-response related
+to device use? Within each patient's Q span, every calendar day is a
+response day or a non-response day; device puffs per day (from the raw
+records) are compared between the two with a Mann-Whitney U test, and the
+fraction of days with any device use is reported for each. Temporal
+clustering of non-response is measured with the Wald-Wolfowitz runs test on
+the response/non-response sequence (fewer runs than expected means
+non-response comes in blocks). Descriptive only: nothing here imputes.
 """
 
 from __future__ import annotations
 
+from math import sqrt
 from typing import Dict, List, Optional
 
 import numpy as np
 import pandas as pd
+from scipy import stats
 
 from .join import join_questionnaire_with_inhaler
 from .spans import apply_span, patient_spans
@@ -71,3 +80,74 @@ def cell_counts(
             })
             rows.append(row)
     return pd.DataFrame(rows)
+
+
+def _runs_test(seq: np.ndarray) -> Dict[str, float]:
+    """Wald-Wolfowitz runs test on a binary sequence; z < 0 means fewer runs than expected (clustering)."""
+    seq = np.asarray(seq).astype(bool)
+    n1, n0 = int(seq.sum()), int((~seq).sum())
+    n = n1 + n0
+    if n1 == 0 or n0 == 0 or n < 3:
+        return {"n_runs": float(1 if n else 0), "expected_runs": np.nan, "runs_z": np.nan, "runs_p": np.nan}
+    runs = 1 + int(np.sum(seq[1:] != seq[:-1]))
+    mu = 1 + 2 * n1 * n0 / n
+    var = 2 * n1 * n0 * (2 * n1 * n0 - n) / (n * n * (n - 1))
+    z = (runs - mu) / sqrt(var) if var > 0 else np.nan
+    p = 2 * stats.norm.sf(abs(z)) if np.isfinite(z) else np.nan
+    return {"n_runs": float(runs), "expected_runs": mu, "runs_z": z, "runs_p": p}
+
+
+def nonresponse_check(
+    questionnaire_df: pd.DataFrame,
+    inhaler_df: pd.DataFrame,
+    patients: List[int],
+) -> pd.DataFrame:
+    """One row per patient: device use on response vs non-response days, and clustering of non-response."""
+    rows: List[Dict] = []
+    for pid in patients:
+        q = questionnaire_df[questionnaire_df.user_key == pid]
+        inh = inhaler_df[inhaler_df.user_key == pid]
+        if len(q) == 0:
+            continue
+        sp = patient_spans(q, inh)["Q"]
+        days = np.arange(sp.start, sp.end + 1)
+        responded = np.isin(days, q["date"].unique())
+        puffs_by_day = inh.groupby("date").size()
+        puffs = np.array([int(puffs_by_day.get(d, 0)) for d in days], dtype=float)
+
+        resp, nonresp = puffs[responded], puffs[~responded]
+        if len(nonresp) and len(resp):
+            try:
+                u_p = float(stats.mannwhitneyu(resp, nonresp, alternative="two-sided").pvalue)
+            except ValueError:
+                u_p = np.nan
+        else:
+            u_p = np.nan
+        rows.append({
+            "patient_id": pid,
+            "span_days": int(len(days)),
+            "response_days": int(responded.sum()),
+            "nonresponse_days": int((~responded).sum()),
+            "nonresponse_rate": float((~responded).mean()),
+            "mean_puffs_response_days": float(resp.mean()) if len(resp) else np.nan,
+            "mean_puffs_nonresponse_days": float(nonresp.mean()) if len(nonresp) else np.nan,
+            "frac_days_with_device_use_response": float((resp > 0).mean()) if len(resp) else np.nan,
+            "frac_days_with_device_use_nonresponse": float((nonresp > 0).mean()) if len(nonresp) else np.nan,
+            "mannwhitney_p": u_p,
+            **_runs_test(responded),
+        })
+    return pd.DataFrame(rows)
+
+
+def pooled_nonresponse_summary(check: pd.DataFrame) -> Dict[str, float]:
+    """Across patients: how many show more device use on non-response days, and how many cluster."""
+    has_both = check.dropna(subset=["mean_puffs_response_days", "mean_puffs_nonresponse_days"])
+    more_on_nonresp = has_both["mean_puffs_nonresponse_days"] > has_both["mean_puffs_response_days"]
+    return {
+        "n_patients": int(len(check)),
+        "n_with_nonresponse_days": int((check["nonresponse_days"] > 0).sum()),
+        "median_nonresponse_rate": float(check["nonresponse_rate"].median()),
+        "n_more_device_use_on_nonresponse_days": int(more_on_nonresp.sum()),
+        "n_mannwhitney_p_below_0_05": int((check["mannwhitney_p"] < 0.05).sum()),
+        "n_clustered_runs_p_below_0_05": int(((check["runs_p"] < 0.05) & (check["runs_z"] < 0)).sum()),
+    }

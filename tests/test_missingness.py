@@ -1,4 +1,4 @@
-"""Spans (item 8 groundwork) and the cell-count diagnostic (item 19)."""
+"""Spans (item 8 groundwork) and the missingness diagnostics (items 19 and 20)."""
 
 from __future__ import annotations
 
@@ -6,7 +6,13 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from aamos_concordance.missingness import CALENDAR_SAME_DAY, cell_counts
+from aamos_concordance.missingness import (
+    CALENDAR_SAME_DAY,
+    _runs_test,
+    cell_counts,
+    nonresponse_check,
+    pooled_nonresponse_summary,
+)
 from aamos_concordance.spans import Span, apply_span, patient_spans
 from tests.synthetic import make_dataset
 
@@ -102,9 +108,39 @@ def test_cell_counts_cells_sum_to_rows_on_synthetic_data():
 
 
 # --------------------------------------------------------------------------
-# Real data: pin the committed table
+# Non-response check
 # --------------------------------------------------------------------------
 
+def test_runs_test_detects_blocks_vs_alternation():
+    blocks = np.array([1] * 10 + [0] * 10, dtype=bool)
+    alt = np.array([1, 0] * 10, dtype=bool)
+    b, a = _runs_test(blocks), _runs_test(alt)
+    assert b["n_runs"] == 2 and b["runs_z"] < 0 and b["runs_p"] < 0.01
+    assert a["n_runs"] == 20 and a["runs_z"] > 0
+    assert np.isnan(_runs_test(np.ones(5, dtype=bool))["runs_z"])
+
+
+def test_nonresponse_check_hand_computed():
+    # Q span days 1..6; responses on 1,2,5,6; device puffs: day3=4, day4=4, day1=1 -> heavier use on non-response days
+    q = pd.DataFrame({"user_key": 1, "date": [1, 2, 5, 6], "time": "12:00:00", "daily_relief_inhaler": 1})
+    inh = pd.DataFrame({"user_key": 1, "date": [1] + [3] * 4 + [4] * 4, "time": "08:00:00", "name": "V"})
+    r = nonresponse_check(q, inh, [1]).iloc[0]
+    assert r["span_days"] == 6 and r["response_days"] == 4 and r["nonresponse_days"] == 2
+    assert r["mean_puffs_response_days"] == 0.25 and r["mean_puffs_nonresponse_days"] == 4.0
+    assert r["frac_days_with_device_use_nonresponse"] == 1.0
+    assert r["n_runs"] == 3  # 1,1,0,0,1,1
+    pooled = pooled_nonresponse_summary(nonresponse_check(q, inh, [1]))
+    assert pooled["n_more_device_use_on_nonresponse_days"] == 1
+
+
+def test_nonresponse_check_skips_patients_without_questionnaire():
+    q, inh = _frames([], [1, 2])
+    assert nonresponse_check(q, inh, [1]).empty
+
+
+# --------------------------------------------------------------------------
+# Real data: pin the committed diagnostic tables
+# --------------------------------------------------------------------------
 
 def test_committed_cell_counts_match_recomputation(data_dir):
     from aamos_concordance import load_raw
@@ -118,3 +154,14 @@ def test_committed_cell_counts_match_recomputation(data_dir):
     # the finding: device-only days are large for 473 and 917 under span Q
     qq = committed[committed.span == "Q"].set_index("patient_id")
     assert qq.loc[473, "device_days_without_questionnaire"] == 40 and qq.loc[917, "device_days_without_questionnaire"] == 20
+
+
+def test_committed_nonresponse_check_matches_recomputation(data_dir):
+    from aamos_concordance import load_raw
+    from aamos_concordance.worlds import diagnostics_dir
+    raw = load_raw(drop_duplicates=True)
+    committed = pd.read_csv(diagnostics_dir(create=False) / "nonresponse_check.csv")
+    fresh = nonresponse_check(raw.questionnaire, raw.inhaler, sorted(committed.patient_id))
+    pd.testing.assert_frame_equal(committed.reset_index(drop=True), fresh.reset_index(drop=True), check_dtype=False, atol=1e-9)
+    pooled = pooled_nonresponse_summary(fresh)
+    assert pooled["n_more_device_use_on_nonresponse_days"] == 1 and pooled["n_clustered_runs_p_below_0_05"] == 9
