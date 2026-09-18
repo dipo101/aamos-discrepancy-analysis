@@ -21,10 +21,14 @@ from aamos_concordance.summary import (
 V1_MEAN = V1_SPEC
 V1_MEDIAN = SummarySpec("all", "spearman", "median")
 
-# The sets the manuscript reports. Kept as literals here on purpose: this is
-# the oracle for the derived config.py groups.
-V1_CONCORDANT_MEAN = [294, 473, 702]
-V1_CONCORDANT_MEDIAN = [294, 473, 702, 917]
+# The sets the manuscript reports (v1 rule: |null| >= |observed|). Recorded here
+# as documentation; the code no longer implements that rule.
+V1_PUBLISHED_MEAN = [294, 473, 702]
+V1_PUBLISHED_MEDIAN = [294, 473, 702, 917]
+# The sets under the centred rule applied to the v1 null (all/spearman). These are
+# the oracle for the derived config.py groups on the committed baseline world.
+V1_CONCORDANT_MEAN = [294, 473, 702, 917]
+V1_CONCORDANT_MEDIAN = [190, 294, 473, 702, 917]
 V1_ASSESSED = [113, 190, 294, 328, 343, 398, 447, 454, 473, 514, 625, 701, 702, 917, 939]
 
 
@@ -40,7 +44,7 @@ def test_observed_statistics_excludes_non_finite():
     assert out.loc[2, "n_valid"] == 2 and out.loc[2, "mean"] == 0.6
 
 
-def test_permutation_p_value_formula_two_tailed_with_plus_one():
+def test_permutation_p_value_is_two_tailed_about_the_null_centre():
     observed = pd.Series({1: 0.5, 2: -0.5, 3: np.nan, 4: 0.9})
     null = pd.DataFrame({
         "patient_id": [1] * 4 + [2] * 4 + [4] * 2,
@@ -48,16 +52,32 @@ def test_permutation_p_value_formula_two_tailed_with_plus_one():
         "n_valid_configs": [132] * 10,
     })
     out = permutation_p_values(observed, null, null_column="null_mean_z").set_index("patient_id")
-    # patient 1: |null| >= 0.5 -> 0.6, -0.7, 0.5 (tie) = 3 extreme; p = (3+1)/(4+1)
+    # patient 1: centre 0.125; distances 0.025, 0.475, 0.825, 0.375; observed distance 0.375
+    #   -> 0.475, 0.825, 0.375 (tie) = 3 extreme; p = (3+1)/(4+1)
     assert out.loc[1, "p_value"] == pytest.approx(4 / 5)
     assert out.loc[1, "n_ties_at_observed"] == 1
-    # patient 2: none extreme; p = 1/5
+    assert out.loc[1, "null_mean"] == pytest.approx(0.125)
+    # patient 2: centre 0.15; distances 0.15, 0.05, 0.05, 0.15; observed distance 0.65 -> none; p = 1/5
     assert out.loc[2, "p_value"] == pytest.approx(1 / 5)
+    assert out.loc[2, "observed_distance_sd"] < 0
     # patient 3 (NaN observed) and 4 (all-NaN null) are excluded, so Bonferroni uses n = 2
     assert set(out.index) == {1, 2}
     assert (out["n_patients_bonferroni"] == 2).all()
     assert out.loc[2, "p_bonferroni"] == pytest.approx(min(1.0, 2 / 5))
     assert out.loc[1, "p_bonferroni"] == 1.0
+
+
+def test_centred_rule_is_invariant_to_a_null_shift():
+    """A constant shift of null and observed together must not change p; the old |.| rule would."""
+    rng = np.random.default_rng(0)
+    base = rng.normal(0, 0.1, 500)
+    obs = 0.35
+    for shift in (0.0, -0.5, -1.2):
+        null = pd.DataFrame({"patient_id": 1, "null_mean_z": base + shift, "n_valid_configs": 132})
+        out = permutation_p_values(pd.Series({1: obs + shift}), null, null_column="null_mean_z")
+        if shift == 0.0:
+            p0 = out["p_value"].iloc[0]
+        assert out["p_value"].iloc[0] == pytest.approx(p0)
 
 
 def test_concordant_set_requires_threshold_and_bonferroni():
@@ -91,22 +111,22 @@ def test_summary_reproduces_v1_permutation_tables(v1_summary, frozen_results_dir
     assert list(ours.columns) == list(frozen.columns)
     assert list(ours.index) == list(frozen.index)
 
-    s = v1_summary[(v1_summary["measure"] == measure) & (v1_summary["config_set"] == "all")].set_index("patient_id").sort_index()
-    ties, n_perm, n_pat = s["n_ties_at_observed"], s["n_permutations"], s["n_patients_bonferroni"]
-    # Exact where the null has no value equal to |observed|. Where it does, v1
-    # read the observed statistic back from a CSV whose last digit differed,
-    # so its tie count could differ from ours by up to n_ties.
-    tolerance = {"p_value": ties / (n_perm + 1), "p_bonferroni": n_pat * ties / (n_perm + 1)}
+    # Everything except the p-value columns and the flags derived from them is v1's exactly.
+    p_cols = {"p_value", "p_bonferroni", "significant_uncorrected", "significant_bonferroni"}
     for col in ours.columns:
-        a, b = ours[col], frozen[col]
-        if a.dtype == bool:
-            assert (a == b).all(), col
+        if col in p_cols:
             continue
+        a, b = ours[col], frozen[col]
         diff = (a.astype(float) - b.astype(float)).abs()
-        tol = tolerance.get(col, pd.Series(0.0, index=diff.index)) + 1e-9
-        assert (diff <= tol).all(), f"{col}: {diff[diff > tol].to_dict()}"
-        if col in tolerance:
-            assert (diff[ties == 0] < 1e-12).all(), f"{col}: differs for a patient with no ties"
+        assert diff.max() < 1e-9, (col, diff.max())
+    # The p-values follow the centred rule, checked independently against the raw null.
+    s = v1_summary[(v1_summary["measure"] == measure) & (v1_summary["config_set"] == "all")].set_index("patient_id").sort_index()
+    null = pd.read_parquet(frozen_results_dir / "permutation_aggregate_extended" / "median_concordant" / "all_permutations.parquet")
+    for pid, row in s.iterrows():
+        nv = null[null.patient_id == pid][f"null_{measure}_z"].dropna().to_numpy()
+        c = nv.mean()
+        expected = (np.sum(np.abs(nv - c) >= abs(row["observed_z"] - c)) + 1) / (len(nv) + 1)
+        assert row["p_value"] == pytest.approx(expected, abs=1e-12), pid
 
 
 def test_v1_summary_derives_the_published_sets(v1_summary):
@@ -121,3 +141,11 @@ def test_v1_summary_reports_ties_for_small_n_patients(v1_summary):
     # 454 has only 840 distinct permutations; some reproduce the observed arrangement exactly.
     assert ties.loc[454] > 0
     assert ties.loc[294] == 0
+
+
+def test_published_v1_sets_are_recoverable_from_the_frozen_tables(frozen_results_dir):
+    """Documents the published sets; they came from the old |null| >= |observed| rule."""
+    for measure, published in (("mean", V1_PUBLISHED_MEAN), ("median", V1_PUBLISHED_MEDIAN)):
+        f = pd.read_csv(frozen_results_dir / "permutation_by_measure" / measure / "permutation_test_results.csv")
+        got = sorted(f[(f[f"observed_{measure}_z"] >= 0.5) & f["significant_bonferroni"]]["patient_id"])
+        assert got == published

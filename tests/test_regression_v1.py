@@ -56,15 +56,11 @@ def test_frozen_observed_statistics_are_derived_from_per_config_table(frozen_res
     assert (summary["median_spearman_z"] - derived.loc[summary.index, "median"]).abs().max() < 1e-12
 
 
-def test_frozen_concordant_set_matches_group_config(frozen_results_dir):
+def test_group_config_matches_centred_rule_on_v1_null():
     from config import GROUPS
-    frozen = pd.read_csv(frozen_results_dir / "permutation_by_measure" / "mean" / "permutation_test_results.csv")
-    concordant = sorted(frozen[(frozen["observed_mean_z"] >= 0.5) & frozen["significant_bonferroni"]]["patient_id"])
-    assert concordant == sorted(GROUPS["concordant"]["patients"])
-
-    frozen_med = pd.read_csv(frozen_results_dir / "permutation_by_measure" / "median" / "permutation_test_results.csv")
-    median_concordant = sorted(frozen_med[(frozen_med["observed_median_z"] >= 0.5) & frozen_med["significant_bonferroni"]]["patient_id"])
-    assert median_concordant == sorted(GROUPS["median_concordant"]["patients"])
+    from tests.test_summary import V1_CONCORDANT_MEAN, V1_CONCORDANT_MEDIAN
+    assert sorted(GROUPS["concordant"]["patients"]) == V1_CONCORDANT_MEAN
+    assert sorted(GROUPS["median_concordant"]["patients"]) == V1_CONCORDANT_MEDIAN
 
 
 # --------------------------------------------------------------------------
