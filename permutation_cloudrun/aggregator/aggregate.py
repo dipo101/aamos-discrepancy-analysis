@@ -23,9 +23,10 @@ from aamos_concordance import write_sidecar
 from aamos_concordance.provenance import git_state
 from aamos_concordance.summary import build_world_summary, derive_concordant_sets, to_v1_measure_table
 from aamos_concordance.worlds import (
-    BASELINE, REPO_ROOT, NULL_PARQUET, PER_CONFIG_Z, SUMMARY_CSV, as_world, gcs_results_prefix,
+    BASELINE, REPO_ROOT, NULL_PARQUET, NULL_PER_CONFIG_PARQUET, PER_CONFIG_Z, SUMMARY_CSV, as_world, gcs_results_prefix,
     register_world, world_dir, write_concordant_sets, write_world_config,
 )
+import io
 
 logging.basicConfig(
     level=logging.INFO,
@@ -85,6 +86,22 @@ def download_batch_results(config: dict, cache_file: str = 'batch_results_cache.
         json.dump(batch_results, f)
     
     return batch_results
+
+
+def download_per_config_null(config: dict, prefix: str):
+    """Download and concatenate <prefix>perconfig/*.parquet (per-configuration null Z). None if absent."""
+    bucket_name = config['gcp']['bucket_name']
+    bucket = storage.Client().bucket(bucket_name)
+    blobs = [b for b in bucket.list_blobs(prefix=f'{prefix}perconfig/') if b.name.endswith('.parquet')]
+    if not blobs:
+        logger.warning(f" No per-config null parquets under gs://{bucket_name}/{prefix}perconfig/ "
+                       "(batches produced by a worker predating per-config storage)")
+        return None
+    logger.info(f" Downloading {len(blobs)} per-config parquets from gs://{bucket_name}/{prefix}perconfig/")
+    parts = [pd.read_parquet(io.BytesIO(b.download_as_bytes())) for b in tqdm(blobs, desc="per-config")]
+    df = pd.concat(parts, ignore_index=True).sort_values(['patient_id', 'permutation_idx', 'config_idx']).reset_index(drop=True)
+    logger.info(f" Per-config null: {len(df)} rows, {df['patient_id'].nunique()} patients")
+    return df
 
 
 def combine_permutation_results(batch_results: list) -> pd.DataFrame:
@@ -233,14 +250,22 @@ def create_visualizations(
 
 
 
-def save_world_outputs(world, permutation_df: pd.DataFrame, config: dict, *, upload: bool = True) -> pd.DataFrame:
-    """Write null.parquet and summary.csv into the world directory, derive the concordant sets, register the world."""
+def save_world_outputs(world, permutation_df: pd.DataFrame, config: dict, *, upload: bool = True,
+                       per_config_null=None) -> pd.DataFrame:
+    """Write null.parquet (+ null_per_config.parquet) and summary.csv into the world directory,
+    derive the concordant sets, register the world."""
     wdir = world_dir(world, create=True)
 
     null_path = wdir / NULL_PARQUET
     permutation_df.to_parquet(null_path, index=False)
     write_sidecar(null_path, config=config, extra={'script': 'aggregate.py', 'world': str(world), 'n_rows': int(len(permutation_df))})
     logger.info(f" Saved null distribution to: {null_path}")
+
+    if per_config_null is not None:
+        pc_path = wdir / NULL_PER_CONFIG_PARQUET
+        per_config_null.to_parquet(pc_path, index=False)
+        write_sidecar(pc_path, config=config, extra={'script': 'aggregate.py', 'world': str(world), 'n_rows': int(len(per_config_null))})
+        logger.info(f" Saved per-config null to: {pc_path}")
 
     per_config_path = wdir / PER_CONFIG_Z
     if not per_config_path.exists():
@@ -265,7 +290,8 @@ def save_world_outputs(world, permutation_df: pd.DataFrame, config: dict, *, upl
         bucket_name = config['gcp']['bucket_name']
         bucket = storage.Client().bucket(bucket_name)
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        for local in (summary_path, null_path):
+        uploads = [summary_path, null_path] + ([wdir / NULL_PER_CONFIG_PARQUET] if per_config_null is not None else [])
+        for local in uploads:
             blob = bucket.blob(f"final/{world}/{local.stem}_{timestamp}{local.suffix}")
             blob.upload_from_filename(local)
             logger.info(f" Uploaded to: gs://{bucket_name}/{blob.name}")
@@ -289,8 +315,9 @@ def main(argv=None):
     prefix = gcs_results_prefix(world)
     batch_results = download_batch_results(config, cache_file=f'batch_results_cache_{world}.json', prefix=prefix)
     permutation_df = combine_permutation_results(batch_results)
+    per_config_null = download_per_config_null(config, prefix)
 
-    summary = save_world_outputs(world, permutation_df, config, upload=not args.no_upload)
+    summary = save_world_outputs(world, permutation_df, config, upload=not args.no_upload, per_config_null=per_config_null)
 
     if not args.no_visualizations and config['output'].get('visualizations', True):
         create_visualizations(to_v1_measure_table(summary, 'median'), permutation_df, world_dir(world))
