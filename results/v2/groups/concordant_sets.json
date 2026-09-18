@@ -1,11 +1,11 @@
 {
   "span=Q__case=A": {
-    "mean": [
+    "all/spearman/mean": [
       294,
       473,
       702
     ],
-    "median": [
+    "all/spearman/median": [
       294,
       473,
       702,

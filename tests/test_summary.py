@@ -7,6 +7,8 @@ import pandas as pd
 import pytest
 
 from aamos_concordance.summary import (
+    V1_SPEC,
+    SummarySpec,
     assessed_patients,
     build_world_summary,
     concordant_set,
@@ -15,6 +17,9 @@ from aamos_concordance.summary import (
     permutation_p_values,
     to_v1_measure_table,
 )
+
+V1_MEAN = V1_SPEC
+V1_MEDIAN = SummarySpec("all", "spearman", "median")
 
 # The sets the manuscript reports. Kept as literals here on purpose: this is
 # the oracle for the derived config.py groups.
@@ -57,13 +62,13 @@ def test_permutation_p_value_formula_two_tailed_with_plus_one():
 
 def test_concordant_set_requires_threshold_and_bonferroni():
     summary = pd.DataFrame({
-        "patient_id": [1, 2, 3, 4], "measure": ["mean"] * 4,
+        "patient_id": [1, 2, 3, 4], "config_set": ["all"] * 4, "correlation_type": ["spearman"] * 4, "measure": ["mean"] * 4,
         "observed_z": [0.6, 0.6, 0.4, 0.9],
         "significant_bonferroni": [True, False, True, True],
     })
-    assert concordant_set(summary, "mean") == [1, 4]
-    assert concordant_set(summary, "mean", threshold=0.8) == [4]
-    assert derive_concordant_sets(summary) == {"mean": [1, 4]}
+    assert concordant_set(summary, V1_MEAN) == [1, 4]
+    assert concordant_set(summary, "all/spearman/mean", threshold=0.8) == [4]
+    assert derive_concordant_sets(summary) == {"all/spearman/mean": [1, 4]}
 
 
 # --------------------------------------------------------------------------
@@ -74,7 +79,8 @@ def test_concordant_set_requires_threshold_and_bonferroni():
 def v1_summary(frozen_results_dir):
     per_config = pd.read_csv(frozen_results_dir / "per_patient_analysis" / "per_patient_correlation_results.csv")
     null = pd.read_parquet(frozen_results_dir / "permutation_aggregate_extended" / "median_concordant" / "all_permutations.parquet")
-    return build_world_summary(per_config, null)
+    with pytest.warns(UserWarning, match="No null distribution for summary specs"):
+        return build_world_summary(per_config, null)
 
 
 @pytest.mark.parametrize("measure", ["mean", "median"])
@@ -85,7 +91,7 @@ def test_summary_reproduces_v1_permutation_tables(v1_summary, frozen_results_dir
     assert list(ours.columns) == list(frozen.columns)
     assert list(ours.index) == list(frozen.index)
 
-    s = v1_summary[v1_summary["measure"] == measure].set_index("patient_id").sort_index()
+    s = v1_summary[(v1_summary["measure"] == measure) & (v1_summary["config_set"] == "all")].set_index("patient_id").sort_index()
     ties, n_perm, n_pat = s["n_ties_at_observed"], s["n_permutations"], s["n_patients_bonferroni"]
     # Exact where the null has no value equal to |observed|. Where it does, v1
     # read the observed statistic back from a CSV whose last digit differed,
@@ -104,12 +110,14 @@ def test_summary_reproduces_v1_permutation_tables(v1_summary, frozen_results_dir
 
 
 def test_v1_summary_derives_the_published_sets(v1_summary):
-    assert derive_concordant_sets(v1_summary) == {"mean": V1_CONCORDANT_MEAN, "median": V1_CONCORDANT_MEDIAN}
+    assert derive_concordant_sets(v1_summary) == {"all/spearman/mean": V1_CONCORDANT_MEAN, "all/spearman/median": V1_CONCORDANT_MEDIAN}
     assert assessed_patients(v1_summary) == V1_ASSESSED
+    # Only the v1 specs can be summarised from the v1 null; nothing is fabricated for the others.
+    assert set(v1_summary["config_set"]) == {"all"} and set(v1_summary["correlation_type"]) == {"spearman"}
 
 
 def test_v1_summary_reports_ties_for_small_n_patients(v1_summary):
-    ties = v1_summary[v1_summary["measure"] == "mean"].set_index("patient_id")["n_ties_at_observed"]
+    ties = v1_summary[(v1_summary["measure"] == "mean") & (v1_summary["config_set"] == "all")].set_index("patient_id")["n_ties_at_observed"]
     # 454 has only 840 distinct permutations; some reproduce the observed arrangement exactly.
     assert ties.loc[454] > 0
     assert ties.loc[294] == 0

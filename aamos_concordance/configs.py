@@ -163,3 +163,37 @@ def effective_config_indices(correlation_type: str = "spearman") -> List[int]:
 
 
 N_SPEARMAN_EFFECTIVE = 60
+
+CONFIG_SETS = ("all", "effective")
+
+OBSERVED_CONFIG_KEY = ["timestamp_window", "use_daily_max_windows", "use_calendar_days",
+                       "filter_out_zero_usage_entries", "categorization_method"]
+
+
+def config_indices_for(config_set: str, correlation_type: str) -> List[int]:
+    """Indices (into generate_param_combinations()) making up a named configuration set."""
+    if config_set == "all":
+        return list(range(N_UNIQUE_COMBINATIONS))
+    if config_set == "effective":
+        return effective_config_indices(correlation_type)
+    raise ValueError(f"config_set must be one of {CONFIG_SETS}, got {config_set!r}")
+
+
+def attach_config_idx(per_config):
+    """Add ``config_idx`` (position in generate_param_combinations()) to an observed per-config table.
+
+    The observed table (per_patient_correlation_analysis.py) keys configurations
+    by their five parameters with ``filter_out_zero_usage_entries`` as the
+    filter column name; the null table keys them by ``config_idx``. This is the
+    bridge between the two.
+    """
+    combos = generate_param_combinations()
+    lookup = {
+        (c["timestamp_window"], c["use_daily_max_windows"], c["use_calendar_days"],
+         c["filter_out_zero_usage"], c["categorization_method"]): i
+        for i, c in enumerate(combos)
+    }
+    keys = list(zip(*(per_config[k] for k in OBSERVED_CONFIG_KEY)))
+    out = per_config.copy()
+    out["config_idx"] = [lookup[k] for k in keys]
+    return out

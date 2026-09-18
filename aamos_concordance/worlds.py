@@ -28,8 +28,10 @@ Layout under ``results/``::
         null_per_config.parquet           patient x permutation x config x Z, both correlation
                                           types; lets the null be re-summarised under any
                                           config subset / statistic / type (absent for v1)
-        summary.csv                       long table: patient, measure, observed Z, p-values
-      groups/concordant_sets.json         {world_id: {measure: [patients]}}; generated
+        summary.csv                       long table: patient x (config_set, type, measure), observed Z, p-values
+        threshold_sweep.csv               concordant set under every spec x threshold
+        observed.csv                      observed Z under every spec (no p-values; always available)
+      groups/concordant_sets.json         {world_id: {"config_set/type/measure": [patients]}}; generated
       comparisons/<world_id>/<group>/<analysis>/   downstream outputs
       diagnostics/                        cell counts, missingness checks
 """
@@ -57,6 +59,8 @@ PER_CONFIG_Z = "per_config_z.csv"
 NULL_PARQUET = "null.parquet"
 NULL_PER_CONFIG_PARQUET = "null_per_config.parquet"  # patient x permutation x config x {spearman_z, pearson_z}
 SUMMARY_CSV = "summary.csv"
+THRESHOLD_SWEEP_CSV = "threshold_sweep.csv"
+OBSERVED_CSV = "observed.csv"  # observed statistics under every spec, no p-values
 CONFIG_JSON = "config.json"
 
 _WORLD_ID_RE = re.compile(r"^span=(?P<span>[A-Za-z]+)__case=(?P<case>[ABC])(?:__k=(?P<k>\d{2}))?$")
@@ -228,7 +232,7 @@ def load_concordant_sets() -> Dict[str, Dict[str, List[int]]]:
 
 
 def write_concordant_sets(world: "WorldSpec | str | None", sets: Dict[str, Iterable[int]]) -> Path:
-    """Merge ``{measure: [patients]}`` for this world into the generated JSON."""
+    """Merge ``{summary spec key: [patients]}`` for this world into the generated JSON."""
     w = as_world(world)
     all_sets = load_concordant_sets()
     all_sets[w.world_id] = {m: sorted(int(p) for p in ps) for m, ps in sets.items()}

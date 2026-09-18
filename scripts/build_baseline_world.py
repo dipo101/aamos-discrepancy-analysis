@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import shutil
 import sys
+import warnings
 from pathlib import Path
 
 import pandas as pd
@@ -31,9 +32,9 @@ sys.path.insert(0, str(REPO_ROOT))
 from aamos_concordance import write_sidecar  # noqa: E402
 from aamos_concordance.data import DEFAULT_DATA_DIR, MANIFEST_NAME, read_manifest  # noqa: E402
 from aamos_concordance.provenance import git_state  # noqa: E402
-from aamos_concordance.summary import build_world_summary, derive_concordant_sets  # noqa: E402
+from aamos_concordance.summary import build_world_summary, derive_concordant_sets, observed_table, threshold_sweep  # noqa: E402
 from aamos_concordance.worlds import (  # noqa: E402
-    BASELINE, PER_CONFIG_Z, SUMMARY_CSV, V1_DIR, register_world, world_dir,
+    BASELINE, OBSERVED_CSV, PER_CONFIG_Z, SUMMARY_CSV, THRESHOLD_SWEEP_CSV, V1_DIR, register_world, world_dir,
     write_concordant_sets, write_world_config,
 )
 
@@ -50,12 +51,24 @@ def main() -> int:
 
     per_config = pd.read_csv(per_config_path)
     null = pd.read_parquet(V1_NULL)
-    summary = build_world_summary(per_config, null)
+    # The v1 null carries only all/spearman summaries, so only those specs can be
+    # summarised here. The primary spec (effective/spearman) needs the per-config
+    # null from a rerun with the current worker.
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        summary = build_world_summary(per_config, null)
     summary_path = wdir / SUMMARY_CSV
     summary.to_csv(summary_path, index=False)
     write_sidecar(summary_path, extra={"script": "build_baseline_world.py",
                                        "inputs": {"per_config_z": str(per_config_path.relative_to(REPO_ROOT)),
-                                                  "null": str(V1_NULL.relative_to(REPO_ROOT))}})
+                                                  "null": str(V1_NULL.relative_to(REPO_ROOT))},
+                                       "specs": sorted({f"{r.config_set}/{r.correlation_type}/{r.measure}" for r in summary.itertuples()})})
+    observed_path = wdir / OBSERVED_CSV
+    observed_table(per_config).to_csv(observed_path, index=False)
+    write_sidecar(observed_path, extra={"script": "build_baseline_world.py", "input": str(per_config_path.relative_to(REPO_ROOT))})
+    sweep_path = wdir / THRESHOLD_SWEEP_CSV
+    threshold_sweep(summary).to_csv(sweep_path, index=False)
+    write_sidecar(sweep_path, extra={"script": "build_baseline_world.py", "input": str(summary_path.relative_to(REPO_ROOT))})
 
     write_world_config(BASELINE, {
         "null_source": str(V1_NULL.relative_to(REPO_ROOT)),
@@ -71,7 +84,8 @@ def main() -> int:
     register_world(BASELINE, git_commit=git_state()["git_commit"], data_hashes=hashes, note="from v1 artifacts")
 
     print(f"Built {wdir}")
-    print(f"  concordant sets: {sets}")
+    print(f"  concordant sets by spec: {sets}")
+    print("  NOTE: the primary spec (effective/spearman) has no null yet; groups fall back to all/spearman until the baseline is rerun.")
     print(f"  assessed patients: {sorted(summary['patient_id'].unique().tolist())}")
     return 0
 
