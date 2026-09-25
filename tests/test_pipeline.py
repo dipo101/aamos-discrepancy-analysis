@@ -89,8 +89,11 @@ def test_build_world_end_to_end_on_synthetic_data(sandbox):
     for name in ("per_config_z.csv", "null.parquet", "null_per_config.parquet", "summary.csv", "observed.csv", "threshold_sweep.csv", "config.json"):
         assert (d / name).exists(), name
     summary = pd.read_csv(d / "summary.csv")
-    assert {sp.key for sp in available_specs(summary)} == {sp.key for sp in ALL_SPECS}
-    assert set(sets) == {sp.key for sp in ALL_SPECS}
+    # synthetic patients are too short for the largest minimum-rows sensitivity
+    max_rows = pd.read_csv(d / "per_config_z.csv")["sample_size"].max()
+    reachable = {sp.key for sp in ALL_SPECS if sp.min_rows <= max_rows}
+    assert {sp.key for sp in available_specs(summary)} == reachable
+    assert set(sets) == reachable
     cfg = json.loads((d / "config.json").read_text())
     assert cfg["span"] == "D" and cfg["absence_case"] == "A" and cfg["null_engine"] == "vectorised"
     assert set(int(k) for k in cfg["null_modes"]) == set(pats)

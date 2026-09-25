@@ -16,6 +16,9 @@ no permutation is rerun.
   the imputation worlds the patient is Bonferroni-significant, above the
   Z threshold, and both (concordant). Reported separately because under B
   significance is stable and the threshold is what moves.
+* :func:`spec_stability`: the one-at-a-time analytical sensitivities
+  (look-ahead windows kept, minimum rows, patient exclusion, and the v1
+  spec) against the primary spec, per non-B world.
 * :func:`threshold_curve`: the other item 16 marginal, set size against the
   threshold cut for the baseline world and each spec.
 * :func:`worlds_to_rerun`: item 18, the worlds whose primary set differs
@@ -33,7 +36,10 @@ from typing import Dict, Iterable, List, Optional, Sequence
 
 import pandas as pd
 
-from .summary import ALL_SPECS, DEFAULT_THRESHOLD, DEFAULT_THRESHOLDS, PRIMARY, SummarySpec, concordant_set, select
+from .summary import (
+    ALL_SPECS, DEFAULT_THRESHOLD, DEFAULT_THRESHOLDS, PRIMARY, SENSITIVITY_SPECS, SPEC_COLUMNS, V1_SPEC, SummarySpec,
+    concordant_set, select,
+)
 from .worlds import BASELINE, SUMMARY_CSV, WorldSpec, list_worlds, world_dir
 
 
@@ -75,18 +81,18 @@ def grid(
                 rows.append({
                     "world_id": wid, "span": w.span, "absence_case": w.absence_case,
                     "imputation": "" if w.imputation is None else w.imputation,
-                    "config_set": spec.config_set, "correlation_type": spec.correlation_type, "measure": spec.measure,
+                    **{c: getattr(spec, c) for c in SPEC_COLUMNS},
                     "threshold": t,
                     "n_concordant": len(members), "concordant": _fmt(members),
                     "n_assessed": int(select(summary, spec)["patient_id"].nunique()),
                     "changed": members != ref,
                     "joiners": _fmt(joiners), "leavers": _fmt(leavers),
                 })
-    cols = ["world_id", "span", "absence_case", "imputation", "config_set", "correlation_type", "measure", "threshold",
+    cols = ["world_id", "span", "absence_case", "imputation", *SPEC_COLUMNS, "threshold",
             "n_concordant", "concordant", "n_assessed", "changed", "joiners", "leavers"]
     if not rows:
         return pd.DataFrame(columns=cols)
-    return pd.DataFrame(rows)[cols].sort_values(["span", "absence_case", "imputation", "config_set", "correlation_type", "measure", "threshold"], kind="stable").reset_index(drop=True)
+    return pd.DataFrame(rows)[cols].sort_values(["span", "absence_case", "imputation", *SPEC_COLUMNS, "threshold"], kind="stable").reset_index(drop=True)
 
 
 def case_b_stability(
@@ -163,6 +169,36 @@ def world_stability(
     return out.sort_values(["_o", "absence_case"]).drop(columns="_o").reset_index(drop=True)
 
 
+ONE_AT_A_TIME_SPECS = [PRIMARY, SummarySpec("effective_lookahead", PRIMARY.correlation_type, PRIMARY.measure),
+                       *SENSITIVITY_SPECS, V1_SPEC]
+
+
+def spec_stability(
+    summaries: Dict[str, pd.DataFrame],
+    *,
+    specs: Sequence[SummarySpec] = ONE_AT_A_TIME_SPECS,
+    threshold: float = DEFAULT_THRESHOLD,
+) -> pd.DataFrame:
+    """The set under each one-at-a-time spec, compared with the primary spec in the same world (case B skipped)."""
+    rows: List[Dict] = []
+    for wid, summary in summaries.items():
+        w = WorldSpec.parse(wid)
+        if w.absence_case == "B":
+            continue
+        ref = concordant_set(summary, PRIMARY, threshold)
+        for spec in specs:
+            s = select(summary, spec)
+            if s.empty:
+                continue
+            members = concordant_set(summary, spec, threshold)
+            rows.append({"world_id": wid, "span": w.span, "absence_case": w.absence_case, "spec": spec.key,
+                         "n_assessed": int(s["patient_id"].nunique()), "n_concordant": len(members),
+                         "concordant": _fmt(members), "changed": members != ref,
+                         "joiners": _fmt(sorted(set(members) - set(ref))), "leavers": _fmt(sorted(set(ref) - set(members)))})
+    cols = ["world_id", "span", "absence_case", "spec", "n_assessed", "n_concordant", "concordant", "changed", "joiners", "leavers"]
+    return pd.DataFrame(rows, columns=cols)
+
+
 def threshold_curve(summary: pd.DataFrame, thresholds: Sequence[float] = DEFAULT_THRESHOLDS,
                     specs: Iterable[SummarySpec] = ALL_SPECS) -> pd.DataFrame:
     """Set size against threshold for one world (the baseline), per spec."""
@@ -172,7 +208,7 @@ def threshold_curve(summary: pd.DataFrame, thresholds: Sequence[float] = DEFAULT
             continue
         for t in thresholds:
             members = concordant_set(summary, spec, t)
-            rows.append({"config_set": spec.config_set, "correlation_type": spec.correlation_type, "measure": spec.measure,
+            rows.append({**{c: getattr(spec, c) for c in SPEC_COLUMNS},
                          "threshold": t, "n_concordant": len(members), "concordant": _fmt(members)})
     return pd.DataFrame(rows)
 

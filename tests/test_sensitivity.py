@@ -12,6 +12,7 @@ from aamos_concordance.sensitivity import (
     case_b_stability,
     grid,
     load_world_summaries,
+    spec_stability,
     threshold_curve,
     world_stability,
     worlds_to_rerun,
@@ -115,6 +116,8 @@ def test_committed_grid_matches_recomputation():
     sens = worlds.V2_DIR / "sensitivity"
     committed = pd.read_csv(sens / "grid.csv", keep_default_na=False)
     fresh = grid(load_world_summaries())
+    # grid.csv predating the min_rows / exclude options has no columns for them (all rows are the defaults)
+    fresh = fresh.drop(columns=[c for c in ("min_rows", "exclude") if c not in committed.columns])
     fresh["imputation"] = fresh["imputation"].astype(str)
     fresh["threshold"] = fresh["threshold"].astype(float)
     committed["threshold"] = committed["threshold"].astype(float)
@@ -142,3 +145,24 @@ def test_committed_world_stability_headline():
     cb = pd.read_csv(worlds.V2_DIR / "sensitivity" / "case_b_stability.csv")
     core = cb[cb.patient_id.isin([294, 473, 702])]
     assert (core["n_significant"] == 10).all()  # B moves the threshold, not significance
+
+
+def test_spec_stability_compares_each_option_with_the_primary():
+    def rows(spec, members_z):
+        df = pd.DataFrame(members_z, columns=["patient_id", "observed_z", "significant_bonferroni"])
+        for c in ("config_set", "correlation_type", "measure", "min_rows", "exclude"):
+            df[c] = getattr(spec, c)
+        return df
+    excl = SummarySpec("effective", "spearman", "mean", exclude="fostair")
+    mr20 = SummarySpec("effective", "spearman", "mean", min_rows=20)
+    summary = pd.concat([
+        rows(PRIMARY, [(1, 0.9, True), (2, 0.6, True), (917, 0.99, True)]),
+        rows(excl, [(1, 0.9, True), (2, 0.6, True)]),
+        rows(mr20, [(1, 0.9, True), (2, 0.4, True), (3, 0.7, True)]),
+    ], ignore_index=True)
+    out = spec_stability({"span=union__case=A": summary, "span=union__case=B__k=00": summary}).set_index("spec")
+    assert set(out["world_id"]) == {"span=union__case=A"}  # B is reported through k-of-n stability
+    assert list(out.index) == [PRIMARY.key, mr20.key, excl.key]  # specs absent from the summary are skipped
+    assert out.loc[PRIMARY.key, "changed"] == False
+    assert out.loc[excl.key, "leavers"] == "917" and out.loc[excl.key, "n_assessed"] == 2
+    assert out.loc[mr20.key, "joiners"] == "3" and out.loc[mr20.key, "leavers"] == "2 917"

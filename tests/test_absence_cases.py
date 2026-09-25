@@ -144,8 +144,9 @@ def test_effective_sets_collapse_the_filter_axis_under_B_and_C():
     # Pearson keeps the method axis but still merges the chunk-24 / rolling-24 pair
     assert len(effective_config_indices("pearson", "A")) == 120
     assert len(effective_config_indices("pearson", "B")) == 60
-    assert len(SummarySpec("effective", "spearman", "mean").config_indices_in("C")) == 40
-    assert SummarySpec("effective", "spearman", "mean").config_indices == effective_config_indices("spearman", "A")
+    assert len(SummarySpec("effective_lookahead", "spearman", "mean").config_indices_in("C")) == 40
+    assert len(SummarySpec("effective", "spearman", "mean").config_indices_in("C")) == 32
+    assert SummarySpec("effective_lookahead", "spearman", "mean").config_indices == effective_config_indices("spearman", "A")
 
 
 # --------------------------------------------------------------------------

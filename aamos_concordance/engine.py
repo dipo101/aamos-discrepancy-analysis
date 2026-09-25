@@ -81,7 +81,10 @@ from .join import join_questionnaire_with_inhaler
 from .permutation import CORRELATION_TYPES, MIN_ROWS_FOR_CORRELATION
 from .worlds import BASELINE, WorldSpec, as_world
 
-PER_CONFIG_COLUMNS = ["patient_id", "permutation_idx", "config_idx", "spearman_z", "pearson_z"]
+# ``n_rows`` is the number of rows each correlation used (after the zero filter
+# and case C), so minimum-row sensitivities can be applied at summary time.
+PER_CONFIG_COLUMNS = ["patient_id", "permutation_idx", "config_idx", "spearman_z", "pearson_z", "n_rows"]
+_PER_CONFIG_DTYPES = ["int64", "int64", "int32", "float64", "float64", "int16"]
 
 
 # --------------------------------------------------------------------------
@@ -388,6 +391,7 @@ def evaluate_config(d: np.ndarray, s: np.ndarray, use_filter: bool, P: np.ndarra
         z = _fisher_z(r)
         z[invalid | has_nan] = np.nan
         out[name] = z
+    out["n_rows"] = cnt
     return out
 
 
@@ -407,11 +411,13 @@ def run_patient(
     n_cfg = len(cfg_ids)
     spearman = np.empty((n_cfg, K))
     pearson = np.empty((n_cfg, K))
+    n_rows = np.empty((n_cfg, K), dtype=np.int16)
     for j, ci in enumerate(cfg_ids):
         d, s, use_filter, keep = tables.per_config[ci]
         z = evaluate_config(d, s, use_filter, P, keep)
         spearman[j] = z["spearman"]
         pearson[j] = z["pearson"]
+        n_rows[j] = z["n_rows"]
     perm_col = np.repeat(np.asarray(perm_indices, dtype=np.int64), n_cfg)
     cfg_col = np.tile(np.asarray(cfg_ids, dtype=np.int32), K)
     return pd.DataFrame({
@@ -420,6 +426,7 @@ def run_patient(
         "config_idx": cfg_col,
         "spearman_z": spearman.T.reshape(-1),
         "pearson_z": pearson.T.reshape(-1),
+        "n_rows": n_rows.T.reshape(-1),
     })
 
 
@@ -444,7 +451,7 @@ def run_patient_sampled(
         P = sampled_permutations(tables.n_rows, random_seed, sub)
         parts.append(run_patient(tables, P, sub))
     if not parts:
-        return pd.DataFrame({c: pd.Series(dtype=t) for c, t in zip(PER_CONFIG_COLUMNS, ["int64", "int64", "int32", "float64", "float64"])})
+        return pd.DataFrame({c: pd.Series(dtype=t) for c, t in zip(PER_CONFIG_COLUMNS, _PER_CONFIG_DTYPES)})
     return pd.concat(parts, ignore_index=True).sort_values(["permutation_idx", "config_idx"], kind="stable").reset_index(drop=True)
 
 

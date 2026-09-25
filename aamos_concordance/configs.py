@@ -199,7 +199,22 @@ def effective_config_indices(correlation_type: str = "spearman", absence_case: s
 N_SPEARMAN_EFFECTIVE = 80
 N_SPEARMAN_EFFECTIVE_V1 = 60
 
-CONFIG_SETS = ("all", "effective")
+# Windows that reach past the questionnaire answer: the fixed chunk starting
+# 12 h back runs to 12 h after it, and calendar day 0 is the whole day of the
+# answer. The question asks about "the past 24 hours", so the primary
+# configuration set excludes them; ``effective_lookahead`` keeps them as a
+# sensitivity (v1 included them).
+LOOKAHEAD_WINDOWS = frozenset({("fixed_chunk", 12), ("calendar", 0)})
+
+
+def is_lookahead(cfg: Dict) -> bool:
+    return _window_key(cfg["timestamp_window"], cfg["use_daily_max_windows"], cfg["use_calendar_days"]) in LOOKAHEAD_WINDOWS
+
+
+# all: the 132 (v1). effective: one representative per structural class,
+# look-ahead windows excluded (primary). effective_lookahead: the same with
+# the look-ahead windows kept.
+CONFIG_SETS = ("all", "effective", "effective_lookahead")
 
 OBSERVED_CONFIG_KEY = ["timestamp_window", "use_daily_max_windows", "use_calendar_days",
                        "filter_out_zero_usage_entries", "categorization_method"]
@@ -209,8 +224,11 @@ def config_indices_for(config_set: str, correlation_type: str, absence_case: str
     """Indices (into generate_param_combinations()) making up a named configuration set."""
     if config_set == "all":
         return list(range(N_UNIQUE_COMBINATIONS))
-    if config_set == "effective":
+    if config_set == "effective_lookahead":
         return effective_config_indices(correlation_type, absence_case)
+    if config_set == "effective":
+        combos = generate_param_combinations()
+        return [i for i in effective_config_indices(correlation_type, absence_case) if not is_lookahead(combos[i])]
     raise ValueError(f"config_set must be one of {CONFIG_SETS}, got {config_set!r}")
 
 

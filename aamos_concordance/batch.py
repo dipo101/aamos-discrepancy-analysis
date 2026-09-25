@@ -114,6 +114,7 @@ def null_from_per_config(
     *,
     correlation_type: str = "spearman",
     config_indices: Optional[Sequence[int]] = None,
+    min_rows: int = 3,
 ) -> pd.DataFrame:
     """Re-summarise a per-config null table into per-permutation statistics.
 
@@ -122,6 +123,8 @@ def null_from_per_config(
     ``n_valid_configs``), computed over the configurations in
     ``config_indices`` (all of them when ``None``) for ``correlation_type``.
     Summaries use the same finite-only rule as :func:`summarize_correlations`.
+    ``min_rows`` above 3 also treats a configuration as invalid in a
+    permutation whose correlation used fewer rows (needs ``n_rows``).
     """
     if correlation_type not in CORRELATION_TYPES:
         raise ValueError(f"correlation_type must be one of {CORRELATION_TYPES}, got {correlation_type!r}")
@@ -129,6 +132,10 @@ def null_from_per_config(
     df = per_config
     if config_indices is not None:
         df = df[df["config_idx"].isin(list(config_indices))]
+    if min_rows > 3:
+        if "n_rows" not in df.columns:
+            raise ValueError("min_rows above 3 needs the per-config null's n_rows column")
+        df = df.assign(**{col: df[col].where(df["n_rows"] >= min_rows)})
     df = df[["patient_id", "permutation_idx", col]]
     valid = df[np.isfinite(df[col])]
 
