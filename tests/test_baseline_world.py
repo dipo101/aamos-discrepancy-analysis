@@ -19,7 +19,7 @@ import pytest
 
 from aamos_concordance import null_from_per_config
 from aamos_concordance.engine import run_patient_exact, run_patient_sampled
-from aamos_concordance.summary import ALL_SPECS, PRIMARY, V1_SPEC, SummarySpec, available_specs, derive_concordant_sets, select
+from aamos_concordance.summary import BASE_SPECS, PRIMARY, V1_SPEC, SummarySpec, available_specs, derive_concordant_sets, select
 from aamos_concordance.worlds import (
     BASELINE, PER_CONFIG_Z, SUMMARY_CSV, concordant_sets_path, list_worlds, read_world_config, world_dir,
 )
@@ -31,7 +31,10 @@ BASELINE_CONCORDANT_MEDIAN = [190, 294, 702, 917]
 EXACT_PATIENTS = {328: 136, 398: 12650, 454: 840, 917: 2520}
 
 # The committed baseline world was built under the v1 measurement definitions
-# (open chunk end, code 12 in the 9-12 band, three Spearman method classes).
+# (open chunk end, code 12 in the 9-12 band, three Spearman method classes)
+# and before the look-ahead split: its "effective" rows are today's
+# effective_lookahead. The rebuild regenerates it.
+COMMITTED_EFFECTIVE = "effective_lookahead"
 pytestmark = pytest.mark.usefixtures("v1_definitions_module")
 
 
@@ -64,7 +67,8 @@ def test_baseline_config_records_engine_and_exact_modes(baseline_dir):
 
 
 def test_baseline_summary_has_every_spec(summary):
-    assert {sp.key for sp in available_specs(summary)} == {sp.key for sp in ALL_SPECS}
+    # predates effective_lookahead and the min_rows / exclude sensitivities
+    assert {sp.key for sp in available_specs(summary)} == {sp.key for sp in BASE_SPECS if sp.config_set != COMMITTED_EFFECTIVE}
     assert sorted(summary["patient_id"].unique()) == V1_ASSESSED
     for pid, n in EXACT_PATIENTS.items():
         assert (summary[summary.patient_id == pid]["n_permutations"] == n).all()
@@ -151,8 +155,9 @@ def test_regenerating_a_patient_reproduces_the_committed_summary(data_dir, summa
     pc = run_patient_exact(patient_id, qq, ii)
     per_config = pd.read_csv(world_dir(BASELINE) / PER_CONFIG_Z)
     for spec in (PRIMARY, V1_SPEC, SummarySpec("all", "pearson", "median")):
-        null = null_from_per_config(pc, correlation_type=spec.correlation_type, config_indices=spec.config_indices)
-        obs = observed_statistics(per_config, f"{spec.correlation_type}_z", spec.config_indices).set_index("patient_id")
+        indices = (SummarySpec(COMMITTED_EFFECTIVE, spec.correlation_type, spec.measure) if spec.config_set == "effective" else spec).config_indices
+        null = null_from_per_config(pc, correlation_type=spec.correlation_type, config_indices=indices)
+        obs = observed_statistics(per_config, f"{spec.correlation_type}_z", indices).set_index("patient_id")
         row = permutation_p_values(obs[spec.measure], null, null_column=f"null_{spec.measure}_z",
                                    n_patients=15).set_index("patient_id").loc[patient_id]
         committed = select(summary, spec).set_index("patient_id").loc[patient_id]

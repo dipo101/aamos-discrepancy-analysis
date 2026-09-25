@@ -5,10 +5,17 @@ Cloud Run aggregator so that it runs identically for every world and can be
 tested against the frozen v1 tables (``tests/test_summary.py``).
 
 A summary is computed under a :class:`SummarySpec`: which configuration
-set (``all`` = 132, ``effective`` = the structurally distinct ones, 80 for
-Spearman (60 under the v1 definitions) and 120 for Pearson), which correlation type, and which statistic
-(mean or median). :data:`PRIMARY` is ``effective / spearman / mean``; the
-v1 publication used ``all / spearman / mean`` (:data:`V1_SPEC`). A world's
+set (``all`` = 132; ``effective`` = one per structural class (80 for
+Spearman, 60 under the v1 definitions; 120 for Pearson) with the
+look-ahead windows excluded (64 / 96); ``effective_lookahead`` = the same with them
+kept, see :mod:`aamos_concordance.configs`), which correlation type, which
+statistic (mean or median), the minimum rows a configuration needs to count
+(``min_rows``, :data:`MIN_ROWS_GRID`) and which patients are excluded
+(``exclude``, :data:`PATIENT_EXCLUSIONS`). :data:`PRIMARY` is
+``effective / spearman / mean`` with v1's minimum of 3 rows and no
+exclusion; the v1 publication used ``all / spearman / mean``
+(:data:`V1_SPEC`). :data:`SENSITIVITY_SPECS` vary one of ``min_rows`` and
+``exclude`` at a time around the primary. A world's
 summary table carries every spec whose null distribution is available, so
 the choice of primary is a one-line constant, not a rerun. The null for a
 spec other than ``all/spearman`` requires the per-configuration null table
@@ -50,6 +57,21 @@ Definitions (v1's, apart from the configuration set and the centred p-value):
   observed statistic, so a p-value with ties > 0 is uncertain by
   ``n_ties / (n_perm + 1)``. The v2 plan's exact enumeration for small-n
   patients removes this.
+* **Minimum rows**: a configuration counts towards a patient's statistic
+  only if its correlation used at least ``min_rows`` rows, in the observed
+  data (``sample_size``) and, separately, in each permutation (``n_rows`` of
+  the per-config null; the zero filter makes it vary between permutations).
+  The grid's bases: 3 is the smallest n for which a correlation is defined
+  (v1); 5 the smallest at which a rank correlation can reach p < .05
+  (exact p = 2/5! = 0.017); 20 the smallest at which a correlation at the
+  threshold (Z = 0.5) is itself significant, sqrt((n - 3) / 1.06) * 0.5 >= 1.96
+  with the Fieller, Hartley & Pearson (1957) variance 1.06 / (n - 3); 37 the
+  n for 80 % power to detect it, 1.06 * ((1.96 + 0.84) / 0.5)^2 + 3 = 36.3.
+* **Patient exclusion** removes patients from the summary before the
+  p-values, so the Bonferroni n shrinks with them. ``fostair`` excludes the
+  three participants whose relief inhaler is Fostair (514, 917, 939): under
+  maintenance-and-reliever therapy the device counts maintenance puffs that
+  the relief question may not.
 * A patient is **concordant** when the observed statistic is at least the
   threshold (0.5 in v1) *and* the Bonferroni-corrected p-value is below 0.05.
 * For sampled (non-exact) nulls, ``resampling_risk`` is the probability that
@@ -62,7 +84,7 @@ Definitions (v1's, apart from the configuration set and the centred p-value):
 from __future__ import annotations
 
 import warnings
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from typing import Dict, Iterable, List, Optional, Sequence
 
 import numpy as np
@@ -78,13 +100,20 @@ ALPHA = 0.05
 DEFAULT_THRESHOLDS = (0.1, 0.25, 0.5, 0.75, 0.9)
 
 
+MIN_ROWS_FOR_CORRELATION_V1 = 3
+MIN_ROWS_GRID = (3, 5, 20, 37)
+PATIENT_EXCLUSIONS: Dict[str, tuple] = {"none": (), "fostair": (514, 917, 939)}
+
+
 @dataclass(frozen=True)
 class SummarySpec:
-    """Which configurations, which correlation, which statistic."""
+    """Which configurations, which correlation, which statistic, minimum rows, excluded patients."""
 
     config_set: str = "effective"
     correlation_type: str = "spearman"
     measure: str = "mean"
+    min_rows: int = MIN_ROWS_FOR_CORRELATION_V1
+    exclude: str = "none"
 
     def __post_init__(self):
         if self.config_set not in CONFIG_SETS:
@@ -93,22 +122,48 @@ class SummarySpec:
             raise ValueError(f"correlation_type must be one of {CORRELATION_TYPES}, got {self.correlation_type!r}")
         if self.measure not in MEASURES:
             raise ValueError(f"measure must be one of {MEASURES}, got {self.measure!r}")
+        if int(self.min_rows) < MIN_ROWS_FOR_CORRELATION_V1:
+            raise ValueError(f"min_rows must be at least {MIN_ROWS_FOR_CORRELATION_V1}, got {self.min_rows!r}")
+        object.__setattr__(self, "min_rows", int(self.min_rows))
+        if self.exclude not in PATIENT_EXCLUSIONS:
+            raise ValueError(f"exclude must be one of {tuple(PATIENT_EXCLUSIONS)}, got {self.exclude!r}")
+
+    @property
+    def _suffix(self) -> str:
+        """Non-default options as ``/min_rows=N`` and ``/exclude=X`` (empty for the defaults, so v1 keys are unchanged)."""
+        out = ""
+        if self.min_rows != MIN_ROWS_FOR_CORRELATION_V1:
+            out += f"/min_rows={self.min_rows}"
+        if self.exclude != "none":
+            out += f"/exclude={self.exclude}"
+        return out
 
     @property
     def null_key(self) -> str:
-        """Identifies the null distribution a spec needs (statistic is applied per permutation)."""
-        return f"{self.config_set}/{self.correlation_type}"
+        """Identifies the null distribution a spec needs (statistic and exclusion are applied afterwards)."""
+        mr = f"/min_rows={self.min_rows}" if self.min_rows != MIN_ROWS_FOR_CORRELATION_V1 else ""
+        return f"{self.config_set}/{self.correlation_type}{mr}"
 
     @property
     def key(self) -> str:
-        return f"{self.config_set}/{self.correlation_type}/{self.measure}"
+        return f"{self.config_set}/{self.correlation_type}/{self.measure}{self._suffix}"
+
+    @property
+    def excluded_patients(self) -> tuple:
+        return PATIENT_EXCLUSIONS[self.exclude]
 
     @classmethod
     def parse(cls, key: str) -> "SummarySpec":
         parts = key.split("/")
-        if len(parts) != 3:
-            raise ValueError(f"not a summary spec: {key!r} (expected config_set/correlation_type/measure)")
-        return cls(*parts)
+        if len(parts) < 3:
+            raise ValueError(f"not a summary spec: {key!r} (expected config_set/correlation_type/measure[/option=value...])")
+        options = {}
+        for part in parts[3:]:
+            name, sep, value = part.partition("=")
+            if not sep or name not in ("min_rows", "exclude") or name in options:
+                raise ValueError(f"not a summary spec: {key!r} (bad option {part!r})")
+            options[name] = int(value) if name == "min_rows" else value
+        return cls(*parts[:3], **options)
 
     @property
     def config_indices(self) -> List[int]:
@@ -125,7 +180,11 @@ class SummarySpec:
 
 PRIMARY = SummarySpec("effective", "spearman", "mean")
 V1_SPEC = SummarySpec("all", "spearman", "mean")
-ALL_SPECS = [SummarySpec(c, t, m) for c in CONFIG_SETS for t in CORRELATION_TYPES for m in MEASURES]
+BASE_SPECS = [SummarySpec(c, t, m) for c in CONFIG_SETS for t in CORRELATION_TYPES for m in MEASURES]
+# One option at a time around the primary (the look-ahead variant is a config set, so it is in BASE_SPECS).
+SENSITIVITY_SPECS = ([replace(PRIMARY, min_rows=n) for n in MIN_ROWS_GRID if n != PRIMARY.min_rows]
+                     + [replace(PRIMARY, exclude=x) for x in PATIENT_EXCLUSIONS if x != PRIMARY.exclude])
+ALL_SPECS = BASE_SPECS + SENSITIVITY_SPECS
 # Null values whose distance from the centre is this close to the observed
 # distance are ties; they count as exceedances (see module docstring).
 TIE_TOLERANCE = 1e-12
@@ -135,10 +194,15 @@ def observed_statistics(
     per_config: pd.DataFrame,
     z_column: str = "spearman_z",
     config_indices: Optional[Sequence[int]] = None,
+    *,
+    min_rows: int = MIN_ROWS_FOR_CORRELATION_V1,
+    exclude: Iterable[int] = (),
 ) -> pd.DataFrame:
     """Per-patient mean and median of finite Z, plus the count of finite configs.
 
     ``config_indices`` restricts to a configuration set (``None`` = all).
+    ``min_rows`` drops configurations whose ``sample_size`` is below it;
+    ``exclude`` drops patients.
 
     Computed per patient with ``Series.mean()`` / ``Series.median()`` on the
     finite subset, exactly as v1's ``create_summary_statistics`` did. The
@@ -151,8 +215,13 @@ def observed_statistics(
     if config_indices is not None:
         per_config = attach_config_idx(per_config)
         per_config = per_config[per_config["config_idx"].isin(list(config_indices))]
+    exclude = set(int(x) for x in exclude)
+    if exclude:
+        per_config = per_config[~per_config["user_key"].isin(exclude)]
     rows = []
     for pid, g in per_config.groupby("user_key", sort=True):
+        if min_rows > MIN_ROWS_FOR_CORRELATION_V1:
+            g = g[g["sample_size"] >= min_rows]  # a patient left with no configs stays, with NaN
         valid = g.loc[np.isfinite(g[z_column]), z_column]
         rows.append({
             "patient_id": pid,
@@ -240,13 +309,16 @@ def null_sources_for(
     legacy_null: Optional[pd.DataFrame] = None,
     per_config_null: Optional[pd.DataFrame] = None,
     absence_case: str = "A",
+    specs: Iterable[SummarySpec] = ALL_SPECS,
 ) -> Dict[str, pd.DataFrame]:
-    """Map each available ``config_set/correlation_type`` null key to its per-permutation null table.
+    """Map each null key that ``specs`` need and the inputs can provide to its per-permutation null table.
 
     ``legacy_null`` is the v1-style summary parquet (``null_mean_z`` etc. over
     all 132 Spearman configurations) and provides only ``all/spearman``.
     ``per_config_null`` is the per-configuration table and provides every
-    key. When both are given the per-config table wins for ``all/spearman``.
+    key, except a minimum above 3 rows when it has no ``n_rows`` column
+    (nulls built before the counts were recorded). When both are given the
+    per-config table wins for ``all/spearman``.
     """
     from .batch import null_from_per_config  # local import: batch imports permutation, not summary
 
@@ -254,10 +326,15 @@ def null_sources_for(
     if legacy_null is not None:
         sources[V1_SPEC.null_key] = legacy_null
     if per_config_null is not None:
-        for c in CONFIG_SETS:
-            for t in CORRELATION_TYPES:
-                sources[f"{c}/{t}"] = null_from_per_config(
-                    per_config_null, correlation_type=t, config_indices=config_indices_for(c, t, absence_case))
+        has_counts = "n_rows" in per_config_null.columns
+        needed = {sp.null_key: sp for sp in specs}
+        for key, sp in needed.items():
+            if sp.min_rows > MIN_ROWS_FOR_CORRELATION_V1 and not has_counts:
+                continue
+            sources[key] = null_from_per_config(
+                per_config_null, correlation_type=sp.correlation_type,
+                config_indices=config_indices_for(sp.config_set, sp.correlation_type, absence_case),
+                min_rows=sp.min_rows)
     return sources
 
 
@@ -291,14 +368,16 @@ def build_world_summary(
             skipped.append(spec.key)
             continue
         indices = spec.config_indices_in(absence_case)
-        obs = observed_statistics(per_config, f"{spec.correlation_type}_z", indices).set_index("patient_id")
-        table = permutation_p_values(obs[spec.measure], null_sources[spec.null_key], null_column=f"null_{spec.measure}_z",
+        obs = observed_statistics(per_config, f"{spec.correlation_type}_z", indices,
+                                  min_rows=spec.min_rows, exclude=spec.excluded_patients).set_index("patient_id")
+        null = null_sources[spec.null_key]
+        if spec.excluded_patients:
+            null = null[~null["patient_id"].isin(spec.excluded_patients)]
+        table = permutation_p_values(obs[spec.measure], null, null_column=f"null_{spec.measure}_z",
                                      exact_patients=exact_patients)
         if table.empty:
             continue
-        table.insert(1, "config_set", spec.config_set)
-        table.insert(2, "correlation_type", spec.correlation_type)
-        table.insert(3, "measure", spec.measure)
+        _insert_spec_columns(table, spec)
         table["n_valid_configs_observed"] = table["patient_id"].map(obs["n_valid"]).astype(int)
         table["n_configs_in_set"] = len(indices)
         parts.append(table)
@@ -307,7 +386,15 @@ def build_world_summary(
     if not parts:
         raise ValueError("No summary could be built: no spec has a null distribution.")
     out = pd.concat(parts, ignore_index=True)
-    return out.sort_values(["config_set", "correlation_type", "measure", "p_value", "patient_id"], kind="stable").reset_index(drop=True)
+    return out.sort_values([*SPEC_COLUMNS, "p_value", "patient_id"], kind="stable").reset_index(drop=True)
+
+
+SPEC_COLUMNS = ["config_set", "correlation_type", "measure", "min_rows", "exclude"]
+
+
+def _insert_spec_columns(table: pd.DataFrame, spec: SummarySpec) -> None:
+    for i, col in enumerate(SPEC_COLUMNS, start=1):
+        table.insert(i, col, getattr(spec, col))
 
 
 def observed_table(per_config: pd.DataFrame, specs: Iterable[SummarySpec] = ALL_SPECS, absence_case: str = "A") -> pd.DataFrame:
@@ -319,24 +406,34 @@ def observed_table(per_config: pd.DataFrame, specs: Iterable[SummarySpec] = ALL_
     parts = []
     for spec in specs:
         indices = spec.config_indices_in(absence_case)
-        obs = observed_statistics(per_config, f"{spec.correlation_type}_z", indices)
+        obs = observed_statistics(per_config, f"{spec.correlation_type}_z", indices,
+                                  min_rows=spec.min_rows, exclude=spec.excluded_patients)
         obs = obs.rename(columns={spec.measure: "observed_z"})[["patient_id", "observed_z", "n_valid"]]
-        obs.insert(1, "config_set", spec.config_set)
-        obs.insert(2, "correlation_type", spec.correlation_type)
-        obs.insert(3, "measure", spec.measure)
+        _insert_spec_columns(obs, spec)
         obs["n_configs_in_set"] = len(indices)
         parts.append(obs.rename(columns={"n_valid": "n_valid_configs_observed"}))
     return pd.concat(parts, ignore_index=True)
 
 
+def _spec_frame(summary: pd.DataFrame) -> pd.DataFrame:
+    """The spec columns of a summary; tables written before min_rows/exclude existed get the defaults."""
+    cols = summary.reindex(columns=SPEC_COLUMNS)
+    cols["min_rows"] = cols["min_rows"].fillna(MIN_ROWS_FOR_CORRELATION_V1).astype(int)
+    cols["exclude"] = cols["exclude"].fillna("none")
+    return cols
+
+
 def available_specs(summary: pd.DataFrame) -> List[SummarySpec]:
-    keys = summary[["config_set", "correlation_type", "measure"]].drop_duplicates()
+    keys = _spec_frame(summary).drop_duplicates()
     return [SummarySpec(*row) for row in keys.itertuples(index=False)]
 
 
 def select(summary: pd.DataFrame, spec: SummarySpec) -> pd.DataFrame:
     """Rows of ``summary`` for one spec, or an empty frame if that spec is absent."""
-    m = (summary["config_set"] == spec.config_set) & (summary["correlation_type"] == spec.correlation_type) & (summary["measure"] == spec.measure)
+    f = _spec_frame(summary)
+    m = np.ones(len(summary), dtype=bool)
+    for col in SPEC_COLUMNS:
+        m &= (f[col] == getattr(spec, col)).to_numpy()
     return summary[m]
 
 
@@ -367,7 +464,7 @@ def threshold_sweep(
     for sp in (specs if specs is not None else available_specs(summary)):
         for t in thresholds:
             members = concordant_set(summary, sp, t)
-            rows.append({"config_set": sp.config_set, "correlation_type": sp.correlation_type, "measure": sp.measure,
+            rows.append({**{c: getattr(sp, c) for c in SPEC_COLUMNS},
                          "threshold": t, "n_concordant": len(members), "concordant": " ".join(map(str, members))})
     return pd.DataFrame(rows)
 

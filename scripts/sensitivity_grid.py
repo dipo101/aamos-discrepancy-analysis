@@ -7,6 +7,7 @@ Writes to results/v2/sensitivity/:
                            (case B collapsed to "patient:k/n" per span)
   case_b_stability.csv     item 17: per span x patient, counts over imputations of significant /
                            above threshold / concordant
+  spec_stability.csv       one-at-a-time analytical sensitivities vs the primary spec, per world
   threshold_curve.csv      item 16 marginal: set size vs threshold for the baseline, per spec
   worlds_to_rerun.json     item 18: worlds whose primary set differs from the baseline (exact set equality)
 
@@ -24,7 +25,7 @@ sys.path.insert(0, str(REPO_ROOT))
 
 from aamos_concordance import write_sidecar  # noqa: E402
 from aamos_concordance.sensitivity import (  # noqa: E402
-    case_b_stability, grid, load_world_summaries, threshold_curve, world_stability, worlds_to_rerun,
+    case_b_stability, grid, load_world_summaries, spec_stability, threshold_curve, world_stability, worlds_to_rerun,
 )
 from aamos_concordance.summary import PRIMARY  # noqa: E402
 from aamos_concordance.worlds import BASELINE, V2_DIR  # noqa: E402
@@ -48,6 +49,10 @@ def main(argv=None) -> int:
     cb.to_csv(out / "case_b_stability.csv", index=False)
     write_sidecar(out / "case_b_stability.csv", extra=extra)
 
+    ss = spec_stability(summaries)
+    ss.to_csv(out / "spec_stability.csv", index=False)
+    write_sidecar(out / "spec_stability.csv", extra=extra)
+
     tc = threshold_curve(summaries[BASELINE.world_id])
     tc.to_csv(out / "threshold_curve.csv", index=False)
     write_sidecar(out / "threshold_curve.csv", extra=extra)
@@ -59,6 +64,9 @@ def main(argv=None) -> int:
     print(f"{len(summaries)} worlds, {len(g)} grid cells\n")
     print("World stability at the primary spec (effective/spearman/mean, t = 0.5):")
     print(ws[["world_id", "n_concordant", "concordant", "changed", "joiners", "leavers", "imputations"]].to_string(index=False))
+    print("\nOne-at-a-time sensitivities vs the primary spec (baseline world):")
+    base = ss[ss.world_id == BASELINE.world_id]
+    print(base[["spec", "n_assessed", "n_concordant", "concordant", "joiners", "leavers"]].to_string(index=False))
     print("\nCase B stability (patients concordant in at least one imputation):")
     print(cb[cb.n_concordant > 0][["span", "patient_id", "n_imputations", "n_significant", "n_above_threshold", "n_concordant", "mean_observed_z"]].round(3).to_string(index=False))
     print(f"\nScope guard: rerun downstream for {rerun['rerun']}; "

@@ -21,13 +21,14 @@ back to the v1 spec (all/spearman) with a warning, and ``ACTIVE_SPEC`` says so.
 from __future__ import annotations
 
 from pathlib import Path
+from dataclasses import replace
 from typing import Optional
 
 import pandas as pd
 
 import warnings
 
-from aamos_concordance.summary import PRIMARY, V1_SPEC, SummarySpec
+from aamos_concordance.summary import PRIMARY, V1_SPEC, SummarySpec, select
 from aamos_concordance.summary import assessed_patients as _assessed_from_summary
 from aamos_concordance.worlds import (
     BASELINE,
@@ -75,7 +76,7 @@ def _resolve_spec(sets: dict, world: WorldSpec, spec: Optional[SummarySpec]) -> 
     """The spec whose sets will be used, falling back from PRIMARY to V1_SPEC with a warning."""
     candidates = [spec] if spec is not None else [PRIMARY, V1_SPEC]
     for cand in candidates:
-        if all(SummarySpec(cand.config_set, cand.correlation_type, m["measure"]).key in sets for m in _GROUP_META.values()):
+        if all(replace(cand, measure=m["measure"]).key in sets for m in _GROUP_META.values()):
             if spec is None and cand != PRIMARY:
                 warnings.warn(
                     f"World {world}: no null distribution for the primary summary spec {PRIMARY.null_key}; "
@@ -101,7 +102,7 @@ def _load_world_groups(world: WorldSpec, spec: Optional[SummarySpec]) -> tuple[d
     used = _resolve_spec(sets, world, spec)
     groups = {}
     for name, meta in _GROUP_META.items():
-        key = SummarySpec(used.config_set, used.correlation_type, meta["measure"]).key
+        key = replace(used, measure=meta["measure"]).key
         groups[name] = {
             "patients": list(sets[key]),
             "label": meta["label"],
@@ -111,15 +112,19 @@ def _load_world_groups(world: WorldSpec, spec: Optional[SummarySpec]) -> tuple[d
             "world": world.world_id,
         }
     summary_path = world_dir(world) / SUMMARY_CSV
-    assessed = _assessed_from_summary(pd.read_csv(summary_path)) if summary_path.exists() else []
+    assessed = []
+    if summary_path.exists():
+        summary = pd.read_csv(summary_path)
+        in_spec = select(summary, used)  # an exclusion spec assesses fewer patients
+        assessed = _assessed_from_summary(in_spec if not in_spec.empty else summary)
     return groups, assessed, used
 
 
 def set_active_world(world: "WorldSpec | str | None" = None, summary: "SummarySpec | str | None" = None) -> WorldSpec:
     """Point GROUPS / ASSESSED_PATIENTS at ``world`` under ``summary`` (in place) and return the world.
 
-    ``summary`` is a SummarySpec or ``"config_set/correlation_type"`` (measure is
-    ignored; each group uses its own). ``None`` means the primary spec, with a
+    ``summary`` is a SummarySpec or ``"config_set/correlation_type[/option=value...]"``
+    (measure is ignored; each group uses its own). ``None`` means the primary spec, with a
     warned fallback to the v1 spec when the primary has no null in that world.
     """
     global ACTIVE_WORLD, ACTIVE_SPEC
@@ -130,7 +135,7 @@ def set_active_world(world: "WorldSpec | str | None" = None, summary: "SummarySp
             spec = summary
         else:
             parts = summary.split("/")
-            spec = SummarySpec(parts[0], parts[1], "mean")
+            spec = SummarySpec.parse("/".join([*parts[:2], "mean", *parts[2:]]))
     groups, assessed, used = _load_world_groups(w, spec)
     GROUPS.clear()
     GROUPS.update(groups)
