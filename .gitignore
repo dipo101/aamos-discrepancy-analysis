@@ -67,3 +67,6 @@ aamos00_*.docx
 aamos00_*.xlsx
 aamos00-*.csv
 anonym_aamos00_*.csv
+
+# Cross-process lock for the shared world index files
+results/v2/.index.lock

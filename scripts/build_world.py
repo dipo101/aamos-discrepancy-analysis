@@ -4,6 +4,7 @@
     python scripts/build_world.py --world span=D__case=A
     python scripts/build_world.py --world span=union__case=A --patients 917 454 --n-perm 2000
     python scripts/build_world.py --all --skip-current          # every world of the grid, resumable
+    python scripts/build_world.py --all --skip-current --shard 0/4   # one of 4 parallel processes
 
 Writes results/v2/worlds/<world>/ (per_config_z.csv, null.parquet and
 null_per_config.parquet [git-ignored], summary.csv, observed.csv,
@@ -31,6 +32,7 @@ def main(argv=None) -> int:
     parser.add_argument("--world", nargs="*", default=None, help=f"world id(s) (default: {BASELINE})")
     parser.add_argument("--all", action="store_true", help="every world of the grid (span x case x imputation x duplicates)")
     parser.add_argument("--skip-current", action="store_true", help="skip worlds already built with the current build version")
+    parser.add_argument("--shard", default=None, help="i/n: build every n-th world starting at i (parallel processes)")
     parser.add_argument("--patients", nargs="*", type=int, default=DEFAULT_PATIENTS)
     parser.add_argument("--n-perm", type=int, default=10000)
     parser.add_argument("--seed", type=int, default=42)
@@ -39,6 +41,9 @@ def main(argv=None) -> int:
     if args.all and args.world:
         parser.error("--all and --world are exclusive")
     worlds = all_world_specs() if args.all else [as_world(w) for w in (args.world or [str(BASELINE)])]
+    if args.shard:
+        i, n = (int(x) for x in args.shard.split("/"))
+        worlds = worlds[i::n]
     if args.skip_current:
         worlds = [w for w in worlds if not is_current_build(w)]
 
