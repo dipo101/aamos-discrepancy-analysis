@@ -116,8 +116,6 @@ def test_committed_grid_matches_recomputation():
     sens = worlds.V2_DIR / "sensitivity"
     committed = pd.read_csv(sens / "grid.csv", keep_default_na=False)
     fresh = grid(load_world_summaries())
-    # grid.csv predating the duplicates axis and the min_rows / exclude options has no columns for them (all defaults)
-    fresh = fresh.drop(columns=[c for c in ("duplicates", "min_rows", "exclude") if c not in committed.columns])
     fresh["imputation"] = fresh["imputation"].astype(str)
     fresh["threshold"] = fresh["threshold"].astype(float)
     committed["threshold"] = committed["threshold"].astype(float)
@@ -128,23 +126,49 @@ def test_committed_grid_matches_recomputation():
     fresh = worlds_to_rerun(load_world_summaries())
     assert {k: listing[k] for k in fresh} == fresh
     assert BASELINE.world_id not in listing["rerun"]
-    assert listing["rerun"] == ["span=D__case=C", "span=Q__case=A", "span=Q__case=C", "span=intersection__case=A", "span=intersection__case=C", "span=union__case=C"]
+    # every A world except the baseline and D (under the artefact reading) loses 917; every C world gives 294, 473, 702
+    assert listing["rerun"] == [
+        "span=D__case=A__dup=real", "span=D__case=A__dup=resolution", "span=D__case=C",
+        "span=D__case=C__dup=real", "span=D__case=C__dup=resolution", "span=Q__case=A",
+        "span=Q__case=A__dup=real", "span=Q__case=A__dup=resolution", "span=Q__case=C",
+        "span=Q__case=C__dup=real", "span=Q__case=C__dup=resolution", "span=intersection__case=A",
+        "span=intersection__case=A__dup=real", "span=intersection__case=A__dup=resolution", "span=intersection__case=C",
+        "span=intersection__case=C__dup=real", "span=intersection__case=C__dup=resolution", "span=union__case=A__dup=real",
+        "span=union__case=A__dup=resolution", "span=union__case=C", "span=union__case=C__dup=real",
+        "span=union__case=C__dup=resolution",
+    ]
     assert listing["case_b_flagged"] == []
 
 
 def test_committed_world_stability_headline():
-    ws = pd.read_csv(worlds.V2_DIR / "sensitivity" / "world_stability.csv").set_index("world_id")
-    assert len(ws) == 12  # 4 spans x (A, B collapsed, C)
-    assert ws.loc["span=union__case=A", "concordant"] == "702 917"
-    for span in ("union", "Q", "D", "intersection"):
-        assert ws.loc[f"span={span}__case=C", "concordant"] == "294 473 702"
-        assert ws.loc[f"span={span}__case=B", "n_concordant"] == 0
-    assert ws.loc["span=Q__case=A", "leavers"] == "917" and ws.loc["span=intersection__case=A", "leavers"] == "917"
+    ws = pd.read_csv(worlds.V2_DIR / "sensitivity" / "world_stability.csv", keep_default_na=False).set_index("world_id")
+    assert len(ws) == 36  # 3 duplicate readings x 4 spans x (A, B collapsed, C)
+    assert ws.loc["span=union__case=A", "concordant"] == "190 702 917"
     assert ws.loc["span=D__case=A", "changed"] == False
-    assert ws.loc["span=union__case=B", "imputations"] == "702:2/10" and ws.loc["span=D__case=B", "imputations"] == "702:4/10"
+    for dup in ("", "__dup=real", "__dup=resolution"):
+        for span in ("union", "Q", "D", "intersection"):
+            assert ws.loc[f"span={span}__case=C{dup}", "concordant"] == "294 473 702"
+            assert ws.loc[f"span={span}__case=B{dup}", "n_concordant"] == 0
+            if (span, dup) not in (("union", ""), ("D", "")):
+                assert ws.loc[f"span={span}__case=A{dup}", "concordant"] == "190 702"  # 917 leaves
+    assert ws.loc["span=union__case=B", "imputations"] == "398:5/10; 702:5/10"
     cb = pd.read_csv(worlds.V2_DIR / "sensitivity" / "case_b_stability.csv")
     core = cb[cb.patient_id.isin([294, 473, 702])]
     assert (core["n_significant"] == 10).all()  # B moves the threshold, not significance
+
+
+def test_committed_spec_stability_headline():
+    ss = pd.read_csv(worlds.V2_DIR / "sensitivity" / "spec_stability.csv", keep_default_na=False)
+    base = ss[ss.world_id == "span=union__case=A"].set_index("spec")["concordant"].to_dict()
+    assert base == {
+        "effective/spearman/mean": "190 702 917",
+        "effective_lookahead/spearman/mean": "702 917",
+        "effective/spearman/mean/min_rows=5": "190 702 917",
+        "effective/spearman/mean/min_rows=20": "190 398 702",
+        "effective/spearman/mean/min_rows=37": "190 702",
+        "effective/spearman/mean/exclude=fostair": "190 702",
+        "all/spearman/mean": "294 473 702 917",
+    }
 
 
 def test_spec_stability_compares_each_option_with_the_primary():

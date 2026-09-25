@@ -1,0 +1,133 @@
+{
+  "config": {
+    "exact_max": 20000,
+    "n_perm": 10000,
+    "patients": [
+      113,
+      190,
+      294,
+      328,
+      343,
+      398,
+      447,
+      454,
+      473,
+      514,
+      625,
+      701,
+      702,
+      917,
+      939
+    ],
+    "per_patient": {
+      "113": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "n_rows": 158,
+        "seed": 42
+      },
+      "190": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "n_rows": 19,
+        "seed": 42
+      },
+      "294": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "n_rows": 173,
+        "seed": 42
+      },
+      "328": {
+        "mode": "exact",
+        "n_permutations": 136,
+        "n_rows": 17
+      },
+      "343": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "n_rows": 93,
+        "seed": 42
+      },
+      "398": {
+        "mode": "exact",
+        "n_permutations": 12650,
+        "n_rows": 25
+      },
+      "447": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "n_rows": 89,
+        "seed": 42
+      },
+      "454": {
+        "mode": "exact",
+        "n_permutations": 2,
+        "n_rows": 2
+      },
+      "473": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "n_rows": 69,
+        "seed": 42
+      },
+      "514": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "n_rows": 36,
+        "seed": 42
+      },
+      "625": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "n_rows": 16,
+        "seed": 42
+      },
+      "701": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "n_rows": 30,
+        "seed": 42
+      },
+      "702": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "n_rows": 120,
+        "seed": 42
+      },
+      "917": {
+        "mode": "exact",
+        "n_permutations": 2520,
+        "n_rows": 9
+      },
+      "939": {
+        "mode": "sampled",
+        "n_permutations": 10000,
+        "n_rows": 158,
+        "seed": 42
+      }
+    },
+    "seed": 42,
+    "world": {
+      "absence_case": "B",
+      "duplicates": "real",
+      "imputation": 9,
+      "span": "D",
+      "world_id": "span=D__case=B__k=09__dup=real"
+    }
+  },
+  "data": {
+    "data_dir": "/Users/ladidisu/aamos-discrepancy-analysis/data/raw",
+    "manifest_verified": true,
+    "sha256": {
+      "anonym_aamos00_dailyquestionnaire_dt.csv": "9e15599dc01235d472acd56a9a4a60450364db4541a50f8f91ac2c66b7e789f5",
+      "anonym_aamos00_patient_info.csv": "0563743582c295a87d488c8f51c7f7682fa51b25cadb91bc83b7af8201872644",
+      "anonym_aamos00_smartinhaler_dt.csv": "adff777b4aa141f71f82183a69412e313a91fba0d6859304b9ed9a4425731efc"
+    }
+  },
+  "git_commit": "87c011b493a8c05030ca46c015d9d20ea7f6605a",
+  "git_dirty": true,
+  "git_source": "working-tree",
+  "script": "build_world.py",
+  "written_at": "2026-09-25T17:10:57+00:00"
+}

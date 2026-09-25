@@ -3,9 +3,9 @@
     "world": "span=union__case=A"
   },
   "data": null,
-  "git_commit": "91d46aca15931bf5617a692c362970f8510052b7",
+  "git_commit": "87c011b493a8c05030ca46c015d9d20ea7f6605a",
   "git_dirty": true,
   "git_source": "working-tree",
   "script": "effective_configurations.py",
-  "written_at": "2026-09-18T19:34:01+00:00"
+  "written_at": "2026-09-25T17:45:14+00:00"
 }

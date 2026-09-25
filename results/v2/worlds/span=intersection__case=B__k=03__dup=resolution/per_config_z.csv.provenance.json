@@ -1,0 +1,46 @@
+{
+  "config": {
+    "exact_max": 20000,
+    "n_perm": 10000,
+    "patients": [
+      113,
+      190,
+      294,
+      328,
+      343,
+      398,
+      447,
+      454,
+      473,
+      514,
+      625,
+      701,
+      702,
+      917,
+      939
+    ],
+    "seed": 42,
+    "world": {
+      "absence_case": "B",
+      "duplicates": "resolution",
+      "imputation": 3,
+      "span": "intersection",
+      "world_id": "span=intersection__case=B__k=03__dup=resolution"
+    }
+  },
+  "data": {
+    "data_dir": "/Users/ladidisu/aamos-discrepancy-analysis/data/raw",
+    "manifest_verified": true,
+    "sha256": {
+      "anonym_aamos00_dailyquestionnaire_dt.csv": "9e15599dc01235d472acd56a9a4a60450364db4541a50f8f91ac2c66b7e789f5",
+      "anonym_aamos00_patient_info.csv": "0563743582c295a87d488c8f51c7f7682fa51b25cadb91bc83b7af8201872644",
+      "anonym_aamos00_smartinhaler_dt.csv": "adff777b4aa141f71f82183a69412e313a91fba0d6859304b9ed9a4425731efc"
+    }
+  },
+  "engine": "vectorised",
+  "git_commit": "87c011b493a8c05030ca46c015d9d20ea7f6605a",
+  "git_dirty": true,
+  "git_source": "working-tree",
+  "script": "build_world.py",
+  "written_at": "2026-09-25T17:37:10+00:00"
+}

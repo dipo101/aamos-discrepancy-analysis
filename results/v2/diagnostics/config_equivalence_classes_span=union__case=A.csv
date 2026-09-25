@@ -1,61 +1,81 @@
 class,n_members,member_config_idx,max_within_class_spread,n_patient_cells,correlation_type
-"(('rolling', 24), False, 'six_bins_monotone')",8,37 38 39 41 61 62 63 65,0.0,120,spearman
-"(('rolling', 24), True, 'six_bins_monotone')",8,43 44 45 47 67 68 69 71,0.0,112,spearman
-"(('calendar', 0), False, 'six_bins_monotone')",4,13 14 15 17,0.0,60,spearman
-"(('calendar', 0), True, 'six_bins_monotone')",4,19 20 21 23,0.0,60,spearman
-"(('calendar', 1), False, 'six_bins_monotone')",4,49 50 51 53,0.0,60,spearman
-"(('calendar', 1), True, 'six_bins_monotone')",4,55 56 57 59,0.0,56,spearman
-"(('calendar', 2), False, 'six_bins_monotone')",4,109 110 111 113,0.0,60,spearman
-"(('calendar', 2), True, 'six_bins_monotone')",4,115 116 117 119,0.0,56,spearman
-"(('fixed_chunk', 12), False, 'six_bins_monotone')",4,25 26 27 29,0.0,60,spearman
-"(('fixed_chunk', 12), True, 'six_bins_monotone')",4,31 32 33 35,0.0,60,spearman
-"(('fixed_chunk', 36), False, 'six_bins_monotone')",4,85 86 87 89,0.0,60,spearman
-"(('fixed_chunk', 36), True, 'six_bins_monotone')",4,91 92 93 95,0.0,56,spearman
-"(('fixed_chunk', 48), False, 'six_bins_monotone')",4,121 122 123 125,0.0,60,spearman
-"(('fixed_chunk', 48), True, 'six_bins_monotone')",4,127 128 129 131,0.0,60,spearman
-"(('rolling', 12), False, 'six_bins_monotone')",4,1 2 3 5,0.0,56,spearman
-"(('rolling', 12), True, 'six_bins_monotone')",4,7 8 9 11,0.0,52,spearman
-"(('rolling', 36), False, 'six_bins_monotone')",4,73 74 75 77,0.0,60,spearman
-"(('rolling', 36), True, 'six_bins_monotone')",4,79 80 81 83,0.0,52,spearman
-"(('rolling', 48), False, 'six_bins_monotone')",4,97 98 99 101,0.0,60,spearman
-"(('rolling', 48), True, 'six_bins_monotone')",4,103 104 105 107,0.0,56,spearman
+"(('rolling', 24), False, 'six_bins_monotone')",6,37 38 39 61 62 63,0.0,90,spearman
+"(('rolling', 24), True, 'six_bins_monotone')",6,43 44 45 67 68 69,0.0,84,spearman
+"(('calendar', 0), False, 'six_bins_monotone')",3,13 14 15,0.0,45,spearman
+"(('calendar', 0), True, 'six_bins_monotone')",3,19 20 21,0.0,45,spearman
+"(('calendar', 1), False, 'six_bins_monotone')",3,49 50 51,0.0,45,spearman
+"(('calendar', 1), True, 'six_bins_monotone')",3,55 56 57,0.0,42,spearman
+"(('calendar', 2), False, 'six_bins_monotone')",3,109 110 111,0.0,45,spearman
+"(('calendar', 2), True, 'six_bins_monotone')",3,115 116 117,0.0,42,spearman
+"(('fixed_chunk', 12), False, 'six_bins_monotone')",3,25 26 27,0.0,45,spearman
+"(('fixed_chunk', 12), True, 'six_bins_monotone')",3,31 32 33,0.0,45,spearman
+"(('fixed_chunk', 36), False, 'six_bins_monotone')",3,85 86 87,0.0,45,spearman
+"(('fixed_chunk', 36), True, 'six_bins_monotone')",3,91 92 93,0.0,42,spearman
+"(('fixed_chunk', 48), False, 'six_bins_monotone')",3,121 122 123,0.0,45,spearman
+"(('fixed_chunk', 48), True, 'six_bins_monotone')",3,127 128 129,0.0,45,spearman
+"(('rolling', 12), False, 'six_bins_monotone')",3,1 2 3,0.0,42,spearman
+"(('rolling', 12), True, 'six_bins_monotone')",3,7 8 9,0.0,39,spearman
+"(('rolling', 36), False, 'six_bins_monotone')",3,73 74 75,0.0,45,spearman
+"(('rolling', 36), True, 'six_bins_monotone')",3,79 80 81,0.0,39,spearman
+"(('rolling', 48), False, 'six_bins_monotone')",3,97 98 99,0.0,45,spearman
+"(('rolling', 48), True, 'six_bins_monotone')",3,103 104 105,0.0,42,spearman
 "(('rolling', 24), False, 'binary')",2,36 60,0.0,28,spearman
+"(('rolling', 24), False, 'six_bins_or_top_merged')",2,41 65,0.0,30,spearman
 "(('rolling', 24), False, 'top_two_bins_merged')",2,40 64,0.0,30,spearman
 "(('rolling', 24), True, 'binary')",2,42 66,0.0,18,spearman
+"(('rolling', 24), True, 'six_bins_or_top_merged')",2,47 71,0.0,28,spearman
 "(('rolling', 24), True, 'top_two_bins_merged')",2,46 70,0.0,28,spearman
 "(('calendar', 0), False, 'binary')",1,12,0.0,14,spearman
+"(('calendar', 0), False, 'six_bins_or_top_merged')",1,17,0.0,15,spearman
 "(('calendar', 0), False, 'top_two_bins_merged')",1,16,0.0,15,spearman
 "(('calendar', 0), True, 'binary')",1,18,0.0,11,spearman
+"(('calendar', 0), True, 'six_bins_or_top_merged')",1,23,0.0,15,spearman
 "(('calendar', 0), True, 'top_two_bins_merged')",1,22,0.0,15,spearman
 "(('calendar', 1), False, 'binary')",1,48,0.0,14,spearman
+"(('calendar', 1), False, 'six_bins_or_top_merged')",1,53,0.0,15,spearman
 "(('calendar', 1), False, 'top_two_bins_merged')",1,52,0.0,15,spearman
 "(('calendar', 1), True, 'binary')",1,54,0.0,10,spearman
+"(('calendar', 1), True, 'six_bins_or_top_merged')",1,59,0.0,14,spearman
 "(('calendar', 1), True, 'top_two_bins_merged')",1,58,0.0,14,spearman
 "(('calendar', 2), False, 'binary')",1,108,0.0,14,spearman
+"(('calendar', 2), False, 'six_bins_or_top_merged')",1,113,0.0,15,spearman
 "(('calendar', 2), False, 'top_two_bins_merged')",1,112,0.0,15,spearman
 "(('calendar', 2), True, 'binary')",1,114,0.0,12,spearman
+"(('calendar', 2), True, 'six_bins_or_top_merged')",1,119,0.0,14,spearman
 "(('calendar', 2), True, 'top_two_bins_merged')",1,118,0.0,14,spearman
 "(('fixed_chunk', 12), False, 'binary')",1,24,0.0,14,spearman
+"(('fixed_chunk', 12), False, 'six_bins_or_top_merged')",1,29,0.0,15,spearman
 "(('fixed_chunk', 12), False, 'top_two_bins_merged')",1,28,0.0,15,spearman
 "(('fixed_chunk', 12), True, 'binary')",1,30,0.0,11,spearman
+"(('fixed_chunk', 12), True, 'six_bins_or_top_merged')",1,35,0.0,15,spearman
 "(('fixed_chunk', 12), True, 'top_two_bins_merged')",1,34,0.0,15,spearman
 "(('fixed_chunk', 36), False, 'binary')",1,84,0.0,14,spearman
+"(('fixed_chunk', 36), False, 'six_bins_or_top_merged')",1,89,0.0,15,spearman
 "(('fixed_chunk', 36), False, 'top_two_bins_merged')",1,88,0.0,15,spearman
 "(('fixed_chunk', 36), True, 'binary')",1,90,0.0,11,spearman
+"(('fixed_chunk', 36), True, 'six_bins_or_top_merged')",1,95,0.0,14,spearman
 "(('fixed_chunk', 36), True, 'top_two_bins_merged')",1,94,0.0,14,spearman
 "(('fixed_chunk', 48), False, 'binary')",1,120,0.0,14,spearman
+"(('fixed_chunk', 48), False, 'six_bins_or_top_merged')",1,125,0.0,15,spearman
 "(('fixed_chunk', 48), False, 'top_two_bins_merged')",1,124,0.0,15,spearman
 "(('fixed_chunk', 48), True, 'binary')",1,126,0.0,12,spearman
+"(('fixed_chunk', 48), True, 'six_bins_or_top_merged')",1,131,0.0,15,spearman
 "(('fixed_chunk', 48), True, 'top_two_bins_merged')",1,130,0.0,15,spearman
 "(('rolling', 12), False, 'binary')",1,0,0.0,13,spearman
+"(('rolling', 12), False, 'six_bins_or_top_merged')",1,5,0.0,14,spearman
 "(('rolling', 12), False, 'top_two_bins_merged')",1,4,0.0,14,spearman
 "(('rolling', 12), True, 'binary')",1,6,0.0,5,spearman
+"(('rolling', 12), True, 'six_bins_or_top_merged')",1,11,0.0,13,spearman
 "(('rolling', 12), True, 'top_two_bins_merged')",1,10,0.0,13,spearman
 "(('rolling', 36), False, 'binary')",1,72,0.0,13,spearman
+"(('rolling', 36), False, 'six_bins_or_top_merged')",1,77,0.0,15,spearman
 "(('rolling', 36), False, 'top_two_bins_merged')",1,76,0.0,15,spearman
 "(('rolling', 36), True, 'binary')",1,78,0.0,8,spearman
+"(('rolling', 36), True, 'six_bins_or_top_merged')",1,83,0.0,13,spearman
 "(('rolling', 36), True, 'top_two_bins_merged')",1,82,0.0,13,spearman
 "(('rolling', 48), False, 'binary')",1,96,0.0,13,spearman
+"(('rolling', 48), False, 'six_bins_or_top_merged')",1,101,0.0,15,spearman
 "(('rolling', 48), False, 'top_two_bins_merged')",1,100,0.0,15,spearman
 "(('rolling', 48), True, 'binary')",1,102,0.0,8,spearman
+"(('rolling', 48), True, 'six_bins_or_top_merged')",1,107,0.0,14,spearman
 "(('rolling', 48), True, 'top_two_bins_merged')",1,106,0.0,14,spearman

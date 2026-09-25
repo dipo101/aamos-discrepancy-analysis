@@ -22,6 +22,7 @@
     "seed": 42,
     "world": {
       "absence_case": "B",
+      "duplicates": "artefact",
       "imputation": 0,
       "span": "union",
       "world_id": "span=union__case=B__k=00"
@@ -37,9 +38,9 @@
     }
   },
   "engine": "vectorised",
-  "git_commit": "0fe87210b98e56c80632ddc3d009dde75182bc06",
+  "git_commit": "7be0635fc23603cbf9b7ce56bb57df11bb2b762e",
   "git_dirty": true,
   "git_source": "working-tree",
   "script": "build_world.py",
-  "written_at": "2026-09-18T19:52:12+00:00"
+  "written_at": "2026-09-25T15:28:36+00:00"
 }

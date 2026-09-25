@@ -1,6 +1,12 @@
 {
   "absence_case": "A",
+  "build_version": 2,
   "built_by": "build_world.py",
+  "definitions": {
+    "closed_chunk_end": true,
+    "self_report_top_code": 12
+  },
+  "duplicates": "artefact",
   "imputation": null,
   "null_engine": "vectorised",
   "null_modes": {
