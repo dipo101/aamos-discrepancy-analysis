@@ -68,9 +68,9 @@ def main(argv=None) -> int:
     base = ss[ss.world_id == BASELINE.world_id]
     print(base[["spec", "n_assessed", "n_concordant", "concordant", "joiners", "leavers"]].to_string(index=False))
     print("\nCase B stability (patients concordant in at least one imputation):")
-    print(cb[cb.n_concordant > 0][["span", "patient_id", "n_imputations", "n_significant", "n_above_threshold", "n_concordant", "mean_observed_z"]].round(3).to_string(index=False))
+    print(cb[cb.n_concordant > 0][["span", "duplicates", "patient_id", "n_imputations", "n_significant", "n_above_threshold", "n_concordant", "mean_observed_z"]].round(3).to_string(index=False))
     print(f"\nScope guard: rerun downstream for {rerun['rerun']}; "
-          f"differ but empty: {rerun['empty']}; case B flagged spans: {rerun['case_b_flagged']}")
+          f"differ but empty: {rerun['empty']}; case B families flagged: {rerun['case_b_flagged']}")
     print(f"\nWrote {out}/")
     return 0
 

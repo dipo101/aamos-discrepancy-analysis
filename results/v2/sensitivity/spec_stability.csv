@@ -1,0 +1,169 @@
+world_id,span,absence_case,duplicates,spec,n_assessed,n_concordant,concordant,changed,joiners,leavers
+span=D__case=A,D,A,artefact,effective/spearman/mean,14,3,190 702 917,False,,
+span=D__case=A,D,A,artefact,effective_lookahead/spearman/mean,14,2,702 917,True,,190
+span=D__case=A,D,A,artefact,effective/spearman/mean/min_rows=5,14,3,190 702 917,False,,
+span=D__case=A,D,A,artefact,effective/spearman/mean/min_rows=20,10,2,398 702,True,398,190 917
+span=D__case=A,D,A,artefact,effective/spearman/mean/min_rows=37,7,1,702,True,,190 917
+span=D__case=A,D,A,artefact,effective/spearman/mean/exclude=fostair,11,2,190 702,True,,917
+span=D__case=A,D,A,artefact,all/spearman/mean,14,4,294 473 702 917,True,294 473,190
+span=D__case=A__dup=real,D,A,real,effective/spearman/mean,14,2,190 702,False,,
+span=D__case=A__dup=real,D,A,real,effective_lookahead/spearman/mean,14,2,473 702,True,473,190
+span=D__case=A__dup=real,D,A,real,effective/spearman/mean/min_rows=5,14,2,190 702,False,,
+span=D__case=A__dup=real,D,A,real,effective/spearman/mean/min_rows=20,10,2,398 702,True,398,190
+span=D__case=A__dup=real,D,A,real,effective/spearman/mean/min_rows=37,7,1,702,True,,190
+span=D__case=A__dup=real,D,A,real,effective/spearman/mean/exclude=fostair,11,2,190 702,False,,
+span=D__case=A__dup=real,D,A,real,all/spearman/mean,14,3,294 473 702,True,294 473,190
+span=D__case=A__dup=resolution,D,A,resolution,effective/spearman/mean,14,2,190 702,False,,
+span=D__case=A__dup=resolution,D,A,resolution,effective_lookahead/spearman/mean,14,2,473 702,True,473,190
+span=D__case=A__dup=resolution,D,A,resolution,effective/spearman/mean/min_rows=5,14,2,190 702,False,,
+span=D__case=A__dup=resolution,D,A,resolution,effective/spearman/mean/min_rows=20,10,2,398 702,True,398,190
+span=D__case=A__dup=resolution,D,A,resolution,effective/spearman/mean/min_rows=37,7,1,702,True,,190
+span=D__case=A__dup=resolution,D,A,resolution,effective/spearman/mean/exclude=fostair,11,2,190 702,False,,
+span=D__case=A__dup=resolution,D,A,resolution,all/spearman/mean,14,3,294 473 702,True,294 473,190
+span=D__case=C,D,C,artefact,effective/spearman/mean,12,3,294 473 702,False,,
+span=D__case=C,D,C,artefact,effective_lookahead/spearman/mean,12,3,294 473 702,False,,
+span=D__case=C,D,C,artefact,effective/spearman/mean/min_rows=5,12,3,294 473 702,False,,
+span=D__case=C,D,C,artefact,effective/spearman/mean/min_rows=20,8,3,294 473 702,False,,
+span=D__case=C,D,C,artefact,effective/spearman/mean/min_rows=37,5,2,294 473,True,,702
+span=D__case=C,D,C,artefact,effective/spearman/mean/exclude=fostair,10,3,294 473 702,False,,
+span=D__case=C,D,C,artefact,all/spearman/mean,12,3,294 473 702,False,,
+span=D__case=C__dup=real,D,C,real,effective/spearman/mean,12,3,294 473 702,False,,
+span=D__case=C__dup=real,D,C,real,effective_lookahead/spearman/mean,12,3,294 473 702,False,,
+span=D__case=C__dup=real,D,C,real,effective/spearman/mean/min_rows=5,12,3,294 473 702,False,,
+span=D__case=C__dup=real,D,C,real,effective/spearman/mean/min_rows=20,8,3,294 473 702,False,,
+span=D__case=C__dup=real,D,C,real,effective/spearman/mean/min_rows=37,5,2,294 473,True,,702
+span=D__case=C__dup=real,D,C,real,effective/spearman/mean/exclude=fostair,10,3,294 473 702,False,,
+span=D__case=C__dup=real,D,C,real,all/spearman/mean,12,3,294 473 702,False,,
+span=D__case=C__dup=resolution,D,C,resolution,effective/spearman/mean,12,3,294 473 702,False,,
+span=D__case=C__dup=resolution,D,C,resolution,effective_lookahead/spearman/mean,12,3,294 473 702,False,,
+span=D__case=C__dup=resolution,D,C,resolution,effective/spearman/mean/min_rows=5,12,3,294 473 702,False,,
+span=D__case=C__dup=resolution,D,C,resolution,effective/spearman/mean/min_rows=20,8,3,294 473 702,False,,
+span=D__case=C__dup=resolution,D,C,resolution,effective/spearman/mean/min_rows=37,5,2,294 473,True,,702
+span=D__case=C__dup=resolution,D,C,resolution,effective/spearman/mean/exclude=fostair,10,3,294 473 702,False,,
+span=D__case=C__dup=resolution,D,C,resolution,all/spearman/mean,12,3,294 473 702,False,,
+span=Q__case=A,Q,A,artefact,effective/spearman/mean,15,2,190 702,False,,
+span=Q__case=A,Q,A,artefact,effective_lookahead/spearman/mean,15,1,702,True,,190
+span=Q__case=A,Q,A,artefact,effective/spearman/mean/min_rows=5,15,2,190 702,False,,
+span=Q__case=A,Q,A,artefact,effective/spearman/mean/min_rows=20,12,3,190 398 702,True,398,
+span=Q__case=A,Q,A,artefact,effective/spearman/mean/min_rows=37,11,2,190 702,False,,
+span=Q__case=A,Q,A,artefact,effective/spearman/mean/exclude=fostair,12,2,190 702,False,,
+span=Q__case=A,Q,A,artefact,all/spearman/mean,15,3,294 473 702,True,294 473,190
+span=Q__case=A__dup=real,Q,A,real,effective/spearman/mean,15,2,190 702,False,,
+span=Q__case=A__dup=real,Q,A,real,effective_lookahead/spearman/mean,15,2,473 702,True,473,190
+span=Q__case=A__dup=real,Q,A,real,effective/spearman/mean/min_rows=5,15,2,190 702,False,,
+span=Q__case=A__dup=real,Q,A,real,effective/spearman/mean/min_rows=20,12,3,190 398 702,True,398,
+span=Q__case=A__dup=real,Q,A,real,effective/spearman/mean/min_rows=37,11,2,190 702,False,,
+span=Q__case=A__dup=real,Q,A,real,effective/spearman/mean/exclude=fostair,12,2,190 702,False,,
+span=Q__case=A__dup=real,Q,A,real,all/spearman/mean,15,3,294 473 702,True,294 473,190
+span=Q__case=A__dup=resolution,Q,A,resolution,effective/spearman/mean,15,2,190 702,False,,
+span=Q__case=A__dup=resolution,Q,A,resolution,effective_lookahead/spearman/mean,15,2,473 702,True,473,190
+span=Q__case=A__dup=resolution,Q,A,resolution,effective/spearman/mean/min_rows=5,15,2,190 702,False,,
+span=Q__case=A__dup=resolution,Q,A,resolution,effective/spearman/mean/min_rows=20,12,3,190 398 702,True,398,
+span=Q__case=A__dup=resolution,Q,A,resolution,effective/spearman/mean/min_rows=37,11,2,190 702,False,,
+span=Q__case=A__dup=resolution,Q,A,resolution,effective/spearman/mean/exclude=fostair,12,2,190 702,False,,
+span=Q__case=A__dup=resolution,Q,A,resolution,all/spearman/mean,15,3,294 473 702,True,294 473,190
+span=Q__case=C,Q,C,artefact,effective/spearman/mean,13,3,294 473 702,False,,
+span=Q__case=C,Q,C,artefact,effective_lookahead/spearman/mean,13,3,294 473 702,False,,
+span=Q__case=C,Q,C,artefact,effective/spearman/mean/min_rows=5,12,3,294 473 702,False,,
+span=Q__case=C,Q,C,artefact,effective/spearman/mean/min_rows=20,8,3,294 473 702,False,,
+span=Q__case=C,Q,C,artefact,effective/spearman/mean/min_rows=37,5,2,294 473,True,,702
+span=Q__case=C,Q,C,artefact,effective/spearman/mean/exclude=fostair,11,3,294 473 702,False,,
+span=Q__case=C,Q,C,artefact,all/spearman/mean,13,3,294 473 702,False,,
+span=Q__case=C__dup=real,Q,C,real,effective/spearman/mean,13,3,294 473 702,False,,
+span=Q__case=C__dup=real,Q,C,real,effective_lookahead/spearman/mean,13,3,294 473 702,False,,
+span=Q__case=C__dup=real,Q,C,real,effective/spearman/mean/min_rows=5,12,3,294 473 702,False,,
+span=Q__case=C__dup=real,Q,C,real,effective/spearman/mean/min_rows=20,8,3,294 473 702,False,,
+span=Q__case=C__dup=real,Q,C,real,effective/spearman/mean/min_rows=37,5,2,294 473,True,,702
+span=Q__case=C__dup=real,Q,C,real,effective/spearman/mean/exclude=fostair,11,3,294 473 702,False,,
+span=Q__case=C__dup=real,Q,C,real,all/spearman/mean,13,3,294 473 702,False,,
+span=Q__case=C__dup=resolution,Q,C,resolution,effective/spearman/mean,13,3,294 473 702,False,,
+span=Q__case=C__dup=resolution,Q,C,resolution,effective_lookahead/spearman/mean,13,3,294 473 702,False,,
+span=Q__case=C__dup=resolution,Q,C,resolution,effective/spearman/mean/min_rows=5,12,3,294 473 702,False,,
+span=Q__case=C__dup=resolution,Q,C,resolution,effective/spearman/mean/min_rows=20,8,3,294 473 702,False,,
+span=Q__case=C__dup=resolution,Q,C,resolution,effective/spearman/mean/min_rows=37,5,2,294 473,True,,702
+span=Q__case=C__dup=resolution,Q,C,resolution,effective/spearman/mean/exclude=fostair,11,3,294 473 702,False,,
+span=Q__case=C__dup=resolution,Q,C,resolution,all/spearman/mean,13,3,294 473 702,False,,
+span=intersection__case=A,intersection,A,artefact,effective/spearman/mean,14,2,190 702,False,,
+span=intersection__case=A,intersection,A,artefact,effective_lookahead/spearman/mean,14,1,702,True,,190
+span=intersection__case=A,intersection,A,artefact,effective/spearman/mean/min_rows=5,14,2,190 702,False,,
+span=intersection__case=A,intersection,A,artefact,effective/spearman/mean/min_rows=20,10,2,398 702,True,398,190
+span=intersection__case=A,intersection,A,artefact,effective/spearman/mean/min_rows=37,7,1,702,True,,190
+span=intersection__case=A,intersection,A,artefact,effective/spearman/mean/exclude=fostair,11,2,190 702,False,,
+span=intersection__case=A,intersection,A,artefact,all/spearman/mean,14,3,294 473 702,True,294 473,190
+span=intersection__case=A__dup=real,intersection,A,real,effective/spearman/mean,14,2,190 702,False,,
+span=intersection__case=A__dup=real,intersection,A,real,effective_lookahead/spearman/mean,14,2,473 702,True,473,190
+span=intersection__case=A__dup=real,intersection,A,real,effective/spearman/mean/min_rows=5,14,2,190 702,False,,
+span=intersection__case=A__dup=real,intersection,A,real,effective/spearman/mean/min_rows=20,10,2,398 702,True,398,190
+span=intersection__case=A__dup=real,intersection,A,real,effective/spearman/mean/min_rows=37,7,1,702,True,,190
+span=intersection__case=A__dup=real,intersection,A,real,effective/spearman/mean/exclude=fostair,11,2,190 702,False,,
+span=intersection__case=A__dup=real,intersection,A,real,all/spearman/mean,14,3,294 473 702,True,294 473,190
+span=intersection__case=A__dup=resolution,intersection,A,resolution,effective/spearman/mean,14,2,190 702,False,,
+span=intersection__case=A__dup=resolution,intersection,A,resolution,effective_lookahead/spearman/mean,14,2,473 702,True,473,190
+span=intersection__case=A__dup=resolution,intersection,A,resolution,effective/spearman/mean/min_rows=5,14,2,190 702,False,,
+span=intersection__case=A__dup=resolution,intersection,A,resolution,effective/spearman/mean/min_rows=20,10,2,398 702,True,398,190
+span=intersection__case=A__dup=resolution,intersection,A,resolution,effective/spearman/mean/min_rows=37,7,1,702,True,,190
+span=intersection__case=A__dup=resolution,intersection,A,resolution,effective/spearman/mean/exclude=fostair,11,2,190 702,False,,
+span=intersection__case=A__dup=resolution,intersection,A,resolution,all/spearman/mean,14,3,294 473 702,True,294 473,190
+span=intersection__case=C,intersection,C,artefact,effective/spearman/mean,12,3,294 473 702,False,,
+span=intersection__case=C,intersection,C,artefact,effective_lookahead/spearman/mean,12,3,294 473 702,False,,
+span=intersection__case=C,intersection,C,artefact,effective/spearman/mean/min_rows=5,12,3,294 473 702,False,,
+span=intersection__case=C,intersection,C,artefact,effective/spearman/mean/min_rows=20,8,3,294 473 702,False,,
+span=intersection__case=C,intersection,C,artefact,effective/spearman/mean/min_rows=37,5,2,294 473,True,,702
+span=intersection__case=C,intersection,C,artefact,effective/spearman/mean/exclude=fostair,10,3,294 473 702,False,,
+span=intersection__case=C,intersection,C,artefact,all/spearman/mean,12,3,294 473 702,False,,
+span=intersection__case=C__dup=real,intersection,C,real,effective/spearman/mean,12,3,294 473 702,False,,
+span=intersection__case=C__dup=real,intersection,C,real,effective_lookahead/spearman/mean,12,3,294 473 702,False,,
+span=intersection__case=C__dup=real,intersection,C,real,effective/spearman/mean/min_rows=5,12,3,294 473 702,False,,
+span=intersection__case=C__dup=real,intersection,C,real,effective/spearman/mean/min_rows=20,8,3,294 473 702,False,,
+span=intersection__case=C__dup=real,intersection,C,real,effective/spearman/mean/min_rows=37,5,2,294 473,True,,702
+span=intersection__case=C__dup=real,intersection,C,real,effective/spearman/mean/exclude=fostair,10,3,294 473 702,False,,
+span=intersection__case=C__dup=real,intersection,C,real,all/spearman/mean,12,3,294 473 702,False,,
+span=intersection__case=C__dup=resolution,intersection,C,resolution,effective/spearman/mean,12,3,294 473 702,False,,
+span=intersection__case=C__dup=resolution,intersection,C,resolution,effective_lookahead/spearman/mean,12,3,294 473 702,False,,
+span=intersection__case=C__dup=resolution,intersection,C,resolution,effective/spearman/mean/min_rows=5,12,3,294 473 702,False,,
+span=intersection__case=C__dup=resolution,intersection,C,resolution,effective/spearman/mean/min_rows=20,8,3,294 473 702,False,,
+span=intersection__case=C__dup=resolution,intersection,C,resolution,effective/spearman/mean/min_rows=37,5,2,294 473,True,,702
+span=intersection__case=C__dup=resolution,intersection,C,resolution,effective/spearman/mean/exclude=fostair,10,3,294 473 702,False,,
+span=intersection__case=C__dup=resolution,intersection,C,resolution,all/spearman/mean,12,3,294 473 702,False,,
+span=union__case=A,union,A,artefact,effective/spearman/mean,15,3,190 702 917,False,,
+span=union__case=A,union,A,artefact,effective_lookahead/spearman/mean,15,2,702 917,True,,190
+span=union__case=A,union,A,artefact,effective/spearman/mean/min_rows=5,15,3,190 702 917,False,,
+span=union__case=A,union,A,artefact,effective/spearman/mean/min_rows=20,12,3,190 398 702,True,398,917
+span=union__case=A,union,A,artefact,effective/spearman/mean/min_rows=37,11,2,190 702,True,,917
+span=union__case=A,union,A,artefact,effective/spearman/mean/exclude=fostair,12,2,190 702,True,,917
+span=union__case=A,union,A,artefact,all/spearman/mean,15,4,294 473 702 917,True,294 473,190
+span=union__case=A__dup=real,union,A,real,effective/spearman/mean,15,2,190 702,False,,
+span=union__case=A__dup=real,union,A,real,effective_lookahead/spearman/mean,15,2,473 702,True,473,190
+span=union__case=A__dup=real,union,A,real,effective/spearman/mean/min_rows=5,15,2,190 702,False,,
+span=union__case=A__dup=real,union,A,real,effective/spearman/mean/min_rows=20,12,3,190 398 702,True,398,
+span=union__case=A__dup=real,union,A,real,effective/spearman/mean/min_rows=37,11,2,190 702,False,,
+span=union__case=A__dup=real,union,A,real,effective/spearman/mean/exclude=fostair,12,2,190 702,False,,
+span=union__case=A__dup=real,union,A,real,all/spearman/mean,15,3,294 473 702,True,294 473,190
+span=union__case=A__dup=resolution,union,A,resolution,effective/spearman/mean,15,2,190 702,False,,
+span=union__case=A__dup=resolution,union,A,resolution,effective_lookahead/spearman/mean,15,2,473 702,True,473,190
+span=union__case=A__dup=resolution,union,A,resolution,effective/spearman/mean/min_rows=5,15,2,190 702,False,,
+span=union__case=A__dup=resolution,union,A,resolution,effective/spearman/mean/min_rows=20,12,3,190 398 702,True,398,
+span=union__case=A__dup=resolution,union,A,resolution,effective/spearman/mean/min_rows=37,11,2,190 702,False,,
+span=union__case=A__dup=resolution,union,A,resolution,effective/spearman/mean/exclude=fostair,12,2,190 702,False,,
+span=union__case=A__dup=resolution,union,A,resolution,all/spearman/mean,15,3,294 473 702,True,294 473,190
+span=union__case=C,union,C,artefact,effective/spearman/mean,13,3,294 473 702,False,,
+span=union__case=C,union,C,artefact,effective_lookahead/spearman/mean,13,3,294 473 702,False,,
+span=union__case=C,union,C,artefact,effective/spearman/mean/min_rows=5,12,3,294 473 702,False,,
+span=union__case=C,union,C,artefact,effective/spearman/mean/min_rows=20,8,3,294 473 702,False,,
+span=union__case=C,union,C,artefact,effective/spearman/mean/min_rows=37,5,2,294 473,True,,702
+span=union__case=C,union,C,artefact,effective/spearman/mean/exclude=fostair,11,3,294 473 702,False,,
+span=union__case=C,union,C,artefact,all/spearman/mean,13,3,294 473 702,False,,
+span=union__case=C__dup=real,union,C,real,effective/spearman/mean,13,3,294 473 702,False,,
+span=union__case=C__dup=real,union,C,real,effective_lookahead/spearman/mean,13,3,294 473 702,False,,
+span=union__case=C__dup=real,union,C,real,effective/spearman/mean/min_rows=5,12,3,294 473 702,False,,
+span=union__case=C__dup=real,union,C,real,effective/spearman/mean/min_rows=20,8,3,294 473 702,False,,
+span=union__case=C__dup=real,union,C,real,effective/spearman/mean/min_rows=37,5,2,294 473,True,,702
+span=union__case=C__dup=real,union,C,real,effective/spearman/mean/exclude=fostair,11,3,294 473 702,False,,
+span=union__case=C__dup=real,union,C,real,all/spearman/mean,13,3,294 473 702,False,,
+span=union__case=C__dup=resolution,union,C,resolution,effective/spearman/mean,13,3,294 473 702,False,,
+span=union__case=C__dup=resolution,union,C,resolution,effective_lookahead/spearman/mean,13,3,294 473 702,False,,
+span=union__case=C__dup=resolution,union,C,resolution,effective/spearman/mean/min_rows=5,12,3,294 473 702,False,,
+span=union__case=C__dup=resolution,union,C,resolution,effective/spearman/mean/min_rows=20,8,3,294 473 702,False,,
+span=union__case=C__dup=resolution,union,C,resolution,effective/spearman/mean/min_rows=37,5,2,294 473,True,,702
+span=union__case=C__dup=resolution,union,C,resolution,effective/spearman/mean/exclude=fostair,11,3,294 473 702,False,,
+span=union__case=C__dup=resolution,union,C,resolution,all/spearman/mean,13,3,294 473 702,False,,

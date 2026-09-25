@@ -1,81 +1,116 @@
 {
   "config": {
+    "exact_max": 20000,
+    "n_perm": 10000,
+    "patients": [
+      113,
+      190,
+      294,
+      328,
+      343,
+      398,
+      447,
+      454,
+      473,
+      514,
+      625,
+      701,
+      702,
+      917,
+      939
+    ],
     "per_patient": {
       "113": {
         "mode": "sampled",
         "n_permutations": 10000,
+        "n_rows": 163,
         "seed": 42
       },
       "190": {
         "mode": "sampled",
         "n_permutations": 10000,
+        "n_rows": 163,
         "seed": 42
       },
       "294": {
         "mode": "sampled",
         "n_permutations": 10000,
+        "n_rows": 173,
         "seed": 42
       },
       "328": {
         "mode": "exact",
-        "n_permutations": 136
+        "n_permutations": 136,
+        "n_rows": 17
       },
       "343": {
         "mode": "sampled",
         "n_permutations": 10000,
+        "n_rows": 173,
         "seed": 42
       },
       "398": {
         "mode": "exact",
-        "n_permutations": 12650
+        "n_permutations": 12650,
+        "n_rows": 25
       },
       "447": {
         "mode": "sampled",
         "n_permutations": 10000,
+        "n_rows": 99,
         "seed": 42
       },
       "454": {
         "mode": "exact",
-        "n_permutations": 840
+        "n_permutations": 840,
+        "n_rows": 10
       },
       "473": {
         "mode": "sampled",
         "n_permutations": 10000,
+        "n_rows": 69,
         "seed": 42
       },
       "514": {
         "mode": "sampled",
         "n_permutations": 10000,
+        "n_rows": 54,
         "seed": 42
       },
       "625": {
         "mode": "sampled",
         "n_permutations": 10000,
+        "n_rows": 62,
         "seed": 42
       },
       "701": {
         "mode": "sampled",
         "n_permutations": 10000,
+        "n_rows": 127,
         "seed": 42
       },
       "702": {
         "mode": "sampled",
         "n_permutations": 10000,
+        "n_rows": 124,
         "seed": 42
       },
       "917": {
         "mode": "exact",
-        "n_permutations": 2520
+        "n_permutations": 2520,
+        "n_rows": 9
       },
       "939": {
         "mode": "sampled",
         "n_permutations": 10000,
+        "n_rows": 158,
         "seed": 42
       }
     },
-    "resummarized_from": "aggregate.py",
+    "seed": 42,
     "world": {
       "absence_case": "A",
+      "duplicates": "artefact",
       "imputation": null,
       "span": "union",
       "world_id": "span=union__case=A"
@@ -90,9 +125,9 @@
       "anonym_aamos00_smartinhaler_dt.csv": "adff777b4aa141f71f82183a69412e313a91fba0d6859304b9ed9a4425731efc"
     }
   },
-  "git_commit": "99e6ab1b2616268627e7043a2ce27ae360ce6339",
+  "git_commit": "7be0635fc23603cbf9b7ce56bb57df11bb2b762e",
   "git_dirty": true,
   "git_source": "working-tree",
-  "script": "resummarize_worlds.py",
-  "written_at": "2026-09-18T22:28:26+00:00"
+  "script": "build_world.py",
+  "written_at": "2026-09-25T15:30:48+00:00"
 }

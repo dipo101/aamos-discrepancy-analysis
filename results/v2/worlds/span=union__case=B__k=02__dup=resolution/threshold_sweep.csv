@@ -1,0 +1,81 @@
+config_set,correlation_type,measure,min_rows,exclude,threshold,n_concordant,concordant
+all,pearson,mean,3,none,0.1,8,113 190 294 343 398 473 702 939
+all,pearson,mean,3,none,0.25,6,113 294 398 473 702 939
+all,pearson,mean,3,none,0.5,3,398 473 702
+all,pearson,mean,3,none,0.75,1,702
+all,pearson,mean,3,none,0.9,0,
+all,pearson,median,3,none,0.1,8,113 190 294 343 398 473 702 939
+all,pearson,median,3,none,0.25,7,113 294 343 398 473 702 939
+all,pearson,median,3,none,0.5,4,294 398 473 702
+all,pearson,median,3,none,0.75,2,473 702
+all,pearson,median,3,none,0.9,0,
+all,spearman,mean,3,none,0.1,8,113 190 294 343 398 473 702 939
+all,spearman,mean,3,none,0.25,5,294 398 473 702 939
+all,spearman,mean,3,none,0.5,2,398 473
+all,spearman,mean,3,none,0.75,0,
+all,spearman,mean,3,none,0.9,0,
+all,spearman,median,3,none,0.1,8,113 190 294 343 398 473 702 939
+all,spearman,median,3,none,0.25,6,294 343 398 473 702 939
+all,spearman,median,3,none,0.5,4,294 398 473 702
+all,spearman,median,3,none,0.75,0,
+all,spearman,median,3,none,0.9,0,
+effective,pearson,mean,3,none,0.1,8,113 190 294 343 398 473 702 939
+effective,pearson,mean,3,none,0.25,5,294 398 473 702 939
+effective,pearson,mean,3,none,0.5,3,398 473 702
+effective,pearson,mean,3,none,0.75,1,702
+effective,pearson,mean,3,none,0.9,0,
+effective,pearson,median,3,none,0.1,8,113 190 294 343 398 473 702 939
+effective,pearson,median,3,none,0.25,6,113 294 398 473 702 939
+effective,pearson,median,3,none,0.5,3,398 473 702
+effective,pearson,median,3,none,0.75,1,702
+effective,pearson,median,3,none,0.9,0,
+effective,spearman,mean,3,fostair,0.1,7,113 190 294 343 398 473 702
+effective,spearman,mean,3,fostair,0.25,4,294 398 473 702
+effective,spearman,mean,3,fostair,0.5,2,398 473
+effective,spearman,mean,3,fostair,0.75,0,
+effective,spearman,mean,3,fostair,0.9,0,
+effective,spearman,mean,3,none,0.1,8,113 190 294 343 398 473 702 939
+effective,spearman,mean,3,none,0.25,5,294 398 473 702 939
+effective,spearman,mean,3,none,0.5,2,398 473
+effective,spearman,mean,3,none,0.75,0,
+effective,spearman,mean,3,none,0.9,0,
+effective,spearman,mean,5,none,0.1,8,113 190 294 343 398 473 702 939
+effective,spearman,mean,5,none,0.25,5,294 398 473 702 939
+effective,spearman,mean,5,none,0.5,2,398 473
+effective,spearman,mean,5,none,0.75,0,
+effective,spearman,mean,5,none,0.9,0,
+effective,spearman,mean,20,none,0.1,8,113 190 294 343 398 473 702 939
+effective,spearman,mean,20,none,0.25,5,294 398 473 702 939
+effective,spearman,mean,20,none,0.5,2,398 473
+effective,spearman,mean,20,none,0.75,0,
+effective,spearman,mean,20,none,0.9,0,
+effective,spearman,mean,37,none,0.1,7,113 190 294 343 473 702 939
+effective,spearman,mean,37,none,0.25,4,294 473 702 939
+effective,spearman,mean,37,none,0.5,1,473
+effective,spearman,mean,37,none,0.75,0,
+effective,spearman,mean,37,none,0.9,0,
+effective,spearman,median,3,none,0.1,8,113 190 294 343 398 473 702 939
+effective,spearman,median,3,none,0.25,5,294 398 473 702 939
+effective,spearman,median,3,none,0.5,2,398 702
+effective,spearman,median,3,none,0.75,0,
+effective,spearman,median,3,none,0.9,0,
+effective_lookahead,pearson,mean,3,none,0.1,8,113 190 294 343 398 473 702 939
+effective_lookahead,pearson,mean,3,none,0.25,5,294 398 473 702 939
+effective_lookahead,pearson,mean,3,none,0.5,2,473 702
+effective_lookahead,pearson,mean,3,none,0.75,1,702
+effective_lookahead,pearson,mean,3,none,0.9,0,
+effective_lookahead,pearson,median,3,none,0.1,8,113 190 294 343 398 473 702 939
+effective_lookahead,pearson,median,3,none,0.25,6,113 294 398 473 702 939
+effective_lookahead,pearson,median,3,none,0.5,3,398 473 702
+effective_lookahead,pearson,median,3,none,0.75,1,702
+effective_lookahead,pearson,median,3,none,0.9,0,
+effective_lookahead,spearman,mean,3,none,0.1,8,113 190 294 343 398 473 702 939
+effective_lookahead,spearman,mean,3,none,0.25,5,294 398 473 702 939
+effective_lookahead,spearman,mean,3,none,0.5,1,473
+effective_lookahead,spearman,mean,3,none,0.75,0,
+effective_lookahead,spearman,mean,3,none,0.9,0,
+effective_lookahead,spearman,median,3,none,0.1,8,113 190 294 343 398 473 702 939
+effective_lookahead,spearman,median,3,none,0.25,5,294 398 473 702 939
+effective_lookahead,spearman,median,3,none,0.5,4,294 398 473 702
+effective_lookahead,spearman,median,3,none,0.75,0,
+effective_lookahead,spearman,median,3,none,0.9,0,

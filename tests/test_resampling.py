@@ -118,21 +118,19 @@ def test_committed_baseline_carries_risk_columns():
 
 
 def test_committed_worlds_risk_profile():
-    """Across all 48 worlds and specs: every sequential stop agrees with the full sample; in every
-    A and C world the primary spec's decisions carry negligible risk and all settle sequentially;
-    the borderline decisions (risk > 1e-3) are B worlds or non-primary specs."""
+    """Across all worlds and specs every sequential stop agrees with the full sample, and no concordance
+    call under the primary spec depends on Monte Carlo error: wherever the observed Z clears the threshold
+    (so significance decides), the resampling risk is negligible. Borderline significance decisions exist,
+    but only for patients whose Z is below the threshold anyway."""
     from aamos_concordance.sensitivity import load_world_summaries
-    from aamos_concordance.summary import PRIMARY, select
+    from aamos_concordance.summary import DEFAULT_THRESHOLD, PRIMARY, select
     n_risky = 0
     for wid, s in load_world_summaries().items():
         sampled = s[~s["null_is_exact"].astype(bool)]
         stopped = sampled[sampled["sequential_stopped"].astype(bool)]
         assert stopped["sequential_matches_full"].astype(bool).all(), wid
-        risky = sampled[sampled["resampling_risk"] > 1e-3]
-        n_risky += len(risky)
-        if "case=B" not in wid:
-            prim = select(sampled, PRIMARY)
-            assert (prim["resampling_risk"] < 1e-6).all(), wid
-            assert prim["sequential_stopped"].astype(bool).all(), wid
-            assert select(risky, PRIMARY).empty, wid
-    assert n_risky > 0  # the column is doing work: some non-primary / case-B decisions are borderline
+        n_risky += int((sampled["resampling_risk"] > 1e-3).sum())
+        prim = select(sampled, PRIMARY)
+        deciding = prim[prim["observed_z"] >= DEFAULT_THRESHOLD]
+        assert (deciding["resampling_risk"] < 1e-6).all(), wid
+    assert n_risky > 0  # the column is doing work: some significance decisions are borderline

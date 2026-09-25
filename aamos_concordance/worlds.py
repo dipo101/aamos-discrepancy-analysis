@@ -46,12 +46,14 @@ Layout under ``results/``::
 from __future__ import annotations
 
 import csv
+import fcntl
 import json
 import re
+from contextlib import contextmanager
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Iterable, List, Optional
+from typing import Dict, Iterable, Iterator, List, Optional
 
 from .duplicates import DEFAULT_DUPLICATES, DUPLICATE_READINGS
 
@@ -220,7 +222,7 @@ def gcs_results_prefix(world: "WorldSpec | str | None" = None) -> str:
 # Index and concordant sets
 # --------------------------------------------------------------------------
 
-INDEX_COLUMNS = ["world_id", "span", "absence_case", "imputation", "built_at", "git_commit", "data_sha256_questionnaire", "data_sha256_inhaler", "note"]
+INDEX_COLUMNS = ["world_id", "span", "absence_case", "imputation", "duplicates", "built_at", "git_commit", "data_sha256_questionnaire", "data_sha256_inhaler", "note"]
 
 
 def register_world(world: "WorldSpec | str | None", *, git_commit: str = "", data_hashes: Optional[Dict[str, str]] = None, note: str = "") -> Path:
@@ -228,6 +230,11 @@ def register_world(world: "WorldSpec | str | None", *, git_commit: str = "", dat
     w = as_world(world)
     path = worlds_index_path()
     path.parent.mkdir(parents=True, exist_ok=True)
+    with _shared_file_lock():
+        return _register_world(w, path, git_commit, data_hashes, note)
+
+
+def _register_world(w: WorldSpec, path: Path, git_commit: str, data_hashes: Optional[Dict[str, str]], note: str) -> Path:
     rows: List[Dict] = []
     if path.exists():
         with open(path, newline="") as f:
@@ -236,6 +243,7 @@ def register_world(world: "WorldSpec | str | None", *, git_commit: str = "", dat
     rows.append({
         "world_id": w.world_id, "span": w.span, "absence_case": w.absence_case,
         "imputation": "" if w.imputation is None else w.imputation,
+        "duplicates": w.duplicates,
         "built_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "git_commit": git_commit,
         "data_sha256_questionnaire": hashes.get("anonym_aamos00_dailyquestionnaire_dt.csv", ""),
@@ -266,10 +274,23 @@ def load_concordant_sets() -> Dict[str, Dict[str, List[int]]]:
 def write_concordant_sets(world: "WorldSpec | str | None", sets: Dict[str, Iterable[int]]) -> Path:
     """Merge ``{summary spec key: [patients]}`` for this world into the generated JSON."""
     w = as_world(world)
-    all_sets = load_concordant_sets()
-    all_sets[w.world_id] = {m: sorted(int(p) for p in ps) for m, ps in sets.items()}
     p = concordant_sets_path()
     p.parent.mkdir(parents=True, exist_ok=True)
-    ordered = {k: all_sets[k] for k in sorted(all_sets)}
-    p.write_text(json.dumps(ordered, indent=2) + "\n")
+    with _shared_file_lock():
+        all_sets = load_concordant_sets()
+        all_sets[w.world_id] = {m: sorted(int(p) for p in ps) for m, ps in sets.items()}
+        ordered = {k: all_sets[k] for k in sorted(all_sets)}
+        p.write_text(json.dumps(ordered, indent=2) + "\n")
     return p
+
+
+@contextmanager
+def _shared_file_lock() -> Iterator[None]:
+    """Serialise read-modify-write of the shared index files across processes (parallel world builds)."""
+    V2_DIR.mkdir(parents=True, exist_ok=True)
+    with open(V2_DIR / ".index.lock", "w") as fh:
+        fcntl.flock(fh, fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(fh, fcntl.LOCK_UN)

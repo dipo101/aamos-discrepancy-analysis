@@ -27,7 +27,7 @@
       917
     ],
     "effective/pearson/mean": [
-      294,
+      190,
       473,
       702,
       917
@@ -35,23 +35,286 @@
     "effective/pearson/median": [
       190,
       294,
+      398,
       473,
       702,
       917
     ],
+    "effective/spearman/mean/exclude=fostair": [
+      190,
+      702
+    ],
     "effective/spearman/mean": [
+      190,
       702,
       917
     ],
-    "effective/spearman/median": [
-      294,
+    "effective/spearman/mean/min_rows=5": [
+      190,
       702,
       917
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      190,
+      294,
+      398,
+      702,
+      917
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702,
+      917
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702,
+      917
+    ],
+    "effective_lookahead/spearman/mean": [
+      702,
+      917
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702,
+      917
+    ]
+  },
+  "span=D__case=A__dup=real": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702,
+      917
+    ],
+    "all/pearson/median": [
+      190,
+      294,
+      473,
+      702,
+      917
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      190,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      190,
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      190,
+      702
+    ],
+    "effective/spearman/mean": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      190,
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702,
+      917
+    ],
+    "effective_lookahead/spearman/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702
+    ]
+  },
+  "span=D__case=A__dup=resolution": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702,
+      917
+    ],
+    "all/pearson/median": [
+      190,
+      294,
+      473,
+      702,
+      917
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      190,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      190,
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      190,
+      702
+    ],
+    "effective/spearman/mean": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      190,
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702,
+      917
+    ],
+    "effective_lookahead/spearman/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702
     ]
   },
   "span=D__case=B__k=00": {
     "all/pearson/mean": [
       473,
+      702,
+      917
+    ],
+    "all/pearson/median": [
+      473,
+      702,
+      917
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473,
+      917
+    ],
+    "effective/pearson/mean": [
+      473,
+      702,
+      917
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702,
+      917
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      398,
+      702,
+      917
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702,
+      917
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473,
+      917
+    ]
+  },
+  "span=D__case=B__k=00__dup=real": {
+    "all/pearson/mean": [
+      473,
       702
     ],
     "all/pearson/median": [
@@ -59,12 +322,11 @@
       702
     ],
     "all/spearman/mean": [
-      702
+      473
     ],
     "all/spearman/median": [
       294,
-      473,
-      702
+      473
     ],
     "effective/pearson/mean": [
       473,
@@ -74,50 +336,135 @@
       473,
       702
     ],
-    "effective/spearman/mean": [
-      702
-    ],
-    "effective/spearman/median": [
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
       473,
       702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=D__case=B__k=00__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      398
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
     ]
   },
   "span=D__case=B__k=01": {
     "all/pearson/mean": [
       473,
-      702
+      702,
+      917
     ],
     "all/pearson/median": [
-      398,
+      294,
       473,
       702
     ],
     "all/spearman/mean": [
+      473,
       702
     ],
     "all/spearman/median": [
-      398,
+      294,
       473,
       702
     ],
     "effective/pearson/mean": [
       473,
-      702
+      702,
+      917
     ],
     "effective/pearson/median": [
-      398,
       473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
       702
     ],
     "effective/spearman/mean": [
       702
     ],
+    "effective/spearman/mean/min_rows=5": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
     "effective/spearman/median": [
-      398,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702,
+      917
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      702
+    ],
+    "effective_lookahead/spearman/median": [
       702
     ]
   },
-  "span=D__case=B__k=02": {
+  "span=D__case=B__k=01__dup=real": {
     "all/pearson/mean": [
       473,
       702
@@ -131,55 +478,42 @@
     ],
     "all/spearman/median": [
       294,
-      473,
-      702
-    ],
-    "effective/pearson/mean": [
-      473,
-      702
-    ],
-    "effective/pearson/median": [
-      473,
-      702
-    ],
-    "effective/spearman/mean": [],
-    "effective/spearman/median": [
-      702
-    ]
-  },
-  "span=D__case=B__k=03": {
-    "all/pearson/mean": [
-      473,
-      702,
-      917
-    ],
-    "all/pearson/median": [
-      473,
-      702
-    ],
-    "all/spearman/mean": [],
-    "all/spearman/median": [
       473
     ],
     "effective/pearson/mean": [
       473,
-      702,
-      917
+      702
     ],
     "effective/pearson/median": [
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
-    "effective/spearman/median": []
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
   },
-  "span=D__case=B__k=04": {
+  "span=D__case=B__k=01__dup=resolution": {
     "all/pearson/mean": [
       473,
-      702,
-      917
+      702
     ],
     "all/pearson/median": [
+      294,
       473,
       702
     ],
@@ -187,7 +521,265 @@
       473
     ],
     "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
       473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=D__case=B__k=02": {
+    "all/pearson/mean": [
+      398,
+      473,
+      702,
+      917
+    ],
+    "all/pearson/median": [
+      294,
+      398,
+      473,
+      702,
+      917
+    ],
+    "all/spearman/mean": [
+      398,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702,
+      917
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702,
+      917
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398,
+      702
+    ],
+    "effective/spearman/mean": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      398,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702,
+      917
+    ],
+    "effective_lookahead/pearson/median": [
+      398,
+      473,
+      702,
+      917
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      398
+    ]
+  },
+  "span=D__case=B__k=02__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      398,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      473
+    ],
+    "effective/spearman/mean": [
+      473
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      473
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      473
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      473
+    ],
+    "effective/spearman/median": [
+      398
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      473
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      398,
+      473
+    ]
+  },
+  "span=D__case=B__k=02__dup=resolution": {
+    "all/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      398,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      398,
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398,
+      473
+    ],
+    "effective/spearman/mean": [
+      398,
+      473
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398,
+      473
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      473
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      473
+    ],
+    "effective/spearman/median": [
+      398
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      473
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      398,
+      473
+    ]
+  },
+  "span=D__case=B__k=03": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702,
+      917
+    ],
+    "all/spearman/mean": [
+      917
+    ],
+    "all/spearman/median": [
+      294,
       702
     ],
     "effective/pearson/mean": [
@@ -199,8 +791,335 @@
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
-    "effective/spearman/median": []
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      702
+    ]
+  },
+  "span=D__case=B__k=03__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      473
+    ]
+  },
+  "span=D__case=B__k=03__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      473
+    ]
+  },
+  "span=D__case=B__k=04": {
+    "all/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      398,
+      473,
+      702,
+      917
+    ],
+    "all/spearman/mean": [
+      398,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702,
+      917
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398,
+      702
+    ],
+    "effective/spearman/mean": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      398,
+      473,
+      702,
+      917
+    ],
+    "effective_lookahead/spearman/mean": [
+      398,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      398,
+      702
+    ]
+  },
+  "span=D__case=B__k=04__dup=real": {
+    "all/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      398,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398,
+      702
+    ],
+    "effective/spearman/mean": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      398,
+      473,
+      702
+    ]
+  },
+  "span=D__case=B__k=04__dup=resolution": {
+    "all/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      398,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398,
+      702
+    ],
+    "effective/spearman/mean": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      398
+    ],
+    "effective_lookahead/spearman/median": [
+      398,
+      473,
+      702
+    ]
   },
   "span=D__case=B__k=05": {
     "all/pearson/mean": [
@@ -210,80 +1129,422 @@
       917
     ],
     "all/pearson/median": [
+      294,
       473,
       702,
       917
     ],
     "all/spearman/mean": [
-      294
+      294,
+      702
     ],
     "all/spearman/median": [
       294,
-      473
+      702
     ],
     "effective/pearson/mean": [
-      294,
+      398,
       473,
       702,
       917
     ],
     "effective/pearson/median": [
       473,
-      702,
-      917
+      702
     ],
-    "effective/spearman/mean": [],
-    "effective/spearman/median": []
+    "effective/spearman/mean/exclude=fostair": [
+      398,
+      702
+    ],
+    "effective/spearman/mean": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294
+    ]
+  },
+  "span=D__case=B__k=05__dup=real": {
+    "all/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      398,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      398,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398,
+      702
+    ],
+    "effective/spearman/mean": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      398,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702
+    ]
+  },
+  "span=D__case=B__k=05__dup=resolution": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398,
+      702
+    ],
+    "effective/spearman/mean": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702
+    ]
   },
   "span=D__case=B__k=06": {
     "all/pearson/mean": [
       473,
-      702,
-      917
+      702
     ],
     "all/pearson/median": [
+      294,
       473,
-      702,
-      917
+      702
     ],
     "all/spearman/mean": [
+      473,
       702
     ],
     "all/spearman/median": [
+      294,
       473,
       702
     ],
     "effective/pearson/mean": [
+      398,
       473,
-      702,
-      917
+      702
     ],
     "effective/pearson/median": [
       473,
       702,
       917
     ],
-    "effective/spearman/mean": [],
-    "effective/spearman/median": []
+    "effective/spearman/mean/exclude=fostair": [
+      398,
+      702
+    ],
+    "effective/spearman/mean": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      702
+    ]
+  },
+  "span=D__case=B__k=06__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398,
+      702
+    ],
+    "effective/spearman/mean": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702
+    ]
+  },
+  "span=D__case=B__k=06__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398,
+      702
+    ],
+    "effective/spearman/mean": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702
+    ]
   },
   "span=D__case=B__k=07": {
     "all/pearson/mean": [
       473,
-      702,
-      917
+      702
     ],
     "all/pearson/median": [
-      294,
       473,
       702
     ],
     "all/spearman/mean": [
-      473,
       702
     ],
     "all/spearman/median": [
-      294,
-      473,
       702
     ],
     "effective/pearson/mean": [
@@ -292,15 +1553,132 @@
       917
     ],
     "effective/pearson/median": [
-      294,
+      398,
       473,
+      702,
+      917
+    ],
+    "effective/spearman/mean/exclude=fostair": [
       702
     ],
     "effective/spearman/mean": [
       702
     ],
+    "effective/spearman/mean/min_rows=5": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
     "effective/spearman/median": [
-      294,
+      398,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      702
+    ]
+  },
+  "span=D__case=B__k=07__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      702
+    ]
+  },
+  "span=D__case=B__k=07__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      398,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
       702
     ]
   },
@@ -313,11 +1691,8 @@
       473,
       702
     ],
-    "all/spearman/mean": [
-      702
-    ],
+    "all/spearman/mean": [],
     "all/spearman/median": [
-      294,
       473,
       702
     ],
@@ -329,45 +1704,253 @@
       473,
       702
     ],
-    "effective/spearman/mean": [
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
       702
     ],
-    "effective/spearman/median": []
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      702
+    ]
   },
-  "span=D__case=B__k=09": {
+  "span=D__case=B__k=08__dup=real": {
     "all/pearson/mean": [
-      294,
       473,
       702
     ],
     "all/pearson/median": [
-      294,
       473,
       702
     ],
     "all/spearman/mean": [
-      294,
-      702
+      473
     ],
     "all/spearman/median": [
-      294,
-      473,
-      702
+      473
     ],
     "effective/pearson/mean": [
-      294,
       473,
       702
     ],
     "effective/pearson/median": [
-      294,
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
-    "effective/spearman/median": [
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=D__case=B__k=08__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=D__case=B__k=09": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702,
+      917
+    ],
+    "all/spearman/mean": [
+      917
+    ],
+    "all/spearman/median": [
       294,
       702
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702,
+      917
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398
+    ],
+    "effective/spearman/mean": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702,
+      917
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=D__case=B__k=09__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=D__case=B__k=09__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398
+    ],
+    "effective/spearman/mean": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
     ]
   },
   "span=D__case=C": {
@@ -397,6 +1980,10 @@
       702
     ],
     "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
       294,
       473,
       702
@@ -406,7 +1993,200 @@
       473,
       702
     ],
+    "effective/spearman/mean/min_rows=5": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      294,
+      473
+    ],
     "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702
+    ]
+  },
+  "span=D__case=C__dup=real": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      447,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      294,
+      473
+    ],
+    "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702
+    ]
+  },
+  "span=D__case=C__dup=resolution": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      447,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      294,
+      473
+    ],
+    "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
       294,
       473,
       702
@@ -436,24 +2216,233 @@
       702
     ],
     "effective/pearson/mean": [
-      294,
+      190,
       473,
       702
     ],
     "effective/pearson/median": [
       190,
       294,
+      398,
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [
+      190,
+      702
+    ],
     "effective/spearman/mean": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      190,
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      190,
       702
     ],
     "effective/spearman/median": [
       190,
       294,
-      702,
-      917
+      398,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      190,
+      294,
+      473,
+      702
+    ]
+  },
+  "span=Q__case=A__dup=real": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      190,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      190,
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      190,
+      702
+    ],
+    "effective/spearman/mean": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      190,
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      190,
+      702
+    ],
+    "effective/spearman/median": [
+      190,
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      190,
+      294,
+      473,
+      702
+    ]
+  },
+  "span=Q__case=A__dup=resolution": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      190,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      190,
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      190,
+      702
+    ],
+    "effective/spearman/mean": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      190,
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      190,
+      702
+    ],
+    "effective/spearman/median": [
+      190,
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      190,
+      294,
+      473,
+      702
     ]
   },
   "span=Q__case=B__k=00": {
@@ -468,6 +2457,53 @@
     "all/spearman/mean": [],
     "all/spearman/median": [
       294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473,
+      702
+    ]
+  },
+  "span=Q__case=B__k=00__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
       473
     ],
     "effective/pearson/mean": [
@@ -478,10 +2514,63 @@
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
-    "effective/spearman/median": [
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=Q__case=B__k=00__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
       473
-    ]
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
   },
   "span=Q__case=B__k=01": {
     "all/pearson/mean": [
@@ -489,30 +2578,7 @@
       702
     ],
     "all/pearson/median": [
-      473,
-      702
-    ],
-    "all/spearman/mean": [],
-    "all/spearman/median": [
-      473
-    ],
-    "effective/pearson/mean": [
-      473,
-      702
-    ],
-    "effective/pearson/median": [
-      473,
-      702
-    ],
-    "effective/spearman/mean": [],
-    "effective/spearman/median": []
-  },
-  "span=Q__case=B__k=02": {
-    "all/pearson/mean": [
-      473,
-      702
-    ],
-    "all/pearson/median": [
+      294,
       473,
       702
     ],
@@ -532,8 +2598,275 @@
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
-    "effective/spearman/median": []
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=Q__case=B__k=01__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      473
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      473
+    ]
+  },
+  "span=Q__case=B__k=01__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      473
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=Q__case=B__k=02": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      702
+    ]
+  },
+  "span=Q__case=B__k=02__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      473
+    ],
+    "effective/spearman/mean": [
+      473
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      473
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      473
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      473
+    ],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      473
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473
+    ]
+  },
+  "span=Q__case=B__k=02__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      473
+    ],
+    "effective/spearman/mean": [
+      473
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      473
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      473
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      473
+    ],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      473
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473
+    ]
   },
   "span=Q__case=B__k=03": {
     "all/pearson/mean": [
@@ -546,33 +2879,7 @@
     ],
     "all/spearman/mean": [],
     "all/spearman/median": [
-      473,
-      702
-    ],
-    "effective/pearson/mean": [
-      473,
-      702
-    ],
-    "effective/pearson/median": [
-      473,
-      702
-    ],
-    "effective/spearman/mean": [],
-    "effective/spearman/median": []
-  },
-  "span=Q__case=B__k=04": {
-    "all/pearson/mean": [
-      473,
-      702
-    ],
-    "all/pearson/median": [
-      473,
-      702
-    ],
-    "all/spearman/mean": [
-      473
-    ],
-    "all/spearman/median": [
+      294,
       473
     ],
     "effective/pearson/mean": [
@@ -583,42 +2890,24 @@
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
-    "effective/spearman/median": []
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
   },
-  "span=Q__case=B__k=05": {
-    "all/pearson/mean": [
-      294,
-      473,
-      702
-    ],
-    "all/pearson/median": [
-      473,
-      702
-    ],
-    "all/spearman/mean": [
-      294
-    ],
-    "all/spearman/median": [
-      294,
-      473,
-      702
-    ],
-    "effective/pearson/mean": [
-      294,
-      473,
-      702
-    ],
-    "effective/pearson/median": [
-      473,
-      702
-    ],
-    "effective/spearman/mean": [],
-    "effective/spearman/median": [
-      294
-    ]
-  },
-  "span=Q__case=B__k=06": {
+  "span=Q__case=B__k=03__dup=real": {
     "all/pearson/mean": [
       473,
       702
@@ -640,15 +2929,392 @@
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
-    "effective/spearman/median": []
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      473
+    ]
   },
-  "span=Q__case=B__k=07": {
+  "span=Q__case=B__k=03__dup=resolution": {
     "all/pearson/mean": [
       473,
       702
     ],
     "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=Q__case=B__k=04": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      702
+    ]
+  },
+  "span=Q__case=B__k=04__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      473
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=Q__case=B__k=04__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      473
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=Q__case=B__k=05": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=Q__case=B__k=05__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=Q__case=B__k=05__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=Q__case=B__k=06": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      702
+    ],
+    "effective/spearman/mean": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      702
+    ]
+  },
+  "span=Q__case=B__k=06__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
       473,
       702
     ],
@@ -667,10 +3333,198 @@
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
     "effective/spearman/median": [
-      294
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      473
     ]
+  },
+  "span=Q__case=B__k=06__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      473
+    ]
+  },
+  "span=Q__case=B__k=07": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=Q__case=B__k=07__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=Q__case=B__k=07__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
   },
   "span=Q__case=B__k=08": {
     "all/pearson/mean": [
@@ -683,7 +3537,49 @@
     ],
     "all/spearman/mean": [],
     "all/spearman/median": [
-      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=Q__case=B__k=08__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
       473
     ],
     "effective/pearson/mean": [
@@ -694,14 +3590,27 @@
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
-    "effective/spearman/median": [
-      294
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
     ]
   },
-  "span=Q__case=B__k=09": {
+  "span=Q__case=B__k=08__dup=resolution": {
     "all/pearson/mean": [
-      294,
       473,
       702
     ],
@@ -710,16 +3619,12 @@
       702
     ],
     "all/spearman/mean": [
-      294,
-      702
+      473
     ],
     "all/spearman/median": [
-      294,
-      473,
-      702
+      473
     ],
     "effective/pearson/mean": [
-      294,
       473,
       702
     ],
@@ -727,10 +3632,136 @@
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
-    "effective/spearman/median": [
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
       702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
     ]
+  },
+  "span=Q__case=B__k=09": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=Q__case=B__k=09__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=Q__case=B__k=09__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
   },
   "span=Q__case=C": {
     "all/pearson/mean": [
@@ -759,6 +3790,10 @@
       702
     ],
     "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
       294,
       473,
       702
@@ -768,7 +3803,200 @@
       473,
       702
     ],
+    "effective/spearman/mean/min_rows=5": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      294,
+      473
+    ],
     "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702
+    ]
+  },
+  "span=Q__case=C__dup=real": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      447,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      294,
+      473
+    ],
+    "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702
+    ]
+  },
+  "span=Q__case=C__dup=resolution": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      447,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      294,
+      473
+    ],
+    "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
       294,
       473,
       702
@@ -798,23 +4026,222 @@
       702
     ],
     "effective/pearson/mean": [
-      294,
+      190,
       473,
       702
     ],
     "effective/pearson/median": [
       190,
       294,
+      398,
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [
+      190,
+      702
+    ],
     "effective/spearman/mean": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
       702
     ],
     "effective/spearman/median": [
+      190,
       294,
+      398,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
       702,
       917
+    ]
+  },
+  "span=intersection__case=A__dup=real": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      190,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      190,
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      190,
+      702
+    ],
+    "effective/spearman/mean": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      190,
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702
+    ]
+  },
+  "span=intersection__case=A__dup=resolution": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      190,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      190,
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      190,
+      702
+    ],
+    "effective/spearman/mean": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      190,
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702
     ]
   },
   "span=intersection__case=B__k=00": {
@@ -829,8 +4256,7 @@
     "all/spearman/mean": [],
     "all/spearman/median": [
       294,
-      473,
-      702
+      473
     ],
     "effective/pearson/mean": [
       473,
@@ -840,38 +4266,26 @@
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
-    "effective/spearman/median": [
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
       473,
       702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
     ]
   },
-  "span=intersection__case=B__k=01": {
-    "all/pearson/mean": [
-      473,
-      702
-    ],
-    "all/pearson/median": [
-      473,
-      702
-    ],
-    "all/spearman/mean": [],
-    "all/spearman/median": [
-      473,
-      702
-    ],
-    "effective/pearson/mean": [
-      473,
-      702
-    ],
-    "effective/pearson/median": [
-      473,
-      702
-    ],
-    "effective/spearman/mean": [],
-    "effective/spearman/median": []
-  },
-  "span=intersection__case=B__k=02": {
+  "span=intersection__case=B__k=00__dup=real": {
     "all/pearson/mean": [
       473,
       702
@@ -882,6 +4296,226 @@
     ],
     "all/spearman/mean": [
       473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=intersection__case=B__k=00__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=intersection__case=B__k=01": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=intersection__case=B__k=01__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      473
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      473
+    ]
+  },
+  "span=intersection__case=B__k=01__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      473
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=intersection__case=B__k=02": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      702
     ],
     "all/spearman/median": [
       294,
@@ -896,8 +4530,140 @@
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
-    "effective/spearman/median": []
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294
+    ]
+  },
+  "span=intersection__case=B__k=02__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      473
+    ],
+    "effective/spearman/mean": [
+      473
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      473
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      473
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      473
+    ],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      473
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473
+    ]
+  },
+  "span=intersection__case=B__k=02__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      473
+    ],
+    "effective/spearman/mean": [
+      473
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      473
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      473
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      473
+    ],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      473
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473
+    ]
   },
   "span=intersection__case=B__k=03": {
     "all/pearson/mean": [
@@ -910,6 +4676,47 @@
     ],
     "all/spearman/mean": [],
     "all/spearman/median": [
+      294,
+      473,
+      917
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=intersection__case=B__k=03__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
       473
     ],
     "effective/pearson/mean": [
@@ -920,8 +4727,66 @@
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
-    "effective/spearman/median": []
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      473
+    ]
+  },
+  "span=intersection__case=B__k=03__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
   },
   "span=intersection__case=B__k=04": {
     "all/pearson/mean": [
@@ -933,10 +4798,11 @@
       702
     ],
     "all/spearman/mean": [
-      473
+      702
     ],
     "all/spearman/median": [
-      473
+      473,
+      702
     ],
     "effective/pearson/mean": [
       473,
@@ -946,12 +4812,40 @@
       473,
       702
     ],
-    "effective/spearman/mean": [],
-    "effective/spearman/median": []
+    "effective/spearman/mean/exclude=fostair": [
+      702
+    ],
+    "effective/spearman/mean": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      702
+    ]
   },
-  "span=intersection__case=B__k=05": {
+  "span=intersection__case=B__k=04__dup=real": {
     "all/pearson/mean": [
-      294,
       473,
       702
     ],
@@ -960,14 +4854,12 @@
       702
     ],
     "all/spearman/mean": [
-      294
+      473
     ],
     "all/spearman/median": [
-      294,
       473
     ],
     "effective/pearson/mean": [
-      294,
       473,
       702
     ],
@@ -975,9 +4867,198 @@
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
     "effective/spearman/median": [
-      294
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=intersection__case=B__k=04__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=intersection__case=B__k=05": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=intersection__case=B__k=05__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=intersection__case=B__k=05__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
     ]
   },
   "span=intersection__case=B__k=06": {
@@ -986,6 +5067,7 @@
       702
     ],
     "all/pearson/median": [
+      294,
       473,
       702
     ],
@@ -1005,8 +5087,138 @@
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [
+      702
+    ],
+    "effective/spearman/mean": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      702
+    ]
+  },
+  "span=intersection__case=B__k=06__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
-    "effective/spearman/median": []
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      473
+    ]
+  },
+  "span=intersection__case=B__k=06__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      473
+    ]
   },
   "span=intersection__case=B__k=07": {
     "all/pearson/mean": [
@@ -1017,12 +5229,8 @@
       473,
       702
     ],
-    "all/spearman/mean": [
-      473,
-      702
-    ],
+    "all/spearman/mean": [],
     "all/spearman/median": [
-      294,
       473,
       702
     ],
@@ -1034,13 +5242,28 @@
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
     "effective/spearman/median": [
-      294,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
       702
     ]
   },
-  "span=intersection__case=B__k=08": {
+  "span=intersection__case=B__k=07__dup=real": {
     "all/pearson/mean": [
       473,
       702
@@ -1050,10 +5273,9 @@
       702
     ],
     "all/spearman/mean": [
-      702
+      473
     ],
     "all/spearman/median": [
-      294,
       473
     ],
     "effective/pearson/mean": [
@@ -1064,14 +5286,25 @@
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
-    "effective/spearman/median": [
-      294
-    ]
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
   },
-  "span=intersection__case=B__k=09": {
+  "span=intersection__case=B__k=07__dup=resolution": {
     "all/pearson/mean": [
-      294,
       473,
       702
     ],
@@ -1080,15 +5313,12 @@
       702
     ],
     "all/spearman/mean": [
-      294
+      473
     ],
     "all/spearman/median": [
-      294,
-      473,
-      702
+      473
     ],
     "effective/pearson/mean": [
-      294,
       473,
       702
     ],
@@ -1096,8 +5326,256 @@
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
-    "effective/spearman/median": []
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=intersection__case=B__k=08": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=intersection__case=B__k=08__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=intersection__case=B__k=08__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=intersection__case=B__k=09": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=intersection__case=B__k=09__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=intersection__case=B__k=09__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
   },
   "span=intersection__case=C": {
     "all/pearson/mean": [
@@ -1126,6 +5604,10 @@
       702
     ],
     "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
       294,
       473,
       702
@@ -1135,7 +5617,200 @@
       473,
       702
     ],
+    "effective/spearman/mean/min_rows=5": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      294,
+      473
+    ],
     "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702
+    ]
+  },
+  "span=intersection__case=C__dup=real": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      447,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      294,
+      473
+    ],
+    "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702
+    ]
+  },
+  "span=intersection__case=C__dup=resolution": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      447,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      294,
+      473
+    ],
+    "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
       294,
       473,
       702
@@ -1169,7 +5844,7 @@
       917
     ],
     "effective/pearson/mean": [
-      294,
+      190,
       473,
       702,
       917
@@ -1177,29 +5852,250 @@
     "effective/pearson/median": [
       190,
       294,
+      398,
       473,
       702,
       917
     ],
+    "effective/spearman/mean/exclude=fostair": [
+      190,
+      702
+    ],
     "effective/spearman/mean": [
+      190,
       702,
       917
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      190,
+      702,
+      917
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      190,
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      190,
+      702
     ],
     "effective/spearman/median": [
       190,
       294,
+      398,
       702,
       917
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702,
+      917
+    ],
+    "effective_lookahead/pearson/median": [
+      190,
+      294,
+      473,
+      702,
+      917
+    ],
+    "effective_lookahead/spearman/mean": [
+      702,
+      917
+    ],
+    "effective_lookahead/spearman/median": [
+      190,
+      294,
+      473,
+      702,
+      917
+    ]
+  },
+  "span=union__case=A__dup=real": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      190,
+      294,
+      473,
+      702,
+      917
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      190,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      190,
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      190,
+      702
+    ],
+    "effective/spearman/mean": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      190,
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      190,
+      702
+    ],
+    "effective/spearman/median": [
+      190,
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      190,
+      294,
+      473,
+      702,
+      917
+    ],
+    "effective_lookahead/spearman/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      190,
+      294,
+      473,
+      702
+    ]
+  },
+  "span=union__case=A__dup=resolution": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      190,
+      294,
+      473,
+      702,
+      917
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      190,
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      190,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      190,
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      190,
+      702
+    ],
+    "effective/spearman/mean": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      190,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      190,
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      190,
+      702
+    ],
+    "effective/spearman/median": [
+      190,
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      190,
+      294,
+      473,
+      702,
+      917
+    ],
+    "effective_lookahead/spearman/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      190,
+      294,
+      473,
+      702
     ]
   },
   "span=union__case=B__k=00": {
     "all/pearson/mean": [
       473,
-      702
+      702,
+      917
     ],
     "all/pearson/median": [
       473,
-      702
+      702,
+      917
     ],
     "all/spearman/mean": [
       702
@@ -1211,79 +6107,484 @@
     ],
     "effective/pearson/mean": [
       473,
-      702
-    ],
-    "effective/pearson/median": [
-      473,
-      702
-    ],
-    "effective/spearman/mean": [],
-    "effective/spearman/median": [
-      473
-    ]
-  },
-  "span=union__case=B__k=01": {
-    "all/pearson/mean": [
-      473,
-      702
-    ],
-    "all/pearson/median": [
-      398,
-      473,
-      702
-    ],
-    "all/spearman/mean": [
-      702
-    ],
-    "all/spearman/median": [
-      398,
-      473,
-      702
-    ],
-    "effective/pearson/mean": [
-      473,
-      702
+      702,
+      917
     ],
     "effective/pearson/median": [
       398,
       473,
       702
     ],
-    "effective/spearman/mean": [],
-    "effective/spearman/median": [
-      398
-    ]
-  },
-  "span=union__case=B__k=02": {
-    "all/pearson/mean": [
-      473,
-      702
-    ],
-    "all/pearson/median": [
-      473,
-      702
-    ],
-    "all/spearman/mean": [
-      473,
-      702
-    ],
-    "all/spearman/median": [
-      294,
-      473,
-      702
-    ],
-    "effective/pearson/mean": [
-      473,
-      702
-    ],
-    "effective/pearson/median": [
-      473,
+    "effective/spearman/mean/exclude=fostair": [
       702
     ],
     "effective/spearman/mean": [
       702
     ],
+    "effective/spearman/mean/min_rows=5": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
     "effective/spearman/median": [
+      398,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702,
+      917
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473,
+      702,
+      917
+    ]
+  },
+  "span=union__case=B__k=00__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473,
+      702
+    ]
+  },
+  "span=union__case=B__k=00__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      398,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473,
+      702
+    ]
+  },
+  "span=union__case=B__k=01": {
+    "all/pearson/mean": [
+      473,
+      702,
+      917
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702,
+      917
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702,
+      917
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=union__case=B__k=01__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=union__case=B__k=01__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=union__case=B__k=02": {
+    "all/pearson/mean": [
+      398,
+      473,
+      702,
+      917
+    ],
+    "all/pearson/median": [
+      294,
+      398,
+      473,
+      702,
+      917
+    ],
+    "all/spearman/mean": [
+      398,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702,
+      917
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702,
+      917
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398
+    ],
+    "effective/spearman/mean": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      398,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      398,
+      473,
+      702,
+      917
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      398
+    ]
+  },
+  "span=union__case=B__k=02__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      398,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      473
+    ],
+    "effective/spearman/mean": [
+      473
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      473
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      473
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      473
+    ],
+    "effective/spearman/median": [
+      398,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      473
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      398,
+      473,
+      702
+    ]
+  },
+  "span=union__case=B__k=02__dup=resolution": {
+    "all/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      398,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      398,
+      473
+    ],
+    "all/spearman/median": [
+      294,
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398,
+      473
+    ],
+    "effective/spearman/mean": [
+      398,
+      473
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398,
+      473
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      473
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      473
+    ],
+    "effective/spearman/median": [
+      398,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      473
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      398,
+      473,
       702
     ]
   },
@@ -1293,14 +6594,13 @@
       702
     ],
     "all/pearson/median": [
+      294,
       473,
       702
     ],
-    "all/spearman/mean": [
-      702
-    ],
+    "all/spearman/mean": [],
     "all/spearman/median": [
-      473,
+      294,
       702
     ],
     "effective/pearson/mean": [
@@ -1311,40 +6611,325 @@
       473,
       702
     ],
-    "effective/spearman/mean": [],
+    "effective/spearman/mean/exclude=fostair": [
+      702
+    ],
+    "effective/spearman/mean": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
     "effective/spearman/median": [
       702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294
+    ]
+  },
+  "span=union__case=B__k=03__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      473
+    ]
+  },
+  "span=union__case=B__k=03__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      473
     ]
   },
   "span=union__case=B__k=04": {
     "all/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      398,
       473,
       702,
       917
     ],
-    "all/pearson/median": [
-      473,
-      702
-    ],
     "all/spearman/mean": [
+      398,
       473,
       702
     ],
     "all/spearman/median": [
+      398,
       473,
       702
     ],
     "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
       473,
       702,
       917
     ],
-    "effective/pearson/median": [
+    "effective/spearman/mean/exclude=fostair": [
+      398,
+      702
+    ],
+    "effective/spearman/mean": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      398,
       473,
       702
     ],
-    "effective/spearman/mean": [],
-    "effective/spearman/median": []
+    "effective_lookahead/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      398,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      398,
+      702
+    ]
+  },
+  "span=union__case=B__k=04__dup=real": {
+    "all/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      398,
+      473
+    ],
+    "all/spearman/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398
+    ],
+    "effective/spearman/mean": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      398,
+      473
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      398,
+      473
+    ]
+  },
+  "span=union__case=B__k=04__dup=resolution": {
+    "all/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      398,
+      473
+    ],
+    "all/spearman/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398
+    ],
+    "effective/spearman/mean": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      398,
+      473
+    ],
+    "effective_lookahead/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      398
+    ],
+    "effective_lookahead/spearman/median": [
+      398,
+      473
+    ]
   },
   "span=union__case=B__k=05": {
     "all/pearson/mean": [
@@ -1354,31 +6939,175 @@
       917
     ],
     "all/pearson/median": [
+      294,
       473,
       702,
       917
+    ],
+    "all/spearman/mean": [
+      294,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      702
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398
+    ],
+    "effective/spearman/mean": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      702
+    ]
+  },
+  "span=union__case=B__k=05__dup=real": {
+    "all/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      398,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      398
+    ],
+    "all/spearman/median": [
+      294,
+      398,
+      473
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398
+    ],
+    "effective/spearman/mean": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      398
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      473
+    ]
+  },
+  "span=union__case=B__k=05__dup=resolution": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
     ],
     "all/spearman/mean": [
       294
     ],
     "all/spearman/median": [
       294,
+      473
+    ],
+    "effective/pearson/mean": [
+      398,
       473,
       702
     ],
-    "effective/pearson/mean": [
-      294,
-      473,
-      702,
-      917
-    ],
     "effective/pearson/median": [
       473,
-      702,
-      917
+      702
     ],
-    "effective/spearman/mean": [],
-    "effective/spearman/median": []
+    "effective/spearman/mean/exclude=fostair": [
+      398
+    ],
+    "effective/spearman/mean": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      473
+    ]
   },
   "span=union__case=B__k=06": {
     "all/pearson/mean": [
@@ -1386,14 +7115,21 @@
       702
     ],
     "all/pearson/median": [
+      294,
       473,
       702
     ],
-    "all/spearman/mean": [],
+    "all/spearman/mean": [
+      473,
+      702
+    ],
     "all/spearman/median": [
-      473
+      294,
+      473,
+      702
     ],
     "effective/pearson/mean": [
+      398,
       473,
       702
     ],
@@ -1401,10 +7137,107 @@
       473,
       702
     ],
-    "effective/spearman/mean": [],
-    "effective/spearman/median": []
+    "effective/spearman/mean/exclude=fostair": [
+      398,
+      702
+    ],
+    "effective/spearman/mean": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      702
+    ]
   },
-  "span=union__case=B__k=07": {
+  "span=union__case=B__k=06__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398
+    ],
+    "effective/spearman/mean": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      398,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702
+    ]
+  },
+  "span=union__case=B__k=06__dup=resolution": {
     "all/pearson/mean": [
       473,
       702
@@ -1415,7 +7248,8 @@
       702
     ],
     "all/spearman/mean": [
-      473
+      473,
+      702
     ],
     "all/spearman/median": [
       294,
@@ -1423,18 +7257,186 @@
       702
     ],
     "effective/pearson/mean": [
+      398,
       473,
       702
     ],
     "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398
+    ],
+    "effective/spearman/mean": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
       294,
       473,
       702
     ],
-    "effective/spearman/mean": [],
-    "effective/spearman/median": [
-      294
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702
     ]
+  },
+  "span=union__case=B__k=07": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      702
+    ],
+    "all/spearman/median": [
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      702
+    ],
+    "effective/spearman/mean": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      702
+    ],
+    "effective/spearman/median": [
+      398,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=union__case=B__k=07__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=union__case=B__k=07__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      398,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      398,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
   },
   "span=union__case=B__k=08": {
     "all/pearson/mean": [
@@ -1445,11 +7447,8 @@
       473,
       702
     ],
-    "all/spearman/mean": [
-      702
-    ],
+    "all/spearman/mean": [],
     "all/spearman/median": [
-      294,
       473,
       702
     ],
@@ -1461,47 +7460,258 @@
       473,
       702
     ],
+    "effective/spearman/mean/exclude=fostair": [],
     "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
     "effective/spearman/median": [
       702
-    ]
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
   },
-  "span=union__case=B__k=09": {
+  "span=union__case=B__k=08__dup=real": {
     "all/pearson/mean": [
-      294,
       473,
       702
     ],
     "all/pearson/median": [
-      294,
       473,
       702
     ],
     "all/spearman/mean": [
-      294,
-      702
+      473
     ],
     "all/spearman/median": [
-      294,
       473,
       702
     ],
     "effective/pearson/mean": [
-      294,
       473,
       702
     ],
     "effective/pearson/median": [
-      294,
       473,
       702
     ],
-    "effective/spearman/mean": [
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
       702
     ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=union__case=B__k=08__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      473
+    ],
+    "all/spearman/median": [
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
     "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
+    ]
+  },
+  "span=union__case=B__k=09": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702,
+      917
+    ],
+    "all/spearman/mean": [
+      702,
+      917
+    ],
+    "all/spearman/median": [
       294,
       702
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702,
+      917
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398
+    ],
+    "effective/spearman/mean": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702,
+      917
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=union__case=B__k=09__dup=real": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [],
+    "effective/spearman/mean": [],
+    "effective/spearman/mean/min_rows=5": [],
+    "effective/spearman/mean/min_rows=20": [],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": []
+  },
+  "span=union__case=B__k=09__dup=resolution": {
+    "all/pearson/mean": [
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      473,
+      702
+    ],
+    "all/spearman/mean": [],
+    "all/spearman/median": [
+      294,
+      473
+    ],
+    "effective/pearson/mean": [
+      398,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      398
+    ],
+    "effective/spearman/mean": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      398
+    ],
+    "effective/spearman/mean/min_rows=37": [],
+    "effective/spearman/median": [],
+    "effective_lookahead/pearson/mean": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [],
+    "effective_lookahead/spearman/median": [
+      473
     ]
   },
   "span=union__case=C": {
@@ -1531,6 +7741,10 @@
       702
     ],
     "effective/pearson/median": [
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
       294,
       473,
       702
@@ -1540,7 +7754,200 @@
       473,
       702
     ],
+    "effective/spearman/mean/min_rows=5": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      294,
+      473
+    ],
     "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702
+    ]
+  },
+  "span=union__case=C__dup=real": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      447,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      294,
+      473
+    ],
+    "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
+      294,
+      473,
+      702
+    ]
+  },
+  "span=union__case=C__dup=resolution": {
+    "all/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "all/spearman/median": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/pearson/median": [
+      447,
+      473,
+      702
+    ],
+    "effective/spearman/mean/exclude=fostair": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=5": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=20": [
+      294,
+      473,
+      702
+    ],
+    "effective/spearman/mean/min_rows=37": [
+      294,
+      473
+    ],
+    "effective/spearman/median": [
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/pearson/median": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/mean": [
+      294,
+      473,
+      702
+    ],
+    "effective_lookahead/spearman/median": [
       294,
       473,
       702

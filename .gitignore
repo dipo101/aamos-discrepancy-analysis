@@ -67,3 +67,11 @@ aamos00_*.docx
 aamos00_*.xlsx
 aamos00-*.csv
 anonym_aamos00_*.csv
+
+# Cross-process lock for the shared world index files
+results/v2/.index.lock
+
+# Downstream figures are committed for the baseline world only. Other worlds' figures depend only on
+# their concordant sets and regenerate in seconds (python run_all.py --world <id> --skip-sentiment).
+results/v2/comparisons/**/*.png
+!results/v2/comparisons/span=union__case=A/**/*.png
