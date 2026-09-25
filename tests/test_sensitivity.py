@@ -92,7 +92,7 @@ def test_worlds_to_rerun_is_exact_set_inequality(toy_worlds):
     assert r["rerun"] == ["span=Q__case=A", "span=union__case=C"]
     assert r["empty"] == []
     # B: always-concordant set is {1}, differs from baseline {1, 2} and is non-empty -> flagged
-    assert r["case_b_flagged"] == ["union"]
+    assert r["case_b_flagged"] == ["span=union__case=B"]
     empty_world = toy_worlds | {"span=D__case=C": _summary([(1, 0.2, True), (2, 0.1, True)])}
     assert worlds_to_rerun(empty_world)["empty"] == ["span=D__case=C"]
 
@@ -116,8 +116,8 @@ def test_committed_grid_matches_recomputation():
     sens = worlds.V2_DIR / "sensitivity"
     committed = pd.read_csv(sens / "grid.csv", keep_default_na=False)
     fresh = grid(load_world_summaries())
-    # grid.csv predating the min_rows / exclude options has no columns for them (all rows are the defaults)
-    fresh = fresh.drop(columns=[c for c in ("min_rows", "exclude") if c not in committed.columns])
+    # grid.csv predating the duplicates axis and the min_rows / exclude options has no columns for them (all defaults)
+    fresh = fresh.drop(columns=[c for c in ("duplicates", "min_rows", "exclude") if c not in committed.columns])
     fresh["imputation"] = fresh["imputation"].astype(str)
     fresh["threshold"] = fresh["threshold"].astype(float)
     committed["threshold"] = committed["threshold"].astype(float)
@@ -166,3 +166,19 @@ def test_spec_stability_compares_each_option_with_the_primary():
     assert out.loc[PRIMARY.key, "changed"] == False
     assert out.loc[excl.key, "leavers"] == "917" and out.loc[excl.key, "n_assessed"] == 2
     assert out.loc[mr20.key, "joiners"] == "3" and out.loc[mr20.key, "leavers"] == "2 917"
+
+
+def test_case_b_stability_and_world_stability_separate_duplicate_readings(toy_worlds):
+    ws = dict(toy_worlds)
+    ws["span=union__case=B__k=00__dup=real"] = _summary([(1, 0.9, True), (2, 0.9, True), (3, 0.9, True)])
+    ws["span=union__case=B__k=01__dup=real"] = _summary([(1, 0.9, True), (2, 0.9, True), (3, 0.9, True)])
+    ws["span=union__case=C__dup=real"] = _summary([(1, 0.9, True)])
+    cb = case_b_stability(ws)
+    assert set(cb["duplicates"]) == {"artefact", "real"}
+    real = cb[cb.duplicates == "real"].set_index("patient_id")
+    assert real.loc[3, "n_concordant"] == 2 and real.loc[3, "n_imputations"] == 2
+    st = world_stability(ws).set_index("world_id")
+    assert st.loc["span=union__case=B__dup=real", "concordant"] == "1 2 3"
+    assert st.loc["span=union__case=B", "concordant"] == "1"
+    assert st.loc["span=union__case=C__dup=real", "duplicates"] == "real"
+    assert worlds_to_rerun(ws)["case_b_flagged"] == ["span=union__case=B", "span=union__case=B__dup=real"]

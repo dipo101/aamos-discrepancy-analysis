@@ -40,6 +40,7 @@ from .summary import (
     ALL_SPECS, DEFAULT_THRESHOLD, DEFAULT_THRESHOLDS, PRIMARY, SENSITIVITY_SPECS, SPEC_COLUMNS, V1_SPEC, SummarySpec,
     concordant_set, select,
 )
+from .duplicates import DEFAULT_DUPLICATES, DUPLICATE_READINGS
 from .worlds import BASELINE, SUMMARY_CSV, WorldSpec, list_worlds, world_dir
 
 
@@ -80,7 +81,7 @@ def grid(
                 leavers = sorted(set(ref) - set(members))
                 rows.append({
                     "world_id": wid, "span": w.span, "absence_case": w.absence_case,
-                    "imputation": "" if w.imputation is None else w.imputation,
+                    "imputation": "" if w.imputation is None else w.imputation, "duplicates": w.duplicates,
                     **{c: getattr(spec, c) for c in SPEC_COLUMNS},
                     "threshold": t,
                     "n_concordant": len(members), "concordant": _fmt(members),
@@ -88,11 +89,11 @@ def grid(
                     "changed": members != ref,
                     "joiners": _fmt(joiners), "leavers": _fmt(leavers),
                 })
-    cols = ["world_id", "span", "absence_case", "imputation", *SPEC_COLUMNS, "threshold",
+    cols = ["world_id", "span", "absence_case", "imputation", "duplicates", *SPEC_COLUMNS, "threshold",
             "n_concordant", "concordant", "n_assessed", "changed", "joiners", "leavers"]
     if not rows:
         return pd.DataFrame(columns=cols)
-    return pd.DataFrame(rows)[cols].sort_values(["span", "absence_case", "imputation", *SPEC_COLUMNS, "threshold"], kind="stable").reset_index(drop=True)
+    return pd.DataFrame(rows)[cols].sort_values(["duplicates", "span", "absence_case", "imputation", *SPEC_COLUMNS, "threshold"], kind="stable").reset_index(drop=True)
 
 
 def case_b_stability(
@@ -101,14 +102,14 @@ def case_b_stability(
     spec: SummarySpec = PRIMARY,
     threshold: float = DEFAULT_THRESHOLD,
 ) -> pd.DataFrame:
-    """Item 17: per (span, patient), counts over the imputation worlds of significant / above-threshold / concordant."""
+    """Item 17: per (span, duplicates, patient), counts over the imputation worlds of significant / above-threshold / concordant."""
     rows: List[Dict] = []
-    by_span: Dict[str, List[str]] = {}
+    by_span: Dict[tuple, List[str]] = {}
     for wid in summaries:
         w = WorldSpec.parse(wid)
         if w.absence_case == "B":
-            by_span.setdefault(w.span, []).append(wid)
-    for span, wids in sorted(by_span.items()):
+            by_span.setdefault((w.span, w.duplicates), []).append(wid)
+    for (span, dup), wids in sorted(by_span.items()):
         frames = []
         for wid in wids:
             s = select(summaries[wid], spec)[["patient_id", "observed_z", "significant_bonferroni"]].copy()
@@ -128,12 +129,14 @@ def case_b_stability(
             "max_observed_z": g["observed_z"].max(),
         }).reset_index()
         stats.insert(0, "span", span)
+        stats.insert(1, "duplicates", dup)
         rows.append(stats)
     if not rows:
-        return pd.DataFrame(columns=["span", "patient_id", "n_imputations", "n_significant", "n_above_threshold", "n_concordant",
+        return pd.DataFrame(columns=["span", "duplicates", "patient_id", "n_imputations", "n_significant", "n_above_threshold", "n_concordant",
                                      "mean_observed_z", "min_observed_z", "max_observed_z"])
     out = pd.concat(rows, ignore_index=True)
-    return out.sort_values(["span", "n_concordant", "n_significant", "patient_id"], ascending=[True, False, False, True]).reset_index(drop=True)
+    return out.sort_values(["duplicates", "span", "n_concordant", "n_significant", "patient_id"],
+                           ascending=[True, True, False, False, True]).reset_index(drop=True)
 
 
 def world_stability(
@@ -145,17 +148,19 @@ def world_stability(
 ) -> pd.DataFrame:
     """Item 16 marginal: the set under every world at one spec and threshold; B collapsed to k-of-n."""
     g = grid(summaries, specs=[spec], thresholds=[threshold], baseline=baseline)
-    non_b = g[g.absence_case != "B"][["world_id", "span", "absence_case", "n_concordant", "concordant", "n_assessed", "changed", "joiners", "leavers"]].copy()
+    non_b = g[g.absence_case != "B"][["world_id", "span", "absence_case", "duplicates", "n_concordant", "concordant", "n_assessed", "changed", "joiners", "leavers"]].copy()
     non_b["imputations"] = ""
     b = case_b_stability(summaries, spec=spec, threshold=threshold)
     b_rows: List[Dict] = []
     ref = _fmt(concordant_set(summaries[baseline], spec, threshold))
-    for span, bs in b.groupby("span"):
+    for (span, dup), bs in b.groupby(["span", "duplicates"]):
         n = int(bs["n_imputations"].max())
         always = bs[bs.n_concordant == n]["patient_id"].tolist()
         ever = bs[bs.n_concordant > 0]["patient_id"].tolist()
         b_rows.append({
-            "world_id": f"span={span}__case=B", "span": span, "absence_case": "B",
+            "world_id": f"span={span}__case=B" + ("" if dup == DEFAULT_DUPLICATES else f"__dup={dup}"),
+            "span": span, "absence_case": "B",
+            "duplicates": dup,
             "n_concordant": len(always), "concordant": _fmt(sorted(always)),
             "n_assessed": int(bs["patient_id"].nunique()),
             "changed": _fmt(sorted(always)) != ref,
@@ -166,7 +171,8 @@ def world_stability(
     out = pd.concat([non_b, pd.DataFrame(b_rows)], ignore_index=True)
     order = {"union": 0, "Q": 1, "D": 2, "intersection": 3}
     out["_o"] = out["span"].map(order)
-    return out.sort_values(["_o", "absence_case"]).drop(columns="_o").reset_index(drop=True)
+    out["_d"] = out["duplicates"].map({d: i for i, d in enumerate(DUPLICATE_READINGS)})
+    return out.sort_values(["_d", "_o", "absence_case"]).drop(columns=["_o", "_d"]).reset_index(drop=True)
 
 
 ONE_AT_A_TIME_SPECS = [PRIMARY, SummarySpec("effective_lookahead", PRIMARY.correlation_type, PRIMARY.measure),
@@ -191,11 +197,11 @@ def spec_stability(
             if s.empty:
                 continue
             members = concordant_set(summary, spec, threshold)
-            rows.append({"world_id": wid, "span": w.span, "absence_case": w.absence_case, "spec": spec.key,
+            rows.append({"world_id": wid, "span": w.span, "absence_case": w.absence_case, "duplicates": w.duplicates, "spec": spec.key,
                          "n_assessed": int(s["patient_id"].nunique()), "n_concordant": len(members),
                          "concordant": _fmt(members), "changed": members != ref,
                          "joiners": _fmt(sorted(set(members) - set(ref))), "leavers": _fmt(sorted(set(ref) - set(members)))})
-    cols = ["world_id", "span", "absence_case", "spec", "n_assessed", "n_concordant", "concordant", "changed", "joiners", "leavers"]
+    cols = ["world_id", "span", "absence_case", "duplicates", "spec", "n_assessed", "n_concordant", "concordant", "changed", "joiners", "leavers"]
     return pd.DataFrame(rows, columns=cols)
 
 
@@ -228,8 +234,9 @@ def worlds_to_rerun(
       downstream comparisons are meaningful and need regenerating;
     * ``empty``: non-B worlds whose set differs by being empty (nothing to
       compare downstream);
-    * ``case_b_flagged``: spans whose always-concordant set under B differs
-      from the baseline and is non-empty (a decision, not a mechanical rerun).
+    * ``case_b_flagged``: case B world families (``span=..__case=B[__dup=..]``)
+      whose always-concordant set differs from the baseline and is non-empty
+      (a decision, not a mechanical rerun).
     """
     ws = world_stability(summaries, spec=spec, threshold=threshold, baseline=baseline)
     changed = ws[ws.changed]
@@ -238,5 +245,5 @@ def worlds_to_rerun(
     return {
         "rerun": sorted(non_b[non_b.n_concordant > 0]["world_id"].tolist()),
         "empty": sorted(non_b[non_b.n_concordant == 0]["world_id"].tolist()),
-        "case_b_flagged": sorted(b[b.n_concordant > 0]["span"].tolist()),
+        "case_b_flagged": sorted(b[b.n_concordant > 0]["world_id"].tolist()),
     }

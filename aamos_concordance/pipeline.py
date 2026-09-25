@@ -1,10 +1,14 @@
 """Building a world: from raw frames to per-config observed table, null and summary.
 
 A :class:`~aamos_concordance.worlds.WorldSpec` is applied to the raw frames
-in two places:
+in three places:
 
-1. **Span** (item 8): :func:`world_frames` trims both raw frames of a patient
-   to the world's span before anything else. A patient whose span cannot be
+0. **Duplicates**: :func:`world_frames` first applies the world's reading of
+   exact duplicate device rows (:mod:`aamos_concordance.duplicates`) and
+   drops exact duplicate questionnaire rows. The observed table and the null
+   both go through :func:`world_frames`, so they always see the same rows.
+1. **Span** (item 8): :func:`world_frames` then trims both raw frames of a patient
+   to the world's span. A patient whose span cannot be
    formed (no device records under ``D``, non-overlapping periods under
    ``intersection``) has no rows in that world and drops out of it.
 2. **Absence case** (items 9 and 10): applied inside the engine's
@@ -26,10 +30,13 @@ from typing import Callable, Dict, List, Optional, Sequence, Tuple
 import numpy as np
 import pandas as pd
 
-from . import engine
+from dataclasses import asdict
+
+from . import definitions, engine
 from .batch import null_from_per_config
 from .configs import OBSERVED_CONFIG_KEY, generate_param_combinations
 from .data import RawData
+from .duplicates import apply_duplicate_reading
 from .provenance import git_state, write_sidecar
 from .spans import Span, apply_span
 from .summary import (
@@ -49,6 +56,7 @@ from .worlds import (
     THRESHOLD_SWEEP_CSV,
     WorldSpec,
     as_world,
+    read_world_config,
     register_world,
     world_dir,
     write_concordant_sets,
@@ -56,6 +64,9 @@ from .worlds import (
 )
 
 DEFAULT_PATIENTS = [113, 190, 294, 328, 343, 398, 447, 454, 473, 514, 625, 701, 702, 917, 939]
+# Bumped when a change to the definitions or the null layout invalidates built worlds.
+# 2: v2 definitions, n_rows in the per-config null, duplicate reading applied to observed and null alike.
+BUILD_VERSION = 2
 
 
 def world_frames(
@@ -64,10 +75,10 @@ def world_frames(
     inhaler_df: pd.DataFrame,
     patient_id: int,
 ) -> Tuple[pd.DataFrame, pd.DataFrame, Optional[Span]]:
-    """One patient's raw frames under the world's span (both frames trimmed)."""
+    """One patient's raw frames under the world's duplicate reading and span (both frames trimmed)."""
     w = as_world(world)
-    q = questionnaire_df[questionnaire_df.user_key == patient_id]
-    inh = inhaler_df[inhaler_df.user_key == patient_id]
+    q = questionnaire_df[questionnaire_df.user_key == patient_id].drop_duplicates()
+    inh = apply_duplicate_reading(inhaler_df[inhaler_df.user_key == patient_id], w.duplicates)
     return apply_span(q, inh, w.span)
 
 
@@ -159,7 +170,7 @@ def build_world(
     """Build every artifact of a world into results/v2/worlds/<id>/ and return the concordant sets."""
     w = as_world(world)
     wdir = world_dir(w, create=True)
-    q_all, i_all = raw.questionnaire.drop_duplicates(), raw.inhaler.drop_duplicates()
+    q_all, i_all = raw.questionnaire, raw.inhaler  # duplicates are handled per world in world_frames
     config = {"world": w.to_dict(), "n_perm": n_perm, "seed": seed, "exact_max": exact_max, "patients": list(patients)}
     prov = raw.provenance()
 
@@ -174,7 +185,14 @@ def build_world(
     pc_path = wdir / NULL_PER_CONFIG_PARQUET
     per_config_null.to_parquet(pc_path, index=False)
     write_sidecar(pc_path, config=config, data=prov, extra={"script": script, "engine": "vectorised"})
-    return summarize_world(w, observed, per_config_null, modes, config, prov, script=script, data_hashes=raw.hashes)
+    sets = summarize_world(w, observed, per_config_null, modes, config, prov, script=script, data_hashes=raw.hashes)
+    write_world_config(w, {"build_version": BUILD_VERSION, "definitions": asdict(definitions.ACTIVE)})
+    return sets
+
+
+def is_current_build(world: "WorldSpec | str") -> bool:
+    """Whether a world was built with the current definitions and null layout (resummarising keeps the stamp)."""
+    return read_world_config(world).get("build_version") == BUILD_VERSION
 
 
 def summarize_world(world, observed, per_config_null, modes, config, prov, *, script, data_hashes=None,

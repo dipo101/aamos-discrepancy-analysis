@@ -9,7 +9,10 @@ sensitivity analysis varies around the fixed 132-configuration multiverse:
 * ``absence_case``  how a questionnaire window with no device records is
                     treated: ``A`` naive zero (the v1 behaviour), ``B``
                     Poisson imputation, ``C`` dropped;
-* ``imputation``    the draw index for case ``B`` (``None`` otherwise).
+* ``imputation``    the draw index for case ``B`` (``None`` otherwise);
+* ``duplicates``    how exact duplicate device rows are read: ``artefact``
+                    (dropped; primary, omitted from the world id), ``real``
+                    or ``resolution`` (see :mod:`aamos_concordance.duplicates`).
 
 The baseline world ``span=union__case=A`` is the published v1 analysis and must
 reproduce it exactly (``tests/test_regression_v1.py``). v1 trimmed nothing,
@@ -50,6 +53,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional
 
+from .duplicates import DEFAULT_DUPLICATES, DUPLICATE_READINGS
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 RESULTS_ROOT = REPO_ROOT / "results"
 V1_DIR = RESULTS_ROOT / "v1"
@@ -67,7 +72,7 @@ THRESHOLD_SWEEP_CSV = "threshold_sweep.csv"
 OBSERVED_CSV = "observed.csv"  # observed statistics under every spec, no p-values
 CONFIG_JSON = "config.json"
 
-_WORLD_ID_RE = re.compile(r"^span=(?P<span>[A-Za-z]+)__case=(?P<case>[ABC])(?:__k=(?P<k>\d{2}))?$")
+_WORLD_ID_RE = re.compile(r"^span=(?P<span>[A-Za-z]+)__case=(?P<case>[ABC])(?:__k=(?P<k>\d{2}))?(?:__dup=(?P<dup>[a-z]+))?$")
 
 
 @dataclass(frozen=True)
@@ -75,6 +80,7 @@ class WorldSpec:
     span: str = "union"
     absence_case: str = "A"
     imputation: Optional[int] = None
+    duplicates: str = DEFAULT_DUPLICATES
 
     def __post_init__(self):
         if self.span not in SPANS:
@@ -85,19 +91,29 @@ class WorldSpec:
             raise ValueError("imputation index is required for case B and forbidden otherwise")
         if self.imputation is not None and not (0 <= self.imputation < 100):
             raise ValueError("imputation index must be in [0, 100)")
+        if self.duplicates not in DUPLICATE_READINGS:
+            raise ValueError(f"duplicates must be one of {DUPLICATE_READINGS}, got {self.duplicates!r}")
 
     @property
     def world_id(self) -> str:
-        base = f"span={self.span}__case={self.absence_case}"
-        return f"{base}__k={self.imputation:02d}" if self.imputation is not None else base
+        wid = f"span={self.span}__case={self.absence_case}"
+        if self.imputation is not None:
+            wid += f"__k={self.imputation:02d}"
+        if self.duplicates != DEFAULT_DUPLICATES:
+            wid += f"__dup={self.duplicates}"
+        return wid
 
     @classmethod
     def parse(cls, world_id: str) -> "WorldSpec":
         m = _WORLD_ID_RE.match(world_id)
         if not m:
-            raise ValueError(f"not a world id: {world_id!r} (expected e.g. span=union__case=A or span=D__case=B__k=03)")
-        k = m.group("k")
-        return cls(span=m.group("span"), absence_case=m.group("case"), imputation=int(k) if k is not None else None)
+            raise ValueError(f"not a world id: {world_id!r} (expected e.g. span=union__case=A, span=D__case=B__k=03 "
+                             "or span=Q__case=C__dup=real)")
+        k, dup = m.group("k"), m.group("dup")
+        if dup == DEFAULT_DUPLICATES:
+            raise ValueError(f"not a canonical world id: {world_id!r} (the default duplicates reading is omitted)")
+        return cls(span=m.group("span"), absence_case=m.group("case"), imputation=int(k) if k is not None else None,
+                   duplicates=dup or DEFAULT_DUPLICATES)
 
     def to_dict(self) -> Dict:
         return {"world_id": self.world_id, **asdict(self)}
@@ -107,6 +123,18 @@ class WorldSpec:
 
 
 BASELINE = WorldSpec()
+N_IMPUTATIONS = 10
+
+
+def all_world_specs(n_imputations: int = N_IMPUTATIONS, duplicates: Iterable[str] = DUPLICATE_READINGS) -> List[WorldSpec]:
+    """Every world of the grid: span x case (x imputation for B) x duplicate reading, baseline first."""
+    out = []
+    for dup in duplicates:
+        for span in ("union", "Q", "D", "intersection"):
+            for case in ABSENCE_CASES:
+                ks = range(n_imputations) if case == "B" else [None]
+                out.extend(WorldSpec(span, case, k, dup) for k in ks)
+    return out
 
 
 def as_world(world: "WorldSpec | str | None") -> WorldSpec:

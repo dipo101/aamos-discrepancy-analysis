@@ -40,7 +40,28 @@ def test_world_ids_round_trip():
     assert BASELINE.world_id == "span=union__case=A" and BASELINE.span == "union"
 
 
-@pytest.mark.parametrize("bad", ["Q", "span=Q", "span=Q__case=D", "span=X__case=A", "span=Q__case=B", "span=union__case=A__k=01", "span=Q__case=B__k=1"])
+def test_duplicate_reading_is_a_world_axis_omitted_at_its_default():
+    assert BASELINE.duplicates == "artefact"
+    assert WorldSpec("Q", "C", duplicates="real").world_id == "span=Q__case=C__dup=real"
+    assert WorldSpec("D", "B", 7, "resolution").world_id == "span=D__case=B__k=07__dup=resolution"
+    for w in (WorldSpec("Q", "C", duplicates="real"), WorldSpec("D", "B", 7, "resolution")):
+        assert WorldSpec.parse(w.world_id) == w
+    with pytest.raises(ValueError):
+        WorldSpec("Q", "A", duplicates="some")
+    with pytest.raises(ValueError, match="canonical"):
+        WorldSpec.parse("span=Q__case=A__dup=artefact")
+
+
+def test_all_world_specs_is_the_144_grid_with_the_baseline_first():
+    ws = worlds.all_world_specs()
+    assert len(ws) == len({w.world_id for w in ws}) == 4 * 12 * 3
+    assert ws[0] == BASELINE
+    assert {w.duplicates for w in ws} == {"artefact", "real", "resolution"}
+    assert sum(w.absence_case == "B" for w in ws) == 4 * 10 * 3
+
+
+@pytest.mark.parametrize("bad", ["Q", "span=Q", "span=Q__case=D", "span=X__case=A", "span=Q__case=B", "span=union__case=A__k=01", "span=Q__case=B__k=1",
+                                 "span=Q__case=A__dup=nope", "span=Q__case=A__dup=real__k=01"])
 def test_invalid_world_ids_rejected(bad):
     with pytest.raises(ValueError):
         WorldSpec.parse(bad)
@@ -112,7 +133,8 @@ def test_world_null_path_falls_back_to_config_source(sandbox):
 def test_world_config_round_trip_and_merge(sandbox):
     p = write_world_config("span=union__case=B__k=07", {"built_by": "test"})
     rec = json.loads(p.read_text())
-    assert rec == {"world_id": "span=union__case=B__k=07", "span": "union", "absence_case": "B", "imputation": 7, "built_by": "test"}
+    assert rec == {"world_id": "span=union__case=B__k=07", "span": "union", "absence_case": "B", "imputation": 7,
+                   "duplicates": "artefact", "built_by": "test"}
     write_world_config("span=union__case=B__k=07", {"null_source": "x.parquet"})
     rec = json.loads(p.read_text())
     assert rec["built_by"] == "test" and rec["null_source"] == "x.parquet"  # merged, not replaced

@@ -316,7 +316,7 @@ def main(argv=None):
     parser.add_argument('--no-upload', action='store_true', help='do not copy outputs back to GCS final/')
     parser.add_argument('--local', action='store_true',
                         help='summarise from null.parquet / null_per_config.parquet already in the world folder '
-                             '(e.g. written by scripts/run_null_local.py) instead of downloading batches; implies --no-upload')
+                             '(e.g. written by scripts/build_world.py) instead of downloading batches; implies --no-upload')
     args = parser.parse_args(argv)
     world = as_world(args.world)
 
@@ -329,7 +329,7 @@ def main(argv=None):
         wdir = world_dir(world)
         null_path, pc_path = wdir / NULL_PARQUET, wdir / NULL_PER_CONFIG_PARQUET
         if not null_path.exists():
-            raise SystemExit(f"--local: {null_path} not found; run scripts/run_null_local.py --world {world} first")
+            raise SystemExit(f"--local: {null_path} not found; run scripts/build_world.py --world {world} first")
         permutation_df = pd.read_parquet(null_path)
         per_config_null = pd.read_parquet(pc_path) if pc_path.exists() else None
         config = {**config, 'source': 'local', 'null_path': str(null_path)}
