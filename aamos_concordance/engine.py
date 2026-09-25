@@ -75,8 +75,8 @@ import numpy as np
 import pandas as pd
 from scipy.stats import rankdata
 
-from .categorization import DEFAULT_TOP_CATEGORY_FALLBACK, build_categorize_fn
-from .configs import CATEGORIZATION_METHODS, generate_param_combinations
+from .categorization import DEFAULT_TOP_CATEGORY_FALLBACK, build_categorize_fn, categorize_columns
+from .configs import CATEGORIZATION_METHODS, _window_key, generate_param_combinations
 from .join import join_questionnaire_with_inhaler
 from .permutation import CORRELATION_TYPES, MIN_ROWS_FOR_CORRELATION
 from .worlds import BASELINE, WorldSpec, as_world
@@ -227,23 +227,21 @@ def precompute_patient(
     keep_by_window: Dict[Tuple, np.ndarray] = {}
     cat_by_window_method: Dict[Tuple, Tuple[np.ndarray, np.ndarray]] = {}
     per_config: Dict[int, Tuple[np.ndarray, np.ndarray, bool, np.ndarray]] = {}
-    window_index = 0
 
     for idx, cfg in enumerate(combos):
         wkey = (cfg["timestamp_window"], cfg["use_daily_max_windows"], cfg["use_calendar_days"])
         if wkey not in joined_by_window:
             merged = join_questionnaire_with_inhaler(questionnaire_df, inhaler_df, *wkey)
             merged, keep = apply_absence_case(merged, w, patient_id=patient_id, window_key=wkey,
-                                              window_index=window_index, rate_per_hour=rate)
-            window_index += 1
+                                              rate_per_hour=rate)
             joined_by_window[wkey] = merged
             keep_by_window[wkey] = keep
         merged = joined_by_window[wkey]
         mkey = (wkey, cfg["categorization_method"])
         if mkey not in cat_by_window_method:
-            fn = build_categorize_fn(merged, cfg["categorization_method"], top_category_fallback=top_category_fallback)
-            d = merged["inhaler_usage"].apply(fn).to_numpy(dtype=float)
-            s = merged["daily_relief_inhaler"].apply(fn).to_numpy(dtype=float)
+            dev, rep = categorize_columns(merged, cfg["categorization_method"], top_category_fallback=top_category_fallback)
+            d = dev.to_numpy(dtype=float)
+            s = rep.to_numpy(dtype=float)
             cat_by_window_method[mkey] = (d, s)
         d, s = cat_by_window_method[mkey]
         use_filter = bool(cfg["filter_out_zero_usage"]) and w.absence_case == "A"   # item 10
@@ -267,9 +265,18 @@ def device_rate_per_hour(inhaler_df: pd.DataFrame) -> float:
     return float(len(inhaler_df)) / (24.0 * days)
 
 
-def imputation_seed(patient_id: int, imputation: int, window_index: int) -> int:
-    """Deterministic seed for the Poisson draws of one (patient, imputation world, window)."""
-    return int(np.random.SeedSequence([int(patient_id), int(imputation), int(window_index), 2026]).generate_state(1)[0])
+_WINDOW_KIND_CODE = {"rolling": 0, "fixed_chunk": 1, "calendar": 2}
+
+
+def imputation_seed(patient_id: int, imputation: int, window_key: Tuple[int, bool, bool]) -> int:
+    """Deterministic seed for the Poisson draws of one (patient, imputation world, window).
+
+    Seeded on the window's canonical interval (``configs._window_key``), so
+    windows covering the same interval (the chunk starting 24 h back and the
+    rolling 24-hour window) get the same draws and stay equivalent under B.
+    """
+    kind, value = _window_key(*window_key)
+    return int(np.random.SeedSequence([int(patient_id), int(imputation), _WINDOW_KIND_CODE[kind], int(value), 2026]).generate_state(1)[0])
 
 
 def apply_absence_case(
@@ -278,7 +285,6 @@ def apply_absence_case(
     *,
     patient_id: int,
     window_key: Tuple[int, bool, bool],
-    window_index: int,
     rate_per_hour: float,
 ) -> Tuple[pd.DataFrame, np.ndarray]:
     """Treat windows with no device records per the world's case. Returns (frame, keep mask)."""
@@ -290,7 +296,7 @@ def apply_absence_case(
     if world.absence_case == "C":
         return merged, ~empty
     if world.absence_case == "B":
-        rng = np.random.default_rng(imputation_seed(patient_id, world.imputation, window_index))
+        rng = np.random.default_rng(imputation_seed(patient_id, world.imputation, window_key))
         lam = rate_per_hour * window_hours(window_key)
         draws = rng.poisson(lam, size=int(empty.sum()))
         out = merged.copy()

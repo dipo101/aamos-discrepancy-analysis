@@ -46,23 +46,38 @@ def test_device_rate_per_hour():
 
 
 def test_imputation_seed_is_deterministic_and_distinct():
-    assert imputation_seed(294, 3, 5) == imputation_seed(294, 3, 5)
-    assert len({imputation_seed(294, k, 5) for k in range(10)}) == 10
-    assert len({imputation_seed(294, 3, w) for w in range(11)}) == 11
-    assert imputation_seed(294, 3, 5) != imputation_seed(473, 3, 5)
+    w = (24, False, False)
+    assert imputation_seed(294, 3, w) == imputation_seed(294, 3, w)
+    assert len({imputation_seed(294, k, w) for k in range(10)}) == 10
+    assert len({imputation_seed(294, 3, (int(c["timestamp_window"]), c["use_daily_max_windows"], c["use_calendar_days"]))
+                for c in COMBOS}) == 10  # 11 windows, of which chunk-24 and rolling-24 are one interval
+    assert imputation_seed(294, 3, w) != imputation_seed(473, 3, w)
+
+
+def test_equivalent_windows_share_their_case_B_draws():
+    """The chunk starting 24 h back is the rolling 24-hour window, so under B it must get the same draws."""
+    assert imputation_seed(294, 3, (24, True, False)) == imputation_seed(294, 3, (24, False, False))
+    q, inh = _patient()
+    w = WorldSpec("union", "B", 3)
+    outs = []
+    for key in ((24, False, False), (24, True, False)):
+        merged = join_questionnaire_with_inhaler(q, inh, *key)
+        out, _ = apply_absence_case(merged, w, patient_id=104, window_key=key, rate_per_hour=0.5)
+        outs.append(out["inhaler_usage"].to_numpy())
+    assert np.array_equal(*outs)
 
 
 def test_apply_absence_case_A_is_identity():
     q, inh = _patient()
     merged = join_questionnaire_with_inhaler(q, inh, 24, False, False)
-    out, keep = apply_absence_case(merged, WorldSpec("union", "A"), patient_id=104, window_key=(24, False, False), window_index=0, rate_per_hour=1.0)
+    out, keep = apply_absence_case(merged, WorldSpec("union", "A"), patient_id=104, window_key=(24, False, False), rate_per_hour=1.0)
     assert out is merged and keep.all()
 
 
 def test_apply_absence_case_C_masks_exactly_the_empty_windows():
     q, inh = _patient()
     merged = join_questionnaire_with_inhaler(q, inh, 24, False, False)
-    out, keep = apply_absence_case(merged, WorldSpec("union", "C"), patient_id=104, window_key=(24, False, False), window_index=0, rate_per_hour=1.0)
+    out, keep = apply_absence_case(merged, WorldSpec("union", "C"), patient_id=104, window_key=(24, False, False), rate_per_hour=1.0)
     assert out is merged
     assert np.array_equal(keep, (merged["inhaler_usage"] > 0).to_numpy())
 
@@ -73,15 +88,15 @@ def test_apply_absence_case_B_imputes_only_empty_windows_reproducibly():
     empty = (merged["inhaler_usage"] == 0).to_numpy()
     assert empty.any()
     w3 = WorldSpec("union", "B", 3)
-    out1, keep = apply_absence_case(merged, w3, patient_id=104, window_key=(12, False, False), window_index=0, rate_per_hour=0.5)
-    out2, _ = apply_absence_case(merged, w3, patient_id=104, window_key=(12, False, False), window_index=0, rate_per_hour=0.5)
+    out1, keep = apply_absence_case(merged, w3, patient_id=104, window_key=(12, False, False), rate_per_hour=0.5)
+    out2, _ = apply_absence_case(merged, w3, patient_id=104, window_key=(12, False, False), rate_per_hour=0.5)
     assert keep.all()
     assert merged["inhaler_usage"].to_numpy()[empty].sum() == 0  # input untouched
     a, b = out1["inhaler_usage"].to_numpy(), out2["inhaler_usage"].to_numpy()
     assert np.array_equal(a, b)
     assert np.array_equal(a[~empty], merged["inhaler_usage"].to_numpy()[~empty])
     assert (a[empty] >= 0).all() and a[empty].dtype.kind in "iu"
-    out4, _ = apply_absence_case(merged, WorldSpec("union", "B", 4), patient_id=104, window_key=(12, False, False), window_index=0, rate_per_hour=0.5)
+    out4, _ = apply_absence_case(merged, WorldSpec("union", "B", 4), patient_id=104, window_key=(12, False, False), rate_per_hour=0.5)
     assert not np.array_equal(a, out4["inhaler_usage"].to_numpy())
 
 
@@ -91,10 +106,10 @@ def test_case_B_draws_have_the_intended_mean():
     rate = 0.25
     means = []
     for k in range(40):
-        out, _ = apply_absence_case(merged, WorldSpec("union", "B", k), patient_id=7, window_key=(48, False, False), window_index=2, rate_per_hour=rate)
+        out, _ = apply_absence_case(merged, WorldSpec("union", "B", k), patient_id=7, window_key=(48, False, False), rate_per_hour=rate)
         means.append(out["inhaler_usage"].mean())
     assert np.mean(means) == pytest.approx(rate * 48, rel=0.05)
-    out, _ = apply_absence_case(merged, WorldSpec("union", "B", 0), patient_id=7, window_key=(12, False, True), window_index=2, rate_per_hour=rate)
+    out, _ = apply_absence_case(merged, WorldSpec("union", "B", 0), patient_id=7, window_key=(12, False, True), rate_per_hour=rate)
     assert out["inhaler_usage"].mean() == pytest.approx(rate * 24, rel=0.15)
 
 
@@ -124,11 +139,12 @@ def test_filter_is_active_under_A():
 
 
 def test_effective_sets_collapse_the_filter_axis_under_B_and_C():
-    assert len(effective_config_indices("spearman", "A")) == 60
-    assert len(effective_config_indices("spearman", "B")) == 30 == len(effective_config_indices("spearman", "C"))
-    assert len(effective_config_indices("pearson", "A")) == 132
-    assert len(effective_config_indices("pearson", "B")) == 66
-    assert len(SummarySpec("effective", "spearman", "mean").config_indices_in("C")) == 30
+    assert len(effective_config_indices("spearman", "A")) == 80
+    assert len(effective_config_indices("spearman", "B")) == 40 == len(effective_config_indices("spearman", "C"))
+    # Pearson keeps the method axis but still merges the chunk-24 / rolling-24 pair
+    assert len(effective_config_indices("pearson", "A")) == 120
+    assert len(effective_config_indices("pearson", "B")) == 60
+    assert len(SummarySpec("effective", "spearman", "mean").config_indices_in("C")) == 40
     assert SummarySpec("effective", "spearman", "mean").config_indices == effective_config_indices("spearman", "A")
 
 

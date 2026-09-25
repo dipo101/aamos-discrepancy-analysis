@@ -5,8 +5,8 @@ Cloud Run aggregator so that it runs identically for every world and can be
 tested against the frozen v1 tables (``tests/test_summary.py``).
 
 A summary is computed under a :class:`SummarySpec`: which configuration
-set (``all`` = 132, ``effective`` = the structurally distinct ones, 60 for
-Spearman and 132 for Pearson), which correlation type, and which statistic
+set (``all`` = 132, ``effective`` = the structurally distinct ones, 80 for
+Spearman (60 under the v1 definitions) and 120 for Pearson), which correlation type, and which statistic
 (mean or median). :data:`PRIMARY` is ``effective / spearman / mean``; the
 v1 publication used ``all / spearman / mean`` (:data:`V1_SPEC`). A world's
 summary table carries every spec whose null distribution is available, so

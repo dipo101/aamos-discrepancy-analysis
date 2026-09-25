@@ -29,6 +29,9 @@ from aamos_concordance import (
 from tests.oracles import legacy_implementations as legacy
 from tests.synthetic import ALL_192, WINDOW_CONFIGS, make_dataset
 
+# Compared with the verbatim v1 code or results, so run under the v1 definitions.
+pytestmark = pytest.mark.usefixtures("v1_definitions_module")
+
 SEEDS = list(range(8))
 
 

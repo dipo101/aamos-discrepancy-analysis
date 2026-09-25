@@ -108,7 +108,7 @@ def test_build_world_end_to_end_on_synthetic_data(sandbox):
 # Real data
 # --------------------------------------------------------------------------
 
-def test_baseline_union_observed_table_equals_v1(data_dir, frozen_results_dir):
+def test_baseline_union_observed_table_equals_v1(v1_definitions, data_dir, frozen_results_dir):
     """The union span trims nothing, so the engine's observed table for the baseline is v1's table."""
     q = pd.read_csv(data_dir / "anonym_aamos00_dailyquestionnaire_dt.csv").drop_duplicates()
     inh = pd.read_csv(data_dir / "anonym_aamos00_smartinhaler_dt.csv").drop_duplicates()
