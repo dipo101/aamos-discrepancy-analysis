@@ -47,6 +47,7 @@ from .summary import (
     threshold_sweep,
 )
 from .worlds import (
+    CONFIG_JSON,
     REPO_ROOT,
     NULL_PARQUET,
     NULL_PER_CONFIG_PARQUET,
@@ -170,6 +171,7 @@ def build_world(
     """Build every artifact of a world into results/v2/worlds/<id>/ and return the concordant sets."""
     w = as_world(world)
     wdir = world_dir(w, create=True)
+    (wdir / CONFIG_JSON).unlink(missing_ok=True)  # a rebuild starts the world's record afresh
     q_all, i_all = raw.questionnaire, raw.inhaler  # duplicates are handled per world in world_frames
     config = {"world": w.to_dict(), "n_perm": n_perm, "seed": seed, "exact_max": exact_max, "patients": list(patients)}
     prov = raw.provenance()
