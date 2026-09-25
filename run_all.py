@@ -66,7 +66,7 @@ def main():
         if listing.get("empty"):
             print(f"  differ but empty (nothing to compare): {listing['empty']}")
         if listing.get("case_b_flagged"):
-            print(f"  case B spans flagged for a decision: {listing['case_b_flagged']}")
+            print(f"  case B world families flagged for a decision: {listing['case_b_flagged']}")
     else:
         worlds = [args.world]
 

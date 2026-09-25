@@ -88,7 +88,7 @@ def _resolve_spec(sets: dict, world: WorldSpec, spec: Optional[SummarySpec]) -> 
     available = sorted(sets)
     raise RuntimeError(
         f"World {world} has no concordant sets for {[c.key for c in candidates]}. Available: {available}. "
-        f"Build the world first (scripts/build_baseline_world.py for the baseline, or aggregate.py --world {world})."
+        f"Build the world first (scripts/build_world.py --world {world})."
     )
 
 
@@ -97,7 +97,7 @@ def _load_world_groups(world: WorldSpec, spec: Optional[SummarySpec]) -> tuple[d
     if sets is None:
         raise RuntimeError(
             f"No concordant sets recorded for world {world}. Build the world first "
-            f"(scripts/build_baseline_world.py for the baseline, or aggregate.py --world {world})."
+            f"(scripts/build_world.py --world {world})."
         )
     used = _resolve_spec(sets, world, spec)
     groups = {}

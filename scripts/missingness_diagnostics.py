@@ -8,6 +8,8 @@ Writes to results/v2/diagnostics/:
   nonresponse_check.csv         per patient: device puffs on response vs non-response days
                                 (Mann-Whitney), clustering of non-response (runs test)
   nonresponse_summary.json      pooled counts across patients
+  duplicates.csv                per patient: device rows, exact repeats (minute vs second resolution),
+                                rows kept under each duplicate reading
 
 Usage:  python scripts/missingness_diagnostics.py [--window calendar_same_day|rolling_24h]
 """
@@ -23,6 +25,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 
 from aamos_concordance import load_raw, write_sidecar  # noqa: E402
+from aamos_concordance.duplicates import duplicate_counts  # noqa: E402
 from aamos_concordance.missingness import (  # noqa: E402
     CALENDAR_SAME_DAY, ROLLING_24H, cell_counts, nonresponse_check, pooled_nonresponse_summary,
 )
@@ -38,8 +41,15 @@ def main(argv=None) -> int:
     parser.add_argument("--patients", nargs="*", type=int, default=ASSESSED)
     args = parser.parse_args(argv)
 
+    raw_all = load_raw()
     raw = load_raw(drop_duplicates=True)
     out = diagnostics_dir()
+
+    dups = duplicate_counts(raw_all.inhaler[raw_all.inhaler.user_key.isin(args.patients)])
+    dups_path = out / "duplicates.csv"
+    dups.to_csv(dups_path, index=False)
+    write_sidecar(dups_path, config={"patients": args.patients}, data=raw_all.provenance(),
+                  extra={"script": "missingness_diagnostics.py"})
 
     cells = cell_counts(raw.questionnaire, raw.inhaler, args.patients, window=WINDOWS[args.window])
     cells_path = out / f"cell_counts_{args.window}.csv"
@@ -66,7 +76,9 @@ def main(argv=None) -> int:
     print(check[["patient_id", "span_days", "response_days", "nonresponse_days", "mean_puffs_response_days",
                  "mean_puffs_nonresponse_days", "mannwhitney_p", "n_runs", "expected_runs", "runs_p"]].round(3).to_string(**pd_opts))
     print("\nPooled:", json.dumps(pooled))
-    print(f"\nWrote {cells_path}\n      {check_path}\n      {out / 'nonresponse_summary.json'}")
+    print("\nExact duplicate device rows:")
+    print(dups[dups.n_repeats > 0].to_string(**pd_opts))
+    print(f"\nWrote {cells_path}\n      {check_path}\n      {out / 'nonresponse_summary.json'}\n      {dups_path}")
     return 0
 
 
