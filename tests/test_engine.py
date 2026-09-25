@@ -123,7 +123,7 @@ def raw_frames(data_dir):
             pd.read_csv(data_dir / "anonym_aamos00_smartinhaler_dt.csv"))
 
 
-def test_engine_observed_matches_v1_per_config_table(raw_frames, frozen_results_dir):
+def test_engine_observed_matches_v1_per_config_table(v1_definitions, raw_frames, frozen_results_dir):
     from aamos_concordance.configs import attach_config_idx
     q, inh = raw_frames
     v1 = attach_config_idx(pd.read_csv(frozen_results_dir / "per_patient_analysis" / "per_patient_correlation_results.csv"))
@@ -146,7 +146,7 @@ def test_engine_observed_matches_v1_per_config_table(raw_frames, frozen_results_
 
 
 @pytest.mark.parametrize("patient_id", [917, 454, 398])
-def test_engine_full_null_matches_v1_on_unaffected_permutations(raw_frames, frozen_results_dir, patient_id):
+def test_engine_full_null_matches_v1_on_unaffected_permutations(v1_definitions, raw_frames, frozen_results_dir, patient_id):
     """10,000 permutations, compared with the frozen null wherever v1 has no leaked |Z|>5."""
     q, inh = raw_frames
     qq, ii = q[q.user_key == patient_id], inh[inh.user_key == patient_id]

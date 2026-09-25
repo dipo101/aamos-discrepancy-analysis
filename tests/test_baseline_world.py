@@ -30,6 +30,10 @@ BASELINE_CONCORDANT_MEAN = [702, 917]
 BASELINE_CONCORDANT_MEDIAN = [190, 294, 702, 917]
 EXACT_PATIENTS = {328: 136, 398: 12650, 454: 840, 917: 2520}
 
+# The committed baseline world was built under the v1 measurement definitions
+# (open chunk end, code 12 in the 9-12 band, three Spearman method classes).
+pytestmark = pytest.mark.usefixtures("v1_definitions_module")
+
 
 @pytest.fixture(scope="module")
 def baseline_dir():
@@ -146,7 +150,7 @@ def test_regenerating_a_patient_reproduces_the_committed_summary(data_dir, summa
     qq, ii = q[q.user_key == patient_id], inh[inh.user_key == patient_id]
     pc = run_patient_exact(patient_id, qq, ii)
     per_config = pd.read_csv(world_dir(BASELINE) / PER_CONFIG_Z)
-    for spec in (PRIMARY, V1_SPEC, SummarySpec("effective", "pearson", "median")):
+    for spec in (PRIMARY, V1_SPEC, SummarySpec("all", "pearson", "median")):
         null = null_from_per_config(pc, correlation_type=spec.correlation_type, config_indices=spec.config_indices)
         obs = observed_statistics(per_config, f"{spec.correlation_type}_z", spec.config_indices).set_index("patient_id")
         row = permutation_p_values(obs[spec.measure], null, null_column=f"null_{spec.measure}_z",

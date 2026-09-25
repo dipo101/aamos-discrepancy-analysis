@@ -53,7 +53,7 @@ def test_spec_rejects_unknown_values(bad):
 def test_spec_config_indices():
     assert len(PRIMARY.config_indices) == N_SPEARMAN_EFFECTIVE
     assert V1_SPEC.config_indices == list(range(132))
-    assert len(SummarySpec("effective", "pearson", "mean").config_indices) == 132
+    assert len(SummarySpec("effective", "pearson", "mean").config_indices) == 120
     with pytest.raises(ValueError):
         config_indices_for("nope", "spearman")
 
@@ -113,16 +113,18 @@ def test_summary_has_every_spec_and_primary_differs_from_v1_where_expected(synth
         assert sorted(s["patient_id"]) == patients
         assert (s["n_configs_in_set"] == len(sp.config_indices)).all()
         assert (s["n_valid_configs_observed"] <= len(sp.config_indices)).all()
-    # effective/spearman observed mean is the mean over the 60 representatives only
+    # effective/spearman observed mean is the mean over the effective representatives only
     eff = select(summary, PRIMARY).set_index("patient_id")
     idx = attach_config_idx(observed)
     for pid in patients:
         sub = idx[(idx.user_key == pid) & idx.config_idx.isin(PRIMARY.config_indices)]
         assert eff.loc[pid, "observed_z"] == pytest.approx(sub.loc[np.isfinite(sub.spearman_z), "spearman_z"].mean(), abs=1e-12)
-    # and under Pearson 'effective' == 'all' (nothing collapses)
-    a = select(summary, SummarySpec("all", "pearson", "mean")).set_index("patient_id")
-    e = select(summary, SummarySpec("effective", "pearson", "mean")).set_index("patient_id")
-    assert np.allclose(a["observed_z"], e["observed_z"]) and np.allclose(a["p_value"], e["p_value"])
+    # effective/pearson drops only the chunk-24 duplicates of rolling-24
+    pe = SummarySpec("effective", "pearson", "mean")
+    e = select(summary, pe).set_index("patient_id")
+    for pid in patients:
+        sub = idx[(idx.user_key == pid) & idx.config_idx.isin(pe.config_indices)]
+        assert e.loc[pid, "observed_z"] == pytest.approx(sub.loc[np.isfinite(sub.pearson_z), "pearson_z"].mean(), abs=1e-12)
 
 
 def test_spearman_effective_p_values_use_the_effective_null(synthetic_world):

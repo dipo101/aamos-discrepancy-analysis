@@ -20,6 +20,8 @@ from __future__ import annotations
 
 from typing import Dict, Iterable, List, Tuple
 
+from . import definitions
+
 TIMESTAMP_WINDOWS: Tuple[int, ...] = (12, 24, 36, 48)
 USE_DAILY_MAX_OPTIONS: Tuple[bool, ...] = (False, True)
 USE_CALENDAR_OPTIONS: Tuple[bool, ...] = (False, True)
@@ -99,34 +101,47 @@ def generate_param_combinations() -> List[Dict]:
 # Effective configurations under a rank-based statistic
 # --------------------------------------------------------------------------
 #
-# Spearman's rho depends only on ranks. Every categorisation method maps the
-# self-report codes {0, 1, 3, 5, 9, 12} monotonically, so the self-report
-# ranks are the same under every method; categorisation can only change a
-# Spearman result through the *device* column, by which counts it merges into
-# the same bin. Four methods bin device counts into the same six groups with
-# strictly increasing values and are therefore rank-identical; upper_bound
-# merges the 9-12 and >12 groups; one_hot merges everything above zero.
-# Separately, the fixed 24-hour chunk starting 24 h before the questionnaire
-# is the rolling 24-hour window except for a record at the questionnaire's
-# exact second. The v1 table confirms both collapses (tests/test_configs.py).
+# Spearman's rho depends only on ranks, so categorisation can change a
+# Spearman result only by which values it merges into the same bin.
+# lower_bound, midpoint and midpoint_with_inhaler map both columns into six
+# groups with strictly increasing values (none, 1-2, 3-4, 5-8, 9-12, top) and
+# are rank-identical. upper_bound merges the 9-12 and top groups; one_hot
+# merges everything above zero. upper_bound_with_inhaler keeps the top group
+# separate only when the frame has a device count above 12; otherwise its top
+# value falls back to 12 and it merges like upper_bound. Under v1's
+# definitions no self-report reached the top group, so that fallback never
+# mattered and upper_bound_with_inhaler was rank-identical to the first
+# three; with code 12 ("12 or more") in the top group (definitions.CURRENT) it
+# is its own class. Separately, the fixed 24-hour chunk starting 24 h before
+# the questionnaire covers the same interval as the rolling 24-hour window:
+# identical by construction now that chunk ends are closed, and identical on
+# AAMOS-00 even under v1's open end (no record falls on it).
 #
-# Under Pearson the categorisation values matter, so nothing collapses.
+# Under Pearson the categorisation values matter, so the six methods stay
+# distinct; only the window duplicate (and, under B/C, the filter) collapses.
 
 SPEARMAN_METHOD_CLASS = {
     "lower_bound": "six_bins_monotone",
     "midpoint": "six_bins_monotone",
     "midpoint_with_inhaler": "six_bins_monotone",
-    "upper_bound_with_inhaler": "six_bins_monotone",
+    "upper_bound_with_inhaler": "six_bins_or_top_merged",
     "upper_bound": "top_two_bins_merged",
     "one_hot": "binary",
 }
+SPEARMAN_METHOD_CLASS_V1 = {**SPEARMAN_METHOD_CLASS, "upper_bound_with_inhaler": "six_bins_monotone"}
+
+
+def spearman_method_class(method: str) -> str:
+    """The Spearman class of a categorisation method under the active definitions."""
+    v1 = definitions.ACTIVE.self_report_top_code is None
+    return (SPEARMAN_METHOD_CLASS_V1 if v1 else SPEARMAN_METHOD_CLASS)[method]
 
 
 def _window_key(window: int, daily_max: bool, calendar: bool):
     if calendar:
         return ("calendar", window // 24)
     if daily_max and window == 24:
-        return ("rolling", 24)  # chunk starting 24 h back == rolling 24 h (bar the exact-second case)
+        return ("rolling", 24)  # chunk starting 24 h back == rolling 24 h (both ends closed)
     return ("fixed_chunk" if daily_max else "rolling", window)
 
 
@@ -139,15 +154,21 @@ def spearman_equivalence_key(cfg: Dict, absence_case: str = "A"):
     return (
         _window_key(cfg["timestamp_window"], cfg["use_daily_max_windows"], cfg["use_calendar_days"]),
         cfg["filter_out_zero_usage"] if absence_case == "A" else None,
-        SPEARMAN_METHOD_CLASS[cfg["categorization_method"]],
+        spearman_method_class(cfg["categorization_method"]),
     )
 
 
 def pearson_equivalence_key(cfg: Dict, idx: int, absence_case: str = "A"):
-    """Under Pearson nothing collapses except the inert filter flag under B/C."""
-    if absence_case == "A":
-        return (idx,)
-    return (cfg["timestamp_window"], cfg["use_daily_max_windows"], cfg["use_calendar_days"], cfg["categorization_method"])
+    """Under Pearson the categorisation values matter, so the six methods stay distinct.
+
+    What still collapses is independent of the correlation type: the window
+    duplicate (identical joined counts) and, under B and C, the inert filter.
+    """
+    return (
+        _window_key(cfg["timestamp_window"], cfg["use_daily_max_windows"], cfg["use_calendar_days"]),
+        cfg["filter_out_zero_usage"] if absence_case == "A" else None,
+        cfg["categorization_method"],
+    )
 
 
 def config_equivalence_classes(correlation_type: str = "spearman", absence_case: str = "A") -> Dict[Tuple, List[int]]:
@@ -168,13 +189,15 @@ def config_equivalence_classes(correlation_type: str = "spearman", absence_case:
 def effective_config_indices(correlation_type: str = "spearman", absence_case: str = "A") -> List[int]:
     """Indices of one representative per equivalence class, in canonical order.
 
-    Case A: 60 for Spearman (10 windows x 2 zero-filter x 3 method classes), 132 for Pearson.
-    Cases B/C (filter inert): 30 for Spearman, 66 for Pearson.
+    Case A: 80 for Spearman (10 windows x 2 zero-filter x 4 method classes; 60 with
+    v1's 3 classes), 120 for Pearson (10 x 2 x 6). Cases B/C (filter inert): 40
+    (v1: 30) for Spearman, 60 for Pearson.
     """
     return sorted(members[0] for members in config_equivalence_classes(correlation_type, absence_case).values())
 
 
-N_SPEARMAN_EFFECTIVE = 60
+N_SPEARMAN_EFFECTIVE = 80
+N_SPEARMAN_EFFECTIVE_V1 = 60
 
 CONFIG_SETS = ("all", "effective")
 

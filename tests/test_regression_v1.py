@@ -27,6 +27,9 @@ import pytest
 
 from aamos_concordance import generate_param_combinations, run_single_permutation, summarize_correlations
 
+# Compared with the verbatim v1 code or results, so run under the v1 definitions.
+pytestmark = pytest.mark.usefixtures("v1_definitions_module")
+
 KEY = ["user_key", "timestamp_window", "use_daily_max_windows", "use_calendar_days",
        "filter_out_zero_usage_entries", "categorization_method"]
 
@@ -68,7 +71,7 @@ def test_group_config_matches_primary_spec_on_regenerated_null():
 # --------------------------------------------------------------------------
 
 @pytest.fixture(scope="module")
-def recomputed_per_patient(data_dir):
+def recomputed_per_patient(v1_definitions_module, data_dir):
     from per_patient_correlation_analysis import (
         CategorizationMethod,
         PerPatientCorrelationAnalysis,

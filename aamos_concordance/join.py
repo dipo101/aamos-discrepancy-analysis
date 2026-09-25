@@ -6,7 +6,8 @@ a time window anchored on that row. The three window families are:
 * rolling (``use_calendar_days=False, use_daily_max_windows=False``):
   records with ``t - window <= timestamp <= t`` for questionnaire time ``t``;
 * fixed 24-hour chunk (``use_daily_max_windows=True``):
-  records with ``t - window <= timestamp < t - window + 24h``;
+  records with ``t - window <= timestamp <= t - window + 24h`` (v1 used
+  ``<`` at the end; see :mod:`aamos_concordance.definitions`);
 * calendar day (``use_calendar_days=True``):
   records whose ``date`` equals ``row.date - window // 24``.
 
@@ -26,6 +27,8 @@ from __future__ import annotations
 from typing import Optional
 
 import pandas as pd
+
+from . import definitions
 
 REFERENCE_DATE = pd.Timestamp("2000-01-01")
 
@@ -57,6 +60,8 @@ def _window_mask(row, inhaler_df: pd.DataFrame, timestamp_window: int,
     if use_daily_max_windows:
         window_start = row["timestamp"] - window_hours
         window_end = window_start + pd.Timedelta(hours=24)
+        if definitions.ACTIVE.closed_chunk_end:
+            return (inhaler_df["timestamp"] >= window_start) & (inhaler_df["timestamp"] <= window_end)
         return (inhaler_df["timestamp"] >= window_start) & (inhaler_df["timestamp"] < window_end)
 
     return (inhaler_df["timestamp"] <= row["timestamp"]) & (

@@ -21,10 +21,14 @@ pre-refactor copies disagreed: ``data_loader.py`` and the Cloud Run
 job-worker let it be NaN (an unguarded edge case, which then invalidated the
 whole configuration), while ``per_patient_correlation_analysis.py`` used 12.
 The default is now 12 everywhere, i.e. the plain midpoint/upper-bound value.
-On the AAMOS-00 data the case is unreachable: self-reports are coded
-{0, 1, 3, 5, 9, 12}, so only device counts above 12 ever reach the top
-branch, and then the data-driven set is non-empty by construction. Pass
-``None`` only to reproduce the old NaN behaviour (the oracle tests do).
+The fallback matters when a self-report of "12 or more" (code 12) meets a
+frame with no device count of 12 or more. Pass ``None`` only to reproduce
+the old NaN behaviour (the oracle tests do).
+
+Self-reports are band codes, not counts: {0, 1, 3, 5, 9, 12} stand for
+"none", "1 to 2", "3 to 4", "5 to 8", "9 to 12" and "12 or more".
+:func:`categorize_columns` maps code 12 to the top category (see
+:mod:`aamos_concordance.definitions`).
 """
 
 from __future__ import annotations
@@ -34,6 +38,8 @@ from typing import Callable, Optional, Union
 
 import numpy as np
 import pandas as pd
+
+from . import definitions
 
 
 class CategorizationMethod(Enum):
@@ -131,17 +137,43 @@ def build_categorize_fn(
     raise ValueError(f"Invalid categorization method: {method!r}")  # pragma: no cover
 
 
+def categorize_columns(
+    df: pd.DataFrame,
+    method: MethodLike,
+    *,
+    top_category_fallback: Optional[float] = DEFAULT_TOP_CATEGORY_FALLBACK,
+) -> "tuple[pd.Series, pd.Series]":
+    """Categorised (device, self-report) columns.
+
+    The device column holds counts and goes through the step function. The
+    self-report column holds questionnaire codes; the code meaning "12 or
+    more" (``definitions.ACTIVE.self_report_top_code``) is a band label and
+    goes to the top category, i.e. whatever the step function returns for
+    an unbounded count. Under ``definitions.V1`` it is range-checked like a
+    count, which puts it in the 9-to-12 band.
+    """
+    fn = build_categorize_fn(df, method, top_category_fallback=top_category_fallback)
+    device = df["inhaler_usage"].apply(fn)
+    report = df["daily_relief_inhaler"].apply(fn)
+    top_code = definitions.ACTIVE.self_report_top_code
+    if top_code is not None:
+        is_top = df["daily_relief_inhaler"] == top_code
+        if is_top.any():
+            report = report.astype(float)
+            report[is_top] = fn(float("inf"))
+    return device, report
+
+
 def categorize_inhaler_usage(
     df: pd.DataFrame,
     method: MethodLike,
     *,
     top_category_fallback: Optional[float] = DEFAULT_TOP_CATEGORY_FALLBACK,
 ) -> pd.DataFrame:
-    """Return a copy of ``df`` with both usage columns mapped through ``method``."""
-    fn = build_categorize_fn(df, method, top_category_fallback=top_category_fallback)
+    """Return a copy of ``df`` with both usage columns categorised (see :func:`categorize_columns`)."""
     out = df.copy()
-    out["inhaler_usage"] = out["inhaler_usage"].apply(fn)
-    out["daily_relief_inhaler"] = out["daily_relief_inhaler"].apply(fn)
+    out["inhaler_usage"], out["daily_relief_inhaler"] = categorize_columns(
+        df, method, top_category_fallback=top_category_fallback)
     return out
 
 

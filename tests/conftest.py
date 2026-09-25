@@ -32,3 +32,21 @@ def data_dir() -> Path:
 @pytest.fixture(scope="session")
 def frozen_results_dir() -> Path:
     return REPO_ROOT / "results" / "v1"
+
+
+def _v1():
+    from aamos_concordance.definitions import V1, use_definitions
+    with use_definitions(V1):
+        yield
+
+
+@pytest.fixture
+def v1_definitions():
+    """Run a test under the v1 measurement definitions (for comparisons with the verbatim v1 code or results)."""
+    yield from _v1()
+
+
+@pytest.fixture(scope="module")
+def v1_definitions_module():
+    """Module-wide :func:`v1_definitions`, for modules whose every test (and module fixture) compares with v1."""
+    yield from _v1()
