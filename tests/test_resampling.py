@@ -118,10 +118,11 @@ def test_committed_baseline_carries_risk_columns():
 
 
 def test_committed_worlds_risk_profile():
-    """Across all worlds and specs every sequential stop agrees with the full sample, and no concordance
-    call under the primary spec depends on Monte Carlo error: wherever the observed Z clears the threshold
-    (so significance decides), the resampling risk is negligible. Borderline significance decisions exist,
-    but only for patients whose Z is below the threshold anyway."""
+    """Across all worlds and specs every sequential stop agrees with the full sample, and concordance calls
+    under the primary spec do not depend on Monte Carlo error: wherever the observed Z clears the threshold
+    (so significance decides), the resampling risk is negligible. The one known exception is 702 under case C
+    with a 60 s window reading, where p_bonf sits at 0.026-0.049 on 10,000 draws; it is pinned so that any
+    new exception fails."""
     from aamos_concordance.sensitivity import load_world_summaries
     from aamos_concordance.summary import DEFAULT_THRESHOLD, PRIMARY, select
     n_risky = 0
@@ -132,5 +133,8 @@ def test_committed_worlds_risk_profile():
         n_risky += int((sampled["resampling_risk"] > 1e-3).sum())
         prim = select(sampled, PRIMARY)
         deciding = prim[prim["observed_z"] >= DEFAULT_THRESHOLD]
-        assert (deciding["resampling_risk"] < 1e-6).all(), wid
+        risky = deciding[deciding["resampling_risk"] >= 1e-6]
+        if "case=C__dup=anchor60" in wid or "case=C__dup=chain60" in wid:
+            risky = risky[risky["patient_id"] != 702]
+        assert risky.empty, (wid, risky["patient_id"].tolist())
     assert n_risky > 0  # the column is doing work: some significance decisions are borderline

@@ -33,10 +33,50 @@ def test_readings():
         apply_duplicate_reading(d, "maybe")
 
 
+def _times(*hms, pid=1, day=3):
+    return pd.DataFrame({"user_key": pid, "date": day, "time": list(hms), "name": "V"})
+
+
+def test_window_readings_anchor_vs_chain():
+    # gaps: 0, 20, 20, 45, 70 s
+    d = _times("08:00:00", "08:00:00", "08:00:20", "08:00:40", "08:01:25", "08:02:35")
+    kept = lambda r: apply_duplicate_reading(d, r)["time"].tolist()
+    # anchored 30 s: keep 08:00:00; 08:00:40 is 40 s after it -> kept; 08:01:25 is 45 s after -> kept
+    assert kept("anchor30") == ["08:00:00", "08:00:40", "08:01:25", "08:02:35"]
+    # chained 30 s: 0/20/20 s gaps chain into one event; 45 s and 70 s gaps start new ones
+    assert kept("chain30") == ["08:00:00", "08:01:25", "08:02:35"]
+    # anchored 60 s: 08:01:25 is 85 s after 08:00:00 -> kept; 08:02:35 is 70 s after that -> kept
+    assert kept("anchor60") == ["08:00:00", "08:01:25", "08:02:35"]
+    # chained 60 s: every gap up to 45 s chains; the 70 s gap starts a new event
+    assert kept("chain60") == ["08:00:00", "08:02:35"]
+
+
+def test_window_boundary_is_strictly_greater_and_crosses_midnight():
+    d = pd.concat([_times("23:59:45", day=3), _times("00:00:15", day=4), _times("00:00:46", day=4)], ignore_index=True)
+    # 30 s apart exactly -> same event; 31 s -> new event, across the day boundary too
+    assert apply_duplicate_reading(d, "chain30")["time"].tolist() == ["23:59:45", "00:00:46"]
+
+
+def test_window_readings_are_per_patient_and_medication_and_keep_row_order():
+    d = pd.concat([_times("08:00:10", pid=2), _times("08:00:00", pid=1), _times("08:00:05", pid=1),
+                   _times("08:00:05", pid=1).assign(name="F")], ignore_index=True)
+    out = apply_duplicate_reading(d, "anchor30")
+    assert out.index.tolist() == [0, 1, 3]  # 1's V puff at :05 merges; other patient and medication untouched
+    assert out.index.is_monotonic_increasing
+
+
+def test_window_readings_subsume_exact_repeats():
+    d = _device()
+    for r in ("anchor30", "chain30", "anchor60", "chain60"):
+        out = apply_duplicate_reading(d, r)
+        assert not out.duplicated().any() and len(out) <= len(apply_duplicate_reading(d, "artefact"))
+
+
 def test_duplicate_counts():
     c = duplicate_counts(_device()).set_index("patient_id")
     assert c.loc[1].to_dict() == {"n_rows": 6, "n_repeats": 3, "n_repeats_minute_resolution": 2, "n_repeats_second_resolution": 1,
-                                  "n_rows_artefact": 3, "n_rows_real": 6, "n_rows_resolution": 5}
+                                  "n_rows_artefact": 3, "n_rows_real": 6, "n_rows_resolution": 5,
+                                  "n_rows_anchor30": 3, "n_rows_chain30": 3, "n_rows_anchor60": 3, "n_rows_chain60": 3}
     assert c.loc[2, "n_repeats"] == 0
 
 

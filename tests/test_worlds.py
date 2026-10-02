@@ -52,12 +52,13 @@ def test_duplicate_reading_is_a_world_axis_omitted_at_its_default():
         WorldSpec.parse("span=Q__case=A__dup=artefact")
 
 
-def test_all_world_specs_is_the_144_grid_with_the_baseline_first():
+def test_all_world_specs_is_the_336_grid_with_the_baseline_first():
     ws = worlds.all_world_specs()
-    assert len(ws) == len({w.world_id for w in ws}) == 4 * 12 * 3
+    assert len(ws) == len({w.world_id for w in ws}) == 4 * 12 * 7
     assert ws[0] == BASELINE
-    assert {w.duplicates for w in ws} == {"artefact", "real", "resolution"}
-    assert sum(w.absence_case == "B" for w in ws) == 4 * 10 * 3
+    assert {w.duplicates for w in ws} == {"artefact", "real", "resolution", "anchor30", "chain30", "anchor60", "chain60"}
+    assert sum(w.absence_case == "B" for w in ws) == 4 * 10 * 7
+    assert WorldSpec.parse("span=Q__case=B__k=04__dup=chain60") == WorldSpec("Q", "B", 4, "chain60")
 
 
 @pytest.mark.parametrize("bad", ["Q", "span=Q", "span=Q__case=D", "span=X__case=A", "span=Q__case=B", "span=union__case=A__k=01", "span=Q__case=B__k=1",
