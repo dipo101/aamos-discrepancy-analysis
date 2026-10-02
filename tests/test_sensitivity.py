@@ -126,32 +126,54 @@ def test_committed_grid_matches_recomputation():
     fresh = worlds_to_rerun(load_world_summaries())
     assert {k: listing[k] for k in fresh} == fresh
     assert BASELINE.world_id not in listing["rerun"]
-    # every A world except the baseline and D (under the artefact reading) loses 917; every C world gives 294, 473, 702
+    # A worlds that lose 917 (other spans, real/resolution readings) and every C world, whose set always differs
     assert listing["rerun"] == [
-        "span=D__case=A__dup=real", "span=D__case=A__dup=resolution", "span=D__case=C",
-        "span=D__case=C__dup=real", "span=D__case=C__dup=resolution", "span=Q__case=A",
-        "span=Q__case=A__dup=real", "span=Q__case=A__dup=resolution", "span=Q__case=C",
-        "span=Q__case=C__dup=real", "span=Q__case=C__dup=resolution", "span=intersection__case=A",
-        "span=intersection__case=A__dup=real", "span=intersection__case=A__dup=resolution", "span=intersection__case=C",
-        "span=intersection__case=C__dup=real", "span=intersection__case=C__dup=resolution", "span=union__case=A__dup=real",
-        "span=union__case=A__dup=resolution", "span=union__case=C", "span=union__case=C__dup=real",
-        "span=union__case=C__dup=resolution",
+        "span=D__case=A__dup=real", "span=D__case=A__dup=resolution",
+        "span=D__case=C", "span=D__case=C__dup=anchor30",
+        "span=D__case=C__dup=anchor60", "span=D__case=C__dup=chain30",
+        "span=D__case=C__dup=chain60", "span=D__case=C__dup=real",
+        "span=D__case=C__dup=resolution", "span=Q__case=A",
+        "span=Q__case=A__dup=anchor30", "span=Q__case=A__dup=anchor60",
+        "span=Q__case=A__dup=chain30", "span=Q__case=A__dup=chain60",
+        "span=Q__case=A__dup=real", "span=Q__case=A__dup=resolution",
+        "span=Q__case=C", "span=Q__case=C__dup=anchor30",
+        "span=Q__case=C__dup=anchor60", "span=Q__case=C__dup=chain30",
+        "span=Q__case=C__dup=chain60", "span=Q__case=C__dup=real",
+        "span=Q__case=C__dup=resolution", "span=intersection__case=A",
+        "span=intersection__case=A__dup=anchor30", "span=intersection__case=A__dup=anchor60",
+        "span=intersection__case=A__dup=chain30", "span=intersection__case=A__dup=chain60",
+        "span=intersection__case=A__dup=real", "span=intersection__case=A__dup=resolution",
+        "span=intersection__case=C", "span=intersection__case=C__dup=anchor30",
+        "span=intersection__case=C__dup=anchor60", "span=intersection__case=C__dup=chain30",
+        "span=intersection__case=C__dup=chain60", "span=intersection__case=C__dup=real",
+        "span=intersection__case=C__dup=resolution", "span=union__case=A__dup=real",
+        "span=union__case=A__dup=resolution", "span=union__case=C",
+        "span=union__case=C__dup=anchor30", "span=union__case=C__dup=anchor60",
+        "span=union__case=C__dup=chain30", "span=union__case=C__dup=chain60",
+        "span=union__case=C__dup=real", "span=union__case=C__dup=resolution",
     ]
-    assert listing["case_b_flagged"] == []
+    # under the 30/60 s window readings some B families are concordant in all ten imputations (398, and 702 at 60 s)
+    assert listing["case_b_flagged"] == ['span=D__case=B__dup=anchor30', 'span=D__case=B__dup=anchor60', 'span=D__case=B__dup=chain30', 'span=D__case=B__dup=chain60', 'span=intersection__case=B__dup=anchor60', 'span=intersection__case=B__dup=chain60', 'span=union__case=B__dup=anchor30', 'span=union__case=B__dup=anchor60', 'span=union__case=B__dup=chain30', 'span=union__case=B__dup=chain60']
 
 
 def test_committed_world_stability_headline():
     ws = pd.read_csv(worlds.V2_DIR / "sensitivity" / "world_stability.csv", keep_default_na=False).set_index("world_id")
-    assert len(ws) == 36  # 3 duplicate readings x 4 spans x (A, B collapsed, C)
+    assert len(ws) == 84  # 7 duplicate readings x 4 spans x (A, B collapsed, C)
     assert ws.loc["span=union__case=A", "concordant"] == "190 702 917"
     assert ws.loc["span=D__case=A", "changed"] == False
-    for dup in ("", "__dup=real", "__dup=resolution"):
+    windows = ("anchor30", "chain30", "anchor60", "chain60")
+    for dup in ("artefact", "real", "resolution", *windows):
+        suffix = "" if dup == "artefact" else f"__dup={dup}"
         for span in ("union", "Q", "D", "intersection"):
-            assert ws.loc[f"span={span}__case=C{dup}", "concordant"] == "294 473 702"
-            assert ws.loc[f"span={span}__case=B{dup}", "n_concordant"] == 0
-            if (span, dup) not in (("union", ""), ("D", "")):
-                assert ws.loc[f"span={span}__case=A{dup}", "concordant"] == "190 702"  # 917 leaves
+            # 294 sits just under 0.5 under C once quick double puffs count as one event
+            assert ws.loc[f"span={span}__case=C{suffix}", "concordant"] == ("473 702" if dup in windows else "294 473 702")
+            # 917 needs its minute-level repeats dropped (artefact or a window) and its first device day kept
+            a_set = "190 702 917" if span in ("union", "D") and dup not in ("real", "resolution") else "190 702"
+            assert ws.loc[f"span={span}__case=A{suffix}", "concordant"] == a_set
+            if dup in ("artefact", "real", "resolution"):
+                assert ws.loc[f"span={span}__case=B{suffix}", "n_concordant"] == 0
     assert ws.loc["span=union__case=B", "imputations"] == "398:5/10; 702:5/10"
+    assert ws.loc["span=union__case=B__dup=anchor60", "concordant"] == "398 702"
     cb = pd.read_csv(worlds.V2_DIR / "sensitivity" / "case_b_stability.csv")
     core = cb[cb.patient_id.isin([294, 473, 702])]
     assert (core["n_significant"] == 10).all()  # B moves the threshold, not significance

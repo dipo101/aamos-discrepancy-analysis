@@ -6,6 +6,34 @@ span=D__case=A,D,A,artefact,effective/spearman/mean/min_rows=20,10,2,398 702,Tru
 span=D__case=A,D,A,artefact,effective/spearman/mean/min_rows=37,7,1,702,True,,190 917
 span=D__case=A,D,A,artefact,effective/spearman/mean/exclude=fostair,11,2,190 702,True,,917
 span=D__case=A,D,A,artefact,all/spearman/mean,14,4,294 473 702 917,True,294 473,190
+span=D__case=A__dup=anchor30,D,A,anchor30,effective/spearman/mean,14,3,190 702 917,False,,
+span=D__case=A__dup=anchor30,D,A,anchor30,effective_lookahead/spearman/mean,14,2,702 917,True,,190
+span=D__case=A__dup=anchor30,D,A,anchor30,effective/spearman/mean/min_rows=5,14,3,190 702 917,False,,
+span=D__case=A__dup=anchor30,D,A,anchor30,effective/spearman/mean/min_rows=20,10,2,398 702,True,398,190 917
+span=D__case=A__dup=anchor30,D,A,anchor30,effective/spearman/mean/min_rows=37,7,1,702,True,,190 917
+span=D__case=A__dup=anchor30,D,A,anchor30,effective/spearman/mean/exclude=fostair,11,2,190 702,True,,917
+span=D__case=A__dup=anchor30,D,A,anchor30,all/spearman/mean,14,3,473 702 917,True,473,190
+span=D__case=A__dup=anchor60,D,A,anchor60,effective/spearman/mean,14,3,190 702 917,False,,
+span=D__case=A__dup=anchor60,D,A,anchor60,effective_lookahead/spearman/mean,14,2,702 917,True,,190
+span=D__case=A__dup=anchor60,D,A,anchor60,effective/spearman/mean/min_rows=5,14,3,190 702 917,False,,
+span=D__case=A__dup=anchor60,D,A,anchor60,effective/spearman/mean/min_rows=20,10,2,398 702,True,398,190 917
+span=D__case=A__dup=anchor60,D,A,anchor60,effective/spearman/mean/min_rows=37,7,1,702,True,,190 917
+span=D__case=A__dup=anchor60,D,A,anchor60,effective/spearman/mean/exclude=fostair,11,2,190 702,True,,917
+span=D__case=A__dup=anchor60,D,A,anchor60,all/spearman/mean,14,3,473 702 917,True,473,190
+span=D__case=A__dup=chain30,D,A,chain30,effective/spearman/mean,14,3,190 702 917,False,,
+span=D__case=A__dup=chain30,D,A,chain30,effective_lookahead/spearman/mean,14,2,702 917,True,,190
+span=D__case=A__dup=chain30,D,A,chain30,effective/spearman/mean/min_rows=5,14,3,190 702 917,False,,
+span=D__case=A__dup=chain30,D,A,chain30,effective/spearman/mean/min_rows=20,10,2,398 702,True,398,190 917
+span=D__case=A__dup=chain30,D,A,chain30,effective/spearman/mean/min_rows=37,7,1,702,True,,190 917
+span=D__case=A__dup=chain30,D,A,chain30,effective/spearman/mean/exclude=fostair,11,2,190 702,True,,917
+span=D__case=A__dup=chain30,D,A,chain30,all/spearman/mean,14,3,473 702 917,True,473,190
+span=D__case=A__dup=chain60,D,A,chain60,effective/spearman/mean,14,3,190 702 917,False,,
+span=D__case=A__dup=chain60,D,A,chain60,effective_lookahead/spearman/mean,14,2,702 917,True,,190
+span=D__case=A__dup=chain60,D,A,chain60,effective/spearman/mean/min_rows=5,14,3,190 702 917,False,,
+span=D__case=A__dup=chain60,D,A,chain60,effective/spearman/mean/min_rows=20,10,2,398 702,True,398,190 917
+span=D__case=A__dup=chain60,D,A,chain60,effective/spearman/mean/min_rows=37,7,1,702,True,,190 917
+span=D__case=A__dup=chain60,D,A,chain60,effective/spearman/mean/exclude=fostair,11,2,190 702,True,,917
+span=D__case=A__dup=chain60,D,A,chain60,all/spearman/mean,14,3,473 702 917,True,473,190
 span=D__case=A__dup=real,D,A,real,effective/spearman/mean,14,2,190 702,False,,
 span=D__case=A__dup=real,D,A,real,effective_lookahead/spearman/mean,14,2,473 702,True,473,190
 span=D__case=A__dup=real,D,A,real,effective/spearman/mean/min_rows=5,14,2,190 702,False,,
@@ -27,6 +55,34 @@ span=D__case=C,D,C,artefact,effective/spearman/mean/min_rows=20,8,3,294 473 702,
 span=D__case=C,D,C,artefact,effective/spearman/mean/min_rows=37,5,2,294 473,True,,702
 span=D__case=C,D,C,artefact,effective/spearman/mean/exclude=fostair,10,3,294 473 702,False,,
 span=D__case=C,D,C,artefact,all/spearman/mean,12,3,294 473 702,False,,
+span=D__case=C__dup=anchor30,D,C,anchor30,effective/spearman/mean,11,2,473 702,False,,
+span=D__case=C__dup=anchor30,D,C,anchor30,effective_lookahead/spearman/mean,11,2,473 702,False,,
+span=D__case=C__dup=anchor30,D,C,anchor30,effective/spearman/mean/min_rows=5,11,2,473 702,False,,
+span=D__case=C__dup=anchor30,D,C,anchor30,effective/spearman/mean/min_rows=20,8,2,473 702,False,,
+span=D__case=C__dup=anchor30,D,C,anchor30,effective/spearman/mean/min_rows=37,5,0,,True,,473 702
+span=D__case=C__dup=anchor30,D,C,anchor30,effective/spearman/mean/exclude=fostair,9,2,473 702,False,,
+span=D__case=C__dup=anchor30,D,C,anchor30,all/spearman/mean,11,3,294 473 702,True,294,
+span=D__case=C__dup=anchor60,D,C,anchor60,effective/spearman/mean,11,2,473 702,False,,
+span=D__case=C__dup=anchor60,D,C,anchor60,effective_lookahead/spearman/mean,11,2,473 702,False,,
+span=D__case=C__dup=anchor60,D,C,anchor60,effective/spearman/mean/min_rows=5,11,2,473 702,False,,
+span=D__case=C__dup=anchor60,D,C,anchor60,effective/spearman/mean/min_rows=20,8,2,473 702,False,,
+span=D__case=C__dup=anchor60,D,C,anchor60,effective/spearman/mean/min_rows=37,5,1,473,True,,702
+span=D__case=C__dup=anchor60,D,C,anchor60,effective/spearman/mean/exclude=fostair,9,2,473 702,False,,
+span=D__case=C__dup=anchor60,D,C,anchor60,all/spearman/mean,11,3,294 473 702,True,294,
+span=D__case=C__dup=chain30,D,C,chain30,effective/spearman/mean,11,2,473 702,False,,
+span=D__case=C__dup=chain30,D,C,chain30,effective_lookahead/spearman/mean,11,2,473 702,False,,
+span=D__case=C__dup=chain30,D,C,chain30,effective/spearman/mean/min_rows=5,11,2,473 702,False,,
+span=D__case=C__dup=chain30,D,C,chain30,effective/spearman/mean/min_rows=20,8,2,473 702,False,,
+span=D__case=C__dup=chain30,D,C,chain30,effective/spearman/mean/min_rows=37,5,1,473,True,,702
+span=D__case=C__dup=chain30,D,C,chain30,effective/spearman/mean/exclude=fostair,9,2,473 702,False,,
+span=D__case=C__dup=chain30,D,C,chain30,all/spearman/mean,11,3,294 473 702,True,294,
+span=D__case=C__dup=chain60,D,C,chain60,effective/spearman/mean,11,2,473 702,False,,
+span=D__case=C__dup=chain60,D,C,chain60,effective_lookahead/spearman/mean,11,2,473 702,False,,
+span=D__case=C__dup=chain60,D,C,chain60,effective/spearman/mean/min_rows=5,11,2,473 702,False,,
+span=D__case=C__dup=chain60,D,C,chain60,effective/spearman/mean/min_rows=20,8,2,473 702,False,,
+span=D__case=C__dup=chain60,D,C,chain60,effective/spearman/mean/min_rows=37,5,1,473,True,,702
+span=D__case=C__dup=chain60,D,C,chain60,effective/spearman/mean/exclude=fostair,9,2,473 702,False,,
+span=D__case=C__dup=chain60,D,C,chain60,all/spearman/mean,11,2,473 702,False,,
 span=D__case=C__dup=real,D,C,real,effective/spearman/mean,12,3,294 473 702,False,,
 span=D__case=C__dup=real,D,C,real,effective_lookahead/spearman/mean,12,3,294 473 702,False,,
 span=D__case=C__dup=real,D,C,real,effective/spearman/mean/min_rows=5,12,3,294 473 702,False,,
@@ -48,6 +104,34 @@ span=Q__case=A,Q,A,artefact,effective/spearman/mean/min_rows=20,12,3,190 398 702
 span=Q__case=A,Q,A,artefact,effective/spearman/mean/min_rows=37,11,2,190 702,False,,
 span=Q__case=A,Q,A,artefact,effective/spearman/mean/exclude=fostair,12,2,190 702,False,,
 span=Q__case=A,Q,A,artefact,all/spearman/mean,15,3,294 473 702,True,294 473,190
+span=Q__case=A__dup=anchor30,Q,A,anchor30,effective/spearman/mean,15,2,190 702,False,,
+span=Q__case=A__dup=anchor30,Q,A,anchor30,effective_lookahead/spearman/mean,15,1,702,True,,190
+span=Q__case=A__dup=anchor30,Q,A,anchor30,effective/spearman/mean/min_rows=5,15,2,190 702,False,,
+span=Q__case=A__dup=anchor30,Q,A,anchor30,effective/spearman/mean/min_rows=20,12,3,190 398 702,True,398,
+span=Q__case=A__dup=anchor30,Q,A,anchor30,effective/spearman/mean/min_rows=37,11,2,190 702,False,,
+span=Q__case=A__dup=anchor30,Q,A,anchor30,effective/spearman/mean/exclude=fostair,12,2,190 702,False,,
+span=Q__case=A__dup=anchor30,Q,A,anchor30,all/spearman/mean,15,2,473 702,True,473,190
+span=Q__case=A__dup=anchor60,Q,A,anchor60,effective/spearman/mean,15,2,190 702,False,,
+span=Q__case=A__dup=anchor60,Q,A,anchor60,effective_lookahead/spearman/mean,15,1,702,True,,190
+span=Q__case=A__dup=anchor60,Q,A,anchor60,effective/spearman/mean/min_rows=5,15,2,190 702,False,,
+span=Q__case=A__dup=anchor60,Q,A,anchor60,effective/spearman/mean/min_rows=20,12,3,190 398 702,True,398,
+span=Q__case=A__dup=anchor60,Q,A,anchor60,effective/spearman/mean/min_rows=37,11,2,190 702,False,,
+span=Q__case=A__dup=anchor60,Q,A,anchor60,effective/spearman/mean/exclude=fostair,12,2,190 702,False,,
+span=Q__case=A__dup=anchor60,Q,A,anchor60,all/spearman/mean,15,2,473 702,True,473,190
+span=Q__case=A__dup=chain30,Q,A,chain30,effective/spearman/mean,15,2,190 702,False,,
+span=Q__case=A__dup=chain30,Q,A,chain30,effective_lookahead/spearman/mean,15,1,702,True,,190
+span=Q__case=A__dup=chain30,Q,A,chain30,effective/spearman/mean/min_rows=5,15,2,190 702,False,,
+span=Q__case=A__dup=chain30,Q,A,chain30,effective/spearman/mean/min_rows=20,12,3,190 398 702,True,398,
+span=Q__case=A__dup=chain30,Q,A,chain30,effective/spearman/mean/min_rows=37,11,2,190 702,False,,
+span=Q__case=A__dup=chain30,Q,A,chain30,effective/spearman/mean/exclude=fostair,12,2,190 702,False,,
+span=Q__case=A__dup=chain30,Q,A,chain30,all/spearman/mean,15,2,473 702,True,473,190
+span=Q__case=A__dup=chain60,Q,A,chain60,effective/spearman/mean,15,2,190 702,False,,
+span=Q__case=A__dup=chain60,Q,A,chain60,effective_lookahead/spearman/mean,15,1,702,True,,190
+span=Q__case=A__dup=chain60,Q,A,chain60,effective/spearman/mean/min_rows=5,15,2,190 702,False,,
+span=Q__case=A__dup=chain60,Q,A,chain60,effective/spearman/mean/min_rows=20,12,3,190 398 702,True,398,
+span=Q__case=A__dup=chain60,Q,A,chain60,effective/spearman/mean/min_rows=37,11,2,190 702,False,,
+span=Q__case=A__dup=chain60,Q,A,chain60,effective/spearman/mean/exclude=fostair,12,2,190 702,False,,
+span=Q__case=A__dup=chain60,Q,A,chain60,all/spearman/mean,15,2,473 702,True,473,190
 span=Q__case=A__dup=real,Q,A,real,effective/spearman/mean,15,2,190 702,False,,
 span=Q__case=A__dup=real,Q,A,real,effective_lookahead/spearman/mean,15,2,473 702,True,473,190
 span=Q__case=A__dup=real,Q,A,real,effective/spearman/mean/min_rows=5,15,2,190 702,False,,
@@ -69,6 +153,34 @@ span=Q__case=C,Q,C,artefact,effective/spearman/mean/min_rows=20,8,3,294 473 702,
 span=Q__case=C,Q,C,artefact,effective/spearman/mean/min_rows=37,5,2,294 473,True,,702
 span=Q__case=C,Q,C,artefact,effective/spearman/mean/exclude=fostair,11,3,294 473 702,False,,
 span=Q__case=C,Q,C,artefact,all/spearman/mean,13,3,294 473 702,False,,
+span=Q__case=C__dup=anchor30,Q,C,anchor30,effective/spearman/mean,12,2,473 702,False,,
+span=Q__case=C__dup=anchor30,Q,C,anchor30,effective_lookahead/spearman/mean,12,2,473 702,False,,
+span=Q__case=C__dup=anchor30,Q,C,anchor30,effective/spearman/mean/min_rows=5,11,2,473 702,False,,
+span=Q__case=C__dup=anchor30,Q,C,anchor30,effective/spearman/mean/min_rows=20,8,2,473 702,False,,
+span=Q__case=C__dup=anchor30,Q,C,anchor30,effective/spearman/mean/min_rows=37,5,0,,True,,473 702
+span=Q__case=C__dup=anchor30,Q,C,anchor30,effective/spearman/mean/exclude=fostair,10,2,473 702,False,,
+span=Q__case=C__dup=anchor30,Q,C,anchor30,all/spearman/mean,12,3,294 473 702,True,294,
+span=Q__case=C__dup=anchor60,Q,C,anchor60,effective/spearman/mean,12,2,473 702,False,,
+span=Q__case=C__dup=anchor60,Q,C,anchor60,effective_lookahead/spearman/mean,12,2,473 702,False,,
+span=Q__case=C__dup=anchor60,Q,C,anchor60,effective/spearman/mean/min_rows=5,11,2,473 702,False,,
+span=Q__case=C__dup=anchor60,Q,C,anchor60,effective/spearman/mean/min_rows=20,8,2,473 702,False,,
+span=Q__case=C__dup=anchor60,Q,C,anchor60,effective/spearman/mean/min_rows=37,5,1,473,True,,702
+span=Q__case=C__dup=anchor60,Q,C,anchor60,effective/spearman/mean/exclude=fostair,10,2,473 702,False,,
+span=Q__case=C__dup=anchor60,Q,C,anchor60,all/spearman/mean,12,3,294 473 702,True,294,
+span=Q__case=C__dup=chain30,Q,C,chain30,effective/spearman/mean,12,2,473 702,False,,
+span=Q__case=C__dup=chain30,Q,C,chain30,effective_lookahead/spearman/mean,12,2,473 702,False,,
+span=Q__case=C__dup=chain30,Q,C,chain30,effective/spearman/mean/min_rows=5,11,2,473 702,False,,
+span=Q__case=C__dup=chain30,Q,C,chain30,effective/spearman/mean/min_rows=20,8,2,473 702,False,,
+span=Q__case=C__dup=chain30,Q,C,chain30,effective/spearman/mean/min_rows=37,5,1,473,True,,702
+span=Q__case=C__dup=chain30,Q,C,chain30,effective/spearman/mean/exclude=fostair,10,2,473 702,False,,
+span=Q__case=C__dup=chain30,Q,C,chain30,all/spearman/mean,12,3,294 473 702,True,294,
+span=Q__case=C__dup=chain60,Q,C,chain60,effective/spearman/mean,11,2,473 702,False,,
+span=Q__case=C__dup=chain60,Q,C,chain60,effective_lookahead/spearman/mean,11,2,473 702,False,,
+span=Q__case=C__dup=chain60,Q,C,chain60,effective/spearman/mean/min_rows=5,10,2,473 702,False,,
+span=Q__case=C__dup=chain60,Q,C,chain60,effective/spearman/mean/min_rows=20,8,2,473 702,False,,
+span=Q__case=C__dup=chain60,Q,C,chain60,effective/spearman/mean/min_rows=37,5,1,473,True,,702
+span=Q__case=C__dup=chain60,Q,C,chain60,effective/spearman/mean/exclude=fostair,9,2,473 702,False,,
+span=Q__case=C__dup=chain60,Q,C,chain60,all/spearman/mean,11,2,473 702,False,,
 span=Q__case=C__dup=real,Q,C,real,effective/spearman/mean,13,3,294 473 702,False,,
 span=Q__case=C__dup=real,Q,C,real,effective_lookahead/spearman/mean,13,3,294 473 702,False,,
 span=Q__case=C__dup=real,Q,C,real,effective/spearman/mean/min_rows=5,12,3,294 473 702,False,,
@@ -90,6 +202,34 @@ span=intersection__case=A,intersection,A,artefact,effective/spearman/mean/min_ro
 span=intersection__case=A,intersection,A,artefact,effective/spearman/mean/min_rows=37,7,1,702,True,,190
 span=intersection__case=A,intersection,A,artefact,effective/spearman/mean/exclude=fostair,11,2,190 702,False,,
 span=intersection__case=A,intersection,A,artefact,all/spearman/mean,14,3,294 473 702,True,294 473,190
+span=intersection__case=A__dup=anchor30,intersection,A,anchor30,effective/spearman/mean,14,2,190 702,False,,
+span=intersection__case=A__dup=anchor30,intersection,A,anchor30,effective_lookahead/spearman/mean,14,1,702,True,,190
+span=intersection__case=A__dup=anchor30,intersection,A,anchor30,effective/spearman/mean/min_rows=5,14,2,190 702,False,,
+span=intersection__case=A__dup=anchor30,intersection,A,anchor30,effective/spearman/mean/min_rows=20,10,2,398 702,True,398,190
+span=intersection__case=A__dup=anchor30,intersection,A,anchor30,effective/spearman/mean/min_rows=37,7,1,702,True,,190
+span=intersection__case=A__dup=anchor30,intersection,A,anchor30,effective/spearman/mean/exclude=fostair,11,2,190 702,False,,
+span=intersection__case=A__dup=anchor30,intersection,A,anchor30,all/spearman/mean,14,2,473 702,True,473,190
+span=intersection__case=A__dup=anchor60,intersection,A,anchor60,effective/spearman/mean,14,2,190 702,False,,
+span=intersection__case=A__dup=anchor60,intersection,A,anchor60,effective_lookahead/spearman/mean,14,1,702,True,,190
+span=intersection__case=A__dup=anchor60,intersection,A,anchor60,effective/spearman/mean/min_rows=5,14,2,190 702,False,,
+span=intersection__case=A__dup=anchor60,intersection,A,anchor60,effective/spearman/mean/min_rows=20,10,2,398 702,True,398,190
+span=intersection__case=A__dup=anchor60,intersection,A,anchor60,effective/spearman/mean/min_rows=37,7,1,702,True,,190
+span=intersection__case=A__dup=anchor60,intersection,A,anchor60,effective/spearman/mean/exclude=fostair,11,2,190 702,False,,
+span=intersection__case=A__dup=anchor60,intersection,A,anchor60,all/spearman/mean,14,2,473 702,True,473,190
+span=intersection__case=A__dup=chain30,intersection,A,chain30,effective/spearman/mean,14,2,190 702,False,,
+span=intersection__case=A__dup=chain30,intersection,A,chain30,effective_lookahead/spearman/mean,14,1,702,True,,190
+span=intersection__case=A__dup=chain30,intersection,A,chain30,effective/spearman/mean/min_rows=5,14,2,190 702,False,,
+span=intersection__case=A__dup=chain30,intersection,A,chain30,effective/spearman/mean/min_rows=20,10,2,398 702,True,398,190
+span=intersection__case=A__dup=chain30,intersection,A,chain30,effective/spearman/mean/min_rows=37,7,1,702,True,,190
+span=intersection__case=A__dup=chain30,intersection,A,chain30,effective/spearman/mean/exclude=fostair,11,2,190 702,False,,
+span=intersection__case=A__dup=chain30,intersection,A,chain30,all/spearman/mean,14,2,473 702,True,473,190
+span=intersection__case=A__dup=chain60,intersection,A,chain60,effective/spearman/mean,14,2,190 702,False,,
+span=intersection__case=A__dup=chain60,intersection,A,chain60,effective_lookahead/spearman/mean,14,1,702,True,,190
+span=intersection__case=A__dup=chain60,intersection,A,chain60,effective/spearman/mean/min_rows=5,14,2,190 702,False,,
+span=intersection__case=A__dup=chain60,intersection,A,chain60,effective/spearman/mean/min_rows=20,10,2,398 702,True,398,190
+span=intersection__case=A__dup=chain60,intersection,A,chain60,effective/spearman/mean/min_rows=37,7,1,702,True,,190
+span=intersection__case=A__dup=chain60,intersection,A,chain60,effective/spearman/mean/exclude=fostair,11,2,190 702,False,,
+span=intersection__case=A__dup=chain60,intersection,A,chain60,all/spearman/mean,14,2,473 702,True,473,190
 span=intersection__case=A__dup=real,intersection,A,real,effective/spearman/mean,14,2,190 702,False,,
 span=intersection__case=A__dup=real,intersection,A,real,effective_lookahead/spearman/mean,14,2,473 702,True,473,190
 span=intersection__case=A__dup=real,intersection,A,real,effective/spearman/mean/min_rows=5,14,2,190 702,False,,
@@ -111,6 +251,34 @@ span=intersection__case=C,intersection,C,artefact,effective/spearman/mean/min_ro
 span=intersection__case=C,intersection,C,artefact,effective/spearman/mean/min_rows=37,5,2,294 473,True,,702
 span=intersection__case=C,intersection,C,artefact,effective/spearman/mean/exclude=fostair,10,3,294 473 702,False,,
 span=intersection__case=C,intersection,C,artefact,all/spearman/mean,12,3,294 473 702,False,,
+span=intersection__case=C__dup=anchor30,intersection,C,anchor30,effective/spearman/mean,11,2,473 702,False,,
+span=intersection__case=C__dup=anchor30,intersection,C,anchor30,effective_lookahead/spearman/mean,11,2,473 702,False,,
+span=intersection__case=C__dup=anchor30,intersection,C,anchor30,effective/spearman/mean/min_rows=5,11,2,473 702,False,,
+span=intersection__case=C__dup=anchor30,intersection,C,anchor30,effective/spearman/mean/min_rows=20,8,2,473 702,False,,
+span=intersection__case=C__dup=anchor30,intersection,C,anchor30,effective/spearman/mean/min_rows=37,5,0,,True,,473 702
+span=intersection__case=C__dup=anchor30,intersection,C,anchor30,effective/spearman/mean/exclude=fostair,9,2,473 702,False,,
+span=intersection__case=C__dup=anchor30,intersection,C,anchor30,all/spearman/mean,11,3,294 473 702,True,294,
+span=intersection__case=C__dup=anchor60,intersection,C,anchor60,effective/spearman/mean,11,2,473 702,False,,
+span=intersection__case=C__dup=anchor60,intersection,C,anchor60,effective_lookahead/spearman/mean,11,2,473 702,False,,
+span=intersection__case=C__dup=anchor60,intersection,C,anchor60,effective/spearman/mean/min_rows=5,11,2,473 702,False,,
+span=intersection__case=C__dup=anchor60,intersection,C,anchor60,effective/spearman/mean/min_rows=20,8,2,473 702,False,,
+span=intersection__case=C__dup=anchor60,intersection,C,anchor60,effective/spearman/mean/min_rows=37,5,1,473,True,,702
+span=intersection__case=C__dup=anchor60,intersection,C,anchor60,effective/spearman/mean/exclude=fostair,9,2,473 702,False,,
+span=intersection__case=C__dup=anchor60,intersection,C,anchor60,all/spearman/mean,11,3,294 473 702,True,294,
+span=intersection__case=C__dup=chain30,intersection,C,chain30,effective/spearman/mean,11,2,473 702,False,,
+span=intersection__case=C__dup=chain30,intersection,C,chain30,effective_lookahead/spearman/mean,11,2,473 702,False,,
+span=intersection__case=C__dup=chain30,intersection,C,chain30,effective/spearman/mean/min_rows=5,11,2,473 702,False,,
+span=intersection__case=C__dup=chain30,intersection,C,chain30,effective/spearman/mean/min_rows=20,8,2,473 702,False,,
+span=intersection__case=C__dup=chain30,intersection,C,chain30,effective/spearman/mean/min_rows=37,5,1,473,True,,702
+span=intersection__case=C__dup=chain30,intersection,C,chain30,effective/spearman/mean/exclude=fostair,9,2,473 702,False,,
+span=intersection__case=C__dup=chain30,intersection,C,chain30,all/spearman/mean,11,3,294 473 702,True,294,
+span=intersection__case=C__dup=chain60,intersection,C,chain60,effective/spearman/mean,10,2,473 702,False,,
+span=intersection__case=C__dup=chain60,intersection,C,chain60,effective_lookahead/spearman/mean,10,2,473 702,False,,
+span=intersection__case=C__dup=chain60,intersection,C,chain60,effective/spearman/mean/min_rows=5,10,2,473 702,False,,
+span=intersection__case=C__dup=chain60,intersection,C,chain60,effective/spearman/mean/min_rows=20,8,2,473 702,False,,
+span=intersection__case=C__dup=chain60,intersection,C,chain60,effective/spearman/mean/min_rows=37,5,1,473,True,,702
+span=intersection__case=C__dup=chain60,intersection,C,chain60,effective/spearman/mean/exclude=fostair,8,2,473 702,False,,
+span=intersection__case=C__dup=chain60,intersection,C,chain60,all/spearman/mean,10,2,473 702,False,,
 span=intersection__case=C__dup=real,intersection,C,real,effective/spearman/mean,12,3,294 473 702,False,,
 span=intersection__case=C__dup=real,intersection,C,real,effective_lookahead/spearman/mean,12,3,294 473 702,False,,
 span=intersection__case=C__dup=real,intersection,C,real,effective/spearman/mean/min_rows=5,12,3,294 473 702,False,,
@@ -132,6 +300,34 @@ span=union__case=A,union,A,artefact,effective/spearman/mean/min_rows=20,12,3,190
 span=union__case=A,union,A,artefact,effective/spearman/mean/min_rows=37,11,2,190 702,True,,917
 span=union__case=A,union,A,artefact,effective/spearman/mean/exclude=fostair,12,2,190 702,True,,917
 span=union__case=A,union,A,artefact,all/spearman/mean,15,4,294 473 702 917,True,294 473,190
+span=union__case=A__dup=anchor30,union,A,anchor30,effective/spearman/mean,15,3,190 702 917,False,,
+span=union__case=A__dup=anchor30,union,A,anchor30,effective_lookahead/spearman/mean,15,2,702 917,True,,190
+span=union__case=A__dup=anchor30,union,A,anchor30,effective/spearman/mean/min_rows=5,15,3,190 702 917,False,,
+span=union__case=A__dup=anchor30,union,A,anchor30,effective/spearman/mean/min_rows=20,12,3,190 398 702,True,398,917
+span=union__case=A__dup=anchor30,union,A,anchor30,effective/spearman/mean/min_rows=37,11,2,190 702,True,,917
+span=union__case=A__dup=anchor30,union,A,anchor30,effective/spearman/mean/exclude=fostair,12,2,190 702,True,,917
+span=union__case=A__dup=anchor30,union,A,anchor30,all/spearman/mean,15,3,473 702 917,True,473,190
+span=union__case=A__dup=anchor60,union,A,anchor60,effective/spearman/mean,15,3,190 702 917,False,,
+span=union__case=A__dup=anchor60,union,A,anchor60,effective_lookahead/spearman/mean,15,2,702 917,True,,190
+span=union__case=A__dup=anchor60,union,A,anchor60,effective/spearman/mean/min_rows=5,15,3,190 702 917,False,,
+span=union__case=A__dup=anchor60,union,A,anchor60,effective/spearman/mean/min_rows=20,12,3,190 398 702,True,398,917
+span=union__case=A__dup=anchor60,union,A,anchor60,effective/spearman/mean/min_rows=37,11,2,190 702,True,,917
+span=union__case=A__dup=anchor60,union,A,anchor60,effective/spearman/mean/exclude=fostair,12,2,190 702,True,,917
+span=union__case=A__dup=anchor60,union,A,anchor60,all/spearman/mean,15,3,473 702 917,True,473,190
+span=union__case=A__dup=chain30,union,A,chain30,effective/spearman/mean,15,3,190 702 917,False,,
+span=union__case=A__dup=chain30,union,A,chain30,effective_lookahead/spearman/mean,15,2,702 917,True,,190
+span=union__case=A__dup=chain30,union,A,chain30,effective/spearman/mean/min_rows=5,15,3,190 702 917,False,,
+span=union__case=A__dup=chain30,union,A,chain30,effective/spearman/mean/min_rows=20,12,3,190 398 702,True,398,917
+span=union__case=A__dup=chain30,union,A,chain30,effective/spearman/mean/min_rows=37,11,2,190 702,True,,917
+span=union__case=A__dup=chain30,union,A,chain30,effective/spearman/mean/exclude=fostair,12,2,190 702,True,,917
+span=union__case=A__dup=chain30,union,A,chain30,all/spearman/mean,15,3,473 702 917,True,473,190
+span=union__case=A__dup=chain60,union,A,chain60,effective/spearman/mean,15,3,190 702 917,False,,
+span=union__case=A__dup=chain60,union,A,chain60,effective_lookahead/spearman/mean,15,2,702 917,True,,190
+span=union__case=A__dup=chain60,union,A,chain60,effective/spearman/mean/min_rows=5,15,3,190 702 917,False,,
+span=union__case=A__dup=chain60,union,A,chain60,effective/spearman/mean/min_rows=20,12,3,190 398 702,True,398,917
+span=union__case=A__dup=chain60,union,A,chain60,effective/spearman/mean/min_rows=37,11,2,190 702,True,,917
+span=union__case=A__dup=chain60,union,A,chain60,effective/spearman/mean/exclude=fostair,12,2,190 702,True,,917
+span=union__case=A__dup=chain60,union,A,chain60,all/spearman/mean,15,3,473 702 917,True,473,190
 span=union__case=A__dup=real,union,A,real,effective/spearman/mean,15,2,190 702,False,,
 span=union__case=A__dup=real,union,A,real,effective_lookahead/spearman/mean,15,2,473 702,True,473,190
 span=union__case=A__dup=real,union,A,real,effective/spearman/mean/min_rows=5,15,2,190 702,False,,
@@ -153,6 +349,34 @@ span=union__case=C,union,C,artefact,effective/spearman/mean/min_rows=20,8,3,294 
 span=union__case=C,union,C,artefact,effective/spearman/mean/min_rows=37,5,2,294 473,True,,702
 span=union__case=C,union,C,artefact,effective/spearman/mean/exclude=fostair,11,3,294 473 702,False,,
 span=union__case=C,union,C,artefact,all/spearman/mean,13,3,294 473 702,False,,
+span=union__case=C__dup=anchor30,union,C,anchor30,effective/spearman/mean,12,2,473 702,False,,
+span=union__case=C__dup=anchor30,union,C,anchor30,effective_lookahead/spearman/mean,12,2,473 702,False,,
+span=union__case=C__dup=anchor30,union,C,anchor30,effective/spearman/mean/min_rows=5,11,2,473 702,False,,
+span=union__case=C__dup=anchor30,union,C,anchor30,effective/spearman/mean/min_rows=20,8,2,473 702,False,,
+span=union__case=C__dup=anchor30,union,C,anchor30,effective/spearman/mean/min_rows=37,5,0,,True,,473 702
+span=union__case=C__dup=anchor30,union,C,anchor30,effective/spearman/mean/exclude=fostair,10,2,473 702,False,,
+span=union__case=C__dup=anchor30,union,C,anchor30,all/spearman/mean,12,3,294 473 702,True,294,
+span=union__case=C__dup=anchor60,union,C,anchor60,effective/spearman/mean,12,2,473 702,False,,
+span=union__case=C__dup=anchor60,union,C,anchor60,effective_lookahead/spearman/mean,12,2,473 702,False,,
+span=union__case=C__dup=anchor60,union,C,anchor60,effective/spearman/mean/min_rows=5,11,2,473 702,False,,
+span=union__case=C__dup=anchor60,union,C,anchor60,effective/spearman/mean/min_rows=20,8,2,473 702,False,,
+span=union__case=C__dup=anchor60,union,C,anchor60,effective/spearman/mean/min_rows=37,5,1,473,True,,702
+span=union__case=C__dup=anchor60,union,C,anchor60,effective/spearman/mean/exclude=fostair,10,2,473 702,False,,
+span=union__case=C__dup=anchor60,union,C,anchor60,all/spearman/mean,12,3,294 473 702,True,294,
+span=union__case=C__dup=chain30,union,C,chain30,effective/spearman/mean,12,2,473 702,False,,
+span=union__case=C__dup=chain30,union,C,chain30,effective_lookahead/spearman/mean,12,2,473 702,False,,
+span=union__case=C__dup=chain30,union,C,chain30,effective/spearman/mean/min_rows=5,11,2,473 702,False,,
+span=union__case=C__dup=chain30,union,C,chain30,effective/spearman/mean/min_rows=20,8,2,473 702,False,,
+span=union__case=C__dup=chain30,union,C,chain30,effective/spearman/mean/min_rows=37,5,1,473,True,,702
+span=union__case=C__dup=chain30,union,C,chain30,effective/spearman/mean/exclude=fostair,10,2,473 702,False,,
+span=union__case=C__dup=chain30,union,C,chain30,all/spearman/mean,12,3,294 473 702,True,294,
+span=union__case=C__dup=chain60,union,C,chain60,effective/spearman/mean,12,2,473 702,False,,
+span=union__case=C__dup=chain60,union,C,chain60,effective_lookahead/spearman/mean,12,2,473 702,False,,
+span=union__case=C__dup=chain60,union,C,chain60,effective/spearman/mean/min_rows=5,11,2,473 702,False,,
+span=union__case=C__dup=chain60,union,C,chain60,effective/spearman/mean/min_rows=20,8,2,473 702,False,,
+span=union__case=C__dup=chain60,union,C,chain60,effective/spearman/mean/min_rows=37,5,1,473,True,,702
+span=union__case=C__dup=chain60,union,C,chain60,effective/spearman/mean/exclude=fostair,10,2,473 702,False,,
+span=union__case=C__dup=chain60,union,C,chain60,all/spearman/mean,12,2,473 702,False,,
 span=union__case=C__dup=real,union,C,real,effective/spearman/mean,13,3,294 473 702,False,,
 span=union__case=C__dup=real,union,C,real,effective_lookahead/spearman/mean,13,3,294 473 702,False,,
 span=union__case=C__dup=real,union,C,real,effective/spearman/mean/min_rows=5,12,3,294 473 702,False,,

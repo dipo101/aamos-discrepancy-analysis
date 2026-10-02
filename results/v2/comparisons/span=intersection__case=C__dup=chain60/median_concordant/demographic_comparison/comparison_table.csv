@@ -1,0 +1,5 @@
+Group,n,sex,age,bmi,questionnaire_puffs,inhaler_puffs,rcp3_imputed,rcp3_dropna
+Overall (n=22),22,"Female: 17 (77%), Male: 5 (23%)","18-29yo: 3 (14%), 30-39yo: 9 (41%), 40-49yo: 6 (27%), 50+yo: 4 (18%)","Normal: 7 (32%), Pre-obesity: 6 (27%), Obesity: 9 (41%)",3.02 (2.14),4.18 (2.59),1.1 (0.8),1.1 (0.8)
+Assessed (n=15),10,"Female: 8 (80%), Male: 2 (20%)","18-29yo: 1 (10%), 30-39yo: 4 (40%), 40-49yo: 3 (30%), 50+yo: 2 (20%)","Normal: 4 (40%), Pre-obesity: 2 (20%), Obesity: 4 (40%)",3.19 (2.01),4.31 (2.58),1.2 (0.7),1.2 (0.7)
+Median-Concordant (n=2),2,"Female: 1 (50%), Male: 1 (50%)","30-39yo: 1 (50%), 40-49yo: 1 (50%)","Normal: 1 (50%), Pre-obesity: 1 (50%)",2.80 (2.53),3.75 (2.83),0.6 (0.5),0.6 (0.5)
+Remaining (n=8),8,"Female: 7 (88%), Male: 1 (12%)","18-29yo: 1 (12%), 30-39yo: 3 (38%), 40-49yo: 2 (25%), 50+yo: 2 (25%)","Normal: 3 (38%), Pre-obesity: 1 (12%), Obesity: 4 (50%)",3.23 (1.95),4.42 (2.52),1.4 (0.7),1.4 (0.7)
