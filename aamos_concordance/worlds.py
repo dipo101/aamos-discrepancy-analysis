@@ -10,9 +10,10 @@ sensitivity analysis varies around the fixed 132-configuration multiverse:
                     treated: ``A`` naive zero (the v1 behaviour), ``B``
                     Poisson imputation, ``C`` dropped;
 * ``imputation``    the draw index for case ``B`` (``None`` otherwise);
-* ``duplicates``    how exact duplicate device rows are read: ``artefact``
-                    (dropped; primary, omitted from the world id), ``real``
-                    or ``resolution`` (see :mod:`aamos_concordance.duplicates`).
+* ``duplicates``    how duplicate device rows are read: ``artefact``
+                    (exact repeats dropped; primary, omitted from the world id),
+                    ``real``, ``resolution``, or a 30/60 s anchored/chained window
+                    (see :mod:`aamos_concordance.duplicates`).
 
 The baseline world ``span=union__case=A`` is the published v1 analysis and must
 reproduce it exactly (``tests/test_regression_v1.py``). v1 trimmed nothing,
@@ -74,7 +75,7 @@ THRESHOLD_SWEEP_CSV = "threshold_sweep.csv"
 OBSERVED_CSV = "observed.csv"  # observed statistics under every spec, no p-values
 CONFIG_JSON = "config.json"
 
-_WORLD_ID_RE = re.compile(r"^span=(?P<span>[A-Za-z]+)__case=(?P<case>[ABC])(?:__k=(?P<k>\d{2}))?(?:__dup=(?P<dup>[a-z]+))?$")
+_WORLD_ID_RE = re.compile(r"^span=(?P<span>[A-Za-z]+)__case=(?P<case>[ABC])(?:__k=(?P<k>\d{2}))?(?:__dup=(?P<dup>[a-z0-9]+))?$")
 
 
 @dataclass(frozen=True)
